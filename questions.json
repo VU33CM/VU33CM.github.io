@@ -3668,19 +3668,19 @@
     "explanation": "Restricted Grade has power and band limitations compared with General Grade."
   },
   {
-    "id": 263,
-    "category": "Indian ASOC Rules & Regulations",
-    "difficulty": "Hard",
-    "question": "Morse code proficiency for the Indian ASOC:",
-    "options": [
-      "is no longer required for either Restricted or General Grade under current rules",
-      "is required only above 30 MHz",
-      "is mandatory for both grades",
-      "is required only for Restricted"
-    ],
-    "answer": "is no longer required for either Restricted or General Grade under current rules",
-    "explanation": "India removed the Morse requirement; check the latest DoT/WPC notifications for confirmation."
-  },
+  "id": 263,
+  "category": "Indian ASOC Rules & Regulations",
+  "difficulty": "Hard",
+  "question": "Under the Telecommunications (Amateur Services) Rules, 2024, Morse code proficiency for the Indian ASOC is:",
+  "options": [
+    "required for General Grade (as specified by the Central Government), but not for Restricted Grade",
+    "no longer required for either Restricted or General Grade",
+    "mandatory for both Restricted and General Grade",
+    "required only for Restricted Grade"
+  ],
+  "answer": "required for General Grade (as specified by the Central Government), but not for Restricted Grade",
+  "explanation": "The 2024 Rules state that the ASOC (General) examination shall also require proficiency in Morse Code as may be specified by the Central Government. Restricted Grade has a written exam only; no Morse is required. Commonly the General Morse test is conducted at about 8 WPM (send and receive). Always verify the latest WPC/DoT notification for exact test details."
+},
   {
     "id": 264,
     "category": "Indian ASOC Rules & Regulations",
