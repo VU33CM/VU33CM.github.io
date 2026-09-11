@@ -1,2318 +1,1173 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta charset="UTF-8">
+<title>HAM Corner by VU33CM | Indian Amateur Radio</title>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description"
+content="HAM Corner by VU33CM - Learn, explore and enjoy Indian Amateur Radio, DX, satellites, repeaters, digital modes, contests and emergency communication.">
 
-  <title>HAM Corner by VU33CM | Indian Amateur Radio</title>
+<style>
+:root{
+    --bg:#050b14;
+    --bg2:#081525;
+    --card:#0c1b2b;
+    --card2:#102438;
+    --cyan:#19dfff;
+    --blue:#2388ff;
+    --white:#f3fbff;
+    --muted:#9bb1c5;
+    --border:#1b405c;
+    --green:#36e09b;
+    --orange:#ffb84d;
+}
 
-  <meta name="description"
-        content="HAM Corner by VU33CM — Discover amateur radio, licensing, emergency communication, HF, VHF, UHF, digital modes, satellites, repeaters, contests and the worldwide amateur radio community.">
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+html{
+    scroll-behavior:smooth;
+}
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
-        rel="stylesheet">
-
-
-  <style>
-
-    /* =========================================================
-       HAM CORNER — HOMEPAGE
-       VU33CM
-       ========================================================= */
-
-    :root {
-      --bg: #030712;
-      --bg2: #07111f;
-      --card: rgba(12, 25, 43, 0.78);
-      --border: rgba(255,255,255,0.09);
-
-      --cyan: #00d9ff;
-      --blue: #1687ff;
-      --purple: #7c5cff;
-
-      --text: #f5f8ff;
-      --muted: #94a8bd;
-
-      --green: #00d084;
-      --orange: #ff9d2e;
-
-      --max: 1180px;
-    }
-
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-
-    body {
-      font-family: "Inter", sans-serif;
-      background:
-        radial-gradient(circle at 20% 10%, rgba(0,217,255,.10), transparent 28%),
-        radial-gradient(circle at 80% 20%, rgba(124,92,255,.10), transparent 30%),
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:
+        radial-gradient(circle at 20% 10%,#09233b 0%,transparent 35%),
+        radial-gradient(circle at 80% 30%,#062b45 0%,transparent 30%),
         var(--bg);
-
-      color: var(--text);
-      line-height: 1.7;
-      overflow-x: hidden;
-    }
-
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-
-    /* =========================================================
-       HEADER
-       ========================================================= */
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-
-      background: rgba(3,7,18,.88);
-      backdrop-filter: blur(18px);
-
-      border-bottom: 1px solid var(--border);
-    }
-
-
-    .nav-container {
-      max-width: var(--max);
-      margin: auto;
-
-      min-height: 82px;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      gap: 30px;
-
-      padding: 10px 20px;
-    }
-
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 13px;
-
-      flex-shrink: 0;
-    }
-
-
-    .logo-icon {
-      width: 54px;
-      height: 54px;
-
-      border-radius: 14px;
-
-      overflow: hidden;
-
-      background: linear-gradient(135deg, #00d9ff, #1687ff);
-
-      box-shadow:
-        0 8px 25px rgba(0,217,255,.22);
-    }
-
-
-    .logo-icon img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-
-    .logo-text h1 {
-      font-family: "Space Grotesk", sans-serif;
-
-      font-size: 1.35rem;
-      line-height: 1.1;
-    }
-
-
-    .logo-text span {
-      color: var(--cyan);
-      font-size: .78rem;
-      white-space: nowrap;
-    }
-
-
-    nav ul {
-      list-style: none;
-
-      display: flex;
-      align-items: center;
-
-      gap: 5px;
-
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
-
-    nav a {
-      display: block;
-
-      padding: 9px 12px;
-
-      border-radius: 10px;
-
-      color: #91a4b9;
-
-      font-weight: 600;
-      font-size: .9rem;
-
-      transition: .25s ease;
-    }
-
-
-    nav a:hover,
-    nav a.active {
-      color: white;
-
-      background: rgba(0,217,255,.12);
-
-      box-shadow: inset 0 -2px 0 var(--cyan);
-    }
-
-
-    /* =========================================================
-       HERO
-       ========================================================= */
-
-    .hero {
-      max-width: var(--max);
-
-      margin: auto;
-
-      padding: 90px 20px 75px;
-
-      display: grid;
-
-      grid-template-columns: 1fr 1.05fr;
-
-      align-items: center;
-
-      gap: 55px;
-    }
-
-
-    .hero-badge {
-      display: inline-flex;
-
-      align-items: center;
-
-      padding: 7px 14px;
-
-      border-radius: 999px;
-
-      background: rgba(0,217,255,.09);
-
-      border: 1px solid rgba(0,217,255,.22);
-
-      color: var(--cyan);
-
-      font-size: .82rem;
-
-      font-weight: 700;
-
-      margin-bottom: 22px;
-    }
-
-
-    .hero h2 {
-      font-family: "Space Grotesk", sans-serif;
-
-      font-size: clamp(3rem, 6vw, 5.3rem);
-
-      line-height: 1.02;
-
-      letter-spacing: -3px;
-
-      margin-bottom: 24px;
-
-      background:
-        linear-gradient(
-          110deg,
-          #fff 20%,
-          #00d9ff 55%,
-          #7c5cff 90%
-        );
-
-      -webkit-background-clip: text;
-      background-clip: text;
-
-      color: transparent;
-    }
-
-
-    .hero p {
-      color: var(--muted);
-
-      font-size: 1.1rem;
-
-      max-width: 650px;
-
-      margin-bottom: 30px;
-    }
-
-
-    .hero p strong {
-      color: white;
-    }
-
-
-    .hero-btns {
-      display: flex;
-
-      gap: 12px;
-
-      flex-wrap: wrap;
-    }
-
-
-    .btn {
-      display: inline-flex;
-
-      align-items: center;
-      justify-content: center;
-
-      padding: 13px 21px;
-
-      border-radius: 12px;
-
-      font-weight: 700;
-
-      transition: .25s ease;
-    }
-
-
-    .btn-primary {
-      color: white;
-
-      background:
-        linear-gradient(
-          135deg,
-          var(--cyan),
-          var(--blue)
-        );
-
-      box-shadow:
-        0 12px 35px rgba(0,140,255,.25);
-    }
-
-
-    .btn-primary:hover {
-      transform: translateY(-3px);
-
-      box-shadow:
-        0 18px 45px rgba(0,140,255,.38);
-    }
-
-
-    .btn-outline {
-      border: 1px solid rgba(255,255,255,.14);
-
-      background: rgba(255,255,255,.04);
-
-      color: white;
-    }
-
-
-    .btn-outline:hover {
-      border-color: var(--cyan);
-
-      color: var(--cyan);
-
-      transform: translateY(-3px);
-    }
-
-
-    .hero-img {
-      position: relative;
-    }
-
-
-    .hero-img::before {
-      content: "";
-
-      position: absolute;
-
-      inset: -20px;
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(0,217,255,.20),
-          rgba(124,92,255,.16)
-        );
-
-      filter: blur(45px);
-
-      z-index: -1;
-    }
-
-
-    .hero-img img {
-      width: 100%;
-
-      aspect-ratio: 1.45 / 1;
-
-      object-fit: cover;
-
-      border-radius: 25px;
-
-      border: 1px solid rgba(255,255,255,.12);
-
-      box-shadow:
-        0 30px 80px rgba(0,0,0,.55);
-    }
-
-
-    /* =========================================================
-       INTRO
-       ========================================================= */
-
-    .intro {
-      max-width: 900px;
-
-      margin: 20px auto 90px;
-
-      padding: 0 20px;
-
-      text-align: center;
-    }
-
-
-    .eyebrow {
-      color: var(--cyan);
-
-      font-size: .78rem;
-
-      font-weight: 800;
-
-      letter-spacing: 2px;
-
-      text-transform: uppercase;
-
-      margin-bottom: 12px;
-    }
-
-
-    .intro h2 {
-      font-family: "Space Grotesk", sans-serif;
-
-      font-size: clamp(2rem, 4vw, 3.2rem);
-
-      line-height: 1.15;
-
-      margin-bottom: 18px;
-    }
-
-
-    .intro p {
-      color: var(--muted);
-
-      font-size: 1.05rem;
-    }
-
-
-    /* =========================================================
-       SECTION
-       ========================================================= */
-
-    .section {
-      max-width: var(--max);
-
-      margin: auto;
-
-      padding: 70px 20px;
-    }
-
-
-    .section-heading {
-      max-width: 760px;
-
-      margin-bottom: 45px;
-    }
-
-
-    .section-heading h2 {
-      font-family: "Space Grotesk", sans-serif;
-
-      font-size: clamp(2rem, 4vw, 3rem);
-
-      line-height: 1.15;
-
-      margin-bottom: 12px;
-    }
-
-
-    .section-heading p {
-      color: var(--muted);
-    }
-
-
-    /* =========================================================
-       ALTERNATING FEATURE SECTIONS
-       ========================================================= */
-
-    .feature {
-      display: grid;
-
-      grid-template-columns: 1fr 1fr;
-
-      align-items: center;
-
-      gap: 65px;
-
-      margin: 35px 0 90px;
-    }
-
-
-    .feature.reverse .feature-image {
-      order: 2;
-    }
-
-
-    .feature.reverse .feature-content {
-      order: 1;
-    }
-
-
-    .feature-image {
-      position: relative;
-    }
-
-
-    .feature-image img {
-      width: 100%;
-
-      height: 380px;
-
-      object-fit: cover;
-
-      border-radius: 22px;
-
-      border: 1px solid var(--border);
-
-      box-shadow:
-        0 25px 60px rgba(0,0,0,.4);
-
-      transition: .35s ease;
-    }
-
-
-    .feature-image:hover img {
-      transform: scale(1.025);
-    }
-
-
-    .feature-content h3 {
-      font-family: "Space Grotesk", sans-serif;
-
-      font-size: 2rem;
-
-      line-height: 1.2;
-
-      margin-bottom: 18px;
-    }
-
-
-    .feature-content p {
-      color: var(--muted);
-
-      margin-bottom: 18px;
-    }
-
-
-    .feature-list {
-      list-style: none;
-
-      display: grid;
-
-      gap: 8px;
-
-      margin-top: 20px;
-    }
-
-
-    .feature-list li {
-      color: #cbd7e5;
-
-      display: flex;
-
-      gap: 10px;
-    }
-
-
-    .feature-list li::before {
-      content: "✓";
-
-      color: var(--cyan);
-
-      font-weight: 800;
-    }
-
-
-    /* =========================================================
-       INTERACTIVE EXPLORER
-       ========================================================= */
-
-    .explorer {
-      background:
-        linear-gradient(
-          145deg,
-          rgba(9,25,44,.95),
-          rgba(7,12,28,.95)
-        );
-
-      border: 1px solid var(--border);
-
-      border-radius: 28px;
-
-      padding: 35px;
-
-      margin-top: 25px;
-    }
-
-
-    .explorer-tabs {
-      display: grid;
-
-      grid-template-columns: repeat(4, 1fr);
-
-      gap: 10px;
-
-      margin-bottom: 30px;
-    }
-
-
-    .explorer-tab {
-      border: 1px solid var(--border);
-
-      background: rgba(255,255,255,.035);
-
-      color: #9aacc0;
-
-      border-radius: 12px;
-
-      padding: 15px 10px;
-
-      cursor: pointer;
-
-      font: inherit;
-
-      font-weight: 700;
-
-      transition: .25s ease;
-    }
-
-
-    .explorer-tab:hover,
-    .explorer-tab.active {
-      color: white;
-
-      border-color: rgba(0,217,255,.4);
-
-      background: rgba(0,217,255,.09);
-    }
-
-
-    .explorer-content {
-      display: none;
-
-      animation: fadeIn .35s ease;
-    }
-
-
-    .explorer-content.active {
-      display: block;
-    }
-
-
-    .explorer-content h3 {
-      font-family: "Space Grotesk", sans-serif;
-
-      font-size: 1.8rem;
-
-      margin-bottom: 10px;
-    }
-
-
-    .explorer-content p {
-      color: var(--muted);
-
-      max-width: 850px;
-    }
-
-
-    .mode-tags {
-      display: flex;
-
-      flex-wrap: wrap;
-
-      gap: 9px;
-
-      margin-top: 22px;
-    }
-
-
-    .mode-tags span {
-      padding: 7px 11px;
-
-      border-radius: 8px;
-
-      background: rgba(255,255,255,.055);
-
-      border: 1px solid var(--border);
-
-      color: #dce6f2;
-
-      font-size: .86rem;
-    }
-
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(7px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-
-    /* =========================================================
-       FOUR PILLARS
-       ========================================================= */
-
-    .pillars {
-      display: grid;
-
-      grid-template-columns: repeat(4, 1fr);
-
-      gap: 16px;
-    }
-
-
-    .pillar {
-      padding: 27px;
-
-      border-radius: 18px;
-
-      background: var(--card);
-
-      border: 1px solid var(--border);
-
-      transition: .3s ease;
-    }
-
-
-    .pillar:hover {
-      transform: translateY(-7px);
-
-      border-color: rgba(0,217,255,.35);
-    }
-
-
-    .pillar-icon {
-      font-size: 2rem;
-
-      margin-bottom: 15px;
-    }
-
-
-    .pillar h3 {
-      font-family: "Space Grotesk", sans-serif;
-
-      margin-bottom: 8px;
-    }
-
-
-    .pillar p {
-      color: var(--muted);
-
-      font-size: .92rem;
-    }
-
-
-    /* =========================================================
-       DIGITAL RADIO
-       ========================================================= */
-
-    .digital-box {
-      display: grid;
-
-      grid-template-columns: 1fr 1fr;
-
-      gap: 35px;
-
-      align-items: center;
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(0,217,255,.07),
-          rgba(124,92,255,.07)
-        );
-
-      border: 1px solid var(--border);
-
-      border-radius: 25px;
-
-      padding: 35px;
-    }
-
-
-    .digital-box h3 {
-      font-family: "Space Grotesk", sans-serif;
-
-      font-size: 2rem;
-
-      margin-bottom: 14px;
-    }
-
-
-    .digital-box p {
-      color: var(--muted);
-    }
-
-
-    .digital-grid {
-      display: grid;
-
-      grid-template-columns: repeat(2, 1fr);
-
-      gap: 10px;
-    }
-
-
-    .digital-item {
-      padding: 15px;
-
-      background: rgba(0,0,0,.22);
-
-      border: 1px solid var(--border);
-
-      border-radius: 12px;
-    }
-
-
-    .digital-item strong {
-      display: block;
-
-      color: white;
-
-      margin-bottom: 3px;
-    }
-
-
-    .digital-item span {
-      color: var(--muted);
-
-      font-size: .82rem;
-    }
-
-
-    /* =========================================================
-       JOURNEY
-       ========================================================= */
-
-    .journey {
-      display: grid;
-
-      grid-template-columns: repeat(4, 1fr);
-
-      gap: 15px;
-
-      counter-reset: journey;
-    }
-
-
-    .journey-step {
-      position: relative;
-
-      padding: 28px 22px;
-
-      background: rgba(255,255,255,.035);
-
-      border: 1px solid var(--border);
-
-      border-radius: 17px;
-    }
-
-
-    .journey-step::before {
-      counter-increment: journey;
-
-      content: "0" counter(journey);
-
-      display: block;
-
-      color: var(--cyan);
-
-      font-family: "Space Grotesk", sans-serif;
-
-      font-size: 1.8rem;
-
-      font-weight: 700;
-
-      margin-bottom: 15px;
-    }
-
-
-    .journey-step h3 {
-      margin-bottom: 7px;
-    }
-
-
-    .journey-step p {
-      color: var(--muted);
-
-      font-size: .9rem;
-    }
-
-
-    /* =========================================================
-       CTA
-       ========================================================= */
-
-    .cta {
-      max-width: var(--max);
-
-      margin: 40px auto 90px;
-
-      padding: 70px 30px;
-
-      text-align: center;
-
-      border-radius: 30px;
-
-      background:
-        radial-gradient(
-          circle at 50% 0%,
-          rgba(0,217,255,.15),
-          transparent 45%
-        ),
-        linear-gradient(
-          135deg,
-          #08182a,
-          #0a1021
-        );
-
-      border: 1px solid var(--border);
-    }
-
-
-    .cta h2 {
-      font-family: "Space Grotesk", sans-serif;
-
-      font-size: clamp(2rem, 4vw, 3.2rem);
-
-      margin-bottom: 15px;
-    }
-
-
-    .cta p {
-      color: var(--muted);
-
-      max-width: 680px;
-
-      margin: 0 auto 27px;
-    }
-
-
-    /* =========================================================
-       FOOTER
-       ========================================================= */
-
-    footer {
-      border-top: 1px solid var(--border);
-
-      text-align: center;
-
-      padding: 45px 20px;
-
-      color: var(--muted);
-    }
-
-
-    footer .callsign {
-      color: white;
-
-      font-family: "Space Grotesk", sans-serif;
-
-      font-size: 1.25rem;
-
-      font-weight: 700;
-
-      margin-bottom: 5px;
-    }
-
-
-    footer .callsign span {
-      color: var(--cyan);
-    }
-
-
-    /* =========================================================
-       RESPONSIVE
-       ========================================================= */
-
-    @media (max-width: 1000px) {
-
-      nav {
-        display: none;
-      }
-
-      .hero {
-        grid-template-columns: 1fr;
-
-      }
-
-      .hero-content {
-        text-align: center;
-      }
-
-      .hero-btns {
-        justify-content: center;
-      }
-
-      .hero p {
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .feature {
-        grid-template-columns: 1fr;
-
-        gap: 30px;
-      }
-
-      .feature.reverse .feature-image {
-        order: 1;
-      }
-
-      .feature.reverse .feature-content {
-        order: 2;
-      }
-
-      .pillars {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .journey {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-    }
-
-
-    @media (max-width: 700px) {
-
-      .nav-container {
-        min-height: 70px;
-      }
-
-      .logo-icon {
-        width: 45px;
-        height: 45px;
-      }
-
-      .logo-text h1 {
-        font-size: 1.1rem;
-      }
-
-      .logo-text span {
-        font-size: .68rem;
-      }
-
-      .hero {
-        padding-top: 55px;
-      }
-
-      .hero h2 {
-        font-size: 3rem;
-
-        letter-spacing: -2px;
-      }
-
-      .hero-img img {
-        aspect-ratio: 1.2 / 1;
-      }
-
-      .feature-image img {
-        height: 280px;
-      }
-
-      .pillars,
-      .journey,
-      .digital-box {
-        grid-template-columns: 1fr;
-      }
-
-      .digital-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .explorer {
-        padding: 20px;
-      }
-
-      .explorer-tabs {
-        grid-template-columns: 1fr 1fr;
-      }
-
-    }
-
-
-    @media (max-width: 430px) {
-
-      .digital-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero h2 {
-        font-size: 2.5rem;
-      }
-
-    }
-
-  </style>
-
+    color:var(--white);
+    line-height:1.6;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+.container{
+    width:min(1180px,92%);
+    margin:auto;
+}
+
+/* ================= HEADER ================= */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(5,11,20,.92);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid var(--border);
+}
+
+.navbar{
+    min-height:78px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo-icon{
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    overflow:hidden;
+    border:2px solid var(--cyan);
+    box-shadow:0 0 20px rgba(25,223,255,.35);
+    flex-shrink:0;
+}
+
+.logo-icon img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+}
+
+.logo-text h1{
+    font-size:20px;
+    letter-spacing:.5px;
+}
+
+.logo-text span{
+    display:block;
+    color:var(--muted);
+    font-size:11px;
+}
+
+nav{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+}
+
+nav a{
+    padding:9px 11px;
+    border-radius:8px;
+    color:#c5d8e7;
+    font-size:13px;
+    transition:.25s;
+}
+
+nav a:hover{
+    background:#10283b;
+    color:var(--cyan);
+}
+
+nav .quiz-link{
+    background:linear-gradient(135deg,var(--cyan),var(--blue));
+    color:#00111c;
+    font-weight:800;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    padding:75px 0 55px;
+}
+
+.hero-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:center;
+}
+
+.badge{
+    display:inline-block;
+    padding:7px 13px;
+    border:1px solid #17617c;
+    border-radius:30px;
+    color:var(--cyan);
+    background:#062033;
+    font-size:12px;
+    margin-bottom:18px;
+}
+
+.hero h2{
+    font-size:clamp(38px,6vw,68px);
+    line-height:1.02;
+    margin-bottom:20px;
+}
+
+.hero h2 span{
+    color:var(--cyan);
+}
+
+.hero p{
+    color:var(--muted);
+    font-size:18px;
+    max-width:620px;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:14px;
+    margin-top:28px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    display:inline-block;
+    padding:13px 20px;
+    border-radius:10px;
+    font-weight:700;
+    transition:.25s;
+}
+
+.btn-primary{
+    background:linear-gradient(135deg,var(--cyan),var(--blue));
+    color:#00121e;
+}
+
+.btn-secondary{
+    border:1px solid var(--border);
+    background:#0b1b2a;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+    filter:brightness(1.1);
+}
+
+.hero-img{
+    border-radius:25px;
+    overflow:hidden;
+    border:1px solid var(--border);
+    box-shadow:0 25px 70px #0009;
+}
+
+.hero-img img{
+    width:100%;
+    display:block;
+}
+
+/* ================= GENERAL ================= */
+
+section{
+    padding:75px 0;
+}
+
+.section-heading{
+    text-align:center;
+    margin-bottom:45px;
+}
+
+.section-heading h2{
+    font-size:38px;
+    margin-bottom:10px;
+}
+
+.section-heading p{
+    color:var(--muted);
+    max-width:700px;
+    margin:auto;
+}
+
+.feature{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:45px;
+    align-items:center;
+    margin-bottom:80px;
+}
+
+.feature.reverse .feature-image{
+    order:2;
+}
+
+.feature-image{
+    border-radius:20px;
+    overflow:hidden;
+    border:1px solid var(--border);
+    box-shadow:0 20px 50px #0008;
+}
+
+.feature-image img{
+    width:100%;
+    height:360px;
+    object-fit:cover;
+    display:block;
+}
+
+.feature-content h3{
+    font-size:30px;
+    margin-bottom:15px;
+}
+
+.feature-content p{
+    color:var(--muted);
+    margin-bottom:15px;
+}
+
+.feature-content ul{
+    list-style:none;
+    margin-top:18px;
+}
+
+.feature-content li{
+    margin:9px 0;
+    color:#cce0ee;
+}
+
+.feature-content li::before{
+    content:"✓";
+    color:var(--cyan);
+    margin-right:9px;
+    font-weight:bold;
+}
+
+/* ================= CARDS ================= */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+}
+
+.card{
+    background:linear-gradient(145deg,var(--card),#081522);
+    border:1px solid var(--border);
+    border-radius:17px;
+    padding:25px;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-7px);
+    border-color:#227ea5;
+    box-shadow:0 20px 40px #0007;
+}
+
+.card-icon{
+    font-size:35px;
+    margin-bottom:14px;
+}
+
+.card h3{
+    margin-bottom:8px;
+}
+
+.card p{
+    color:var(--muted);
+    font-size:14px;
+}
+
+/* ================= RADIO EXPLORER ================= */
+
+.explorer{
+    background:linear-gradient(180deg,#071625,#06101c);
+    border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+}
+
+.tabs{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:25px;
+}
+
+.tab{
+    border:1px solid var(--border);
+    background:#0c1c2b;
+    color:#c5d8e7;
+    padding:11px 18px;
+    border-radius:30px;
+    cursor:pointer;
+}
+
+.tab.active,
+.tab:hover{
+    background:var(--cyan);
+    color:#00121b;
+}
+
+.explorer-box{
+    max-width:850px;
+    margin:auto;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:35px;
+}
+
+.explorer-box h3{
+    font-size:28px;
+    margin-bottom:12px;
+}
+
+.explorer-box p{
+    color:var(--muted);
+}
+
+/* ================= QUIZ CTA ================= */
+
+.quiz-section{
+    position:relative;
+    overflow:hidden;
+}
+
+.quiz-box{
+    background:
+        radial-gradient(circle at 80% 20%,#084b70,transparent 35%),
+        linear-gradient(135deg,#0b2033,#071522);
+    border:1px solid #17617c;
+    border-radius:25px;
+    padding:50px;
+    text-align:center;
+    box-shadow:0 20px 60px #0008;
+}
+
+.quiz-icon{
+    font-size:55px;
+    margin-bottom:12px;
+}
+
+.quiz-box h2{
+    font-size:40px;
+    margin-bottom:12px;
+}
+
+.quiz-box p{
+    max-width:700px;
+    margin:0 auto 25px;
+    color:var(--muted);
+}
+
+.quiz-stats{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+    margin-bottom:28px;
+}
+
+.quiz-stat{
+    border:1px solid var(--border);
+    background:#071522;
+    border-radius:12px;
+    padding:12px 20px;
+}
+
+.quiz-stat strong{
+    display:block;
+    font-size:22px;
+    color:var(--cyan);
+}
+
+/* ================= GALLERY ================= */
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.gallery img{
+    width:100%;
+    height:210px;
+    object-fit:cover;
+    border-radius:14px;
+    border:1px solid var(--border);
+    transition:.3s;
+}
+
+.gallery img:hover{
+    transform:scale(1.03);
+}
+
+/* ================= CTA ================= */
+
+.final-cta{
+    text-align:center;
+    padding:90px 20px;
+}
+
+.final-cta h2{
+    font-size:42px;
+    margin-bottom:15px;
+}
+
+.final-cta p{
+    color:var(--muted);
+    max-width:700px;
+    margin:0 auto 25px;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    border-top:1px solid var(--border);
+    padding:35px 0;
+    background:#030911;
+}
+
+.footer-grid{
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+footer p{
+    color:var(--muted);
+    font-size:13px;
+}
+
+footer a{
+    color:var(--cyan);
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:900px){
+
+    .hero-grid,
+    .feature{
+        grid-template-columns:1fr;
+    }
+
+    .feature.reverse .feature-image{
+        order:0;
+    }
+
+    .cards{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .gallery{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    nav{
+        display:none;
+    }
+}
+
+@media(max-width:600px){
+
+    .hero{
+        padding-top:45px;
+    }
+
+    section{
+        padding:55px 0;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .gallery{
+        grid-template-columns:1fr;
+    }
+
+    .feature-image img{
+        height:280px;
+    }
+
+    .quiz-box{
+        padding:30px 20px;
+    }
+
+    .quiz-box h2{
+        font-size:30px;
+    }
+}
+</style>
 </head>
-
 
 <body>
 
-
-<!-- =========================================================
-     HEADER
-     ========================================================= -->
+<!-- ================= HEADER ================= -->
 
 <header>
+<div class="container navbar">
 
-  <div class="nav-container">
+<a href="index.html" class="logo">
 
-    <a href="index.html" class="logo">
+<div class="logo-icon">
+<img src="logo.png" alt="HAM Corner VU33CM Logo">
+</div>
 
-      <div class="logo-icon">
+<div class="logo-text">
+<h1>HAM Corner</h1>
+<span>by VU33CM • Indian Amateur Radio</span>
+</div>
 
-        <img
-          src="logo.png"
-          alt="HAM Corner VU33CM">
+</a>
 
-      </div>
+<nav>
+<a href="index.html">Home</a>
+<a href="study.html">Study</a>
+<a href="activities.html">Activities</a>
+<a href="repeaters.html">Repeaters</a>
+<a href="nets.html">Nets</a>
+<a href="clubs.html">Clubs</a>
+<a href="resources.html">Resources</a>
 
-      <div class="logo-text">
+<a href="quiz.html" class="quiz-link">
+🎓 ASOC Quiz
+</a>
+</nav>
 
-        <h1>HAM Corner</h1>
-
-        <span>
-          by VU33CM • Indian Amateur Radio
-        </span>
-
-      </div>
-
-    </a>
-
-
-    <nav>
-
-      <ul>
-
-        <li>
-          <a href="index.html" class="active">
-            Home
-          </a>
-        </li>
-
-        <li>
-          <a href="licensing.html">
-            Get Licensed
-          </a>
-        </li>
-
-        <li>
-          <a href="study.html">
-            Study
-          </a>
-        </li>
-
-        <li>
-          <a href="activities.html">
-            Modes
-          </a>
-        </li>
-
-        <li>
-          <a href="repeaters.html">
-            Repeaters
-          </a>
-        </li>
-
-        <li>
-          <a href="nets.html">
-            Nets
-          </a>
-        </li>
-
-        <li>
-          <a href="clubs.html">
-            Clubs
-          </a>
-        </li>
-
-        <li>
-          <a href="resources.html">
-            Resources
-          </a>
-        </li>
-
-        <li>
-          <a href="about.html">
-            About
-          </a>
-        </li>
-
-      </ul>
-
-    </nav>
-
-  </div>
-
+</div>
 </header>
 
 
-
-<!-- =========================================================
-     HERO
-     ========================================================= -->
+<!-- ================= HERO ================= -->
 
 <section class="hero">
+<div class="container hero-grid">
 
-  <div class="hero-content">
+<div>
 
-    <div class="hero-badge">
-      📡 AMATEUR RADIO • INDIA
-    </div>
+<div class="badge">
+🇮🇳 INDIAN AMATEUR RADIO • VU33CM
+</div>
 
+<h2>
+Discover the world of
+<span>HAM Radio.</span>
+</h2>
 
-    <h2>
-      Discover a World
-      Beyond the Internet.
-    </h2>
+<p>
+Welcome to HAM Corner — a place to learn amateur radio,
+understand the technology, make contacts around the world,
+experiment with antennas and radios, explore satellites,
+and become part of the amateur-radio community.
+</p>
 
+<div class="hero-buttons">
 
-    <p>
+<a href="quiz.html" class="btn btn-primary">
+🎓 Try the ASOC Quiz
+</a>
 
-      Amateur radio is more than pressing a button and talking
-      into a microphone. It is the art of making connections —
-      across cities, oceans and continents — using radio waves,
-      antennas, electronics and imagination.
+<a href="#explore" class="btn btn-secondary">
+📻 Explore Amateur Radio
+</a>
 
-      <br><br>
+</div>
 
-      <strong>
-        Welcome to HAM Corner by VU33CM.
-      </strong>
+</div>
 
-    </p>
+<div class="hero-img">
+<img src="Home.png"
+     alt="VU33CM Amateur Radio Station"
+     loading="eager">
+</div>
 
-
-    <div class="hero-btns">
-
-      <a
-        href="licensing.html"
-        class="btn btn-primary">
-
-        🚀 Start Your Ham Journey
-
-      </a>
-
-
-      <a
-        href="#explore"
-        class="btn btn-outline">
-
-        Explore Amateur Radio ↓
-
-      </a>
-
-    </div>
-
-  </div>
+</div>
+</section>
 
 
-  <div class="hero-img">
+<!-- ================= INTRO ================= -->
 
-    <img
-      src="Home.png"
-      alt="Amateur radio station">
+<section>
+<div class="container">
 
-  </div>
+<div class="section-heading">
+
+<h2>What is Amateur Radio?</h2>
+
+<p>
+Amateur radio is much more than talking into a microphone.
+It combines communication, electronics, radio science,
+experimentation, emergency communication and friendship.
+</p>
+
+</div>
+
+<div class="cards">
+
+<div class="card">
+<div class="card-icon">🚨</div>
+<h3>Emergency Communication</h3>
+<p>
+When normal communication systems fail, amateur-radio
+operators can provide independent communication links
+using portable radios, batteries and antennas.
+</p>
+</div>
+
+<div class="card">
+<div class="card-icon">🌍</div>
+<h3>Global Friendship</h3>
+<p>
+Make contacts with people around India and the world,
+exchange signal reports, participate in DX and discover
+different cultures through radio.
+</p>
+</div>
+
+<div class="card">
+<div class="card-icon">🔧</div>
+<h3>Technical Learning</h3>
+<p>
+Learn electronics, RF circuits, antennas, propagation,
+digital communication, satellites and radio-frequency
+engineering through practical experimentation.
+</p>
+</div>
+
+<div class="card">
+<div class="card-icon">🏆</div>
+<h3>Awards & Contests</h3>
+<p>
+Take part in contests, DX awards, POTA, SOTA and many
+other activities that make amateur radio challenging
+and exciting.
+</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- ================= EMERGENCY ================= -->
+
+<section>
+<div class="container">
+
+<div class="feature">
+
+<div class="feature-image">
+<img
+src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80"
+alt="Emergency communication">
+</div>
+
+<div class="feature-content">
+
+<h3>🚨 Emergency Communication</h3>
+
+<p>
+Amateur radio can become especially valuable when conventional
+communication infrastructure is damaged or unavailable.
+Operators can establish temporary communication networks
+using radios, antennas and independent power sources.
+</p>
+
+<p>
+This is one of the reasons amateur radio is an important
+technical and community service. Operators learn how to
+communicate from locations where mobile networks or internet
+connections may not be available.
+</p>
+
+<ul>
+<li>Portable and field communication</li>
+<li>Battery and solar-powered operation</li>
+<li>VHF/UHF local communication</li>
+<li>HF long-distance communication</li>
+<li>Emergency communication networks</li>
+</ul>
+
+</div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- ================= GLOBAL ================= -->
+
+<section>
+<div class="container">
+
+<div class="feature reverse">
+
+<div class="feature-image">
+<img
+src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80"
+alt="Global communication">
+</div>
+
+<div class="feature-content">
+
+<h3>🌍 Talk Across the World</h3>
+
+<p>
+Imagine sitting at your radio station in India and hearing
+a station from another continent.
+That is the magic of DX.
+</p>
+
+<p>
+Depending on frequency, propagation and antenna conditions,
+amateur-radio operators can communicate across cities,
+countries, oceans and sometimes around the entire planet.
+</p>
+
+<ul>
+<li>DX communication</li>
+<li>HF propagation</li>
+<li>QSL cards and electronic confirmations</li>
+<li>International amateur-radio friendship</li>
+<li>Contesting and awards</li>
+</ul>
+
+</div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- ================= TECHNICAL ================= -->
+
+<section>
+<div class="container">
+
+<div class="feature">
+
+<div class="feature-image">
+<img
+src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
+alt="Electronics and radio technology">
+</div>
+
+<div class="feature-content">
+
+<h3>🔧 Learn Radio Technology</h3>
+
+<p>
+Amateur radio provides a practical way to understand
+electronics and communication engineering.
+</p>
+
+<p>
+You can start with a simple handheld radio and gradually
+explore antennas, SWR, RF amplifiers, filters, oscillators,
+receivers, transmitters and digital communication.
+</p>
+
+<ul>
+<li>Electricity and electronics</li>
+<li>RF and radio theory</li>
+<li>Transmitters and receivers</li>
+<li>Antennas and feed lines</li>
+<li>Propagation</li>
+<li>Digital communication</li>
+</ul>
+
+</div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- ================= EXPLORER ================= -->
+
+<section class="explorer" id="explore">
+
+<div class="container">
+
+<div class="section-heading">
+
+<h2>📻 Explore Amateur Radio</h2>
+
+<p>
+There are many different ways to enjoy amateur radio.
+Choose an area below.
+</p>
+
+</div>
+
+<div class="tabs">
+
+<button class="tab active" onclick="showMode('hf',this)">
+🌍 HF / DX
+</button>
+
+<button class="tab" onclick="showMode('vhf',this)">
+📡 VHF / UHF
+</button>
+
+<button class="tab" onclick="showMode('digital',this)">
+💻 Digital
+</button>
+
+<button class="tab" onclick="showMode('space',this)">
+🛰️ Space
+</button>
+
+</div>
+
+<div class="explorer-box">
+
+<div id="mode-hf">
+
+<h3>🌍 HF & DX</h3>
+
+<p>
+HF amateur radio can provide long-distance communication
+through ionospheric propagation. Operators use different
+bands, antennas and modes to contact stations around the
+world.
+</p>
+
+</div>
+
+<div id="mode-vhf" style="display:none">
+
+<h3>📡 VHF & UHF</h3>
+
+<p>
+VHF and UHF are widely used for local communication,
+repeaters, mobile operation, satellite contacts and
+community nets.
+</p>
+
+</div>
+
+<div id="mode-digital" style="display:none">
+
+<h3>💻 Digital Radio</h3>
+
+<p>
+Digital modes such as FT8 and other data modes allow
+operators to communicate using computers and radio
+interfaces. Digital communication is particularly popular
+for weak-signal and DX operation.
+</p>
+
+</div>
+
+<div id="mode-space" style="display:none">
+
+<h3>🛰️ Amateur Satellites</h3>
+
+<p>
+Amateur satellites allow operators to communicate through
+space. Satellite operation introduces exciting topics such
+as Doppler shift, orbital passes, antenna tracking and
+satellite transponders.
+</p>
+
+</div>
+
+</div>
+
+</div>
 
 </section>
 
 
+<!-- ================= QUIZ ================= -->
 
-<!-- =========================================================
-     INTRO
-     ========================================================= -->
+<section class="quiz-section">
 
-<section class="intro">
+<div class="container">
 
-  <div class="eyebrow">
-    WHY HAM RADIO?
-  </div>
+<div class="quiz-box">
 
+<div class="quiz-icon">🎓</div>
 
-  <h2>
-    A hobby that connects
-    people, technology and the world.
-  </h2>
+<h2>ASOC Exam Practice</h2>
 
+<p>
+Preparing for your Indian Amateur Radio examination?
+HAM Corner now has a large practice question bank to help
+you study electricity, electronics, radio theory, antennas,
+propagation, operating practice and amateur-radio rules.
+</p>
 
-  <p>
+<div class="quiz-stats">
 
-    Imagine communicating with someone hundreds or thousands
-    of kilometres away without relying on a mobile network.
-    Imagine building your own antenna, experimenting with
-    electronics, decoding signals from space or helping your
-    community when conventional communication fails.
+<div class="quiz-stat">
+<strong>1,000</strong>
+Practice Questions
+</div>
 
-    <br><br>
+<div class="quiz-stat">
+<strong>10–100</strong>
+Questions / Quiz
+</div>
 
-    That's amateur radio.
+<div class="quiz-stat">
+<strong>🎲</strong>
+Random Questions
+</div>
 
-  </p>
+<div class="quiz-stat">
+<strong>📖</strong>
+Explanations
+</div>
+
+</div>
+
+<a href="quiz.html" class="btn btn-primary">
+🚀 Start ASOC Practice Quiz
+</a>
+
+<p style="font-size:12px;margin-top:20px;">
+Practice questions only — not official WPC/DoT examination questions.
+Always verify current regulatory information with the Department of Telecommunications.
+</p>
+
+</div>
+
+</div>
 
 </section>
 
 
-
-<!-- =========================================================
-     EMERGENCY COMMUNICATION
-     ========================================================= -->
-
-<section class="section">
-
-  <div class="feature">
-
-    <div class="feature-image">
-
-      <img
-        src="https://images.unsplash.com/photo-1541185933-ef5d8ed016c2?w=1200&q=85"
-        alt="Communication technology">
-
-    </div>
-
-
-    <div class="feature-content">
-
-      <div class="eyebrow">
-        SERVICE
-      </div>
-
-
-      <h3>
-        When Everything Else Goes Silent.
-      </h3>
-
-
-      <p>
-
-        During cyclones, floods, earthquakes and other emergencies,
-        telephone networks and internet services can become
-        unreliable.
-
-        Amateur radio operators can establish independent
-        communication links using radios, batteries, generators
-        and antennas.
-
-      </p>
-
-
-      <p>
-
-        The ability to communicate without depending entirely
-        on commercial infrastructure is one of the most powerful
-        aspects of amateur radio.
-
-      </p>
-
-
-      <ul class="feature-list">
-
-        <li>
-          Emergency and disaster communication
-        </li>
-
-        <li>
-          Portable radio stations
-        </li>
-
-        <li>
-          Battery and solar-powered operation
-        </li>
-
-        <li>
-          Communication when infrastructure fails
-        </li>
-
-      </ul>
-
-    </div>
-
-  </div>
-
-
-
-  <!-- =======================================================
-       GLOBAL FRIENDSHIP
-       ======================================================= -->
-
-  <div class="feature reverse">
-
-    <div class="feature-image">
-
-      <img
-        src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&q=85"
-        alt="Earth and global communication">
-
-    </div>
-
-
-    <div class="feature-content">
-
-      <div class="eyebrow">
-        DX • WORLDWIDE
-      </div>
-
-
-      <h3>
-        One Radio. One Antenna.
-        A World of Friends.
-      </h3>
-
-
-      <p>
-
-        Amateur radio can take you far beyond your neighbourhood.
-
-        With the right equipment and propagation conditions,
-        you can make contacts with operators across India and
-        around the world.
-
-      </p>
-
-
-      <p>
-
-        Every contact becomes a story — a new callsign,
-        a new country, a new friendship.
-
-      </p>
-
-
-      <ul class="feature-list">
-
-        <li>
-          HF long-distance communication
-        </li>
-
-        <li>
-          DX hunting and rare countries
-        </li>
-
-        <li>
-          QSL cards and electronic confirmations
-        </li>
-
-        <li>
-          International amateur radio community
-        </li>
-
-      </ul>
-
-    </div>
-
-  </div>
-
-
-
-  <!-- =======================================================
-       TECHNICAL LEARNING
-       ======================================================= -->
-
-  <div class="feature">
-
-    <div class="feature-image">
-
-      <img
-        src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=85"
-        alt="Electronics and technology">
-
-    </div>
-
-
-    <div class="feature-content">
-
-      <div class="eyebrow">
-        EXPERIMENT • BUILD • LEARN
-      </div>
-
-
-      <h3>
-        Your Laboratory Can Be Your Radio Shack.
-      </h3>
-
-
-      <p>
-
-        Amateur radio is a gateway into electronics, RF engineering,
-        antennas, propagation, digital communications, programming
-        and signal processing.
-
-      </p>
-
-
-      <p>
-
-        You don't have to be an engineer to start.
-
-        Start with a radio. Learn one concept. Build one antenna.
-        Make one contact.
-
-        Then keep experimenting.
-
-      </p>
-
-
-      <ul class="feature-list">
-
-        <li>
-          Antenna design and construction
-        </li>
-
-        <li>
-          RF and electronics experimentation
-        </li>
-
-        <li>
-          Propagation and radio science
-        </li>
-
-        <li>
-          SDR and signal analysis
-        </li>
-
-      </ul>
-
-    </div>
-
-  </div>
+<!-- ================= AWARDS ================= -->
+
+<section>
+
+<div class="container">
+
+<div class="section-heading">
+
+<h2>🏆 Make Radio a Challenge</h2>
+
+<p>
+Once you learn the basics, there are countless ways to
+take your amateur-radio journey further.
+</p>
+
+</div>
+
+<div class="cards">
+
+<div class="card">
+<div class="card-icon">🌐</div>
+<h3>DX</h3>
+<p>
+Search for rare stations and countries and build your
+DXCC-style achievements.
+</p>
+</div>
+
+<div class="card">
+<div class="card-icon">🏔️</div>
+<h3>SOTA</h3>
+<p>
+Take amateur radio into the mountains and operate from
+summits.
+</p>
+</div>
+
+<div class="card">
+<div class="card-icon">🌲</div>
+<h3>POTA</h3>
+<p>
+Operate from parks and outdoor locations while making
+contacts with other operators.
+</p>
+</div>
+
+<div class="card">
+<div class="card-icon">🏁</div>
+<h3>Contesting</h3>
+<p>
+Test your operating skills, station setup, antennas and
+speed in amateur-radio contests.
+</p>
+</div>
+
+</div>
+
+</div>
 
 </section>
 
 
+<!-- ================= GALLERY ================= -->
 
-<!-- =========================================================
-     INTERACTIVE EXPLORER
-     ========================================================= -->
+<section>
 
-<section
-  class="section"
-  id="explore">
+<div class="container">
 
-  <div class="section-heading">
+<div class="section-heading">
 
-    <div class="eyebrow">
-      EXPLORE
-    </div>
+<h2>📸 Ham Radio in Action</h2>
 
+<p>
+From a handheld radio to a complete HF station, every
+station has a story.
+</p>
 
-    <h2>
-      There Is No Single Way to Be a Ham.
-    </h2>
+</div>
 
+<div class="gallery">
 
-    <p>
+<img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=900&q=80"
+alt="Radio equipment">
 
-      Click through the different sides of amateur radio.
-      Find the part that excites you.
+<img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=900&q=80"
+alt="Electronics">
 
-    </p>
+<img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=900&q=80"
+alt="Technology">
 
-  </div>
+<img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=900&q=80"
+alt="Communication technology">
 
+</div>
 
-  <div class="explorer">
-
-
-    <div class="explorer-tabs">
-
-      <button
-        class="explorer-tab active"
-        data-target="hf">
-
-        🌍 HF & DX
-
-      </button>
-
-
-      <button
-        class="explorer-tab"
-        data-target="vhf">
-
-        📻 VHF / UHF
-
-      </button>
-
-
-      <button
-        class="explorer-tab"
-        data-target="digital">
-
-        💻 Digital
-
-      </button>
-
-
-      <button
-        class="explorer-tab"
-        data-target="space">
-
-        🛰️ Space
-
-      </button>
-
-    </div>
-
-
-
-    <div
-      class="explorer-content active"
-      id="hf">
-
-      <h3>
-        HF & DX — Reach Across Continents
-      </h3>
-
-
-      <p>
-
-        High Frequency amateur radio opens the door to long-distance
-        communication. Depending on propagation, your signal can
-        travel thousands of kilometres and reach stations on
-        different continents.
-
-      </p>
-
-
-      <div class="mode-tags">
-
-        <span>SSB</span>
-        <span>CW / Morse</span>
-        <span>FT8</span>
-        <span>FT4</span>
-        <span>RTTY</span>
-        <span>DX</span>
-        <span>Contest</span>
-        <span>QSL</span>
-
-      </div>
-
-    </div>
-
-
-
-    <div
-      class="explorer-content"
-      id="vhf">
-
-      <h3>
-        VHF & UHF — The Local Radio Community
-      </h3>
-
-
-      <p>
-
-        VHF and UHF are ideal for local communication,
-        repeaters, mobile operation, emergency groups and
-        everyday amateur radio contacts.
-
-        They are also a great starting point for a new ham.
-
-      </p>
-
-
-      <div class="mode-tags">
-
-        <span>FM</span>
-        <span>Repeaters</span>
-        <span>APRS</span>
-        <span>DMR</span>
-        <span>D-STAR</span>
-        <span>EchoLink</span>
-        <span>Mobile</span>
-        <span>Portable</span>
-
-      </div>
-
-    </div>
-
-
-
-    <div
-      class="explorer-content"
-      id="digital">
-
-      <h3>
-        Digital Radio — Where RF Meets Computing
-      </h3>
-
-
-      <p>
-
-        Modern amateur radio combines radio-frequency communication
-        with computers and software.
-
-        Weak-signal digital modes can extract signals that may be
-        difficult or impossible to copy by ear.
-
-      </p>
-
-
-      <div class="mode-tags">
-
-        <span>FT8</span>
-        <span>FT4</span>
-        <span>JS8Call</span>
-        <span>DMR</span>
-        <span>D-STAR</span>
-        <span>WSPR</span>
-        <span>APRS</span>
-        <span>RTTY</span>
-
-      </div>
-
-    </div>
-
-
-
-    <div
-      class="explorer-content"
-      id="space">
-
-      <h3>
-        Amateur Radio Beyond Earth
-      </h3>
-
-
-      <p>
-
-        Yes — amateur radio can reach space.
-
-        Operators can communicate through amateur satellites,
-        track spacecraft, receive satellite telemetry and,
-        under appropriate conditions and authorizations,
-        experiment with Earth-space communication.
-
-      </p>
-
-
-      <div class="mode-tags">
-
-        <span>Satellites</span>
-        <span>ISS</span>
-        <span>APRS</span>
-        <span>Satellite Tracking</span>
-        <span>Telemetry</span>
-        <span>Space Communication</span>
-
-      </div>
-
-    </div>
-
-  </div>
+</div>
 
 </section>
 
 
+<!-- ================= FINAL CTA ================= -->
 
-<!-- =========================================================
-     FOUR PILLARS
-     ========================================================= -->
+<section class="final-cta">
 
-<section class="section">
+<div class="container">
 
-  <div class="section-heading">
+<h2>Your Radio Journey Starts Here.</h2>
 
-    <div class="eyebrow">
-      THE AMATEUR RADIO SPIRIT
-    </div>
+<p>
+Study for your ASOC examination, learn the technology,
+make your first QSO, explore satellites, discover DX and
+become part of the amateur-radio community.
+</p>
 
+<a href="quiz.html" class="btn btn-primary">
+🎓 Take the ASOC Quiz
+</a>
 
-    <h2>
-      Four Reasons People Stay
-      With Radio for a Lifetime.
-    </h2>
-
-  </div>
-
-
-  <div class="pillars">
-
-
-    <div class="pillar">
-
-      <div class="pillar-icon">
-        🚨
-      </div>
-
-      <h3>
-        Emergency Communication
-      </h3>
-
-      <p>
-
-        Be prepared to provide communication support
-        when conventional systems are unavailable.
-
-      </p>
-
-    </div>
-
-
-
-    <div class="pillar">
-
-      <div class="pillar-icon">
-        🌎
-      </div>
-
-      <h3>
-        Global Friendship
-      </h3>
-
-      <p>
-
-        Meet people across India and the world through
-        nothing more than radio waves.
-
-      </p>
-
-    </div>
-
-
-
-    <div class="pillar">
-
-      <div class="pillar-icon">
-        🔬
-      </div>
-
-      <h3>
-        Technical Learning
-      </h3>
-
-      <p>
-
-        Learn antennas, RF, electronics, propagation,
-        software and digital communication.
-
-      </p>
-
-    </div>
-
-
-
-    <div class="pillar">
-
-      <div class="pillar-icon">
-        🏆
-      </div>
-
-      <h3>
-        Awards & Contests
-      </h3>
-
-      <p>
-
-        Chase DXCC, POTA, SOTA, contests, special
-        event stations and rare callsigns.
-
-      </p>
-
-    </div>
-
-  </div>
+</div>
 
 </section>
 
 
-
-<!-- =========================================================
-     DIGITAL RADIO
-     ========================================================= -->
-
-<section class="section">
-
-  <div class="digital-box">
-
-
-    <div>
-
-      <div class="eyebrow">
-        RADIO + COMPUTER
-      </div>
-
-
-      <h3>
-        Digital Amateur Radio
-      </h3>
-
-
-      <p>
-
-        Today's ham shack can be a fascinating combination of
-        radio hardware and software.
-
-        Connect a transceiver to your computer and explore
-        weak-signal communication, digital voice, packet radio,
-        automatic position reporting and more.
-
-      </p>
-
-
-      <br>
-
-
-      <a
-        href="activities.html"
-        class="btn btn-primary">
-
-        Explore Digital Modes →
-
-      </a>
-
-    </div>
-
-
-
-    <div class="digital-grid">
-
-
-      <div class="digital-item">
-
-        <strong>FT8</strong>
-
-        <span>
-          Weak-signal digital communication
-        </span>
-
-      </div>
-
-
-      <div class="digital-item">
-
-        <strong>FT4</strong>
-
-        <span>
-          Fast digital contacts
-        </span>
-
-      </div>
-
-
-      <div class="digital-item">
-
-        <strong>DMR</strong>
-
-        <span>
-          Digital voice communication
-        </span>
-
-      </div>
-
-
-      <div class="digital-item">
-
-        <strong>APRS</strong>
-
-        <span>
-          Position and packet radio
-        </span>
-
-      </div>
-
-
-      <div class="digital-item">
-
-        <strong>JS8Call</strong>
-
-        <span>
-          Keyboard-to-keyboard weak signal
-        </span>
-
-      </div>
-
-
-      <div class="digital-item">
-
-        <strong>WSPR</strong>
-
-        <span>
-          Propagation and beacon experiments
-        </span>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     AWARDS
-     ========================================================= -->
-
-<section class="section">
-
-  <div class="feature reverse">
-
-    <div class="feature-image">
-
-      <img
-        src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1200&q=85"
-        alt="Mountain landscape">
-
-    </div>
-
-
-    <div class="feature-content">
-
-      <div class="eyebrow">
-        CHALLENGE YOURSELF
-      </div>
-
-
-      <h3>
-        Turn Contacts Into Adventures.
-      </h3>
-
-
-      <p>
-
-        Amateur radio gives you countless ways to challenge
-        yourself.
-
-        You can hunt rare DX stations, participate in contests,
-        activate a mountain summit, operate from a park,
-        collect confirmations or work towards awards.
-
-      </p>
-
-
-      <ul class="feature-list">
-
-        <li>
-          DXCC and country hunting
-        </li>
-
-        <li>
-          Parks on the Air — POTA
-        </li>
-
-        <li>
-          Summits on the Air — SOTA
-        </li>
-
-        <li>
-          Amateur radio contests
-        </li>
-
-        <li>
-          Special event stations
-        </li>
-
-        <li>
-          QSL cards and digital confirmations
-        </li>
-
-      </ul>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     HOW TO START
-     ========================================================= -->
-
-<section class="section">
-
-  <div class="section-heading">
-
-    <div class="eyebrow">
-      NEW TO HAM RADIO?
-    </div>
-
-
-    <h2>
-      Your Journey Can Start Today.
-    </h2>
-
-
-    <p>
-
-      You don't need to know everything before you begin.
-      Amateur radio is a journey of continuous learning.
-
-    </p>
-
-  </div>
-
-
-  <div class="journey">
-
-
-    <div class="journey-step">
-
-      <h3>
-        Discover
-      </h3>
-
-      <p>
-
-        Learn what amateur radio is and discover the
-        modes and activities that interest you.
-
-      </p>
-
-    </div>
-
-
-
-    <div class="journey-step">
-
-      <h3>
-        Get Licensed
-      </h3>
-
-      <p>
-
-        Prepare for the Indian Amateur Station Operator
-        Certificate and begin your licensing journey.
-
-      </p>
-
-    </div>
-
-
-
-    <div class="journey-step">
-
-      <h3>
-        Get On Air
-      </h3>
-
-      <p>
-
-        Choose your equipment, antenna and operating style.
-        Make your first contact.
-
-      </p>
-
-    </div>
-
-
-
-    <div class="journey-step">
-
-      <h3>
-        Keep Exploring
-      </h3>
-
-      <p>
-
-        Build, experiment, communicate, participate and
-        become part of the worldwide ham community.
-
-      </p>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     FINAL CTA
-     ========================================================= -->
-
-<section class="cta">
-
-  <div class="eyebrow">
-    YOUR CALLSIGN IS WAITING
-  </div>
-
-
-  <h2>
-    The World Is Listening.
-  </h2>
-
-
-  <p>
-
-    Whether you are fascinated by electronics, emergency
-    communication, computers, satellites, digital modes,
-    DX or simply meeting interesting people — there is
-    a place for you in amateur radio.
-
-    <br><br>
-
-    Start learning. Get licensed. Get on the air.
-
-  </p>
-
-
-  <a
-    href="licensing.html"
-    class="btn btn-primary">
-
-    📜 Begin Your Licensing Journey
-
-  </a>
-
-</section>
-
-
-
-<!-- =========================================================
-     FOOTER
-     ========================================================= -->
+<!-- ================= FOOTER ================= -->
 
 <footer>
 
-  <p class="callsign">
+<div class="container footer-grid">
 
-    HAM Corner
-    <span>by VU33CM</span>
+<div>
 
-  </p>
+<strong>HAM Corner by VU33CM</strong>
 
+<p>
+Indian Amateur Radio • Learn • Communicate • Experiment
+</p>
 
-  <p>
-    Manoj C M • Indian Amateur Radio Resource
-  </p>
+</div>
 
+<div>
 
-  <p style="margin-top:10px;font-size:.8rem;">
+<p>
+<a href="about.html">About</a> &nbsp; • &nbsp;
+<a href="resources.html">Resources</a> &nbsp; • &nbsp;
+<a href="quiz.html">ASOC Quiz</a>
+</p>
 
-    Always verify current licensing rules and regulations
-    through official Indian authorities.
+</div>
 
-  </p>
+</div>
 
 </footer>
 
 
-
-<!-- =========================================================
-     INTERACTIVE JAVASCRIPT
-     ========================================================= -->
-
 <script>
 
-  const tabs =
-    document.querySelectorAll(".explorer-tab");
+function showMode(mode,button){
 
+    document.getElementById("mode-hf").style.display="none";
+    document.getElementById("mode-vhf").style.display="none";
+    document.getElementById("mode-digital").style.display="none";
+    document.getElementById("mode-space").style.display="none";
 
-  const contents =
-    document.querySelectorAll(".explorer-content");
+    document.getElementById("mode-"+mode).style.display="block";
 
-
-  tabs.forEach(tab => {
-
-    tab.addEventListener("click", () => {
-
-      const target =
-        tab.getAttribute("data-target");
-
-
-      tabs.forEach(item => {
-
-        item.classList.remove("active");
-
-      });
-
-
-      contents.forEach(content => {
-
-        content.classList.remove("active");
-
-      });
-
-
-      tab.classList.add("active");
-
-
-      const selected =
-        document.getElementById(target);
-
-
-      if (selected) {
-
-        selected.classList.add("active");
-
-      }
-
+    document.querySelectorAll(".tab").forEach(function(tab){
+        tab.classList.remove("active");
     });
 
-  });
+    button.classList.add("active");
+}
 
 </script>
 
-
 </body>
-
 </html>
