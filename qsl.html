@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>QSL Card Generator | HAM Corner</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background:
+        radial-gradient(circle at top, #12385d, #050b14 65%);
+    color: white;
+    min-height: 100vh;
+}
+
+header {
+    padding: 18px 25px;
+    background: rgba(3, 12, 25, 0.95);
+    border-bottom: 1px solid #1e7fc0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brand img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+.brand-title {
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.brand-sub {
+    font-size: 11px;
+    color: #62d9ff;
+    letter-spacing: 2px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 18px;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: #42d9ff;
+}
+
+.container {
+    width: min(1450px, 94%);
+    margin: 35px auto 70px;
+}
+
+.heading {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.heading h1 {
+    margin: 0;
+    font-size: 38px;
+    letter-spacing: 2px;
+}
+
+.heading p {
+    color: #9bdff5;
+    margin-top: 10px;
+}
+
+/* MAIN LAYOUT */
+
+.generator {
+    display: grid;
+    grid-template-columns: 370px 1fr;
+    gap: 30px;
+    align-items: start;
+}
+
+/* FORM */
+
+.panel {
+    background: rgba(5, 19, 34, 0.92);
+    border: 1px solid #185d88;
+    border-radius: 18px;
+    padding: 25px;
+    box-shadow: 0 10px 35px rgba(0,0,0,.35);
+}
+
+.panel h2 {
+    margin-top: 0;
+    color: #52d8ff;
+}
+
+.field {
+    margin-bottom: 15px;
+}
+
+.field label {
+    display: block;
+    font-size: 12px;
+    color: #9fd7e8;
+    margin-bottom: 6px;
+    letter-spacing: .5px;
+}
+
+.field input,
+.field select,
+.field textarea {
+    width: 100%;
+    padding: 11px 12px;
+    border-radius: 8px;
+    border: 1px solid #2b6c92;
+    background: #071522;
+    color: white;
+    outline: none;
+    font-size: 14px;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+    border-color: #39d5ff;
+    box-shadow: 0 0 0 2px rgba(57,213,255,.12);
+}
+
+.field textarea {
+    resize: vertical;
+    min-height: 70px;
+}
+
+.required {
+    color: #ff7777;
+}
+
+button {
+    width: 100%;
+    border: none;
+    padding: 14px;
+    border-radius: 9px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+.preview-btn {
+    background: #116ea0;
+    color: white;
+}
+
+.download-btn {
+    background: linear-gradient(135deg, #00a7e8, #0066b3);
+    color: white;
+    margin-top: 12px;
+}
+
+button:hover {
+    filter: brightness(1.15);
+}
+
+/* PREVIEW */
+
+.preview-area {
+    background: rgba(3, 13, 24, .8);
+    border: 1px solid #185d88;
+    border-radius: 18px;
+    padding: 20px;
+}
+
+.preview-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.preview-title h2 {
+    margin: 0;
+    color: #52d8ff;
+}
+
+.preview-title span {
+    font-size: 12px;
+    color: #91b7c9;
+}
+
+.canvas-wrapper {
+    width: 100%;
+    overflow: auto;
+    background: #02070d;
+    border-radius: 12px;
+    padding: 10px;
+}
+
+#qslCanvas {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,.5);
+}
+
+/* INFO */
+
+.info {
+    margin-top: 25px;
+    padding: 18px;
+    border-left: 3px solid #2bd5ff;
+    background: rgba(0,100,150,.08);
+    color: #b8d8e5;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* MOBILE */
+
+@media(max-width: 950px) {
+
+    .generator {
+        grid-template-columns: 1fr;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .heading h1 {
+        font-size: 29px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="brand">
+
+        <img src="logo.png" alt="HAM Corner">
+
+        <div>
+            <div class="brand-title">HAM CORNER</div>
+            <div class="brand-sub">AMATEUR RADIO</div>
+        </div>
+
+    </div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="study.html">Study</a>
+        <a href="activities.html">Activities</a>
+        <a href="repeaters.html">Repeaters</a>
+        <a href="nets.html">Nets</a>
+        <a href="resources.html">Resources</a>
+    </nav>
+
+</header>
+
+
+<div class="container">
+
+    <div class="heading">
+
+        <h1>QSL CARD GENERATOR</h1>
+
+        <p>
+            Create your personalized amateur radio QSL card
+            and download it as a JPG.
+        </p>
+
+    </div>
+
+
+    <div class="generator">
+
+
+        <!-- FORM -->
+
+        <div class="panel">
+
+            <h2>📻 QSO Details</h2>
+
+
+            <div class="field">
+                <label>
+                    YOUR CALLSIGN <span class="required">*</span>
+                </label>
+
+                <input
+                    type="text"
+                    id="callsign"
+                    placeholder="Example: VU3BYW"
+                    maxlength="15"
+                    oninput="updateCard()"
+                >
+            </div>
+
+
+            <div class="field">
+                <label>TO RADIO / OTHER STATION</label>
+
+                <input
+                    type="text"
+                    id="toRadio"
+                    placeholder="Example: JA1ABC"
+                    maxlength="15"
+                    oninput="updateCard()"
+                >
+            </div>
+
+
+            <div class="field">
+                <label>DATE (UTC)</label>
+
+                <input
+                    type="date"
+                    id="date"
+                    onchange="updateCard()"
+                >
+            </div>
+
+
+            <div class="field">
+                <label>TIME (UTC)</label>
+
+                <input
+                    type="time"
+                    id="time"
+                    onchange="updateCard()"
+                >
+            </div>
+
+
+            <div class="field">
+                <label>BAND</label>
+
+                <select id="band" onchange="updateCard()">
+
+                    <option value="">Select band</option>
+                    <option>160m</option>
+                    <option>80m</option>
+                    <option>60m</option>
+                    <option>40m</option>
+                    <option>30m</option>
+                    <option>20m</option>
+                    <option>17m</option>
+                    <option>15m</option>
+                    <option>12m</option>
+                    <option>10m</option>
+                    <option>6m</option>
+                    <option>2m</option>
+                    <option>70cm</option>
+                    <option>23cm</option>
+                    <option>Other</option>
+
+                </select>
+            </div>
+
+
+            <div class="field">
+
+                <label>FREQUENCY (MHz)</label>
+
+                <input
+                    type="text"
+                    id="frequency"
+                    placeholder="14.074"
+                    oninput="updateCard()"
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label>MODE</label>
+
+                <select id="mode" onchange="updateCard()">
+
+                    <option value="">Select mode</option>
+                    <option>SSB</option>
+                    <option>CW</option>
+                    <option>FM</option>
+                    <option>AM</option>
+                    <option>FT8</option>
+                    <option>FT4</option>
+                    <option>RTTY</option>
+                    <option>PSK31</option>
+                    <option>SSTV</option>
+                    <option>JS8Call</option>
+                    <option>APRS</option>
+                    <option>Digital</option>
+                    <option>Satellite</option>
+                    <option>Other</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>RST SENT</label>
+
+                <input
+                    type="text"
+                    id="rstSent"
+                    placeholder="59"
+                    maxlength="3"
+                    oninput="updateCard()"
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label>RST RECEIVED</label>
+
+                <input
+                    type="text"
+                    id="rstReceived"
+                    placeholder="59"
+                    maxlength="3"
+                    oninput="updateCard()"
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label>POWER (W)</label>
+
+                <input
+                    type="text"
+                    id="power"
+                    placeholder="50"
+                    oninput="updateCard()"
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label>ANTENNA</label>
+
+                <input
+                    type="text"
+                    id="antenna"
+                    placeholder="Dipole"
+                    oninput="updateCard()"
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label>PROPAGATION</label>
+
+                <input
+                    type="text"
+                    id="propagation"
+                    placeholder="Short Path"
+                    oninput="updateCard()"
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label>QSL VIA</label>
+
+                <input
+                    type="text"
+                    id="qslVia"
+                    placeholder="Direct / Bureau / LoTW"
+                    oninput="updateCard()"
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label>REMARKS</label>
+
+                <textarea
+                    id="remarks"
+                    placeholder="Great QSO! Hope to work you again. 73!"
+                    oninput="updateCard()"
+                ></textarea>
+
+            </div>
+
+
+            <button
+                class="download-btn"
+                onclick="downloadQSL()">
+
+                ⬇ DOWNLOAD QSL CARD — JPG
+
+            </button>
+
+
+            <div class="info">
+
+                <strong>Tip:</strong><br>
+
+                Enter your callsign and QSO information.
+                The information is automatically placed onto
+                the QSL card. The downloaded JPG contains
+                the complete card as one image.
+
+            </div>
+
+        </div>
+
+
+        <!-- PREVIEW -->
+
+        <div class="preview-area">
+
+            <div class="preview-title">
+
+                <h2>QSL Card Preview</h2>
+
+                <span>Live Preview</span>
+
+            </div>
+
+
+            <div class="canvas-wrapper">
+
+                <canvas id="qslCanvas"></canvas>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<script>
+
+/*
+====================================================
+ QSL CARD GENERATOR
+ HAM CORNER
+====================================================
+*/
+
+const canvas = document.getElementById("qslCanvas");
+const ctx = canvas.getContext("2d");
+
+const template = new Image();
+
+template.src = "qsl-template.png";
+
+template.onload = function() {
+
+    canvas.width = template.naturalWidth;
+    canvas.height = template.naturalHeight;
+
+    updateCard();
+
+};
+
+
+function value(id) {
+
+    return document.getElementById(id).value.trim();
+
+}
+
+
+function formatDate(dateValue) {
+
+    if (!dateValue)
+        return "";
+
+    const parts = dateValue.split("-");
+
+    if (parts.length !== 3)
+        return dateValue;
+
+    return `${parts[2]} ${getMonth(parts[1])} ${parts[0]}`;
+
+}
+
+
+function getMonth(number) {
+
+    const months = [
+        "",
+        "JAN",
+        "FEB",
+        "MAR",
+        "APR",
+        "MAY",
+        "JUN",
+        "JUL",
+        "AUG",
+        "SEP",
+        "OCT",
+        "NOV",
+        "DEC"
+    ];
+
+    return months[parseInt(number)] || "";
+
+}
+
+
+function drawCenteredText(text, x, y, maxWidth, font) {
+
+    ctx.font = font;
+
+    let size = parseInt(font.match(/\d+/)[0]);
+
+    while (
+        ctx.measureText(text).width > maxWidth &&
+        size > 20
+    ) {
+
+        size--;
+
+        ctx.font =
+            font.replace(/\d+px/, size + "px");
+
+    }
+
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+
+    ctx.fillText(text, x, y);
+
+}
+
+
+function drawText(
+    text,
+    x,
+    y,
+    size = 28,
+    weight = "bold",
+    align = "left"
+) {
+
+    ctx.font = `${weight} ${size}px Arial`;
+
+    ctx.fillStyle = "#07182b";
+
+    ctx.textAlign = align;
+
+    ctx.textBaseline = "middle";
+
+    ctx.fillText(text || "", x, y);
+
+}
+
+
+/*
+====================================================
+ UPDATE CARD
+====================================================
+*/
+
+function updateCard() {
+
+    if (!template.complete)
+        return;
+
+    ctx.clearRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+    /*
+    Draw original template
+    */
+
+    ctx.drawImage(
+        template,
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+
+    /*
+    Coordinates are based on the generated
+    QSL template.
+
+    Canvas is 1536 × 1024.
+    */
+
+
+    /*
+    YOUR CALLSIGN
+    */
+
+    const callsign = value("callsign");
+
+    if (callsign) {
+
+        drawCenteredText(
+            callsign.toUpperCase(),
+            800,
+            265,
+            700,
+            "bold 92px Arial"
+        );
+
+    }
+
+
+    /*
+    TO RADIO
+    */
+
+    drawCenteredText(
+        value("toRadio").toUpperCase(),
+        145,
+        472,
+        210,
+        "bold 25px Arial"
+    );
+
+
+    /*
+    DATE
+    */
+
+    drawCenteredText(
+        formatDate(value("date")),
+        405,
+        472,
+        230,
+        "bold 23px Arial"
+    );
+
+
+    /*
+    TIME
+    */
+
+    drawCenteredText(
+        value("time"),
+        640,
+        472,
+        190,
+        "bold 25px Arial"
+    );
+
+
+    /*
+    BAND
+    */
+
+    drawCenteredText(
+        value("band"),
+        875,
+        472,
+        180,
+        "bold 25px Arial"
+    );
+
+
+    /*
+    FREQUENCY
+    */
+
+    drawCenteredText(
+        value("frequency"),
+        1125,
+        472,
+        220,
+        "bold 23px Arial"
+    );
+
+
+    /*
+    MODE
+    */
+
+    drawCenteredText(
+        value("mode"),
+        1370,
+        472,
+        190,
+        "bold 25px Arial"
+    );
+
+
+    /*
+    SECOND ROW
+    */
+
+    drawCenteredText(
+        value("rstSent"),
+        145,
+        610,
+        190,
+        "bold 25px Arial"
+    );
+
+
+    drawCenteredText(
+        value("rstReceived"),
+        395,
+        610,
+        190,
+        "bold 25px Arial"
+    );
+
+
+    drawCenteredText(
+        value("power"),
+        640,
+        610,
+        180,
+        "bold 25px Arial"
+    );
+
+
+    drawCenteredText(
+        value("antenna"),
+        875,
+        610,
+        210,
+        "bold 22px Arial"
+    );
+
+
+    drawCenteredText(
+        value("propagation"),
+        1125,
+        610,
+        210,
+        "bold 22px Arial"
+    );
+
+
+    drawCenteredText(
+        value("qslVia"),
+        1370,
+        610,
+        190,
+        "bold 21px Arial"
+    );
+
+
+    /*
+    REMARKS
+    */
+
+    const remarks = value("remarks");
+
+    if (remarks) {
+
+        drawCenteredText(
+            remarks,
+            760,
+            745,
+            1350,
+            "bold 24px Arial"
+        );
+
+    }
+
+}
+
+
+/*
+====================================================
+ DOWNLOAD JPG
+====================================================
+*/
+
+function downloadQSL() {
+
+    const callsign = value("callsign");
+
+    if (!callsign) {
+
+        alert(
+            "Please enter your callsign before downloading the QSL card."
+        );
+
+        document
+            .getElementById("callsign")
+            .focus();
+
+        return;
+
+    }
+
+
+    /*
+    JPG quality
+    */
+
+    const jpg = canvas.toDataURL(
+        "image/jpeg",
+        0.95
+    );
+
+
+    /*
+    Create temporary download link
+    */
+
+    const link =
+        document.createElement("a");
+
+
+    link.href = jpg;
+
+
+    link.download =
+        `QSL-${callsign.toUpperCase()}.jpg`;
+
+
+    document.body.appendChild(link);
+
+    link.click();
+
+    document.body.removeChild(link);
+
+}
+
+
+</script>
+
+</body>
+</html>
