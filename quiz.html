@@ -1,39 +1,519 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ASOC Practice Quiz | HAM Corner by VU33CM</title>
-<style>
-:root{--bg:#06111f;--card:#0d1b2a;--line:#1e3a55;--text:#eaf6ff;--muted:#9bb1c5;--accent:#18d7ff;--good:#38d996;--bad:#ff647c}
-*{box-sizing:border-box}body{margin:0;background:linear-gradient(135deg,#06111f,#091827 60%,#06111f);color:var(--text);font-family:Arial,sans-serif}
-header{padding:22px 6%;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:14px;position:sticky;top:0;background:#06111fee;backdrop-filter:blur(10px);z-index:5}
-.logo{width:54px;height:54px;border-radius:50%;object-fit:cover}.brand{font-size:20px;font-weight:800}.brand small{display:block;color:var(--muted);font-weight:500;font-size:12px;margin-top:4px}
-main{max-width:980px;margin:auto;padding:40px 18px}.hero{text-align:center;margin-bottom:30px}.hero h1{font-size:clamp(30px,6vw,52px);margin:8px 0}.hero p{color:var(--muted);max-width:720px;margin:auto;line-height:1.6}
-.panel{background:#0d1b2ae8;border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:0 15px 50px #0005}
-.controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:20px 0}
-button,select{width:100%;padding:13px 15px;border-radius:11px;border:1px solid #28506c;background:#10283b;color:var(--text);font-size:15px;cursor:pointer}
-button.primary{background:var(--accent);color:#03121c;border:0;font-weight:800}button:hover{filter:brightness(1.1)}
-.meta{display:flex;justify-content:space-between;gap:10px;color:var(--muted);margin-bottom:16px}.bar{height:8px;background:#14283a;border-radius:8px;overflow:hidden}.fill{height:100%;background:var(--accent);width:0}
-.question{font-size:23px;line-height:1.4;margin:25px 0}.options{display:grid;gap:12px}.option{text-align:left;background:#102236}.option.correct{border-color:var(--good);background:#0c382d}.option.wrong{border-color:var(--bad);background:#3b1821}
-.explanation{margin-top:18px;padding:15px;border-left:4px solid var(--accent);background:#081827;border-radius:8px;line-height:1.5}
-.actions{display:flex;gap:10px;margin-top:20px}.actions>*{flex:1}.score{text-align:center;font-size:44px;font-weight:900;color:var(--accent)}.notice{color:#ffd68a;font-size:13px;line-height:1.5;margin-top:20px}
-.hidden{display:none}.review{margin-top:25px}.review-item{padding:14px;border-bottom:1px solid var(--line)}.good{color:var(--good)}.bad{color:var(--bad)}
-@media(max-width:600px){header{padding:15px}.question{font-size:19px}.actions{flex-direction:column}}
-</style></head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ASOC Exam Practice Quiz | HAM Corner by VU33CM</title>
+  <meta name="description" content="Free ASOC exam practice quiz for Indian Amateur Radio. High-quality questions covering electricity, electronics, radio theory, antennas, propagation, regulations and more." />
+  <link rel="icon" href="logo.png" type="image/png" />
+  <style>
+    :root {
+      --bg: #0b0f14;
+      --surface: #141a22;
+      --surface2: #1c2430;
+      --border: #2a3544;
+      --text: #e6edf5;
+      --muted: #8b9bb0;
+      --accent: #3ecf8e;
+      --accent-dim: #2a9d6a;
+      --warn: #f0a030;
+      --error: #e85d5d;
+      --ok: #3ecf8e;
+      --radio: #4da3ff;
+      --radius: 12px;
+      --shadow: 0 8px 32px rgba(0,0,0,0.4);
+      --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.5;
+      background-image:
+        radial-gradient(ellipse at 20% 0%, rgba(62,207,142,0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 100%, rgba(77,163,255,0.06) 0%, transparent 50%);
+    }
+
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 1.25rem;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.25rem 0 1.5rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 1.75rem;
+    }
+    header img {
+      width: 56px;
+      height: 56px;
+      border-radius: 10px;
+      object-fit: contain;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+    }
+    header .brand h1 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+    header .brand h1 span { color: var(--accent); }
+    header .brand p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 0.15rem;
+    }
+
+    /* Screens */
+    .screen { display: none; }
+    .screen.active { display: block; animation: fadeIn 0.3s ease; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    /* Cards */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      margin-bottom: 1.25rem;
+    }
+    .card h2 {
+      font-size: 1.15rem;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+    .card p.desc {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.25rem;
+    }
+
+    /* Form controls */
+    label {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+      font-weight: 500;
+    }
+    select, button {
+      font-family: inherit;
+      font-size: 1rem;
+    }
+    select {
+      width: 100%;
+      padding: 0.7rem 1rem;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      margin-bottom: 1.1rem;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%238b9bb0' d='M1.4 0L6 4.6 10.6 0 12 1.4 6 7.4 0 1.4z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      cursor: pointer;
+    }
+    select:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(62,207,142,0.2);
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+    button {
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      padding: 0.75rem 1.35rem;
+      font-weight: 600;
+      transition: transform 0.15s, background 0.15s, box-shadow 0.15s;
+    }
+    button:active { transform: scale(0.98); }
+    .btn-primary {
+      background: var(--accent);
+      color: #0b0f14;
+    }
+    .btn-primary:hover {
+      background: #4ae09c;
+      box-shadow: 0 4px 16px rgba(62,207,142,0.3);
+    }
+    .btn-secondary {
+      background: var(--surface2);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:hover {
+      background: #243040;
+      border-color: var(--muted);
+    }
+    .btn-ghost {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid transparent;
+    }
+    .btn-ghost:hover { color: var(--text); }
+
+    /* Quiz progress */
+    .progress-bar {
+      height: 6px;
+      background: var(--surface2);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent-dim), var(--accent));
+      border-radius: 3px;
+      transition: width 0.35s ease;
+    }
+    .meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.25rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .meta-row .timer {
+      font-variant-numeric: tabular-nums;
+      color: var(--warn);
+      font-weight: 600;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.55rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: var(--surface2);
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+    .badge.diff-easy { color: var(--ok); border-color: rgba(62,207,142,0.3); }
+    .badge.diff-medium { color: var(--warn); border-color: rgba(240,160,48,0.3); }
+    .badge.diff-hard { color: var(--error); border-color: rgba(232,93,93,0.3); }
+
+    /* Question */
+    .question-text {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: 1.35rem;
+      line-height: 1.55;
+    }
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+    .option {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+      padding: 0.9rem 1.1rem;
+      background: var(--surface2);
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+      text-align: left;
+      color: var(--text);
+      font-size: 0.98rem;
+    }
+    .option:hover:not(.disabled) {
+      border-color: var(--radio);
+      background: #1e2a3a;
+    }
+    .option.selected {
+      border-color: var(--radio);
+      background: rgba(77,163,255,0.12);
+    }
+    .option.correct {
+      border-color: var(--ok);
+      background: rgba(62,207,142,0.12);
+    }
+    .option.incorrect {
+      border-color: var(--error);
+      background: rgba(232,93,93,0.1);
+    }
+    .option.disabled { cursor: default; opacity: 0.95; }
+    .option .letter {
+      flex-shrink: 0;
+      width: 1.6rem;
+      height: 1.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      background: var(--bg);
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    .option.correct .letter { background: var(--ok); color: #0b0f14; }
+    .option.incorrect .letter { background: var(--error); color: #fff; }
+
+    .explanation {
+      margin-top: 1.25rem;
+      padding: 1rem 1.15rem;
+      background: rgba(62,207,142,0.08);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      font-size: 0.95rem;
+      color: var(--text);
+      display: none;
+    }
+    .explanation.visible { display: block; }
+    .explanation strong { color: var(--accent); }
+
+    .nav-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    /* Results */
+    .score-circle {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      margin: 0 auto 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 6px solid var(--accent);
+      background: var(--surface2);
+    }
+    .score-circle .pct {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .score-circle .label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.2rem;
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .stat {
+      text-align: center;
+      padding: 0.85rem;
+      background: var(--surface2);
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+    .stat .num {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .stat .lbl {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 0.15rem;
+    }
+    .stat.ok .num { color: var(--ok); }
+    .stat.err .num { color: var(--error); }
+
+    .review-item {
+      padding: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .review-item:last-child { border-bottom: none; }
+    .review-item .q { font-weight: 500; margin-bottom: 0.4rem; }
+    .review-item .ans {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .review-item .ans.correct { color: var(--ok); }
+    .review-item .ans.wrong { color: var(--error); }
+    .review-item .expl {
+      font-size: 0.88rem;
+      margin-top: 0.5rem;
+      color: var(--muted);
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--border);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 0 1.5rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      margin-top: 2rem;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+
+    .notice {
+      background: rgba(77,163,255,0.1);
+      border: 1px solid rgba(77,163,255,0.25);
+      border-radius: 8px;
+      padding: 0.85rem 1rem;
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+
+    @media (max-width: 560px) {
+      header { flex-direction: column; text-align: center; }
+      .stats { grid-template-columns: 1fr; }
+      .question-text { font-size: 1.02rem; }
+      .btn-row { flex-direction: column; }
+      .btn-row button { width: 100%; }
+    }
+  </style>
+</head>
 <body>
-<header><img class="logo" src="logo.png" alt="HAM Corner logo" onerror="this.style.display='none'"><div class="brand">HAM Corner <small>by VU33CM • ASOC Practice</small></div></header>
-<main>
-<section class="hero"><h1>🎓 ASOC Practice Quiz</h1><p>1,000-question practice bank for Indian amateur-radio learners. Questions are designed from the published ASOC syllabus and current Amateur Services Rules. They are practice questions, not official WPC examination questions.</p></section>
-<section id="setup" class="panel"><h2>Choose your quiz</h2>
-<div class="controls">
-<label>Number of questions<select id="count"><option value="10">10 Questions</option><option value="25">25 Questions</option><option value="50">50 Questions</option><option value="100">100 Questions — Mock Exam</option></select></label>
-<label>Category<select id="category"><option value="All">All Categories</option></select></label>
-<label>Difficulty<select id="difficulty"><option value="All">All Levels</option><option>Easy</option><option>Medium</option><option>Hard</option></select></label>
-</div><button class="primary" onclick="startQuiz()">🚀 Start Random Quiz</button>
-<div class="notice">For study use only. Always verify regulatory questions against the latest Department of Telecommunications publications before an examination.</div></section>
-<section id="quiz" class="panel hidden"><div class="meta"><span id="progress"></span><span id="timer"></span></div><div class="bar"><div class="fill" id="fill"></div></div>
-<div id="question" class="question"></div><div id="options" class="options"></div><div id="explanation" class="explanation hidden"></div>
-<div class="actions"><button id="next" class="primary" onclick="nextQuestion()" disabled>Next Question →</button></div></section>
-<section id="result" class="panel hidden"><h2 style="text-align:center">Quiz Complete 🎉</h2><div id="score" class="score"></div><p id="resultText" style="text-align:center"></p>
-<div class="actions"><button class="primary" onclick="location.reload()">Take Another Quiz</button></div><div id="review" class="review"></div></section>
-</main><script src="js/quiz.js"></script></body></html>
+  <div class="container">
+    <header>
+      <img src="logo.png" alt="HAM Corner logo" onerror="this.style.display='none'" />
+      <div class="brand">
+        <h1>HAM Corner <span>by VU33CM</span></h1>
+        <p>Indian Amateur Radio · ASOC Exam Practice Quiz</p>
+      </div>
+    </header>
+
+    <!-- HOME -->
+    <section id="home" class="screen active">
+      <div class="card">
+        <h2>ASOC Practice Quiz</h2>
+        <p class="desc">
+          Practice with high-quality multiple-choice questions covering the ASOC syllabus:
+          electricity & magnetism, electronics, radio theory, transmitters, receivers,
+          antennas, propagation, VHF/UHF, digital modes, satellites, operating practice,
+          Morse and Indian regulations.
+        </p>
+        <div class="notice">
+          These are unofficial practice questions for study purposes only.
+          Always refer to the latest WPC / DoT syllabus and notifications for the official examination.
+        </div>
+
+        <label for="category">Category</label>
+        <select id="category">
+          <option value="all">All categories</option>
+        </select>
+
+        <label for="difficulty">Difficulty</label>
+        <select id="difficulty">
+          <option value="all">All difficulties</option>
+          <option value="Easy">Easy</option>
+          <option value="Medium">Medium</option>
+          <option value="Hard">Hard</option>
+        </select>
+
+        <label for="quizLength">Quiz length</label>
+        <select id="quizLength">
+          <option value="10">10 questions</option>
+          <option value="25">25 questions</option>
+          <option value="50">50 questions</option>
+          <option value="100">100 questions (Mock Exam)</option>
+        </select>
+
+        <div class="btn-row">
+          <button class="btn-primary" id="startBtn">Start Quiz</button>
+        </div>
+      </div>
+
+      <div class="card" style="padding:1.1rem 1.5rem;">
+        <p style="font-size:0.9rem;color:var(--muted);margin:0;">
+          Questions are drawn randomly from the bank. Option order is shuffled each time.
+          Explanations are shown after you answer. Mock exams include a timer.
+        </p>
+      </div>
+    </section>
+
+    <!-- QUIZ -->
+    <section id="quiz" class="screen">
+      <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="meta-row">
+        <span id="progressText">Question 1 of 10</span>
+        <span id="timerDisplay" class="timer" style="display:none;"></span>
+        <span id="catBadge" class="badge"></span>
+      </div>
+
+      <div class="card">
+        <div class="question-text" id="questionText"></div>
+        <div class="options" id="options"></div>
+        <div class="explanation" id="explanation"></div>
+        <div class="nav-row">
+          <button class="btn-ghost" id="quitBtn">Quit</button>
+          <button class="btn-primary" id="nextBtn" style="display:none;">Next</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESULTS -->
+    <section id="results" class="screen">
+      <div class="card" style="text-align:center;">
+        <h2>Quiz Complete</h2>
+        <div class="score-circle">
+          <div class="pct" id="scorePct">0%</div>
+          <div class="label">Score</div>
+        </div>
+        <div class="stats">
+          <div class="stat ok">
+            <div class="num" id="correctCount">0</div>
+            <div class="lbl">Correct</div>
+          </div>
+          <div class="stat err">
+            <div class="num" id="wrongCount">0</div>
+            <div class="lbl">Incorrect</div>
+          </div>
+          <div class="stat">
+            <div class="num" id="totalCount">0</div>
+            <div class="lbl">Total</div>
+          </div>
+        </div>
+        <div class="btn-row" style="justify-content:center;">
+          <button class="btn-primary" id="reviewBtn">Review Answers</button>
+          <button class="btn-secondary" id="restartBtn">New Quiz</button>
+        </div>
+      </div>
+
+      <div class="card" id="reviewCard" style="display:none;">
+        <h2>Answer Review</h2>
+        <div id="reviewList"></div>
+      </div>
+    </section>
+
+    <footer>
+      <p>HAM Corner by VU33CM · Indian Amateur Radio</p>
+      <p style="margin-top:0.35rem;">Practice questions only — not official WPC / DoT exam material.</p>
+    </footer>
+  </div>
+
+  <script src="js/quiz.js"></script>
+</body>
+</html>
