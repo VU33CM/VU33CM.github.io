@@ -10,6 +10,7 @@
 content="HAM Corner by VU33CM - Learn, explore and enjoy Indian Amateur Radio, DX, satellites, repeaters, digital modes, contests and emergency communication.">
 
 <style>
+
 :root{
     --bg:#050b14;
     --bg2:#081525;
@@ -53,6 +54,7 @@ a{
     width:min(1180px,92%);
     margin:auto;
 }
+
 
 /* ================= HEADER ================= */
 
@@ -132,6 +134,13 @@ nav .quiz-link{
     color:#00111c;
     font-weight:800;
 }
+
+nav .qsl-link{
+    background:linear-gradient(135deg,#0b6f9e,#00bde9);
+    color:#ffffff;
+    font-weight:800;
+}
+
 
 /* ================= HERO ================= */
 
@@ -215,6 +224,7 @@ nav .quiz-link{
     display:block;
 }
 
+
 /* ================= GENERAL ================= */
 
 section{
@@ -236,6 +246,9 @@ section{
     max-width:700px;
     margin:auto;
 }
+
+
+/* ================= FEATURES ================= */
 
 .feature{
     display:grid;
@@ -290,6 +303,7 @@ section{
     font-weight:bold;
 }
 
+
 /* ================= CARDS ================= */
 
 .cards{
@@ -325,6 +339,181 @@ section{
     color:var(--muted);
     font-size:14px;
 }
+
+
+/* ================= QSL GENERATOR ================= */
+
+.qsl-section{
+    position:relative;
+    overflow:hidden;
+}
+
+.qsl-box{
+    position:relative;
+    background:
+        radial-gradient(
+            circle at 85% 20%,
+            #075477 0%,
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 10% 90%,
+            #06344d 0%,
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #071c2e,
+            #06111d
+        );
+
+    border:1px solid #17617c;
+    border-radius:25px;
+    padding:50px;
+    display:grid;
+    grid-template-columns:1.25fr .75fr;
+    gap:40px;
+    align-items:center;
+    box-shadow:0 25px 70px #0008;
+}
+
+.qsl-content .small-title{
+    color:var(--cyan);
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:2px;
+    margin-bottom:10px;
+}
+
+.qsl-content h2{
+    font-size:42px;
+    line-height:1.1;
+    margin-bottom:15px;
+}
+
+.qsl-content h2 span{
+    color:var(--cyan);
+}
+
+.qsl-content p{
+    color:var(--muted);
+    max-width:650px;
+    margin-bottom:20px;
+}
+
+.qsl-features{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:25px;
+}
+
+.qsl-feature{
+    padding:9px 13px;
+    border:1px solid var(--border);
+    border-radius:9px;
+    background:rgba(3,15,26,.7);
+    color:#c9e3ef;
+    font-size:12px;
+}
+
+.qsl-action{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.qsl-preview{
+    border:1px solid #216481;
+    border-radius:18px;
+    padding:12px;
+    background:#020911;
+    transform:rotate(2deg);
+    box-shadow:0 20px 45px #0009;
+}
+
+.qsl-preview-card{
+    border-radius:11px;
+    min-height:230px;
+    padding:22px;
+    background:
+        linear-gradient(
+            135deg,
+            #eaf7fc,
+            #a9d8e9
+        );
+    color:#062033;
+    position:relative;
+    overflow:hidden;
+}
+
+.qsl-preview-card::before{
+    content:"";
+    position:absolute;
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    right:-45px;
+    top:-45px;
+    background:rgba(0,137,190,.18);
+}
+
+.qsl-preview-top{
+    position:relative;
+    z-index:1;
+    font-size:11px;
+    letter-spacing:2px;
+    font-weight:800;
+}
+
+.qsl-preview-call{
+    position:relative;
+    z-index:1;
+    font-size:34px;
+    font-weight:900;
+    margin-top:18px;
+}
+
+.qsl-preview-title{
+    position:relative;
+    z-index:1;
+    font-size:19px;
+    font-weight:800;
+    margin-top:2px;
+}
+
+.qsl-preview-line{
+    position:relative;
+    z-index:1;
+    height:1px;
+    background:#52849a;
+    margin:17px 0;
+}
+
+.qsl-preview-info{
+    position:relative;
+    z-index:1;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:7px;
+    font-size:10px;
+}
+
+.qsl-preview-info div{
+    padding:7px;
+    background:rgba(255,255,255,.55);
+    border-radius:5px;
+}
+
+.qsl-preview-footer{
+    position:relative;
+    z-index:1;
+    margin-top:15px;
+    font-size:9px;
+    font-weight:700;
+    letter-spacing:1px;
+}
+
 
 /* ================= RADIO EXPLORER ================= */
 
@@ -374,6 +563,7 @@ section{
 .explorer-box p{
     color:var(--muted);
 }
+
 
 /* ================= QUIZ CTA ================= */
 
@@ -430,6 +620,7 @@ section{
     color:var(--cyan);
 }
 
+
 /* ================= GALLERY ================= */
 
 .gallery{
@@ -451,6 +642,7 @@ section{
     transform:scale(1.03);
 }
 
+
 /* ================= CTA ================= */
 
 .final-cta{
@@ -468,6 +660,7 @@ section{
     max-width:700px;
     margin:0 auto 25px;
 }
+
 
 /* ================= FOOTER ================= */
 
@@ -493,12 +686,14 @@ footer a{
     color:var(--cyan);
 }
 
+
 /* ================= MOBILE ================= */
 
 @media(max-width:900px){
 
     .hero-grid,
-    .feature{
+    .feature,
+    .qsl-box{
         grid-template-columns:1fr;
     }
 
@@ -517,6 +712,15 @@ footer a{
     nav{
         display:none;
     }
+
+    .qsl-box{
+        padding:32px 25px;
+    }
+
+    .qsl-content h2{
+        font-size:34px;
+    }
+
 }
 
 @media(max-width:600px){
@@ -548,15 +752,24 @@ footer a{
     .quiz-box h2{
         font-size:30px;
     }
+
+    .qsl-preview{
+        transform:none;
+    }
+
 }
+
 </style>
 </head>
 
+
 <body>
+
 
 <!-- ================= HEADER ================= -->
 
 <header>
+
 <div class="container navbar">
 
 <a href="index.html" class="logo">
@@ -566,33 +779,52 @@ footer a{
 </div>
 
 <div class="logo-text">
+
 <h1>HAM Corner</h1>
+
 <span>by VU33CM • Indian Amateur Radio</span>
+
 </div>
 
 </a>
 
+
 <nav>
+
 <a href="index.html">Home</a>
+
 <a href="study.html">Study</a>
+
 <a href="activities.html">Activities</a>
+
 <a href="repeaters.html">Repeaters</a>
+
 <a href="nets.html">Nets</a>
+
 <a href="clubs.html">Clubs</a>
+
 <a href="resources.html">Resources</a>
 
 <a href="quiz.html" class="quiz-link">
 🎓 ASOC Quiz
 </a>
+
+<a href="qsl.html" class="qsl-link">
+📻 QSL Card
+</a>
+
 </nav>
 
 </div>
+
 </header>
+
 
 
 <!-- ================= HERO ================= -->
 
 <section class="hero">
+
 <div class="container hero-grid">
 
 <div>
@@ -619,6 +851,10 @@ and become part of the amateur-radio community.
 🎓 Try the ASOC Quiz
 </a>
 
+<a href="qsl.html" class="btn btn-primary">
+📻 Create QSL Card
+</a>
+
 <a href="#explore" class="btn btn-secondary">
 📻 Explore Amateur Radio
 </a>
@@ -627,19 +863,26 @@ and become part of the amateur-radio community.
 
 </div>
 
+
 <div class="hero-img">
-<img src="Home.png"
-     alt="VU33CM Amateur Radio Station"
-     loading="eager">
+
+<img
+src="Home.png"
+alt="VU33CM Amateur Radio Station"
+loading="eager">
+
 </div>
 
 </div>
+
 </section>
+
 
 
 <!-- ================= INTRO ================= -->
 
 <section>
+
 <div class="container">
 
 <div class="section-heading">
@@ -654,66 +897,235 @@ experimentation, emergency communication and friendship.
 
 </div>
 
+
 <div class="cards">
 
+
 <div class="card">
+
 <div class="card-icon">🚨</div>
+
 <h3>Emergency Communication</h3>
+
 <p>
 When normal communication systems fail, amateur-radio
 operators can provide independent communication links
 using portable radios, batteries and antennas.
 </p>
+
 </div>
 
+
 <div class="card">
+
 <div class="card-icon">🌍</div>
+
 <h3>Global Friendship</h3>
+
 <p>
 Make contacts with people around India and the world,
 exchange signal reports, participate in DX and discover
 different cultures through radio.
 </p>
+
 </div>
 
+
 <div class="card">
+
 <div class="card-icon">🔧</div>
+
 <h3>Technical Learning</h3>
+
 <p>
 Learn electronics, RF circuits, antennas, propagation,
 digital communication, satellites and radio-frequency
 engineering through practical experimentation.
 </p>
+
 </div>
 
+
 <div class="card">
+
 <div class="card-icon">🏆</div>
+
 <h3>Awards & Contests</h3>
+
 <p>
 Take part in contests, DX awards, POTA, SOTA and many
 other activities that make amateur radio challenging
 and exciting.
 </p>
+
 </div>
+
 
 </div>
 
 </div>
+
 </section>
+
+
+
+<!-- ================= QSL GENERATOR ================= -->
+
+<section class="qsl-section">
+
+<div class="container">
+
+<div class="qsl-box">
+
+
+<div class="qsl-content">
+
+<div class="small-title">
+NEW • HAM CORNER TOOL
+</div>
+
+<h2>
+Create Your
+<span>QSL Card</span>
+</h2>
+
+<p>
+Turn your QSO details into a personalized amateur-radio
+QSL card. Enter your callsign, contact information and
+station details, preview the card instantly and download
+your finished QSL card as a JPG.
+</p>
+
+
+<div class="qsl-features">
+
+<div class="qsl-feature">
+📻 Your Callsign
+</div>
+
+<div class="qsl-feature">
+🌍 Any Country
+</div>
+
+<div class="qsl-feature">
+📡 QSO Details
+</div>
+
+<div class="qsl-feature">
+🖼️ JPG Download
+</div>
+
+<div class="qsl-feature">
+⚡ Instant Preview
+</div>
+
+</div>
+
+
+<div class="qsl-action">
+
+<a href="qsl.html" class="btn btn-primary">
+📻 Create QSL Card
+</a>
+
+<a href="qsl.html" class="btn btn-secondary">
+Open Generator →
+</a>
+
+</div>
+
+</div>
+
+
+
+<div class="qsl-preview">
+
+<div class="qsl-preview-card">
+
+<div class="qsl-preview-top">
+AMATEUR RADIO
+</div>
+
+<div class="qsl-preview-call">
+YOUR CALLSIGN
+</div>
+
+<div class="qsl-preview-title">
+QSL CARD
+</div>
+
+<div class="qsl-preview-line"></div>
+
+
+<div class="qsl-preview-info">
+
+<div>
+<strong>TO RADIO</strong><br>
+CALLSIGN
+</div>
+
+<div>
+<strong>DATE</strong><br>
+UTC DATE
+</div>
+
+<div>
+<strong>BAND</strong><br>
+20m
+</div>
+
+<div>
+<strong>MODE</strong><br>
+FT8
+</div>
+
+<div>
+<strong>FREQ</strong><br>
+14.074 MHz
+</div>
+
+<div>
+<strong>RST</strong><br>
+59 / 59
+</div>
+
+</div>
+
+
+<div class="qsl-preview-footer">
+A MORE CONNECTED WORLD • 73
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
 
 
 <!-- ================= EMERGENCY ================= -->
 
 <section>
+
 <div class="container">
 
 <div class="feature">
 
+
 <div class="feature-image">
+
 <img
 src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80"
 alt="Emergency communication">
+
 </div>
+
 
 <div class="feature-content">
 
@@ -734,11 +1146,17 @@ connections may not be available.
 </p>
 
 <ul>
+
 <li>Portable and field communication</li>
+
 <li>Battery and solar-powered operation</li>
+
 <li>VHF/UHF local communication</li>
+
 <li>HF long-distance communication</li>
+
 <li>Emergency communication networks</li>
+
 </ul>
 
 </div>
@@ -746,21 +1164,28 @@ connections may not be available.
 </div>
 
 </div>
+
 </section>
+
 
 
 <!-- ================= GLOBAL ================= -->
 
 <section>
+
 <div class="container">
 
 <div class="feature reverse">
 
+
 <div class="feature-image">
+
 <img
 src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80"
 alt="Global communication">
+
 </div>
+
 
 <div class="feature-content">
 
@@ -779,11 +1204,17 @@ countries, oceans and sometimes around the entire planet.
 </p>
 
 <ul>
+
 <li>DX communication</li>
+
 <li>HF propagation</li>
+
 <li>QSL cards and electronic confirmations</li>
+
 <li>International amateur-radio friendship</li>
+
 <li>Contesting and awards</li>
+
 </ul>
 
 </div>
@@ -791,21 +1222,28 @@ countries, oceans and sometimes around the entire planet.
 </div>
 
 </div>
+
 </section>
+
 
 
 <!-- ================= TECHNICAL ================= -->
 
 <section>
+
 <div class="container">
 
 <div class="feature">
 
+
 <div class="feature-image">
+
 <img
 src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
 alt="Electronics and radio technology">
+
 </div>
+
 
 <div class="feature-content">
 
@@ -823,12 +1261,19 @@ receivers, transmitters and digital communication.
 </p>
 
 <ul>
+
 <li>Electricity and electronics</li>
+
 <li>RF and radio theory</li>
+
 <li>Transmitters and receivers</li>
+
 <li>Antennas and feed lines</li>
+
 <li>Propagation</li>
+
 <li>Digital communication</li>
+
 </ul>
 
 </div>
@@ -836,7 +1281,9 @@ receivers, transmitters and digital communication.
 </div>
 
 </div>
+
 </section>
+
 
 
 <!-- ================= EXPLORER ================= -->
@@ -855,6 +1302,7 @@ Choose an area below.
 </p>
 
 </div>
+
 
 <div class="tabs">
 
@@ -876,7 +1324,9 @@ Choose an area below.
 
 </div>
 
+
 <div class="explorer-box">
+
 
 <div id="mode-hf">
 
@@ -891,6 +1341,7 @@ world.
 
 </div>
 
+
 <div id="mode-vhf" style="display:none">
 
 <h3>📡 VHF & UHF</h3>
@@ -902,6 +1353,7 @@ community nets.
 </p>
 
 </div>
+
 
 <div id="mode-digital" style="display:none">
 
@@ -916,6 +1368,7 @@ for weak-signal and DX operation.
 
 </div>
 
+
 <div id="mode-space" style="display:none">
 
 <h3>🛰️ Amateur Satellites</h3>
@@ -929,11 +1382,13 @@ satellite transponders.
 
 </div>
 
+
 </div>
 
 </div>
 
 </section>
+
 
 
 <!-- ================= QUIZ ================= -->
@@ -955,37 +1410,59 @@ you study electricity, electronics, radio theory, antennas,
 propagation, operating practice and amateur-radio rules.
 </p>
 
+
 <div class="quiz-stats">
 
+
 <div class="quiz-stat">
+
 <strong>1,000</strong>
+
 Practice Questions
+
 </div>
 
+
 <div class="quiz-stat">
+
 <strong>10–100</strong>
+
 Questions / Quiz
+
 </div>
 
+
 <div class="quiz-stat">
+
 <strong>🎲</strong>
+
 Random Questions
+
 </div>
+
 
 <div class="quiz-stat">
+
 <strong>📖</strong>
+
 Explanations
-</div>
 
 </div>
+
+
+</div>
+
 
 <a href="quiz.html" class="btn btn-primary">
 🚀 Start ASOC Practice Quiz
 </a>
 
+
 <p style="font-size:12px;margin-top:20px;">
+
 Practice questions only — not official WPC/DoT examination questions.
 Always verify current regulatory information with the Department of Telecommunications.
+
 </p>
 
 </div>
@@ -993,6 +1470,7 @@ Always verify current regulatory information with the Department of Telecommunic
 </div>
 
 </section>
+
 
 
 <!-- ================= AWARDS ================= -->
@@ -1012,49 +1490,72 @@ take your amateur-radio journey further.
 
 </div>
 
+
 <div class="cards">
 
+
 <div class="card">
+
 <div class="card-icon">🌐</div>
+
 <h3>DX</h3>
+
 <p>
 Search for rare stations and countries and build your
 DXCC-style achievements.
 </p>
+
 </div>
 
+
 <div class="card">
+
 <div class="card-icon">🏔️</div>
+
 <h3>SOTA</h3>
+
 <p>
 Take amateur radio into the mountains and operate from
 summits.
 </p>
+
 </div>
 
+
 <div class="card">
+
 <div class="card-icon">🌲</div>
+
 <h3>POTA</h3>
+
 <p>
 Operate from parks and outdoor locations while making
 contacts with other operators.
 </p>
+
 </div>
 
+
 <div class="card">
+
 <div class="card-icon">🏁</div>
+
 <h3>Contesting</h3>
+
 <p>
 Test your operating skills, station setup, antennas and
 speed in amateur-radio contests.
 </p>
+
 </div>
+
 
 </div>
 
 </div>
 
 </section>
+
 
 
 <!-- ================= GALLERY ================= -->
@@ -1074,18 +1575,23 @@ station has a story.
 
 </div>
 
+
 <div class="gallery">
 
-<img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=900&q=80"
+<img
+src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=900&q=80"
 alt="Radio equipment">
 
-<img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=900&q=80"
+<img
+src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=900&q=80"
 alt="Electronics">
 
-<img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=900&q=80"
+<img
+src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=900&q=80"
 alt="Technology">
 
-<img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=900&q=80"
+<img
+src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=900&q=80"
 alt="Communication technology">
 
 </div>
@@ -1093,6 +1599,7 @@ alt="Communication technology">
 </div>
 
 </section>
+
 
 
 <!-- ================= FINAL CTA ================= -->
@@ -1109,13 +1616,23 @@ make your first QSO, explore satellites, discover DX and
 become part of the amateur-radio community.
 </p>
 
+
+<div class="hero-buttons" style="justify-content:center;">
+
 <a href="quiz.html" class="btn btn-primary">
 🎓 Take the ASOC Quiz
 </a>
 
+<a href="qsl.html" class="btn btn-primary">
+📻 Create Your QSL Card
+</a>
+
+</div>
+
 </div>
 
 </section>
+
 
 
 <!-- ================= FOOTER ================= -->
@@ -1134,12 +1651,22 @@ Indian Amateur Radio • Learn • Communicate • Experiment
 
 </div>
 
+
 <div>
 
 <p>
-<a href="about.html">About</a> &nbsp; • &nbsp;
-<a href="resources.html">Resources</a> &nbsp; • &nbsp;
+
+<a href="about.html">About</a>
+&nbsp; • &nbsp;
+
+<a href="resources.html">Resources</a>
+&nbsp; • &nbsp;
+
 <a href="quiz.html">ASOC Quiz</a>
+&nbsp; • &nbsp;
+
+<a href="qsl.html">QSL Card</a>
+
 </p>
 
 </div>
@@ -1149,25 +1676,36 @@ Indian Amateur Radio • Learn • Communicate • Experiment
 </footer>
 
 
+
 <script>
 
 function showMode(mode,button){
 
     document.getElementById("mode-hf").style.display="none";
+
     document.getElementById("mode-vhf").style.display="none";
+
     document.getElementById("mode-digital").style.display="none";
+
     document.getElementById("mode-space").style.display="none";
+
 
     document.getElementById("mode-"+mode).style.display="block";
 
+
     document.querySelectorAll(".tab").forEach(function(tab){
+
         tab.classList.remove("active");
+
     });
 
+
     button.classList.add("active");
+
 }
 
 </script>
+
 
 </body>
 </html>
