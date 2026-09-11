@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ASOC Practice Quiz | HAM Corner by VU33CM</title>
+<style>
+:root{--bg:#06111f;--card:#0d1b2a;--line:#1e3a55;--text:#eaf6ff;--muted:#9bb1c5;--accent:#18d7ff;--good:#38d996;--bad:#ff647c}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(135deg,#06111f,#091827 60%,#06111f);color:var(--text);font-family:Arial,sans-serif}
+header{padding:22px 6%;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:14px;position:sticky;top:0;background:#06111fee;backdrop-filter:blur(10px);z-index:5}
+.logo{width:54px;height:54px;border-radius:50%;object-fit:cover}.brand{font-size:20px;font-weight:800}.brand small{display:block;color:var(--muted);font-weight:500;font-size:12px;margin-top:4px}
+main{max-width:980px;margin:auto;padding:40px 18px}.hero{text-align:center;margin-bottom:30px}.hero h1{font-size:clamp(30px,6vw,52px);margin:8px 0}.hero p{color:var(--muted);max-width:720px;margin:auto;line-height:1.6}
+.panel{background:#0d1b2ae8;border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:0 15px 50px #0005}
+.controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:20px 0}
+button,select{width:100%;padding:13px 15px;border-radius:11px;border:1px solid #28506c;background:#10283b;color:var(--text);font-size:15px;cursor:pointer}
+button.primary{background:var(--accent);color:#03121c;border:0;font-weight:800}button:hover{filter:brightness(1.1)}
+.meta{display:flex;justify-content:space-between;gap:10px;color:var(--muted);margin-bottom:16px}.bar{height:8px;background:#14283a;border-radius:8px;overflow:hidden}.fill{height:100%;background:var(--accent);width:0}
+.question{font-size:23px;line-height:1.4;margin:25px 0}.options{display:grid;gap:12px}.option{text-align:left;background:#102236}.option.correct{border-color:var(--good);background:#0c382d}.option.wrong{border-color:var(--bad);background:#3b1821}
+.explanation{margin-top:18px;padding:15px;border-left:4px solid var(--accent);background:#081827;border-radius:8px;line-height:1.5}
+.actions{display:flex;gap:10px;margin-top:20px}.actions>*{flex:1}.score{text-align:center;font-size:44px;font-weight:900;color:var(--accent)}.notice{color:#ffd68a;font-size:13px;line-height:1.5;margin-top:20px}
+.hidden{display:none}.review{margin-top:25px}.review-item{padding:14px;border-bottom:1px solid var(--line)}.good{color:var(--good)}.bad{color:var(--bad)}
+@media(max-width:600px){header{padding:15px}.question{font-size:19px}.actions{flex-direction:column}}
+</style></head>
+<body>
+<header><img class="logo" src="logo.png" alt="HAM Corner logo" onerror="this.style.display='none'"><div class="brand">HAM Corner <small>by VU33CM • ASOC Practice</small></div></header>
+<main>
+<section class="hero"><h1>🎓 ASOC Practice Quiz</h1><p>1,000-question practice bank for Indian amateur-radio learners. Questions are designed from the published ASOC syllabus and current Amateur Services Rules. They are practice questions, not official WPC examination questions.</p></section>
+<section id="setup" class="panel"><h2>Choose your quiz</h2>
+<div class="controls">
+<label>Number of questions<select id="count"><option value="10">10 Questions</option><option value="25">25 Questions</option><option value="50">50 Questions</option><option value="100">100 Questions — Mock Exam</option></select></label>
+<label>Category<select id="category"><option value="All">All Categories</option></select></label>
+<label>Difficulty<select id="difficulty"><option value="All">All Levels</option><option>Easy</option><option>Medium</option><option>Hard</option></select></label>
+</div><button class="primary" onclick="startQuiz()">🚀 Start Random Quiz</button>
+<div class="notice">For study use only. Always verify regulatory questions against the latest Department of Telecommunications publications before an examination.</div></section>
+<section id="quiz" class="panel hidden"><div class="meta"><span id="progress"></span><span id="timer"></span></div><div class="bar"><div class="fill" id="fill"></div></div>
+<div id="question" class="question"></div><div id="options" class="options"></div><div id="explanation" class="explanation hidden"></div>
+<div class="actions"><button id="next" class="primary" onclick="nextQuestion()" disabled>Next Question →</button></div></section>
+<section id="result" class="panel hidden"><h2 style="text-align:center">Quiz Complete 🎉</h2><div id="score" class="score"></div><p id="resultText" style="text-align:center"></p>
+<div class="actions"><button class="primary" onclick="location.reload()">Take Another Quiz</button></div><div id="review" class="review"></div></section>
+</main><script src="js/quiz.js"></script></body></html>
