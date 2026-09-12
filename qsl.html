@@ -1,365 +1,572 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
 
 <meta name="viewport"
       content="width=device-width, initial-scale=1.0">
 
-<title>QSL Card Generator | HAM Corner</title>
+<title>QSL Card Generator | HAM Corner by VU33CM</title>
 
 <style>
 
-:root{
-    --bg:#050b14;
-    --bg2:#081525;
-    --card:#0c1b2b;
-    --cyan:#19dfff;
-    --blue:#2388ff;
-    --white:#f3fbff;
-    --muted:#9bb1c5;
-    --border:#1b405c;
+* {
+    box-sizing: border-box;
 }
 
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
+html {
+    scroll-behavior: smooth;
 }
 
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    font-family:Arial,Helvetica,sans-serif;
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
     background:
-        radial-gradient(circle at 20% 10%,#09233b 0%,transparent 35%),
-        radial-gradient(circle at 80% 30%,#062b45 0%,transparent 30%),
-        var(--bg);
-    color:var(--white);
-    line-height:1.5;
+        radial-gradient(circle at top, #10264a 0%, #050b18 55%, #02050d 100%);
+    color: #ffffff;
 }
 
 /* ================= HEADER ================= */
 
-header{
-    position:sticky;
-    top:0;
-    z-index:1000;
-    background:rgba(5,11,20,.94);
-    backdrop-filter:blur(15px);
-    border-bottom:1px solid var(--border);
+header {
+    width: 100%;
+    background: rgba(3, 10, 24, 0.96);
+    border-bottom: 1px solid rgba(0, 200, 255, 0.25);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(12px);
 }
 
-.navbar{
-    width:min(1180px,92%);
-    min-height:78px;
-    margin:auto;
+.navbar {
+    max-width: 1250px;
+    margin: auto;
+    min-height: 76px;
+    padding: 10px 20px;
 
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
 }
 
-.logo{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    text-decoration:none;
-    color:inherit;
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: white;
+    min-width: 210px;
 }
 
-.logo-icon{
-    width:55px;
-    height:55px;
-    border-radius:50%;
-    overflow:hidden;
-    border:2px solid var(--cyan);
-    box-shadow:0 0 20px rgba(25,223,255,.35);
-    flex-shrink:0;
+.logo-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 2px solid #00c8ff;
+    box-shadow: 0 0 15px rgba(0, 200, 255, 0.35);
 }
 
-.logo-icon img{
-    width:100%;
-    height:100%;
-    object-fit:contain;
+.logo-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
-.logo-text h1{
-    font-size:20px;
-    letter-spacing:.5px;
+.brand-text strong {
+    display: block;
+    font-size: 19px;
+    letter-spacing: 1px;
 }
 
-.logo-text span{
-    display:block;
-    color:var(--muted);
-    font-size:11px;
+.brand-text span {
+    display: block;
+    color: #76dfff;
+    font-size: 11px;
+    margin-top: 3px;
+    letter-spacing: 1.5px;
 }
 
-nav{
-    display:flex;
-    align-items:center;
-    gap:6px;
-    flex-wrap:wrap;
-    justify-content:flex-end;
+.nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 6px;
+    flex-wrap: wrap;
 }
 
-nav a{
-    padding:9px 11px;
-    border-radius:8px;
-    color:#c5d8e7;
-    font-size:13px;
-    text-decoration:none;
+.nav-links a {
+    color: #d8eaff;
+    text-decoration: none;
+    padding: 9px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: 0.25s ease;
 }
 
-nav a:hover{
-    background:#10283b;
-    color:var(--cyan);
+.nav-links a:hover {
+    background: rgba(0, 200, 255, 0.12);
+    color: #ffffff;
 }
 
-nav .qsl-link{
-    background:linear-gradient(135deg,var(--cyan),var(--blue));
-    color:#00111c;
-    font-weight:800;
+.nav-links .active {
+    background: linear-gradient(135deg, #00aeea, #0066ff);
+    color: white;
+    box-shadow: 0 0 16px rgba(0, 174, 234, 0.3);
 }
 
-/* ================= PAGE ================= */
+/* ================= MAIN ================= */
 
-.page{
-    width:min(1500px,94%);
-    margin:auto;
-    padding:45px 0 70px;
+.main {
+    max-width: 1450px;
+    margin: auto;
+    padding: 55px 20px 80px;
 }
 
-.page-heading{
-    text-align:center;
-    margin-bottom:35px;
+.page-heading {
+    text-align: center;
+    margin-bottom: 42px;
 }
 
-.page-heading h2{
-    font-size:42px;
-    margin-bottom:8px;
+.page-heading h1 {
+    margin: 0;
+
+    font-size: clamp(34px, 5vw, 62px);
+    line-height: 1.05;
+
+    background: linear-gradient(
+        90deg,
+        #ffffff,
+        #73dcff,
+        #00a9ff
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
-.page-heading h2 span{
-    color:var(--cyan);
-}
-
-.page-heading p{
-    color:var(--muted);
+.page-heading p {
+    max-width: 700px;
+    margin: 18px auto 0;
+    color: #a9c4dc;
+    font-size: 16px;
+    line-height: 1.7;
 }
 
 /* ================= GENERATOR ================= */
 
-.generator{
-    display:grid;
-    grid-template-columns:360px 1fr;
-    gap:30px;
-    align-items:start;
+.generator {
+    display: grid;
+    grid-template-columns: minmax(300px, 430px) minmax(500px, 1fr);
+    gap: 28px;
+    align-items: start;
+}
+
+/* ================= FORM PANEL ================= */
+
+.panel {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(12, 31, 59, 0.96),
+            rgba(4, 12, 27, 0.96)
+        );
+
+    border: 1px solid rgba(0, 200, 255, 0.2);
+    border-radius: 18px;
+
+    padding: 25px;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.35),
+        inset 0 1px rgba(255, 255, 255, 0.03);
+}
+
+.panel-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    color: #6bdcff;
+
+    font-size: 22px;
+    font-weight: 700;
+
+    margin-bottom: 22px;
+}
+
+.panel-title span {
+    font-size: 24px;
 }
 
 /* ================= FORM ================= */
 
-.form-panel{
-    background:
-        linear-gradient(145deg,#0b1c2c,#07131f);
-    border:1px solid var(--border);
-    border-radius:20px;
-    padding:25px;
-    box-shadow:0 20px 50px rgba(0,0,0,.35);
+.form-group {
+    margin-bottom: 15px;
 }
 
-.form-panel h3{
-    font-size:23px;
-    margin-bottom:5px;
+.form-group label {
+    display: block;
+    margin-bottom: 7px;
+
+    color: #b8d4e9;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
 }
 
-.sub{
-    color:var(--muted);
-    font-size:13px;
-    margin-bottom:22px;
+input,
+select,
+textarea {
+    width: 100%;
+
+    border: 1px solid rgba(102, 188, 230, 0.25);
+    border-radius: 8px;
+
+    background: rgba(0, 10, 25, 0.75);
+    color: #ffffff;
+
+    padding: 11px 12px;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+
+    outline: none;
+
+    transition: 0.2s ease;
 }
 
-.field{
-    margin-bottom:14px;
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #00c8ff;
+
+    box-shadow:
+        0 0 0 2px rgba(0, 200, 255, 0.08),
+        0 0 15px rgba(0, 200, 255, 0.12);
 }
 
-.field label{
-    display:block;
-    font-size:12px;
-    font-weight:700;
-    letter-spacing:.5px;
-    color:#9edcf0;
-    margin-bottom:6px;
+select {
+    cursor: pointer;
 }
 
-.field input,
-.field select,
-.field textarea{
-    width:100%;
-    border:1px solid #216684;
-    background:#071522;
-    color:#f3fbff;
-    border-radius:8px;
-    padding:11px 12px;
-    font-size:14px;
-    outline:none;
+textarea {
+    min-height: 95px;
+    resize: vertical;
 }
 
-.field input:focus,
-.field select:focus,
-.field textarea:focus{
-    border-color:var(--cyan);
-    box-shadow:0 0 0 2px rgba(25,223,255,.10);
+input::placeholder,
+textarea::placeholder {
+    color: #66829a;
 }
 
-.field textarea{
-    min-height:85px;
-    resize:vertical;
+/* Two columns */
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
 }
 
 /* ================= BUTTONS ================= */
 
-.buttons{
-    display:flex;
-    gap:10px;
-    margin-top:20px;
+.buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+
+    margin-top: 22px;
 }
 
-.btn{
-    flex:1;
-    border:none;
-    border-radius:9px;
-    padding:13px 12px;
-    cursor:pointer;
-    font-size:14px;
-    font-weight:800;
+.btn {
+    border: none;
+    border-radius: 9px;
+
+    padding: 13px 15px;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease;
 }
 
-.btn-primary{
-    background:linear-gradient(135deg,var(--cyan),var(--blue));
-    color:#00121e;
+.btn:hover {
+    transform: translateY(-2px);
 }
 
-.btn-secondary{
-    background:#102638;
-    color:#d9edf7;
-    border:1px solid var(--border);
-}
+.btn-primary {
+    color: white;
 
-/* ================= PREVIEW ================= */
-
-.preview-panel{
     background:
-        linear-gradient(145deg,#071522,#040c14);
-    border:1px solid var(--border);
-    border-radius:22px;
-    padding:20px;
-    box-shadow:0 20px 60px rgba(0,0,0,.45);
+        linear-gradient(
+            135deg,
+            #00bfff,
+            #0066ff
+        );
+
+    box-shadow:
+        0 8px 25px rgba(0, 140, 255, 0.25);
 }
 
-.preview-heading{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    margin-bottom:15px;
+.btn-secondary {
+    color: #d8eaff;
+
+    background: rgba(255, 255, 255, 0.07);
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
-.preview-heading h3{
-    font-size:22px;
+.required {
+    color: #00c8ff;
 }
 
-.live{
-    color:#36e09b;
-    font-size:12px;
-    font-weight:800;
+/* ================= PREVIEW PANEL ================= */
+
+.preview-panel {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(12, 31, 59, 0.96),
+            rgba(4, 12, 27, 0.96)
+        );
+
+    border: 1px solid rgba(0, 200, 255, 0.2);
+    border-radius: 18px;
+
+    padding: 25px;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.35);
 }
 
-.canvas-wrap{
-    width:100%;
-    overflow:hidden;
-    border-radius:15px;
-    background:#000;
-    border:1px solid #12344a;
+.preview-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 18px;
 }
 
-#qslCanvas{
-    display:block;
-    width:100%;
-    height:auto;
+.preview-title {
+    color: #ffffff;
+    font-size: 21px;
+    font-weight: 700;
 }
 
-.info{
-    margin-top:18px;
-    padding:14px 16px;
-    background:#081a29;
-    border:1px solid #153d53;
-    border-radius:12px;
-    color:#a9c1d2;
-    font-size:12px;
+.live {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    color: #79ffad;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+}
+
+.live-dot {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #39ff88;
+
+    box-shadow:
+        0 0 10px rgba(57, 255, 136, 0.8);
+}
+
+/* ================= CANVAS ================= */
+
+.canvas-wrapper {
+    width: 100%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0, 200, 255, 0.08),
+            rgba(0, 0, 0, 0.2)
+        );
+
+    border-radius: 12px;
+
+    padding: 12px;
+
+    border: 1px solid rgba(0, 200, 255, 0.12);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+}
+
+#qslCanvas {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    max-width: 100%;
+
+    border-radius: 5px;
+
+    box-shadow:
+        0 10px 35px rgba(0, 0, 0, 0.45);
+}
+
+/* ================= INFO ================= */
+
+.preview-info {
+    margin-top: 16px;
+
+    color: #7897b2;
+
+    font-size: 12px;
+    line-height: 1.6;
+
+    text-align: center;
 }
 
 /* ================= FOOTER ================= */
 
-footer{
-    border-top:1px solid var(--border);
-    padding:25px 0;
-    margin-top:20px;
-    color:var(--muted);
-    text-align:center;
-    font-size:13px;
+footer {
+    border-top: 1px solid rgba(0, 200, 255, 0.15);
+
+    background: rgba(1, 5, 14, 0.95);
+
+    padding: 28px 20px;
+
+    text-align: center;
+
+    color: #66829a;
+
+    font-size: 13px;
+}
+
+footer a {
+    color: #6bdcff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
 }
 
 /* ================= MOBILE ================= */
 
-@media(max-width:950px){
+@media (max-width: 1050px) {
 
-    .generator{
-        grid-template-columns:1fr;
+    .navbar {
+        flex-direction: column;
+        padding-bottom: 15px;
+    }
+
+    .brand {
+        justify-content: center;
+    }
+
+    .nav-links {
+        justify-content: center;
+    }
+
+    .generator {
+        grid-template-columns: 1fr;
     }
 
 }
 
-@media(max-width:650px){
+@media (max-width: 650px) {
 
-    nav{
-        display:none;
+    .main {
+        padding: 35px 12px 60px;
     }
 
-    .navbar{
-        justify-content:center;
+    .panel,
+    .preview-panel {
+        padding: 17px;
+        border-radius: 14px;
     }
 
-    .page{
-        width:96%;
-        padding-top:30px;
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
     }
 
-    .page-heading h2{
-        font-size:31px;
+    .buttons {
+        grid-template-columns: 1fr;
     }
 
-    .preview-panel{
-        padding:10px;
+    .nav-links a {
+        font-size: 12px;
+        padding: 7px 8px;
     }
 
-    .form-panel{
-        padding:18px;
+    .page-heading h1 {
+        font-size: 36px;
+    }
+
+}
+
+/* ================= PRINT ================= */
+
+@media print {
+
+    body {
+        background: white;
+    }
+
+    header,
+    .page-heading,
+    .panel,
+    .preview-header,
+    .preview-info,
+    footer {
+        display: none !important;
+    }
+
+    .main {
+        padding: 0;
+    }
+
+    .generator {
+        display: block;
+    }
+
+    .preview-panel {
+        border: none;
+        box-shadow: none;
+        padding: 0;
+    }
+
+    .canvas-wrapper {
+        border: none;
+        padding: 0;
+    }
+
+    #qslCanvas {
+        width: 100%;
     }
 
 }
 
 </style>
-
 </head>
 
-
 <body>
-
 
 <!-- ================= HEADER ================= -->
 
@@ -367,45 +574,39 @@ footer{
 
 <div class="navbar">
 
-<a href="index.html" class="logo">
+<a href="index.html" class="brand">
 
-<div class="logo-icon">
+    <div class="logo-icon">
+        <img
+            src="logo.png"
+            alt="HAM Corner VU33CM Logo">
+    </div>
 
-<img src="logo.png"
-     alt="HAM Corner VU33CM Logo">
-
-</div>
-
-<div class="logo-text">
-
-<h1>HAM Corner</h1>
-
-<span>by VU33CM • Indian Amateur Radio</span>
-
-</div>
+    <div class="brand-text">
+        <strong>HAM CORNER</strong>
+        <span>AMATEUR RADIO</span>
+    </div>
 
 </a>
 
 
-<nav>
+<nav class="nav-links">
 
-<a href="index.html">Home</a>
+    <a href="index.html">Home</a>
 
-<a href="study.html">Study</a>
+    <a href="study.html">Study</a>
 
-<a href="activities.html">Activities</a>
+    <a href="activities.html">Activities</a>
 
-<a href="repeaters.html">Repeaters</a>
+    <a href="repeaters.html">Repeaters</a>
 
-<a href="nets.html">Nets</a>
+    <a href="nets.html">Nets</a>
 
-<a href="resources.html">Resources</a>
+    <a href="resources.html">Resources</a>
 
-<a href="quiz.html">🎓 ASOC Quiz</a>
-
-<a href="qsl.html" class="qsl-link">
-📻 QSL Card
-</a>
+    <a href="qsl.html" class="active">
+        📻 QSL Card
+    </a>
 
 </nav>
 
@@ -414,24 +615,21 @@ footer{
 </header>
 
 
-
 <!-- ================= MAIN ================= -->
 
-<main class="page">
+<main class="main">
 
 
 <div class="page-heading">
 
-<h2>
-📻 <span>QSL Card</span> Generator
-</h2>
+    <h1>QSL CARD GENERATOR</h1>
 
-<p>
-Create your personalised amateur radio QSL card and download it as a JPG.
-</p>
+    <p>
+        Create your personalised amateur radio QSL card
+        and download it as a JPG.
+    </p>
 
 </div>
-
 
 
 <div class="generator">
@@ -439,236 +637,337 @@ Create your personalised amateur radio QSL card and download it as a JPG.
 
 <!-- ================= FORM ================= -->
 
-<section class="form-panel">
+<section class="panel">
 
-<h3>📻 QSO Details</h3>
+<div class="panel-title">
+    <span>📻</span>
+    QSO Details
+</div>
 
-<p class="sub">
-Enter your QSO information. The QSL card updates automatically.
-</p>
+
+<form id="qslForm" autocomplete="off">
 
 
-<div class="field">
+<!-- CALLSIGN -->
 
-<label>
-YOUR CALLSIGN <span style="color:#ff6b6b">*</span>
+<div class="form-group">
+
+<label for="callsign">
+    Your Callsign
+    <span class="required">*</span>
 </label>
 
 <input
     type="text"
     id="callsign"
-    value="VU33CM"
-    placeholder="Example: VU33CM"
-    maxlength="20">
+    name="callsign"
+    placeholder="Enter your callsign"
+    autocomplete="off"
+    autocapitalize="characters"
+    spellcheck="false">
 
 </div>
 
 
-<div class="field">
+<!-- TO RADIO -->
 
-<label>TO RADIO / OTHER STATION</label>
+<div class="form-group">
+
+<label for="toRadio">
+    To Radio / Other Station
+</label>
 
 <input
     type="text"
     id="toRadio"
-    value="VU3IZD"
-    placeholder="Example: VU3XYZ"
-    maxlength="20">
+    name="toRadio"
+    placeholder="Other station callsign"
+    autocomplete="off"
+    autocapitalize="characters"
+    spellcheck="false">
 
 </div>
 
 
-<div class="field">
+<!-- DATE / TIME -->
 
-<label>DATE (UTC)</label>
+<div class="form-row">
+
+<div class="form-group">
+
+<label for="date">
+    Date (UTC)
+</label>
 
 <input
     type="date"
-    id="date">
+    id="date"
+    name="date"
+    autocomplete="off">
 
 </div>
 
 
-<div class="field">
+<div class="form-group">
 
-<label>TIME (UTC)</label>
+<label for="time">
+    Time (UTC)
+</label>
 
 <input
     type="time"
-    id="time">
+    id="time"
+    name="time"
+    autocomplete="off">
+
+</div>
 
 </div>
 
 
-<div class="field">
+<!-- BAND / FREQUENCY -->
 
-<label>BAND</label>
+<div class="form-row">
 
-<select id="band">
+<div class="form-group">
 
-<option value="">Select band</option>
-<option value="160m">160m</option>
-<option value="80m">80m</option>
-<option value="60m">60m</option>
-<option value="40m">40m</option>
-<option value="30m">30m</option>
-<option value="20m">20m</option>
-<option value="17m">17m</option>
-<option value="15m">15m</option>
-<option value="12m">12m</option>
-<option value="10m">10m</option>
-<option value="6m">6m</option>
-<option value="2m">2m</option>
-<option value="70cm">70cm</option>
-<option value="23cm">23cm</option>
+<label for="band">
+    Band
+</label>
+
+<select id="band" name="band" autocomplete="off">
+
+    <option value="">Select Band</option>
+    <option value="160m">160m</option>
+    <option value="80m">80m</option>
+    <option value="60m">60m</option>
+    <option value="40m">40m</option>
+    <option value="30m">30m</option>
+    <option value="20m">20m</option>
+    <option value="17m">17m</option>
+    <option value="15m">15m</option>
+    <option value="12m">12m</option>
+    <option value="10m">10m</option>
+    <option value="6m">6m</option>
+    <option value="4m">4m</option>
+    <option value="2m">2m</option>
+    <option value="70cm">70cm</option>
+    <option value="23cm">23cm</option>
 
 </select>
 
 </div>
 
 
-<div class="field">
+<div class="form-group">
 
-<label>FREQUENCY (MHz)</label>
+<label for="frequency">
+    Frequency (MHz)
+</label>
 
 <input
     type="text"
     id="frequency"
-    placeholder="Example: 7.080">
+    name="frequency"
+    placeholder="e.g. 14.074"
+    autocomplete="off"
+    inputmode="decimal">
+
+</div>
 
 </div>
 
 
-<div class="field">
+<!-- MODE -->
 
-<label>MODE</label>
+<div class="form-group">
 
-<select id="mode">
+<label for="mode">
+    Mode
+</label>
 
-<option value="">Select mode</option>
-<option value="SSB">SSB</option>
-<option value="FM">FM</option>
-<option value="AM">AM</option>
-<option value="CW">CW</option>
-<option value="FT8">FT8</option>
-<option value="FT4">FT4</option>
-<option value="RTTY">RTTY</option>
-<option value="PSK31">PSK31</option>
-<option value="JS8">JS8</option>
-<option value="SSTV">SSTV</option>
-<option value="DV">Digital Voice</option>
+<select id="mode" name="mode" autocomplete="off">
+
+    <option value="">Select Mode</option>
+    <option value="SSB">SSB</option>
+    <option value="CW">CW</option>
+    <option value="AM">AM</option>
+    <option value="FM">FM</option>
+    <option value="FT8">FT8</option>
+    <option value="FT4">FT4</option>
+    <option value="JS8">JS8</option>
+    <option value="RTTY">RTTY</option>
+    <option value="PSK31">PSK31</option>
+    <option value="SSTV">SSTV</option>
+    <option value="DV">DV</option>
+    <option value="DMR">DMR</option>
+    <option value="C4FM">C4FM</option>
+    <option value="D-STAR">D-STAR</option>
+    <option value="APRS">APRS</option>
+    <option value="OTHER">Other</option>
 
 </select>
 
 </div>
 
 
-<div class="field">
+<!-- RST -->
 
-<label>RST SENT</label>
+<div class="form-row">
+
+<div class="form-group">
+
+<label for="rstSent">
+    RST Sent
+</label>
 
 <input
     type="text"
     id="rstSent"
-    value="59">
+    name="rstSent"
+    placeholder="e.g. 59"
+    autocomplete="off">
 
 </div>
 
 
-<div class="field">
+<div class="form-group">
 
-<label>RST RECEIVED</label>
+<label for="rstReceived">
+    RST Received
+</label>
 
 <input
     type="text"
     id="rstReceived"
-    value="59">
+    name="rstReceived"
+    placeholder="e.g. 59"
+    autocomplete="off">
+
+</div>
 
 </div>
 
 
-<div class="field">
+<!-- POWER -->
 
-<label>POWER (W)</label>
+<div class="form-group">
+
+<label for="power">
+    Power (W)
+</label>
 
 <input
     type="text"
     id="power"
-    value="50">
+    name="power"
+    placeholder="e.g. 50"
+    autocomplete="off"
+    inputmode="decimal">
 
 </div>
 
 
-<div class="field">
+<!-- ANTENNA -->
 
-<label>ANTENNA</label>
+<div class="form-group">
+
+<label for="antenna">
+    Antenna
+</label>
 
 <input
     type="text"
     id="antenna"
-    placeholder="Example: Inverted V">
+    name="antenna"
+    placeholder="e.g. Dipole, Yagi, Vertical"
+    autocomplete="off">
 
 </div>
 
 
-<div class="field">
+<!-- PROPAGATION -->
 
-<label>PROPAGATION</label>
+<div class="form-group">
+
+<label for="propagation">
+    Propagation
+</label>
 
 <input
     type="text"
     id="propagation"
-    placeholder="Example: Short">
+    name="propagation"
+    placeholder="e.g. Good, Poor, Sporadic-E"
+    autocomplete="off">
 
 </div>
 
 
-<div class="field">
+<!-- QSL VIA -->
 
-<label>QSL VIA</label>
+<div class="form-group">
+
+<label for="qslVia">
+    QSL Via
+</label>
 
 <input
     type="text"
     id="qslVia"
-    placeholder="Example: Email">
+    name="qslVia"
+    placeholder="e.g. Direct, Bureau, eQSL, LoTW"
+    autocomplete="off">
 
 </div>
 
 
-<div class="field">
+<!-- REMARKS -->
 
-<label>REMARKS</label>
+<div class="form-group">
+
+<label for="remarks">
+    Remarks
+</label>
 
 <textarea
     id="remarks"
-    placeholder="73s!"></textarea>
+    name="remarks"
+    placeholder="Thanks for the QSO! 73"
+    autocomplete="off"></textarea>
 
 </div>
 
+
+<!-- BUTTONS -->
 
 <div class="buttons">
 
 <button
+    type="button"
     class="btn btn-primary"
-    onclick="downloadQSL()">
+    id="downloadButton">
 
-⬇️ Download JPG
+    ⬇️ Download JPG
 
 </button>
 
 
 <button
+    type="button"
     class="btn btn-secondary"
-    onclick="clearForm()">
+    id="clearButton">
 
-↻ Clear Form
+    🔄 Clear Form
 
 </button>
 
 </div>
 
-</section>
 
+</form>
+
+</section>
 
 
 <!-- ================= PREVIEW ================= -->
@@ -676,160 +975,241 @@ YOUR CALLSIGN <span style="color:#ff6b6b">*</span>
 <section class="preview-panel">
 
 
-<div class="preview-heading">
+<div class="preview-header">
 
-<h3>QSL Card Preview</h3>
+    <div class="preview-title">
+        QSL Card Preview
+    </div>
 
-<span class="live">
-● Live Preview
-</span>
+    <div class="live">
 
-</div>
+        <span class="live-dot"></span>
 
+        LIVE PREVIEW
 
-<div class="canvas-wrap">
-
-<canvas
-    id="qslCanvas"
-    width="1536"
-    height="1024">
-</canvas>
+    </div>
 
 </div>
 
 
-<div class="info">
+<div class="canvas-wrapper">
 
-<strong>Tip:</strong>
-Fill in the details on the left. The card updates automatically.
-Click "Download JPG" to save your QSL card.
+    <canvas
+        id="qslCanvas"
+        width="1536"
+        height="1024">
+    </canvas>
 
 </div>
+
+
+<div class="preview-info">
+
+    Your QSL card is generated locally in your browser.
+    Enter your QSO information and download the finished
+    card as a JPG image.
+
+</div>
+
 
 </section>
-
 
 </div>
 
 </main>
 
 
+<!-- ================= FOOTER ================= -->
 
 <footer>
 
-HAM Corner by VU33CM
-•
-Indian Amateur Radio
-•
-Learn • Communicate • Experiment
+    <div>
+        © <span id="year"></span>
+        HAM Corner by VU33CM
+    </div>
+
+    <div style="margin-top:8px;">
+        Amateur Radio • People • Technology • Community • Service
+    </div>
 
 </footer>
 
 
-
-<!-- =====================================================
-     QSL JAVASCRIPT
-===================================================== -->
-
 <script>
 
-
-/* =====================================================
-   TEMPLATE
-===================================================== */
-
-const canvas =
-    document.getElementById("qslCanvas");
-
-const ctx =
-    canvas.getContext("2d");
+/* =========================================================
+   HAM CORNER QSL CARD GENERATOR
+   ========================================================= */
 
 
-const template =
-    new Image();
+/* ================= ELEMENTS ================= */
+
+const canvas = document.getElementById("qslCanvas");
+
+const ctx = canvas.getContext("2d");
+
+const TEMPLATE = "qsl-template.png";
 
 
-template.src =
-    "qsl-template.png";
+/* ================= TEMPLATE IMAGE ================= */
+
+const templateImage = new Image();
+
+templateImage.src = TEMPLATE;
 
 
-/* =====================================================
-   DEFAULT DATE
-===================================================== */
+/* =========================================================
+   CLEAR ALL FORM DATA
+   =========================================================
 
-function setToday(){
+   IMPORTANT:
+   This function intentionally clears EVERY field.
 
-    const d =
-        new Date();
+   It is called on:
+   - normal page loading
+   - browser refresh
+   - browser back/forward cache restoration
 
-    const year =
-        d.getUTCFullYear();
+   This prevents previous QSL entries from appearing again.
+   ========================================================= */
 
-    const month =
-        String(
-            d.getUTCMonth() + 1
-        ).padStart(2,"0");
+function clearQSLFields() {
 
-    const day =
-        String(
-            d.getUTCDate()
-        ).padStart(2,"0");
+    const fields = [
 
-    document.getElementById("date").value =
-        year + "-" + month + "-" + day;
+        "callsign",
+        "toRadio",
+        "date",
+        "time",
+        "frequency",
+        "rstSent",
+        "rstReceived",
+        "power",
+        "antenna",
+        "propagation",
+        "qslVia",
+        "remarks"
+
+    ];
+
+
+    fields.forEach(function(id) {
+
+        const element = document.getElementById(id);
+
+        if (element) {
+            element.value = "";
+        }
+
+    });
+
+
+    /* Reset dropdown menus */
+
+    const band = document.getElementById("band");
+
+    if (band) {
+        band.selectedIndex = 0;
+    }
+
+
+    const mode = document.getElementById("mode");
+
+    if (mode) {
+        mode.selectedIndex = 0;
+    }
 
 }
 
 
-setToday();
+/* =========================================================
+   FORCE CLEAR WHEN PAGE IS OPENED
+   ========================================================= */
+
+window.addEventListener("pageshow", function() {
+
+    clearQSLFields();
+
+    /*
+       Draw the clean template again after clearing.
+    */
+
+    if (templateImage.complete) {
+        drawQSL();
+    }
+
+});
 
 
+window.addEventListener("load", function() {
 
-/* =====================================================
-   GET VALUE
-===================================================== */
+    clearQSLFields();
 
-function value(id){
+    drawQSL();
 
-    return document
-        .getElementById(id)
-        .value
-        .trim();
-
-}
+});
 
 
+/* =========================================================
+   ALSO CLEAR WHEN DOM IS READY
+   ========================================================= */
 
-/* =====================================================
-   DATE FORMAT
-===================================================== */
+document.addEventListener("DOMContentLoaded", function() {
 
-function formatDate(){
+    clearQSLFields();
 
-    const v =
-        value("date");
+});
 
-    if(!v){
+
+/* =========================================================
+   GET FIELD VALUE
+   ========================================================= */
+
+function value(id) {
+
+    const element = document.getElementById(id);
+
+    if (!element) {
         return "";
     }
 
-    const p =
-        v.split("-");
-
-    if(p.length !== 3){
-        return v;
-    }
-
-    return p[2] +
-           " " +
-           getMonthName(p[1]) +
-           " " +
-           p[0];
+    return element.value.trim();
 
 }
 
 
-function getMonthName(month){
+/* =========================================================
+   DATE FORMAT
+   ========================================================= */
+
+function formatDate() {
+
+    const date = value("date");
+
+    if (!date) {
+        return "";
+    }
+
+    const parts = date.split("-");
+
+    if (parts.length !== 3) {
+        return date;
+    }
+
+    const year = parts[0];
+
+    const month = getMonthName(
+        parseInt(parts[1], 10)
+    );
+
+    const day = parts[2];
+
+    return day + " " + month + " " + year;
+
+}
+
+
+function getMonthName(month) {
 
     const months = [
 
@@ -848,414 +1228,340 @@ function getMonthName(month){
 
     ];
 
-    return months[
-        parseInt(month,10) - 1
-    ];
+    return months[month - 1] || "";
 
 }
 
 
-
-/* =====================================================
+/* =========================================================
    TIME FORMAT
-===================================================== */
+   ========================================================= */
 
-function formatTime(){
+function formatTime() {
 
-    const v =
-        value("time");
+    const time = value("time");
 
-    if(!v){
+    if (!time) {
         return "";
     }
 
-    const p =
-        v.split(":");
-
-    let hour =
-        parseInt(p[0],10);
-
-    const minute =
-        p[1];
-
-    const suffix =
-        hour >= 12 ? "PM" : "AM";
-
-    hour =
-        hour % 12;
-
-    if(hour === 0){
-        hour = 12;
-    }
-
-    return String(hour).padStart(2,"0")
-        + ":" +
-        minute +
-        " " +
-        suffix;
+    return time;
 
 }
 
 
+/* =========================================================
+   FONT FITTING
+   =========================================================
 
-/* =====================================================
-   FONT FIT
-===================================================== */
+   Reduces font size when long text is entered.
+   ========================================================= */
 
 function fitFont(
     text,
     maxWidth,
-    startingSize
-){
+    startingSize,
+    minSize
+) {
 
-    let size =
-        startingSize;
+    let size = startingSize;
 
-
-    while(size > 12){
-
-        ctx.font =
-            "bold " +
-            size +
-            "px Arial";
-
-
-        if(
-            ctx.measureText(text).width
-            <= maxWidth
-        ){
-
-            break;
-
-        }
-
+    while (
+        size > minSize &&
+        ctx.measureText(text).width > maxWidth
+    ) {
 
         size -= 1;
 
-    }
+        ctx.font =
+            "700 " +
+            size +
+            "px Arial";
 
+    }
 
     return size;
 
 }
 
 
-
-/* =====================================================
-   DRAW CENTER TEXT
-===================================================== */
+/* =========================================================
+   DRAW TEXT
+   ========================================================= */
 
 function drawText(
     text,
     x,
     y,
     maxWidth,
-    fontSize
-){
+    startingSize
+) {
 
-    if(!text){
+    if (!text) {
         return;
     }
 
 
-    text =
-        String(text);
-
-
-    const size =
-        fitFont(
-            text,
-            maxWidth,
-            fontSize
-        );
-
-
-    ctx.save();
+    let fontSize = startingSize;
 
 
     ctx.font =
-        "bold " +
-        size +
+        "700 " +
+        fontSize +
         "px Arial";
 
 
-    ctx.fillStyle =
-        "#07182f";
+    fontSize = fitFont(
+        text,
+        maxWidth,
+        startingSize,
+        12
+    );
 
 
-    ctx.textAlign =
-        "center";
+    ctx.font =
+        "700 " +
+        fontSize +
+        "px Arial";
 
 
-    ctx.textBaseline =
-        "middle";
+    ctx.fillStyle = "#101b2b";
+
+    ctx.textAlign = "center";
+
+    ctx.textBaseline = "middle";
 
 
     ctx.fillText(
         text,
         x,
-        y
+        y,
+        maxWidth
     );
-
-
-    ctx.restore();
 
 }
 
 
-
-/* =====================================================
+/* =========================================================
    DRAW CALLSIGN
-===================================================== */
+   ========================================================= */
 
-function drawCallsign(){
+function drawCallsign() {
 
     const callsign =
-        value("callsign")
-        .toUpperCase();
+        value("callsign").toUpperCase();
 
 
-    /*
-    TEMPLATE CALLSIGN BOX:
-
-    X = 395 → 1145
-    Y = 230 → 327
-
-    Centre:
-    X = 770
-    Y = 278
-    */
-
-
-    if(!callsign){
+    if (!callsign) {
         return;
     }
 
 
-    const x =
-        770;
-
-    const y =
-        278;
-
-
-    const maxWidth =
-        680;
-
-
-    const fontSize =
-        fitFont(
-            callsign,
-            maxWidth,
-            82
-        );
-
-
-    ctx.save();
+    let fontSize = 72;
 
 
     ctx.font =
-        "bold " +
+        "900 " +
         fontSize +
         "px Arial";
 
 
-    ctx.fillStyle =
-        "#07182f";
-
-
-    ctx.textAlign =
-        "center";
-
-
-    ctx.textBaseline =
-        "middle";
-
-
-    ctx.fillText(
+    fontSize = fitFont(
         callsign,
-        x,
-        y
+        650,
+        72,
+        30
     );
 
 
-    ctx.restore();
+    ctx.font =
+        "900 " +
+        fontSize +
+        "px Arial";
+
+
+    ctx.fillStyle = "#101b2b";
+
+    ctx.textAlign = "center";
+
+    ctx.textBaseline = "middle";
+
+
+    /*
+       Callsign field center
+       based on 1536 × 1024 template.
+    */
+
+    ctx.fillText(
+        callsign,
+        770,
+        278,
+        650
+    );
 
 }
 
 
-
-/* =====================================================
+/* =========================================================
    DRAW REMARKS
-===================================================== */
+   ========================================================= */
 
-function drawRemarks(){
+function drawRemarks() {
 
-    const text =
-        value("remarks");
+    const remarks = value("remarks");
 
-
-    if(!text){
+    if (!remarks) {
         return;
     }
 
 
-    ctx.save();
+    const maxWidth = 1410;
 
+    const startX = 50;
+
+    const startY = 720;
+
+    const fontSize = 24;
 
     ctx.font =
-        "bold 25px Arial";
+        "600 " +
+        fontSize +
+        "px Arial";
 
+    ctx.fillStyle = "#101b2b";
 
-    ctx.fillStyle =
-        "#07182f";
+    ctx.textAlign = "left";
 
-
-    ctx.textAlign =
-        "left";
-
-
-    ctx.textBaseline =
-        "middle";
+    ctx.textBaseline = "middle";
 
 
     /*
-    REMARKS BOX:
-
-    X = 29 → 1508
-    Y = 674 → 781
-
-    Put text safely inside box.
+       Simple word wrapping.
     */
 
-
-    const maxWidth =
-        1380;
-
-
     const words =
-        text.split(/\s+/);
+        remarks.split(/\s+/);
+
+    let line = "";
+
+    let y = startY;
 
 
-    let line =
-        "";
+    words.forEach(function(word) {
 
-    const lines =
-        [];
+        const testLine =
+            line +
+            (line ? " " : "") +
+            word;
 
 
-    words.forEach(function(word){
+        const width =
+            ctx.measureText(testLine).width;
 
-        const test =
+
+        if (
+            width > maxWidth &&
             line
-            ? line + " " + word
-            : word;
+        ) {
 
-
-        if(
-            ctx.measureText(test).width
-            > maxWidth
-        ){
-
-            if(line){
-                lines.push(line);
-            }
+            ctx.fillText(
+                line,
+                startX,
+                y
+            );
 
             line = word;
 
-        }else{
+            y += 30;
 
-            line = test;
+        } else {
+
+            line = testLine;
 
         }
 
     });
 
 
-    if(line){
-        lines.push(line);
-    }
-
-
-    lines
-    .slice(0,3)
-    .forEach(function(item,index){
+    if (line) {
 
         ctx.fillText(
-            item,
-            50,
-            720 + (index * 30)
+            line,
+            startX,
+            y
         );
 
-    });
-
-
-    ctx.restore();
+    }
 
 }
 
 
+/* =========================================================
+   DRAW QSL CARD
+   ========================================================= */
 
-/* =====================================================
-   DRAW QSL
-===================================================== */
+function drawQSL() {
 
-function drawQSL(){
+    /*
+       If template is not loaded yet,
+       wait for it.
+    */
 
-    if(!template.complete){
+    if (!templateImage.complete) {
         return;
     }
 
 
-    /*
-    ALWAYS START WITH A CLEAN TEMPLATE.
-    This prevents old text from remaining
-    when fields are changed.
-    */
+    if (
+        templateImage.naturalWidth === 0
+    ) {
+        return;
+    }
 
+
+    /* -----------------------------------------
+       ALWAYS START WITH CLEAN TEMPLATE
+       ----------------------------------------- */
 
     ctx.clearRect(
         0,
         0,
-        1536,
-        1024
+        canvas.width,
+        canvas.height
     );
 
 
     ctx.drawImage(
-        template,
+        templateImage,
         0,
         0,
-        1536,
-        1024
+        canvas.width,
+        canvas.height
     );
 
 
-
-    /* =================================================
+    /* -----------------------------------------
        CALLSIGN
-    ================================================= */
+       ----------------------------------------- */
 
     drawCallsign();
 
 
-
-    /* =================================================
+    /* -----------------------------------------
        FIRST ROW
+       -----------------------------------------
 
-       Actual template coordinates:
+       Template coordinates:
 
-       TO RADIO       centre X ≈ 150
-       DATE           centre X ≈ 395
-       TIME           centre X ≈ 639
-       BAND           centre X ≈ 886
-       FREQUENCY      centre X ≈ 1139
-       MODE           centre X ≈ 1388
+       TO RADIO       x 150
+       DATE           x 395
+       TIME           x 639
+       BAND           x 886
+       FREQUENCY      x 1139
+       MODE           x 1388
 
-       Value area:
-       Y ≈ 510
-    ================================================= */
-
+       Value baseline / center ≈ y 510
+       ----------------------------------------- */
 
     drawText(
         value("toRadio").toUpperCase(),
@@ -1311,21 +1617,19 @@ function drawQSL(){
     );
 
 
-
-    /* =================================================
+    /* -----------------------------------------
        SECOND ROW
+       -----------------------------------------
 
-       RST SENT       centre X ≈ 144
-       RST RECEIVED   centre X ≈ 382
-       POWER          centre X ≈ 625
-       ANTENNA        centre X ≈ 876
-       PROPAGATION    centre X ≈ 1138
-       QSL VIA        centre X ≈ 1389
+       RST SENT        x 144
+       RST RECEIVED    x 382
+       POWER           x 625
+       ANTENNA         x 876
+       PROPAGATION     x 1138
+       QSL VIA         x 1389
 
-       Value area:
-       Y ≈ 630
-    ================================================= */
-
+       Value center ≈ y 630
+       ----------------------------------------- */
 
     drawText(
         value("rstSent"),
@@ -1381,88 +1685,62 @@ function drawQSL(){
     );
 
 
-
-    /* =================================================
+    /* -----------------------------------------
        REMARKS
-    ================================================= */
+       ----------------------------------------- */
 
     drawRemarks();
 
 }
 
 
-
-/* =====================================================
+/* =========================================================
    TEMPLATE LOAD
-===================================================== */
+   ========================================================= */
 
-template.onload =
-    function(){
+templateImage.onload = function() {
 
-        drawQSL();
+    /*
+       Important:
+       The fields have already been cleared.
+    */
 
-    };
+    drawQSL();
+
+};
 
 
-
-/* =====================================================
+/* =========================================================
    TEMPLATE ERROR
-===================================================== */
+   ========================================================= */
 
-template.onerror =
-    function(){
+templateImage.onerror = function() {
 
-        ctx.fillStyle =
-            "#071522";
+    console.error(
+        "Could not load qsl-template.png"
+    );
 
-
-        ctx.fillRect(
-            0,
-            0,
-            1536,
-            1024
-        );
+};
 
 
-        ctx.fillStyle =
-            "#ffffff";
+/* =========================================================
+   LIVE PREVIEW
+   ========================================================= */
+
+const allFields = document.querySelectorAll(
+    "#qslForm input, #qslForm select, #qslForm textarea"
+);
 
 
-        ctx.font =
-            "bold 40px Arial";
+allFields.forEach(function(field) {
 
-
-        ctx.textAlign =
-            "center";
-
-
-        ctx.fillText(
-            "ERROR: qsl-template.png not found",
-            768,
-            512
-        );
-
-    };
-
-
-
-/* =====================================================
-   LIVE UPDATE
-===================================================== */
-
-document
-.querySelectorAll(
-    "input, select, textarea"
-)
-.forEach(function(element){
-
-    element.addEventListener(
+    field.addEventListener(
         "input",
         drawQSL
     );
 
 
-    element.addEventListener(
+    field.addEventListener(
         "change",
         drawQSL
     );
@@ -1470,124 +1748,117 @@ document
 });
 
 
-
-/* =====================================================
+/* =========================================================
    DOWNLOAD JPG
-===================================================== */
+   ========================================================= */
 
-function downloadQSL(){
-
-    const callsign =
-        value("callsign")
-        .toUpperCase();
+document
+    .getElementById("downloadButton")
+    .addEventListener("click", function() {
 
 
-    if(!callsign){
-
-        alert(
-            "Please enter your callsign first."
-        );
-
-        document
-            .getElementById("callsign")
-            .focus();
-
-        return;
-    }
+        const callsign =
+            value("callsign")
+            .toUpperCase()
+            .replace(
+                /[^A-Z0-9]/g,
+                ""
+            );
 
 
-    /*
-    Redraw before downloading.
-    */
+        if (!callsign) {
 
-    drawQSL();
+            alert(
+                "Please enter your callsign before downloading the QSL card."
+            );
 
+            document
+                .getElementById("callsign")
+                .focus();
 
-    const image =
-        canvas.toDataURL(
-            "image/jpeg",
-            0.95
-        );
+            return;
 
-
-    const link =
-        document.createElement("a");
+        }
 
 
-    link.href =
-        image;
+        /*
+           Make sure the latest information
+           is drawn before downloading.
+        */
+
+        drawQSL();
 
 
-    link.download =
-        "QSL-" +
-        callsign +
-        ".jpg";
+        /*
+           JPG quality = 0.95
+        */
+
+        const jpg =
+            canvas.toDataURL(
+                "image/jpeg",
+                0.95
+            );
 
 
-    document.body.appendChild(link);
-
-    link.click();
-
-    document.body.removeChild(link);
-
-}
+        const link =
+            document.createElement("a");
 
 
+        link.download =
+            "QSL-" +
+            callsign +
+            ".jpg";
 
-/* =====================================================
-   CLEAR FORM
-===================================================== */
 
-function clearForm(){
+        link.href = jpg;
 
-    document.getElementById("callsign").value =
-        "";
 
-    document.getElementById("toRadio").value =
-        "";
+        document.body.appendChild(link);
 
-    document.getElementById("frequency").value =
-        "";
+        link.click();
 
-    document.getElementById("band").value =
-        "";
+        document.body.removeChild(link);
 
-    document.getElementById("mode").value =
-        "";
+    });
 
-    document.getElementById("rstSent").value =
-        "59";
 
-    document.getElementById("rstReceived").value =
-        "59";
+/* =========================================================
+   CLEAR FORM BUTTON
+   ========================================================= */
 
-    document.getElementById("power").value =
-        "50";
+document
+    .getElementById("clearButton")
+    .addEventListener("click", function() {
 
-    document.getElementById("antenna").value =
-        "";
+        clearQSLFields();
 
-    document.getElementById("propagation").value =
-        "";
+        drawQSL();
 
-    document.getElementById("qslVia").value =
-        "";
+    });
 
-    document.getElementById("remarks").value =
-        "";
 
-    document.getElementById("time").value =
-        "";
+/* =========================================================
+   YEAR
+   ========================================================= */
 
-    setToday();
+document.getElementById("year").textContent =
+    new Date().getFullYear();
 
-    drawQSL();
 
-}
+/* =========================================================
+   EXTRA BROWSER PROTECTION
+   =========================================================
 
+   Some browsers can restore form values from their
+   history / back-forward cache.
+
+   pageshow above handles this situation.
+
+   We intentionally DO NOT use localStorage.clear()
+   because that could erase unrelated website data.
+   ========================================================= */
 
 </script>
 
 </body>
-
 </html>
