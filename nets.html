@@ -1,103 +1,2034 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HAM Corner by VU33CM – Indian Amateur Radio</title>
-  <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Amateur Radio Nets in India | HAM Corner by VU33CM</title>
+
+<meta name="description"
+content="Learn what amateur radio nets are, how to check in, net etiquette, operating procedure, and current HF, VHF, UHF, DMR and satellite nets in India.">
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+
+/* =========================================================
+   HAM CORNER — NETS PAGE
+   ========================================================= */
+
+:root {
+    --net-bg: #06111f;
+    --net-bg2: #091a2d;
+    --net-card: rgba(14, 35, 57, 0.78);
+    --net-card2: rgba(10, 28, 47, 0.92);
+    --net-cyan: #19dfff;
+    --net-blue: #2388ff;
+    --net-text: #eef8ff;
+    --net-muted: #a8bfd1;
+    --net-border: rgba(25,223,255,.18);
+    --net-green: #46e6a3;
+    --net-orange: #ffbd68;
+}
+
+body {
+    background:
+        radial-gradient(circle at 15% 10%, rgba(25,223,255,.08), transparent 30%),
+        radial-gradient(circle at 85% 25%, rgba(35,136,255,.08), transparent 28%),
+        var(--net-bg);
+    color: var(--net-text);
+}
+
+/* Main page */
+
+.nets-page {
+    max-width: 1220px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+}
+
+/* Hero */
+
+.nets-hero {
+    position: relative;
+    overflow: hidden;
+    padding: 72px 50px;
+    border-radius: 30px;
+    margin-bottom: 32px;
+    background:
+        linear-gradient(135deg,
+            rgba(10,34,58,.97),
+            rgba(5,17,31,.97));
+    border: 1px solid var(--net-border);
+    box-shadow: 0 25px 70px rgba(0,0,0,.35);
+}
+
+.nets-hero::before {
+    content: "";
+    position: absolute;
+    width: 360px;
+    height: 360px;
+    right: -120px;
+    top: -150px;
+    border-radius: 50%;
+    background: rgba(25,223,255,.10);
+    filter: blur(5px);
+}
+
+.nets-hero::after {
+    content: "";
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    left: -120px;
+    bottom: -170px;
+    border-radius: 50%;
+    background: rgba(35,136,255,.12);
+}
+
+.nets-eyebrow {
+    position: relative;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(25,223,255,.10);
+    border: 1px solid rgba(25,223,255,.22);
+    color: var(--net-cyan);
+    font-size: .85rem;
+    font-weight: 800;
+    letter-spacing: .7px;
+    text-transform: uppercase;
+}
+
+.nets-hero h1 {
+    position: relative;
+    z-index: 2;
+    max-width: 850px;
+    margin: 20px 0 18px;
+    font-size: clamp(42px, 6vw, 68px);
+    line-height: 1.02;
+    letter-spacing: -2px;
+    font-weight: 900;
+}
+
+.nets-hero h1 span {
+    color: var(--net-cyan);
+}
+
+.nets-hero p {
+    position: relative;
+    z-index: 2;
+    max-width: 820px;
+    color: var(--net-muted);
+    font-size: 1.15rem;
+    line-height: 1.75;
+    margin: 0;
+}
+
+.hero-status {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 28px;
+}
+
+.status-pill {
+    padding: 9px 14px;
+    border-radius: 999px;
+    font-size: .84rem;
+    font-weight: 750;
+    background: rgba(255,255,255,.045);
+    border: 1px solid rgba(255,255,255,.10);
+    color: #d9edf8;
+}
+
+.status-pill.live {
+    color: var(--net-green);
+    border-color: rgba(70,230,163,.25);
+    background: rgba(70,230,163,.07);
+}
+
+/* Intro cards */
+
+.net-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin: 28px 0 55px;
+}
+
+.net-card {
+    background: var(--net-card);
+    border: 1px solid var(--net-border);
+    border-radius: 22px;
+    padding: 26px;
+    box-shadow: 0 16px 45px rgba(0,0,0,.18);
+    transition: transform .25s ease, border-color .25s ease;
+}
+
+.net-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(25,223,255,.35);
+}
+
+.net-icon {
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    border-radius: 15px;
+    margin-bottom: 18px;
+    background: rgba(25,223,255,.10);
+    color: var(--net-cyan);
+    font-size: 1.45rem;
+}
+
+.net-card h3 {
+    font-size: 1.25rem;
+    margin: 0 0 10px;
+    font-weight: 850;
+}
+
+.net-card p {
+    margin: 0;
+    color: var(--net-muted);
+    line-height: 1.7;
+}
+
+/* Section */
+
+.net-section {
+    margin: 65px 0;
+}
+
+.net-section-header {
+    max-width: 820px;
+    margin-bottom: 25px;
+}
+
+.net-section-header .label {
+    color: var(--net-cyan);
+    font-size: .82rem;
+    font-weight: 850;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.net-section-header h2 {
+    margin: 8px 0 12px;
+    font-size: clamp(30px, 4vw, 42px);
+    line-height: 1.12;
+    font-weight: 900;
+    letter-spacing: -.7px;
+}
+
+.net-section-header p {
+    color: var(--net-muted);
+    line-height: 1.75;
+    font-size: 1.02rem;
+}
+
+/* Explain */
+
+.explain-box {
+    padding: 34px;
+    border-radius: 25px;
+    background:
+        linear-gradient(135deg,
+            rgba(16,47,72,.85),
+            rgba(8,24,40,.95));
+    border: 1px solid var(--net-border);
+}
+
+.explain-box p {
+    color: #c4d7e4;
+    line-height: 1.8;
+}
+
+.explain-box strong {
+    color: white;
+}
+
+/* Process */
+
+.process {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.process-step {
+    position: relative;
+    padding: 22px 18px;
+    background: var(--net-card2);
+    border: 1px solid var(--net-border);
+    border-radius: 20px;
+}
+
+.process-number {
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: linear-gradient(135deg,var(--net-cyan),var(--net-blue));
+    color: #03101c;
+    font-weight: 900;
+    margin-bottom: 15px;
+}
+
+.process-step h3 {
+    font-size: 1rem;
+    margin: 0 0 8px;
+}
+
+.process-step p {
+    color: var(--net-muted);
+    font-size: .88rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Etiquette */
+
+.etiquette {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.etiquette-box {
+    padding: 26px;
+    border-radius: 22px;
+    background: var(--net-card);
+    border: 1px solid var(--net-border);
+}
+
+.etiquette-box h3 {
+    margin: 0 0 15px;
+    font-size: 1.15rem;
+}
+
+.etiquette-box ul {
+    padding-left: 20px;
+    margin: 0;
+}
+
+.etiquette-box li {
+    margin: 10px 0;
+    color: var(--net-muted);
+    line-height: 1.55;
+}
+
+.good {
+    border-color: rgba(70,230,163,.22);
+}
+
+.good h3 {
+    color: var(--net-green);
+}
+
+.avoid {
+    border-color: rgba(255,189,104,.22);
+}
+
+.avoid h3 {
+    color: var(--net-orange);
+}
+
+/* Community */
+
+.community-flow {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.community-item {
+    padding: 25px;
+    border-radius: 21px;
+    text-align: center;
+    background: var(--net-card);
+    border: 1px solid var(--net-border);
+}
+
+.community-item .big {
+    display: block;
+    font-size: 2rem;
+    margin-bottom: 12px;
+}
+
+.community-item h3 {
+    margin: 0 0 8px;
+    font-size: 1.05rem;
+}
+
+.community-item p {
+    margin: 0;
+    color: var(--net-muted);
+    font-size: .9rem;
+    line-height: 1.6;
+}
+
+/* Data area */
+
+.data-intro {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 22px 24px;
+    border-radius: 20px;
+    background: rgba(25,223,255,.055);
+    border: 1px solid rgba(25,223,255,.15);
+}
+
+.data-intro strong {
+    color: var(--net-cyan);
+}
+
+.data-intro span {
+    color: var(--net-muted);
+    font-size: .9rem;
+}
+
+.data-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.data-links a {
+    display: inline-block;
+    padding: 9px 13px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--net-cyan);
+    background: rgba(25,223,255,.07);
+    border: 1px solid rgba(25,223,255,.18);
+    font-size: .82rem;
+    font-weight: 750;
+}
+
+.data-links a:hover {
+    background: rgba(25,223,255,.13);
+}
+
+/* Tabs */
+
+.net-tabs {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+}
+
+.net-tab {
+    border: 1px solid rgba(255,255,255,.12);
+    background: rgba(255,255,255,.035);
+    color: #c8dbe7;
+    padding: 11px 16px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: .88rem;
+}
+
+.net-tab.active {
+    background: linear-gradient(135deg,var(--net-cyan),var(--net-blue));
+    color: #03111c;
+    border-color: transparent;
+}
+
+/* Tables */
+
+.net-table-box {
+    display: none;
+    overflow: hidden;
+    border-radius: 22px;
+    border: 1px solid var(--net-border);
+    background: var(--net-card2);
+}
+
+.net-table-box.active {
+    display: block;
+}
+
+.table-scroll {
+    overflow-x: auto;
+}
+
+.net-table {
+    width: 100%;
+    min-width: 780px;
+    border-collapse: collapse;
+}
+
+.net-table th {
+    text-align: left;
+    padding: 15px 14px;
+    background: rgba(25,223,255,.075);
+    color: var(--net-cyan);
+    font-size: .78rem;
+    text-transform: uppercase;
+    letter-spacing: .6px;
+    white-space: nowrap;
+}
+
+.net-table td {
+    padding: 14px;
+    border-top: 1px solid rgba(255,255,255,.065);
+    color: #d8e8f2;
+    font-size: .88rem;
+    vertical-align: top;
+}
+
+.net-table tr:hover td {
+    background: rgba(25,223,255,.025);
+}
+
+.net-time {
+    white-space: nowrap;
+    color: white !important;
+    font-weight: 800;
+}
+
+.net-frequency {
+    color: var(--net-cyan) !important;
+    font-weight: 750;
+    white-space: nowrap;
+}
+
+.net-mode {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 7px;
+    background: rgba(255,255,255,.06);
+    color: #d9edf8;
+    font-size: .75rem;
+    font-weight: 800;
+}
+
+/* Data note */
+
+.data-note {
+    margin-top: 16px;
+    color: #8faabc;
+    font-size: .84rem;
+    line-height: 1.65;
+}
+
+/* Beginner */
+
+.beginner-path {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.path-card {
+    padding: 27px;
+    border-radius: 22px;
+    background: var(--net-card);
+    border: 1px solid var(--net-border);
+}
+
+.path-card span {
+    display: inline-block;
+    color: var(--net-cyan);
+    font-size: .78rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+
+.path-card h3 {
+    margin: 0 0 10px;
+    font-size: 1.1rem;
+}
+
+.path-card p {
+    margin: 0;
+    color: var(--net-muted);
+    font-size: .9rem;
+    line-height: 1.65;
+}
+
+/* CTA */
+
+.nets-cta {
+    margin-top: 70px;
+    padding: 48px 40px;
+    text-align: center;
+    border-radius: 28px;
+    background:
+        radial-gradient(circle at 50% 0%, rgba(25,223,255,.18), transparent 50%),
+        linear-gradient(135deg,#0c2942,#071523);
+    border: 1px solid var(--net-border);
+}
+
+.nets-cta h2 {
+    margin: 0 0 14px;
+    font-size: clamp(30px,4vw,44px);
+    font-weight: 900;
+}
+
+.nets-cta p {
+    max-width: 720px;
+    margin: 0 auto 24px;
+    color: var(--net-muted);
+    line-height: 1.7;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 13px 20px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 850;
+    background: linear-gradient(135deg,var(--net-cyan),var(--net-blue));
+    color: #03111c;
+}
+
+.cta-button.secondary {
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.12);
+    color: white;
+}
+
+/* Source box */
+
+.sources {
+    margin-top: 35px;
+    padding: 25px;
+    border-radius: 20px;
+    background: rgba(255,255,255,.025);
+    border: 1px solid rgba(255,255,255,.08);
+}
+
+.sources h3 {
+    margin: 0 0 12px;
+}
+
+.sources p {
+    color: var(--net-muted);
+    font-size: .88rem;
+    line-height: 1.7;
+}
+
+.sources a {
+    color: var(--net-cyan);
+}
+
+/* Responsive */
+
+@media(max-width:1000px) {
+
+    .net-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .process {
+        grid-template-columns: repeat(3,1fr);
+    }
+
+    .community-flow {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .beginner-path {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media(max-width:700px) {
+
+    .nets-page {
+        padding: 25px 14px 60px;
+    }
+
+    .nets-hero {
+        padding: 45px 25px;
+        border-radius: 24px;
+    }
+
+    .nets-hero h1 {
+        font-size: 40px;
+        letter-spacing: -1.2px;
+    }
+
+    .nets-hero p {
+        font-size: 1rem;
+    }
+
+    .net-grid,
+    .etiquette,
+    .community-flow,
+    .beginner-path,
+    .process {
+        grid-template-columns: 1fr;
+    }
+
+    .net-section {
+        margin: 48px 0;
+    }
+
+    .explain-box {
+        padding: 25px;
+    }
+
+    .data-intro {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .net-table {
+        min-width: 760px;
+    }
+
+    .nets-cta {
+        padding: 38px 22px;
+    }
+}
+
+</style>
 </head>
+
 <body>
-  <header>
-    <div class="nav-container">
-      <a href="index.html" class="logo">
-        <div class="logo-icon">HC</div>
-        <div class="logo-text">
-          <h1>HAM Corner</h1>
-          <span>by VU33CM • Indian Amateur Radio</span>
+
+<!-- =========================================================
+     MAIN
+     ========================================================= -->
+
+<main class="nets-page">
+
+    <!-- HERO -->
+
+    <section class="nets-hero">
+
+        <div class="nets-eyebrow">
+            📡 Indian Amateur Radio Nets
         </div>
-      </a>
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="licensing.html">Get Licensed</a></li>
-          <li><a href="study.html">Study Material</a></li>
-          <li><a href="activities.html">Activities & Modes</a></li>
-          <li><a href="repeaters.html">Repeaters</a></li>
-          <li><a href="nets.html" class="active">Nets</a></li>
-          <li><a href="clubs.html">Clubs</a></li>
-          <li><a href="resources.html">Resources</a></li>
-          <li><a href="about.html">About</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
 
-  <main>
-    <h1 class="section-title">Ham Radio Nets in India</h1>
-    <p class="section-subtitle">Popular HF and VHF nets for check-ins, rag-chewing and emergency traffic. Timings are in IST and may vary.</p>
+        <h1>
+            The heartbeat of the
+            <span>amateur-radio community.</span>
+        </h1>
 
-    <div class="content-block">
-      <h2>Why Join Nets?</h2>
-      <ul>
-        <li>Mark your presence on air</li>
-        <li>Meet other operators and exchange information</li>
-        <li>Check propagation and equipment performance</li>
-        <li>Practice operating procedures</li>
-        <li>Pass or receive messages (including emergency traffic)</li>
-      </ul>
-    </div>
+        <p>
+            A radio net is more than a list of callsigns and frequencies.
+            It is a scheduled meeting on the air where radio amateurs
+            check in, exchange information, practise operating skills,
+            test their stations, make friends and keep the community connected.
+        </p>
 
-    <div class="content-block">
-      <h2>Selected HF Nets (40 metres)</h2>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Time (IST)</th>
-              <th>Frequency</th>
-              <th>Net Name</th>
-              <th>Remarks</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>07:00 – 08:30</td><td>7150 LSB</td><td>Belgaum Net</td><td>Popular morning net</td></tr>
-            <tr><td>07:20 – 08:35</td><td>7080 LSB</td><td>Charminar Net</td><td>Kerala / South India</td></tr>
-            <tr><td>07:30 – 08:30</td><td>7123.45 LSB</td><td>Various rag-chew nets</td><td>—</td></tr>
-            <tr><td>08:00 – 08:30</td><td>7085 LSB</td><td>Lake City / Memorial nets</td><td>—</td></tr>
-            <tr><td>16:30 – 17:00</td><td>7088 LSB</td><td>Silicon City Net</td><td>Bengaluru based</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+        <div class="hero-status">
+            <span class="status-pill live">
+                ● Current data checked 12 September 2026
+            </span>
 
-    <div class="content-block">
-      <h2>Selected VHF Nets</h2>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Time (IST)</th>
-              <th>Location</th>
-              <th>Repeater / Freq</th>
-              <th>Net Name</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>06:30 – 07:30</td><td>Bengaluru</td><td>VU2IU 145.800 –</td><td>Morning Net (Kho-Khro-Kho)</td></tr>
-            <tr><td>07:00 – 07:30</td><td>Bengaluru</td><td>VU2TWO 145.650 –</td><td>R3 Morning Net</td></tr>
-            <tr><td>08:00 – 08:30</td><td>Gandhinagar</td><td>VU2WDF 145.400 –</td><td>Good Morning Net</td></tr>
-            <tr><td>21:00 – 21:30</td><td>Delhi</td><td>VU2FUN / Simplex</td><td>Delhi VHF Net</td></tr>
-            <tr><td>Evening</td><td>Various cities</td><td>Local repeaters</td><td>City nets (check local groups)</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p style="margin-top:1rem;font-size:0.9rem;">Detailed and frequently updated lists are maintained by VU2JOS at qsl.net/vu2jos (VHF.htm / HF_Nets.htm).</p>
-    </div>
-  </main>
+            <span class="status-pill">
+                Times shown in IST
+            </span>
 
-  <footer>
-    <p class="callsign">HAM Corner by VU33CM</p>
-    <p>by VU33CM • Indian Amateur Radio</p>
-  </footer>
+            <span class="status-pill">
+                India-wide listings
+            </span>
+        </div>
+
+    </section>
+
+
+    <!-- WHAT IS A NET -->
+
+    <section class="net-section">
+
+        <div class="net-section-header">
+
+            <div class="label">Start here</div>
+
+            <h2>
+                What exactly is a radio net?
+            </h2>
+
+            <p>
+                If you are completely new to amateur radio, think of a net
+                as a scheduled group conversation on radio. One operator,
+                called the Net Control Station (NCS), coordinates the
+                conversation and gives other stations an opportunity to check in.
+            </p>
+
+        </div>
+
+        <div class="explain-box">
+
+            <p>
+                A net may be a relaxed morning gathering, a technical
+                discussion, a regional community net, an emergency-communication
+                exercise, a digital-radio meeting or a specialised activity.
+                Some nets are highly organised; others are informal.
+            </p>
+
+            <p>
+                The important idea is simple:
+                <strong>
+                    stations meet at an agreed time and frequency or system,
+                    listen first, and take turns communicating.
+                </strong>
+            </p>
+
+            <p>
+                In India, current listings cover HF, VHF, UHF, DMR and
+                satellite activity. The published schedules include nets
+                from many states and cities, demonstrating how widely the
+                activity is spread across the amateur-radio community.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- WHY NETS -->
+
+    <section class="net-section">
+
+        <div class="net-section-header">
+
+            <div class="label">Why it matters</div>
+
+            <h2>
+                Why do radio amateurs check into nets?
+            </h2>
+
+            <p>
+                Nets combine social communication with practical radio skills.
+                A few minutes on a net can tell an operator a surprising amount
+                about propagation, equipment and the local radio community.
+            </p>
+
+        </div>
+
+        <div class="net-grid">
+
+            <div class="net-card">
+                <div class="net-icon">👋</div>
+                <h3>Mark your presence</h3>
+                <p>
+                    A regular check-in lets other operators know that you
+                    are active on the air and available to communicate.
+                </p>
+            </div>
+
+            <div class="net-card">
+                <div class="net-icon">🌐</div>
+                <h3>Build the community</h3>
+                <p>
+                    Nets bring operators together across cities, states
+                    and sometimes countries. Familiar callsigns gradually
+                    become familiar voices.
+                </p>
+            </div>
+
+            <div class="net-card">
+                <div class="net-icon">📶</div>
+                <h3>Study propagation</h3>
+                <p>
+                    Hearing which stations are getting through can provide
+                    useful real-world information about current propagation.
+                </p>
+            </div>
+
+            <div class="net-card">
+                <div class="net-icon">🔧</div>
+                <h3>Check your station</h3>
+                <p>
+                    Nets can help an operator notice problems with audio,
+                    antenna performance, modulation, signal strength or
+                    operating technique.
+                </p>
+            </div>
+
+            <div class="net-card">
+                <div class="net-icon">🎙️</div>
+                <h3>Improve operating skills</h3>
+                <p>
+                    Regular check-ins build confidence in calling,
+                    listening, identifying stations and following proper
+                    operating procedure.
+                </p>
+            </div>
+
+            <div class="net-card">
+                <div class="net-icon">🆘</div>
+                <h3>Support preparedness</h3>
+                <p>
+                    Well-practised operators are better prepared to
+                    communicate efficiently when organised emergency or
+                    public-service communications are required.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROCEDURE -->
+
+    <section class="net-section">
+
+        <div class="net-section-header">
+
+            <div class="label">Operating procedure</div>
+
+            <h2>
+                How do you check into a net?
+            </h2>
+
+            <p>
+                The process is simple. The most important rule is:
+                <strong>listen first.</strong>
+                Every net has its own rhythm and the Net Control Station
+                determines how stations are recognised.
+            </p>
+
+        </div>
+
+        <div class="process">
+
+            <div class="process-step">
+                <div class="process-number">1</div>
+                <h3>Find the net</h3>
+                <p>
+                    Confirm the day, time, frequency, repeater or digital
+                    system before transmitting.
+                </p>
+            </div>
+
+            <div class="process-step">
+                <div class="process-number">2</div>
+                <h3>Listen</h3>
+                <p>
+                    Listen for the NCS and understand the check-in
+                    procedure before you transmit.
+                </p>
+            </div>
+
+            <div class="process-step">
+                <div class="process-number">3</div>
+                <h3>Wait your turn</h3>
+                <p>
+                    Do not interrupt an ongoing exchange. Wait until
+                    the NCS requests additional check-ins.
+                </p>
+            </div>
+
+            <div class="process-step">
+                <div class="process-number">4</div>
+                <h3>Give your callsign</h3>
+                <p>
+                    Clearly state your callsign when invited by the
+                    Net Control Station.
+                </p>
+            </div>
+
+            <div class="process-step">
+                <div class="process-number">5</div>
+                <h3>Follow the net</h3>
+                <p>
+                    Keep your transmission concise and follow the
+                    instructions given by the NCS.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- WHAT TO SAY -->
+
+    <section class="net-section">
+
+        <div class="net-section-header">
+
+            <div class="label">Your first check-in</div>
+
+            <h2>
+                What should a beginner actually say?
+            </h2>
+
+            <p>
+                You do not need a long introduction. A simple, clear
+                callsign is often enough to start.
+            </p>
+
+        </div>
+
+        <div class="explain-box">
+
+            <p>
+                Suppose the NCS says:
+                <strong>
+                    “Any additional stations wishing to check in?”
+                </strong>
+            </p>
+
+            <p>
+                You can simply say your callsign clearly, for example:
+            </p>
+
+            <p style="
+                font-size:1.35rem;
+                font-weight:900;
+                color:#19dfff;
+                margin:20px 0;
+            ">
+                “VU33CM”
+            </p>
+
+            <p>
+                The NCS may acknowledge you and invite you to speak.
+                You can then give your name, location and a short message,
+                depending on the net's normal procedure.
+            </p>
+
+            <p>
+                If you are new, it is perfectly reasonable to say that you
+                are a first-time participant. Most community nets are an
+                excellent place to learn proper operating habits by listening.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ETIQUETTE -->
+
+    <section class="net-section">
+
+        <div class="net-section-header">
+
+            <div class="label">Good operating</div>
+
+            <h2>
+                Net etiquette: simple rules that make the airwaves better
+            </h2>
+
+        </div>
+
+        <div class="etiquette">
+
+            <div class="etiquette-box good">
+
+                <h3>✓ Do this</h3>
+
+                <ul>
+                    <li>Listen before transmitting.</li>
+                    <li>Use your complete callsign clearly.</li>
+                    <li>Keep transmissions reasonably short.</li>
+                    <li>Follow the NCS instructions.</li>
+                    <li>Leave space between transmissions.</li>
+                    <li>Be polite to new and experienced operators.</li>
+                    <li>Give useful information when requested.</li>
+                    <li>Move longer technical discussions away from a busy net when appropriate.</li>
+                </ul>
+
+            </div>
+
+            <div class="etiquette-box avoid">
+
+                <h3>⚠ Avoid this</h3>
+
+                <ul>
+                    <li>Do not transmit over another station.</li>
+                    <li>Do not repeatedly call without listening.</li>
+                    <li>Do not monopolise the net.</li>
+                    <li>Do not use the net frequency for unrelated arguments.</li>
+                    <li>Do not assume that an old frequency is still active.</li>
+                    <li>Do not ignore the NCS procedure.</li>
+                    <li>Do not treat published schedules as permanently fixed.</li>
+                    <li>Never transmit outside your authorised privileges.</li>
+                </ul>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- COMMUNITY -->
+
+    <section class="net-section">
+
+        <div class="net-section-header">
+
+            <div class="label">More than conversation</div>
+
+            <h2>
+                How nets make the amateur-radio community stronger
+            </h2>
+
+            <p>
+                A healthy net creates a regular meeting point for operators.
+                That regular contact has value far beyond casual conversation.
+            </p>
+
+        </div>
+
+        <div class="community-flow">
+
+            <div class="community-item">
+                <span class="big">🤝</span>
+                <h3>Relationships</h3>
+                <p>
+                    Operators become familiar with one another and build
+                    trust through regular on-air contact.
+                </p>
+            </div>
+
+            <div class="community-item">
+                <span class="big">📡</span>
+                <h3>Technical learning</h3>
+                <p>
+                    Operators exchange practical knowledge about antennas,
+                    radios, propagation and operating technique.
+                </p>
+            </div>
+
+            <div class="community-item">
+                <span class="big">🗺️</span>
+                <h3>Local awareness</h3>
+                <p>
+                    Nets can provide a regular communication point for
+                    local amateur-radio communities.
+                </p>
+            </div>
+
+            <div class="community-item">
+                <span class="big">🚨</span>
+                <h3>Preparedness</h3>
+                <p>
+                    Regular radio practice helps operators stay comfortable
+                    with disciplined communication procedures.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CURRENT DATA -->
+
+    <section class="net-section" id="current-nets">
+
+        <div class="net-section-header">
+
+            <div class="label">Live reference data</div>
+
+            <h2>
+                Current Amateur Radio Nets in India
+            </h2>
+
+            <p>
+                The following schedules are based on the current public
+                net compilations maintained by Jose Jacob, VU2JOS,
+                of the National Institute of Amateur Radio (NIAR).
+                The data was checked on <strong>12 September 2026</strong>.
+            </p>
+
+        </div>
+
+        <div class="data-intro">
+
+            <div>
+                <strong>⚠ Schedule information can change.</strong>
+                <br>
+                <span>
+                    The source notes that net controllers may change and
+                    ending times vary according to the number of check-ins.
+                    Some repeaters may also be temporarily off air.
+                </span>
+            </div>
+
+            <div class="data-links">
+
+                <a href="https://qsl.net/vu2jos/HF_Nets.htm"
+                   target="_blank"
+                   rel="noopener">
+                    Full HF List
+                </a>
+
+                <a href="https://qsl.net/vu2jos/VHF.htm"
+                   target="_blank"
+                   rel="noopener">
+                    Full VHF/UHF List
+                </a>
+
+                <a href="https://qsl.net/vu2jos/VHF1.htm"
+                   target="_blank"
+                   rel="noopener">
+                    Location-wise List
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- TABS -->
+
+        <div class="net-tabs">
+
+            <button class="net-tab active" data-target="hf">
+                HF Nets
+            </button>
+
+            <button class="net-tab" data-target="vhf">
+                VHF Nets
+            </button>
+
+            <button class="net-tab" data-target="uhf">
+                UHF / DMR
+            </button>
+
+            <button class="net-tab" data-target="sat">
+                Satellite
+            </button>
+
+        </div>
+
+
+        <!-- HF -->
+
+        <div class="net-table-box active" id="hf">
+
+            <div class="table-scroll">
+
+                <table class="net-table">
+
+                    <thead>
+                        <tr>
+                            <th>IST</th>
+                            <th>Frequency / Mode</th>
+                            <th>Net</th>
+                            <th>Area / Controllers</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td class="net-time">07:00–08:30</td>
+                            <td class="net-frequency">7150 kHz LSB</td>
+                            <td>Belgaum Net</td>
+                            <td>Karnataka and stations across India</td>
+                        </tr>
+
+                        <tr>
+                            <td class="net-time">07:15–07:30</td>
+                            <td class="net-frequency">3600 kHz LSB</td>
+                            <td>80 Meter Net</td>
+                            <td>Kozhikode, Kerala</td>
+                        </tr>
+
+                        <tr>
+                            <td class="net-time">07:10–07:40</td>
+                            <td class="net-frequency">7130 kHz LSB</td>
+                            <td>Rag Chewers Net</td>
+                            <td>Kolhapur, Maharashtra</td>
+                        </tr>
+
+                        <tr>
+                            <td class="net-time">07:20–08:35</td>
+                            <td class="net-frequency">7080 kHz LSB</td>
+                            <td>Charminar Net</td>
+                            <td>Alappuzha, Kochi, Wayanad, Kodungallur, Kottayam</td>
+                        </tr>
+
+                        <tr>
+                            <td class="net-time">07:30–08:15</td>
+                            <td class="net-frequency">7015 kHz CW</td>
+                            <td>CW Net</td>
+                            <td>Karnataka and Kerala</td>
+                        </tr>
+
+                        <tr>
+                            <td class="net-time">07:30–08:30</td>
+                            <td class="net-frequency">7123.45 kHz LSB</td>
+                            <td>VU2VWN Vasant Net</td>
+                            <td>Kerala</td>
+                        </tr>
+
+                        <tr>
+                            <td class="net-time">07:30–08:00</td>
+                            <td class="net-frequency">7090 kHz LSB</td>
+                            <td>VU2SV Memorial Net</td>
+                            <td>Chennai, Erode, Kochi</td>
+                        </tr>
+
+                        <tr>
+                            <td class="net-time">07:45–08:15</td>
+                            <td class="net-frequency">7045 kHz LSB</td>
+                            <td>VU Gujarat Net</td>
+                            <td>Rajkot, Gandhinagar, Ahmedabad</td>
+                        </tr>
+
+                        <tr>
+                            <td class="net-time">07:45–08:15</td>
+                            <td class="net-frequency">7165 kHz LSB</td>
+                            <td>Rag Chewers Net</td>
+                            <td>Guna, Madhya Pradesh / Noida</td>
+                        </tr>
+
+                        <tr>
+                            <td class="net-time">08:00–08:30</td>
+                            <td class="net-frequency">7085 kHz LSB</td>
+                            <td>Lake City Net</td>
+                            <td>Kerala / Bengaluru</td>
+                        </tr>
+
+                        <tr>
+                            <td class="net-time">08:30–09:00<br>Sunday</td>
+                            <td class="net-frequency">7085 kHz LSB</td>
+                            <td>BCDX Net</td>
+                            <td>Kozhikode, Kerala</td>
+                        </tr>
+
+                        <tr>
+                            <td class="net-time">16:30–17:00</td>
+                            <td class="net-frequency">7088 kHz LSB</td>
+                            <td>Silicon City Net</td>
+                            <td>Bengaluru / Kerala / Tamil Nadu</td>
+                        </tr>
+
+                        <tr>
+                            <td class="net-time">17:00–18:00<br>Friday</td>
+                            <td class="net-frequency">14255 kHz USB</td>
+                            <td>Azad Hind Net</td>
+                            <td>Goa / Assam / Noida / Madhya Pradesh</td>
+                        </tr>
+
+                        <tr>
+                            <td class="net-time">18:00–18:30<br>1st Sunday</td>
+                            <td class="net-frequency">14220 ± USB</td>
+                            <td>Green Earth Net</td>
+                            <td>Kolkata</td>
+                        </tr>
+
+                        <tr>
+                            <td class="net-time">18:00–18:30<br>1st & 3rd Saturday</td>
+                            <td class="net-frequency">14285 ± USB</td>
+                            <td>QRP India Net</td>
+                            <td>Kolkata</td>
+                        </tr>
+
+                        <tr>
+                            <td class="net-time">19:30–20:30</td>
+                            <td class="net-frequency">7150 kHz LSB</td>
+                            <td>Air Net India</td>
+                            <td>India-wide</td>
+                        </tr>
+
+                        <tr>
+                            <td class="net-time">23:00–23:30</td>
+                            <td class="net-frequency">3600 kHz LSB</td>
+                            <td>GRAS 80 M Net</td>
+                            <td>Goa</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+        <!-- VHF -->
+
+        <div class="net-table-box" id="vhf">
+
+            <div class="table-scroll">
+
+                <table class="net-table">
+
+                    <thead>
+                        <tr>
+                            <th>IST</th>
+                            <th>Location</th>
+                            <th>Frequency / Repeater</th>
+                            <th>Net</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td class="net-time">06:30–07:00</td>
+                            <td>Mangaluru, Karnataka</td>
+                            <td class="net-frequency">VU2NIW — 145.425 −</td>
+                            <td>MCW Net</td>
+                        </tr>
+
+                        <tr>
+                            <td class="net-time">06:30–07:30</td>
+                            <td>Bengaluru, Karnataka</td>
+                            <td class="net-frequency">VU2IU — 145.800 −</td>
+                            <td>Kho-Khro-Kho Net</td>
+                        </tr>
+
+                        <tr>
+                            <td class="net-time">06:45–07:15</td>
+                            <td>Ahmedabad, Gujarat</td>
+                            <td class="net-frequency">VU2YCR — 145.200 −</td>
+                            <td>Hi-Hello Net</td>
+                        </tr>
+
+                        <tr>
+                            <td class="net-time">06:45–07:30</td>
+                            <td>Yercaud, Tamil Nadu</td>
+                            <td class="net-frequency">VU2CPI — 145.850 −</td>
+                            <td>VU2PCP Paneer Memorial Net</td>
+                        </tr>
+
+                        <tr>
+                            <td class="net-time">07:00–07:15</td>
+                            <td>Wayanad, Kerala</td>
+                            <td class="net-frequency">VU2RFF — 144.145 +</td>
+                            <td>Phantom Rock Morning Net</td>
+                        </tr>
+
+                        <tr>
+                            <td class="net-time">07:00–07:30</td>
+                            <td>Bengaluru, Karnataka</td>
+                            <td class="net-frequency">VU2TWO — 145.650 −</td>
+                            <td>R3 Morning Net</td>
+                        </tr>
+
+                        <tr>
+                            <td class="net-time">07:00–07:30</td>
+                            <td>Chikmagalur, Karnataka</td>
+                            <td class="net-frequency">VU2CHQ — 144.900 −</td>
+                            <td>CARS Net</td>
+                        </tr>
+
+                        <tr>
+                            <td class="net-time">07:30–07:45</td>
+                            <td>Hyderabad, Telangana</td>
+                            <td class="net-frequency">VU2LHR — 145.600 −</td>
+                            <td>Hyderabad Morning Net</td>
+                        </tr>
+
+                        <tr>
+                            <td class="net-time">07:30–08:00</td>
+                            <td>Kollam, Kerala</td>
+                            <td class="net-frequency">VU2CSD — 145.350 −</td>
+                            <td>Lake City VHF Morning Net</td>
+                        </tr>
+
+                        <tr>
+                            <td class="net-time">07:30–08:30</td>
+                            <td>Patna, Bihar</td>
+                            <td class="net-frequency">VU2MMP — 145.000 −</td>
+                            <td>Patna VHF Net</td>
+                        </tr>
+
+                        <tr>
+                            <td class="net-time">08:00–08:15</td>
+                            <td>Thrissur, Kerala</td>
+                            <td class="net-frequency">VU2IAC — 144.825 −</td>
+                            <td>VU2IAC Morning Net</td>
+                        </tr>
+
+                        <tr>
+                            <td class="net-time">08:00–08:30</td>
+                            <td>Gandhinagar, Gujarat</td>
+                            <td class="net-frequency">VU2WDF — 145.400 −</td>
+                            <td>Good Morning Net</td>
+                        </tr>
+
+                        <tr>
+                            <td class="net-time">09:30–10:00<br>Sunday</td>
+                            <td>Bhopal, Madhya Pradesh</td>
+                            <td class="net-frequency">145.500 Simplex</td>
+                            <td>Bhopal VHF Net</td>
+                        </tr>
+
+                        <tr>
+                            <td class="net-time">17:00–17:30</td>
+                            <td>Goa</td>
+                            <td class="net-frequency">145.500 Simplex</td>
+                            <td>Goa VHF Net</td>
+                        </tr>
+
+                        <tr>
+                            <td class="net-time">20:00–20:15</td>
+                            <td>Bengaluru, Karnataka</td>
+                            <td class="net-frequency">VU2ZO — 145.275 +</td>
+                            <td>Namma Bengaluru DMR Net</td>
+                        </tr>
+
+                        <tr>
+                            <td class="net-time">20:00–20:15</td>
+                            <td>Lucknow, Uttar Pradesh</td>
+                            <td class="net-frequency">145.200 / CTCSS 123</td>
+                            <td>Shan-e-Oudh Net</td>
+                        </tr>
+
+                        <tr>
+                            <td class="net-time">20:30–21:00</td>
+                            <td>Patna, Bihar</td>
+                            <td class="net-frequency">VU2MMP — 145.000 −</td>
+                            <td>Patna VHF Net</td>
+                        </tr>
+
+                        <tr>
+                            <td class="net-time">20:45–21:00</td>
+                            <td>Kozhikode, Kerala</td>
+                            <td class="net-frequency">VU2CSR — 145.625 −</td>
+                            <td>CSR Net</td>
+                        </tr>
+
+                        <tr>
+                            <td class="net-time">21:00–21:15</td>
+                            <td>Thiruvananthapuram, Kerala</td>
+                            <td class="net-frequency">VU2XT — 145.600 −</td>
+                            <td>XT Evening Net</td>
+                        </tr>
+
+                        <tr>
+                            <td class="net-time">21:00–21:30</td>
+                            <td>New Delhi</td>
+                            <td class="net-frequency">VU2FUN — 145.670 −</td>
+                            <td>Delhi VHF Net — Saturdays</td>
+                        </tr>
+
+                        <tr>
+                            <td class="net-time">21:00–21:30</td>
+                            <td>Bengaluru, Karnataka</td>
+                            <td class="net-frequency">VU2IU — 145.800 −</td>
+                            <td>Silicon City Net</td>
+                        </tr>
+
+                        <tr>
+                            <td class="net-time">21:00–21:30</td>
+                            <td>Kollam, Kerala</td>
+                            <td class="net-frequency">VU2CSD — 145.350 −</td>
+                            <td>Lake City Evening Net</td>
+                        </tr>
+
+                        <tr>
+                            <td class="net-time">21:30–21:45</td>
+                            <td>Kannur, Kerala</td>
+                            <td class="net-frequency">VU2MWW — 145.675 −</td>
+                            <td>Malabar Repeater Evening Net</td>
+                        </tr>
+
+                        <tr>
+                            <td class="net-time">21:45–22:00</td>
+                            <td>Mumbai, Maharashtra</td>
+                            <td class="net-frequency">VU2BPB — 145.400 −</td>
+                            <td>Night Owl's Net</td>
+                        </tr>
+
+                        <tr>
+                            <td class="net-time">22:00–23:00<br>Saturday</td>
+                            <td>Pune, Maharashtra</td>
+                            <td class="net-frequency">VU2PHA — 145.100 +</td>
+                            <td>Puneree VHF Net</td>
+                        </tr>
+
+                        <tr>
+                            <td class="net-time">22:30–23:00</td>
+                            <td>Kolkata, West Bengal</td>
+                            <td class="net-frequency">VU2CVH — 145.675 −</td>
+                            <td>Kolkata VHF Net</td>
+                        </tr>
+
+                        <tr>
+                            <td class="net-time">00:00</td>
+                            <td>Ahmedabad, Gujarat</td>
+                            <td class="net-frequency">VU2YCR — 145.200 −</td>
+                            <td>Aghori Net</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+        <!-- UHF / DMR -->
+
+        <div class="net-table-box" id="uhf">
+
+            <div class="table-scroll">
+
+                <table class="net-table">
+
+                    <thead>
+                        <tr>
+                            <th>IST</th>
+                            <th>Location</th>
+                            <th>System / Frequency</th>
+                            <th>Net</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td class="net-time">06:30–06:50</td>
+                            <td>Chennai, Tamil Nadu</td>
+                            <td class="net-frequency">VU2MWG — 435.800 −</td>
+                            <td>
+                                DMR Net
+                                <br>
+                                <small>TG 4040454 · Colour Code 1 · TS2</small>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="net-time">08:00–08:15<br>Sat & Sun</td>
+                            <td>Hyderabad, Telangana</td>
+                            <td class="net-frequency">434.500 Simplex</td>
+                            <td>Hyderabad Ultra Net</td>
+                        </tr>
+
+                        <tr>
+                            <td class="net-time">20:15–21:00</td>
+                            <td>Bengaluru, Karnataka</td>
+                            <td class="net-frequency">VU2ZOI — 434.050 +</td>
+                            <td>Greater Bengaluru Ham Radio Net</td>
+                        </tr>
+
+                        <tr>
+                            <td class="net-time">21:15–21:30</td>
+                            <td>Pune, Maharashtra</td>
+                            <td class="net-frequency">VU2DYQ — 434.100 +</td>
+                            <td>Nandu's Misal Pav Net / EchoLink VU2DYQ-R</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+        <!-- SATELLITE -->
+
+        <div class="net-table-box" id="sat">
+
+            <div class="table-scroll">
+
+                <table class="net-table">
+
+                    <thead>
+                        <tr>
+                            <th>IST</th>
+                            <th>Satellite</th>
+                            <th>Frequency</th>
+                            <th>Activity</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td class="net-time">07:15–07:30</td>
+                            <td>QO-100 / Qatar OSCAR-100</td>
+                            <td class="net-frequency">10489.690 GHz</td>
+                            <td>
+                                Narrow-band SSB —
+                                QO-100 India Morning Net
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="net-time">18:30<br>Sunday</td>
+                            <td>QO-100 / Qatar OSCAR-100</td>
+                            <td class="net-frequency">10499.250 GHz</td>
+                            <td>
+                                DATV Net
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+        <p class="data-note">
+            Source note: These entries are a curated presentation of the
+            current public listings. For the complete and latest list,
+            always check the original VU2JOS/NIAR pages before operating.
+            Frequencies, timings, controllers, repeater status and net
+            arrangements can change.
+        </p>
+
+    </section>
+
+
+    <!-- READING A FREQUENCY -->
+
+    <section class="net-section">
+
+        <div class="net-section-header">
+
+            <div class="label">Reading the table</div>
+
+            <h2>
+                How to understand a net listing
+            </h2>
+
+        </div>
+
+        <div class="net-grid">
+
+            <div class="net-card">
+                <div class="net-icon">🕐</div>
+                <h3>IST</h3>
+                <p>
+                    Indian Standard Time. Make sure your radio schedule
+                    and clock are aligned with IST.
+                </p>
+            </div>
+
+            <div class="net-card">
+                <div class="net-icon">📻</div>
+                <h3>Frequency</h3>
+                <p>
+                    The published operating frequency. On repeaters,
+                    you may also need the correct offset and tone.
+                </p>
+            </div>
+
+            <div class="net-card">
+                <div class="net-icon">↕️</div>
+                <h3>+ / −</h3>
+                <p>
+                    On repeater listings, this commonly indicates the
+                    transmit offset direction. Check the current repeater
+                    information before transmitting.
+                </p>
+            </div>
+
+            <div class="net-card">
+                <div class="net-icon">🎧</div>
+                <h3>Mode</h3>
+                <p>
+                    Examples include LSB, USB, CW and digital systems
+                    such as DMR.
+                </p>
+            </div>
+
+            <div class="net-card">
+                <div class="net-icon">📡</div>
+                <h3>Repeater</h3>
+                <p>
+                    A repeater receives your signal and retransmits it,
+                    extending local VHF/UHF coverage.
+                </p>
+            </div>
+
+            <div class="net-card">
+                <div class="net-icon">🛰️</div>
+                <h3>Satellite</h3>
+                <p>
+                    Satellite nets use an amateur satellite or transponder
+                    rather than a normal terrestrial repeater.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- LICENSE -->
+
+    <section class="net-section">
+
+        <div class="net-section-header">
+
+            <div class="label">Operate legally</div>
+
+            <h2>
+                Nets are part of amateur radio — and amateur radio is regulated
+            </h2>
+
+        </div>
+
+        <div class="explain-box">
+
+            <p>
+                In India, amateur-radio operation is not an unregulated
+                public radio service. Under the
+                <strong>
+                    Telecommunications (Amateur Services) Rules, 2024
+                </strong>,
+                an amateur station may not be installed or operated except
+                under the terms and conditions of an Amateur Station Operator
+                Certificate (ASOC).
+            </p>
+
+            <p>
+                The Department of Telecommunications states that the ASOC
+                supports self-training, intercommunication and technical
+                investigation, and provides for General and Restricted
+                categories.
+            </p>
+
+            <p>
+                Therefore, the net tables on this page are intended primarily
+                for licensed/authorised amateur-radio operators. If you are
+                not yet licensed, you can learn, listen where legally
+                permitted and prepare for the hobby — but do not transmit
+                on amateur frequencies without the required authorisation.
+            </p>
+
+            <p>
+                <a href="licensing.html"
+                   style="color:#19dfff;font-weight:850;">
+                    → Learn how to get licensed in India
+                </a>
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- BEGINNER PATH -->
+
+    <section class="net-section">
+
+        <div class="net-section-header">
+
+            <div class="label">Your first net</div>
+
+            <h2>
+                A simple path for a new operator
+            </h2>
+
+            <p>
+                You do not need to master every mode or every Q-code before
+                joining your first net.
+            </p>
+
+        </div>
+
+        <div class="beginner-path">
+
+            <div class="path-card">
+                <span>01 · Learn</span>
+                <h3>Understand your radio</h3>
+                <p>
+                    Learn frequency, mode, repeater offset, tone and
+                    basic operating controls.
+                </p>
+            </div>
+
+            <div class="path-card">
+                <span>02 · Listen</span>
+                <h3>Find a local net</h3>
+                <p>
+                    Listen to one or two sessions before attempting your
+                    first check-in.
+                </p>
+            </div>
+
+            <div class="path-card">
+                <span>03 · Check in</span>
+                <h3>Give your callsign</h3>
+                <p>
+                    When invited by NCS, transmit your callsign clearly
+                    and wait for further instructions.
+                </p>
+            </div>
+
+            <div class="path-card">
+                <span>04 · Return</span>
+                <h3>Become a regular</h3>
+                <p>
+                    Regular participation is where the real value appears:
+                    friendships, experience and confidence grow over time.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FINAL CTA -->
+
+    <section class="nets-cta">
+
+        <h2>
+            Turn your radio on. Listen. Learn. Check in.
+        </h2>
+
+        <p>
+            Amateur radio becomes much more enjoyable when you stop thinking
+            of the radio as a piece of equipment and start seeing it as a
+            doorway into a living community of people, technology and
+            experimentation.
+        </p>
+
+        <div class="cta-buttons">
+
+            <a href="activities.html" class="cta-button">
+                Explore Radio Activities
+            </a>
+
+            <a href="repeaters.html" class="cta-button secondary">
+                Find Repeaters
+            </a>
+
+            <a href="licensing.html" class="cta-button secondary">
+                Get Licensed
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- SOURCES -->
+
+    <section class="sources">
+
+        <h3>Data sources & verification</h3>
+
+        <p>
+            <strong>Primary net-data source:</strong>
+            Jose Jacob, VU2JOS, National Institute of Amateur Radio (NIAR),
+            Hyderabad — India HF and VHF/UHF/Satellite net compilations.
+        </p>
+
+        <p>
+            <a href="https://qsl.net/vu2jos/HF_Nets.htm"
+               target="_blank"
+               rel="noopener">
+                HF Nets in India — VU2JOS
+            </a>
+        </p>
+
+        <p>
+            <a href="https://qsl.net/vu2jos/VHF.htm"
+               target="_blank"
+               rel="noopener">
+                VHF/UHF/DMR/Satellite Nets in India — VU2JOS
+            </a>
+        </p>
+
+        <p>
+            <a href="https://qsl.net/vu2jos/VHF1.htm"
+               target="_blank"
+               rel="noopener">
+                VHF/UHF Nets — Location Wise
+            </a>
+        </p>
+
+        <p>
+            <strong>Regulatory reference:</strong>
+            Department of Telecommunications, Government of India —
+            Amateur Station Operator Certificate (ASOC) and the
+            Telecommunications (Amateur Services) Rules, 2024.
+        </p>
+
+        <p>
+            <a href="https://www.eservices.dot.gov.in/amateur-station-operator-certificate-asoc"
+               target="_blank"
+               rel="noopener">
+                DoT — Amateur Station Operator Certificate (ASOC)
+            </a>
+        </p>
+
+        <p style="margin-bottom:0;">
+            <strong>Last checked:</strong> 12 September 2026.
+            This page intentionally does not treat the schedule as permanent.
+            Always verify the original source before transmitting.
+        </p>
+
+    </section>
+
+</main>
+
+
+<script>
+
+/* =========================================================
+   NET TABLE TABS
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const tabs = document.querySelectorAll(".net-tab");
+    const boxes = document.querySelectorAll(".net-table-box");
+
+    tabs.forEach(function (tab) {
+
+        tab.addEventListener("click", function () {
+
+            const target = tab.getAttribute("data-target");
+
+            tabs.forEach(function (item) {
+                item.classList.remove("active");
+            });
+
+            boxes.forEach(function (box) {
+                box.classList.remove("active");
+            });
+
+            tab.classList.add("active");
+
+            const targetBox =
+                document.getElementById(target);
+
+            if (targetBox) {
+                targetBox.classList.add("active");
+            }
+
+        });
+
+    });
+
+});
+
+</script>
+
 </body>
 </html>
