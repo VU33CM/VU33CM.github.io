@@ -1,0 +1,3120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="theme-color" content="#071426">
+<meta name="description"
+      content="HAM Corner VU33CM India Amateur Radio Satellite Tracker">
+
+<title>Satellite Tracker | HAM Corner by VU33CM</title>
+
+<link rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+<style>
+
+:root{
+    --navy:#071426;
+    --navy2:#0b1d35;
+    --card:#0e233f;
+    --cyan:#19dfff;
+    --blue:#2388ff;
+    --text:#eef7ff;
+    --muted:#9eb2c8;
+    --line:rgba(255,255,255,.09);
+    --green:#39e58c;
+    --yellow:#ffd166;
+    --red:#ff6874;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    background:
+        radial-gradient(
+            circle at 10% 0%,
+            rgba(25,223,255,.10),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 90% 10%,
+            rgba(35,136,255,.10),
+            transparent 30%
+        ),
+        var(--navy);
+    color:var(--text);
+    font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+    text-rendering:optimizeLegibility;
+    -webkit-font-smoothing:antialiased;
+}
+
+a{
+    color:inherit;
+}
+
+.container{
+    max-width:1250px;
+    margin:auto;
+    padding:0 18px;
+}
+
+/* HERO */
+
+.hero{
+    text-align:center;
+    padding:55px 10px 32px;
+}
+
+.kicker{
+    color:var(--cyan);
+    font-size:13px;
+    font-weight:900;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+.hero h1{
+    margin:12px 0 14px;
+    font-size:clamp(42px,6vw,68px);
+    line-height:1;
+    font-weight:900;
+    letter-spacing:-2px;
+}
+
+.hero h1 span{
+    color:var(--cyan);
+}
+
+.hero p{
+    max-width:780px;
+    margin:auto;
+    color:var(--muted);
+    font-size:17px;
+    line-height:1.7;
+}
+
+/* TOOLBAR */
+
+.toolbar{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:10px;
+    margin:10px 0 15px;
+}
+
+button,
+select{
+    border:1px solid rgba(25,223,255,.25);
+    background:
+        linear-gradient(
+            135deg,
+            #10345a,
+            #0c203a
+        );
+    color:white;
+    border-radius:12px;
+    padding:12px 16px;
+    font-size:15px;
+    font-weight:800;
+    cursor:pointer;
+}
+
+button:hover{
+    border-color:var(--cyan);
+    transform:translateY(-1px);
+}
+
+button.primary{
+    background:
+        linear-gradient(
+            135deg,
+            #08abc8,
+            #1973ed
+        );
+    border-color:transparent;
+}
+
+button.secondary{
+    background:rgba(255,255,255,.04);
+}
+
+select{
+    min-width:270px;
+}
+
+/* STATUS */
+
+.status{
+    text-align:center;
+    min-height:24px;
+    margin:15px 0 20px;
+    color:var(--muted);
+    font-size:14px;
+}
+
+/* PANELS */
+
+.grid{
+    display:grid;
+    grid-template-columns:1.15fr .85fr;
+    gap:18px;
+}
+
+.panel{
+    background:
+        linear-gradient(
+            145deg,
+            rgba(14,35,63,.97),
+            rgba(8,25,46,.97)
+        );
+    border:1px solid var(--line);
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:
+        0 18px 55px rgba(0,0,0,.20);
+}
+
+.panel-head{
+    padding:18px 20px;
+    border-bottom:1px solid var(--line);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+}
+
+.panel-head h2{
+    margin:0;
+    font-size:20px;
+    font-weight:850;
+}
+
+.panel-head small{
+    color:var(--muted);
+}
+
+/* MAP */
+
+#map{
+    width:100%;
+    height:540px;
+    background:#071426;
+}
+
+.map-note{
+    padding:11px 16px;
+    color:var(--muted);
+    font-size:12px;
+    border-top:1px solid var(--line);
+}
+
+/* DETAILS */
+
+.details{
+    padding:20px;
+}
+
+.details h2{
+    margin:0 0 3px;
+    font-size:31px;
+    font-weight:900;
+}
+
+.alias{
+    color:var(--cyan);
+    font-weight:800;
+    line-height:1.4;
+}
+
+.status-badge{
+    display:inline-block;
+    margin-top:9px;
+    padding:5px 9px;
+    border-radius:999px;
+    font-size:11px;
+    font-weight:900;
+    background:rgba(57,229,140,.12);
+    color:var(--green);
+}
+
+.status-badge.warning{
+    background:rgba(255,209,102,.12);
+    color:var(--yellow);
+}
+
+.metrics{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin-top:18px;
+}
+
+.metric{
+    padding:14px;
+    border-radius:13px;
+    background:rgba(255,255,255,.035);
+    border:1px solid var(--line);
+}
+
+.metric label{
+    display:block;
+    color:var(--muted);
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:.7px;
+    text-transform:uppercase;
+    margin-bottom:5px;
+}
+
+.metric strong{
+    font-size:18px;
+}
+
+/* RADIO BOX */
+
+.radio-box{
+    margin-top:16px;
+    border:1px solid rgba(25,223,255,.18);
+    background:rgba(25,223,255,.045);
+    border-radius:15px;
+    padding:15px;
+}
+
+.radio-box h3{
+    margin:0 0 10px;
+    color:var(--cyan);
+    font-size:17px;
+}
+
+.radio-line{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:15px;
+    padding:8px 0;
+    border-bottom:1px solid rgba(255,255,255,.06);
+    font-size:14px;
+}
+
+.radio-line:last-child{
+    border-bottom:0;
+}
+
+.radio-line span{
+    color:var(--muted);
+}
+
+.radio-line strong{
+    text-align:right;
+}
+
+/* INFO */
+
+.info{
+    margin-top:16px;
+    padding:15px 16px;
+    border-radius:15px;
+    border:1px solid var(--line);
+    background:rgba(255,255,255,.025);
+    color:var(--muted);
+    line-height:1.65;
+    font-size:14px;
+}
+
+.info strong{
+    color:white;
+}
+
+/* SATELLITE LIST */
+
+.satellite-panel{
+    margin-top:18px;
+}
+
+.filters{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    padding:15px 16px 0;
+}
+
+.filter-btn{
+    padding:9px 12px;
+    font-size:12px;
+    border-radius:999px;
+}
+
+.filter-btn.active{
+    border-color:var(--cyan);
+    color:var(--cyan);
+}
+
+.satellite-grid{
+    display:grid;
+    grid-template-columns:
+        repeat(3,minmax(0,1fr));
+    gap:12px;
+    padding:16px;
+}
+
+.sat-card{
+    border:1px solid var(--line);
+    background:rgba(255,255,255,.025);
+    border-radius:16px;
+    padding:16px;
+    cursor:pointer;
+    transition:
+        border-color .2s ease,
+        transform .2s ease,
+        background .2s ease;
+}
+
+.sat-card:hover{
+    transform:translateY(-2px);
+    border-color:rgba(25,223,255,.55);
+    background:rgba(25,223,255,.06);
+}
+
+.sat-card.active{
+    border-color:var(--cyan);
+    background:rgba(25,223,255,.07);
+}
+
+.sat-card h3{
+    margin:0 0 5px;
+    font-size:18px;
+}
+
+.sat-sub{
+    color:var(--muted);
+    font-size:12px;
+    line-height:1.5;
+}
+
+.badges{
+    display:flex;
+    flex-wrap:wrap;
+    gap:5px;
+    margin-top:10px;
+}
+
+.badge{
+    padding:4px 7px;
+    border-radius:999px;
+    font-size:10px;
+    font-weight:900;
+    background:rgba(25,223,255,.10);
+    color:var(--cyan);
+}
+
+.badge.fm{
+    background:rgba(57,229,140,.10);
+    color:var(--green);
+}
+
+.badge.linear{
+    background:rgba(35,136,255,.12);
+    color:#78b7ff;
+}
+
+.badge.digital{
+    background:rgba(255,209,102,.10);
+    color:var(--yellow);
+}
+
+.empty{
+    padding:35px;
+    text-align:center;
+    color:var(--muted);
+}
+
+/* LEAFLET */
+
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip{
+    background:#0c2038;
+    color:white;
+}
+
+.leaflet-control-zoom a{
+    background:#0c2038 !important;
+    color:white !important;
+    border-color:#26405d !important;
+}
+
+.leaflet-control-attribution{
+    background:rgba(7,20,38,.85) !important;
+    color:#9eb2c8 !important;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1000px){
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    .satellite-grid{
+        grid-template-columns:
+            repeat(2,minmax(0,1fr));
+    }
+
+}
+
+@media(max-width:650px){
+
+    .container{
+        padding:0 12px;
+    }
+
+    .hero{
+        padding:35px 5px 25px;
+    }
+
+    .hero h1{
+        font-size:40px;
+        letter-spacing:-1.2px;
+    }
+
+    .hero p{
+        font-size:15px;
+    }
+
+    .toolbar{
+        align-items:stretch;
+    }
+
+    .toolbar button,
+    .toolbar select{
+        width:100%;
+    }
+
+    #map{
+        height:370px;
+    }
+
+    .metrics{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .satellite-grid{
+        grid-template-columns:1fr;
+    }
+
+    .panel-head{
+        align-items:flex-start;
+        flex-direction:column;
+    }
+
+    .radio-line{
+        flex-direction:column;
+        gap:3px;
+    }
+
+    .radio-line strong{
+        text-align:left;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<main class="container">
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="kicker">
+            HAM CORNER • VU33CM
+        </div>
+
+        <h1>
+            🛰️ Satellite <span>Tracker</span>
+        </h1>
+
+        <p>
+            Explore amateur-radio satellites that can be useful to
+            operators in India. Track their position, calculate
+            azimuth and elevation, and find the satellites carrying
+            FM, SSB/CW, APRS and digital amateur-radio payloads.
+        </p>
+
+    </section>
+
+
+    <!-- CONTROLS -->
+
+    <div class="toolbar">
+
+        <button
+            id="locationButton"
+            class="primary">
+            📍 Use My Location
+        </button>
+
+        <select id="satelliteSelect">
+            <option value="">
+                Select a satellite
+            </option>
+        </select>
+
+        <button
+            id="refreshButton"
+            class="secondary">
+            ↻ Refresh Satellite Data
+        </button>
+
+    </div>
+
+
+    <div id="status"
+         class="status">
+        Loading current amateur-satellite data…
+    </div>
+
+
+    <!-- MAIN GRID -->
+
+    <section class="grid">
+
+
+        <!-- MAP -->
+
+        <div class="panel">
+
+            <div class="panel-head">
+
+                <h2>
+                    🌍 Live Satellite Position
+                </h2>
+
+                <small id="mapTime">
+                    Waiting for data
+                </small>
+
+            </div>
+
+            <div id="map"></div>
+
+            <div class="map-note">
+
+                🟡 Your station &nbsp; • &nbsp;
+                🔵 Satellite &nbsp; • &nbsp;
+                Dashed line = approximate orbit track
+
+            </div>
+
+        </div>
+
+
+        <!-- DETAILS -->
+
+        <div class="panel">
+
+            <div class="panel-head">
+
+                <h2>
+                    📡 Satellite Information
+                </h2>
+
+                <small>
+                    HAM Corner
+                </small>
+
+            </div>
+
+
+            <div class="details">
+
+                <h2 id="satelliteName">
+                    Select a satellite
+                </h2>
+
+                <div id="satelliteAlias"
+                     class="alias">
+                    —
+                </div>
+
+                <div id="satelliteStatus"
+                     class="status-badge">
+                    —
+                </div>
+
+
+                <!-- POSITION -->
+
+                <div class="metrics">
+
+                    <div class="metric">
+                        <label>Latitude</label>
+                        <strong id="latitude">—</strong>
+                    </div>
+
+                    <div class="metric">
+                        <label>Longitude</label>
+                        <strong id="longitude">—</strong>
+                    </div>
+
+                    <div class="metric">
+                        <label>Altitude</label>
+                        <strong id="altitude">—</strong>
+                    </div>
+
+                    <div class="metric">
+                        <label>Distance</label>
+                        <strong id="distance">—</strong>
+                    </div>
+
+                    <div class="metric">
+                        <label>Azimuth</label>
+                        <strong id="azimuth">—</strong>
+                    </div>
+
+                    <div class="metric">
+                        <label>Elevation</label>
+                        <strong id="elevation">—</strong>
+                    </div>
+
+                </div>
+
+
+                <!-- RADIO -->
+
+                <div class="radio-box">
+
+                    <h3>
+                        📻 Amateur Radio
+                    </h3>
+
+                    <div class="radio-line">
+                        <span>Category</span>
+                        <strong id="radioCategory">—</strong>
+                    </div>
+
+                    <div class="radio-line">
+                        <span>Uplink</span>
+                        <strong id="uplink">—</strong>
+                    </div>
+
+                    <div class="radio-line">
+                        <span>Downlink</span>
+                        <strong id="downlink">—</strong>
+                    </div>
+
+                    <div class="radio-line">
+                        <span>Beacon / Digital</span>
+                        <strong id="beacon">—</strong>
+                    </div>
+
+                    <div class="radio-line">
+                        <span>Mode</span>
+                        <strong id="mode">—</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="info">
+
+                    <strong>
+                        📍 Local tracking:
+                    </strong>
+
+                    Tap <strong>Use My Location</strong>
+                    to calculate the satellite's azimuth,
+                    elevation and distance from your station.
+
+                    Your browser controls location permission.
+
+                </div>
+
+
+                <div class="info">
+
+                    <strong>
+                        ⚠️ Operating information:
+                    </strong>
+
+                    Satellite frequencies and operational status
+                    can change. Always verify current information
+                    before transmitting.
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SATELLITE LIST -->
+
+    <section class="panel satellite-panel">
+
+        <div class="panel-head">
+
+            <h2>
+                🛰️ India Amateur Satellite List
+            </h2>
+
+            <small id="satelliteCount">
+                —
+            </small>
+
+        </div>
+
+
+        <div class="filters">
+
+            <button
+                class="filter-btn active"
+                data-filter="all">
+                All
+            </button>
+
+            <button
+                class="filter-btn"
+                data-filter="fm">
+                🟢 FM
+            </button>
+
+            <button
+                class="filter-btn"
+                data-filter="linear">
+                🔵 SSB / CW
+            </button>
+
+            <button
+                class="filter-btn"
+                data-filter="digital">
+                🟡 APRS / Digital
+            </button>
+
+            <button
+                class="filter-btn"
+                data-filter="russian">
+                🇷🇺 Russian / RS
+            </button>
+
+        </div>
+
+
+        <div
+            id="satelliteGrid"
+            class="satellite-grid">
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER NOTE -->
+
+    <section
+        class="info"
+        style="margin-top:18px;margin-bottom:50px;">
+
+        <strong>
+            HAM Corner Satellite Tracker
+        </strong>
+
+        uses current orbital data for amateur-radio
+        satellites. Orbital data is downloaded only when needed
+        and cached locally to reduce unnecessary requests.
+
+        This tracker is intended for educational and amateur-radio
+        use. Always follow your licence, national regulations,
+        satellite operating guidelines and current frequency plans.
+
+    </section>
+
+</main>
+
+
+<!-- LEAFLET -->
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+</script>
+
+
+<!-- SATELLITE.JS / SGP4 -->
+
+<script src="https://unpkg.com/satellite.js@6.0.1/dist/satellite.min.js">
+</script>
+
+
+<script>
+
+(function(){
+
+"use strict";
+
+
+/*
+===========================================================
+ HAM CORNER SATELLITE TRACKER
+ VU33CM
+
+ DATA:
+ CelesTrak Amateur Radio GP data
+
+ ORBIT:
+ satellite.js / SGP4
+
+ MAP:
+ Leaflet + OpenStreetMap
+
+ IMPORTANT:
+ QO-100 intentionally excluded.
+===========================================================
+*/
+
+
+/*
+===========================================================
+ SATELLITE RADIO INFORMATION
+
+ The orbital elements come from CelesTrak.
+
+ Radio information below is presented as a practical
+ reference and should be checked against current AMSAT
+ status before transmitting.
+===========================================================
+*/
+
+const RADIO_DATA = {
+
+    "AO-7": {
+
+        aliases:[
+            "OSCAR 7",
+            "AO-7"
+        ],
+
+        category:"linear",
+        tags:["linear"],
+
+        country:"International",
+
+        mode:"SSB / CW linear transponder",
+
+        uplink:
+            "145.850–145.950 MHz USB (Mode A) / 432.125–432.175 MHz LSB (Mode B)",
+
+        downlink:
+            "29.400–29.500 MHz USB (Mode A) / 145.925–145.975 MHz USB (Mode B)",
+
+        beacon:
+            "29.502 MHz",
+
+        status:
+            "Operational when conditions permit"
+
+    },
+
+
+    "AO-73": {
+
+        aliases:[
+            "FUNcube-1",
+            "AO-73"
+        ],
+
+        category:"linear",
+        tags:["linear","digital"],
+
+        country:"United Kingdom",
+
+        mode:"SSB / CW + telemetry",
+
+        uplink:
+            "435.130–435.150 MHz LSB",
+
+        downlink:
+            "145.950–145.970 MHz USB",
+
+        beacon:
+            "145.935 MHz BPSK telemetry",
+
+        status:
+            "Operational / schedule dependent"
+
+    },
+
+
+    "SO-50": {
+
+        aliases:[
+            "SaudiSat-1C",
+            "SO-50"
+        ],
+
+        category:"fm",
+        tags:["fm"],
+
+        country:"Saudi Arabia",
+
+        mode:"FM amateur repeater",
+
+        uplink:
+            "145.850 MHz + 67.0 Hz CTCSS",
+
+        downlink:
+            "436.795 MHz",
+
+        beacon:
+            "74.4 Hz tone used to arm timer",
+
+        status:
+            "Active"
+
+    },
+
+
+    "AO-91": {
+
+        aliases:[
+            "RadFxSat",
+            "Fox-1B",
+            "AO-91"
+        ],
+
+        category:"fm",
+        tags:["fm"],
+
+        country:"USA",
+
+        mode:"FM",
+
+        uplink:
+            "435.250 MHz",
+
+        downlink:
+            "145.960 MHz",
+
+        beacon:
+            "Satellite telemetry",
+
+        status:
+            "Battery / eclipse dependent"
+
+    },
+
+
+    "AO-123": {
+
+        aliases:[
+            "ASRTU-1",
+            "AO-123"
+        ],
+
+        category:"fm",
+        tags:["fm"],
+
+        country:"China",
+
+        mode:"FM transponder",
+
+        uplink:
+            "145.850 MHz + 67 Hz CTCSS",
+
+        downlink:
+            "435.400 MHz",
+
+        beacon:
+            "Telemetry",
+
+        status:
+            "Check current schedule"
+
+    },
+
+
+    "CAS-3H": {
+
+        aliases:[
+            "LilacSat-2",
+            "CAS-3H"
+        ],
+
+        category:"fm",
+        tags:["fm","digital"],
+
+        country:"China",
+
+        mode:"FM / telemetry",
+
+        uplink:
+            "144.350 MHz",
+
+        downlink:
+            "437.200 MHz",
+
+        beacon:
+            "437.200 MHz telemetry when FM is off",
+
+        status:
+            "Schedule dependent"
+
+    },
+
+
+    "IO-86": {
+
+        aliases:[
+            "LAPAN-A2",
+            "IO-86"
+        ],
+
+        category:"digital",
+        tags:["fm","digital"],
+
+        country:"Indonesia",
+
+        mode:"FM / APRS",
+
+        uplink:
+            "145.880 MHz + 88.5 Hz CTCSS",
+
+        downlink:
+            "435.880 MHz",
+
+        beacon:
+            "145.825 MHz APRS",
+
+        status:
+            "Schedule dependent"
+
+    },
+
+
+    "ISS": {
+
+        aliases:[
+            "International Space Station",
+            "ARISS"
+        ],
+
+        category:"digital",
+        tags:["fm","digital"],
+
+        country:"International",
+
+        mode:"FM / APRS / SSTV / scheduled voice",
+
+        uplink:
+            "Depends on current ARISS configuration",
+
+        downlink:
+            "145.800 MHz voice / 145.825 MHz APRS",
+
+        beacon:
+            "145.825 MHz APRS",
+
+        status:
+            "Operational schedules vary"
+
+    },
+
+
+    "PO-101": {
+
+        aliases:[
+            "Diwata-2",
+            "PO-101"
+        ],
+
+        category:"fm",
+        tags:["fm"],
+
+        country:"Philippines",
+
+        mode:"FM transponder",
+
+        uplink:
+            "437.500 MHz + 141.3 Hz CTCSS",
+
+        downlink:
+            "145.900 MHz",
+
+        beacon:
+            "Schedule dependent",
+
+        status:
+            "Status should be checked before use"
+
+    },
+
+
+    "RS95S": {
+
+        aliases:[
+            "QMR-KWT-2",
+            "RS95S"
+        ],
+
+        category:"russian",
+        tags:["fm","russian"],
+
+        country:"Russia / international",
+
+        mode:"FM / SSTV testing",
+
+        uplink:
+            "145.920 MHz + 67 Hz CTCSS",
+
+        downlink:
+            "436.950 MHz",
+
+        beacon:
+            "SSTV / telemetry during testing",
+
+        status:
+            "Testing / announcements"
+
+    },
+
+
+    "RS-44": {
+
+        aliases:[
+            "DOSAAF-5",
+            "RS-44"
+        ],
+
+        category:"russian",
+        tags:["linear","russian"],
+
+        country:"Russia",
+
+        mode:"SSB / CW linear transponder",
+
+        uplink:
+            "145.935–145.995 MHz LSB / CW",
+
+        downlink:
+            "435.610–435.670 MHz USB / CW",
+
+        beacon:
+            "435.605 MHz CW",
+
+        status:
+            "Operational"
+
+    },
+
+
+    "SONATE-2": {
+
+        aliases:[
+            "SONATE-2"
+        ],
+
+        category:"digital",
+        tags:["digital"],
+
+        country:"Germany",
+
+        mode:"APRS / digital telemetry",
+
+        uplink:
+            "Not listed as a conventional voice uplink",
+
+        downlink:
+            "145.825 MHz APRS",
+
+        beacon:
+            "145.825 MHz APRS / telemetry",
+
+        status:
+            "Digital operation"
+
+    },
+
+
+    "TEVEL2": {
+
+        aliases:[
+            "TEVEL2-1",
+            "TEVEL2-2",
+            "TEVEL2-3",
+            "TEVEL2-4",
+            "TEVEL2-5",
+            "TEVEL2-6",
+            "TEVEL2-7",
+            "TEVEL2-8",
+            "TEVEL2-9"
+        ],
+
+        category:"fm",
+        tags:["fm","digital"],
+
+        country:"Israel",
+
+        mode:"FM / digital",
+
+        uplink:
+            "145.970 MHz",
+
+        downlink:
+            "436.400 MHz",
+
+        beacon:
+            "436.400 MHz / 9600 bps BPSK",
+
+        status:
+            "Check individual satellite status"
+
+    },
+
+
+    "FO-29": {
+
+        aliases:[
+            "JAS-2",
+            "FO-29"
+        ],
+
+        category:"linear",
+        tags:["linear"],
+
+        country:"Japan",
+
+        mode:"SSB / CW linear transponder",
+
+        uplink:
+            "VHF/UHF satellite operation — verify current AMSAT status",
+
+        downlink:
+            "Verify current AMSAT status",
+
+        beacon:
+            "Telemetry",
+
+        status:
+            "Status should be checked"
+
+    },
+
+
+    "JO-97": {
+
+        aliases:[
+            "FUNcube-4",
+            "JO-97"
+        ],
+
+        category:"linear",
+        tags:["linear"],
+
+        country:"Netherlands",
+
+        mode:"Linear transponder / telemetry",
+
+        uplink:
+            "Verify current AMSAT status",
+
+        downlink:
+            "Verify current AMSAT status",
+
+        beacon:
+            "Telemetry",
+
+        status:
+            "Verify current status"
+
+    },
+
+
+    "MO-122": {
+
+        aliases:[
+            "MO-122"
+        ],
+
+        category:"linear",
+        tags:["linear"],
+
+        country:"International",
+
+        mode:"Linear satellite operation",
+
+        uplink:
+            "Verify current AMSAT status",
+
+        downlink:
+            "Verify current AMSAT status",
+
+        beacon:
+            "Telemetry",
+
+        status:
+            "Verify current status"
+
+    }
+
+};
+
+
+/*
+===========================================================
+ HELPER FUNCTIONS
+===========================================================
+*/
+
+const $ = id =>
+    document.getElementById(id);
+
+
+function normalizeName(name){
+
+    return String(name || "")
+        .toUpperCase()
+        .replace(/[()]/g,"")
+        .replace(/\s+/g," ")
+        .trim();
+
+}
+
+
+function findRadioData(objectName){
+
+    const name =
+        normalizeName(objectName);
+
+
+    for(
+        const key of Object.keys(RADIO_DATA)
+    ){
+
+        const item =
+            RADIO_DATA[key];
+
+
+        for(
+            const alias of item.aliases
+        ){
+
+            if(
+                name.includes(
+                    normalizeName(alias)
+                )
+            ){
+
+                return {
+                    key:key,
+                    data:item
+                };
+
+            }
+
+        }
+
+    }
+
+
+    return null;
+
+}
+
+
+/*
+===========================================================
+ MAP
+===========================================================
+*/
+
+const map =
+    L.map("map",{
+        worldCopyJump:true,
+        minZoom:2,
+        maxZoom:8
+    })
+    .setView(
+        [22.5,78.9],
+        4
+    );
+
+
+L.tileLayer(
+    "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+    {
+        maxZoom:19,
+        attribution:
+            "&copy; OpenStreetMap contributors"
+    }
+)
+.addTo(map);
+
+
+/*
+===========================================================
+ STATE
+===========================================================
+*/
+
+let satellites = [];
+
+let selectedSatellite = null;
+
+let satrec = null;
+
+let userLocation = null;
+
+let satelliteMarker = null;
+
+let stationMarker = null;
+
+let orbitLine = null;
+
+let currentFilter = "all";
+
+let updateTimer = null;
+
+
+/*
+===========================================================
+ DISTANCE
+===========================================================
+*/
+
+function distanceKm(
+    lat1,
+    lon1,
+    lat2,
+    lon2,
+    alt1,
+    alt2
+){
+
+    const R = 6371;
+
+    const p1 =
+        lat1 * Math.PI / 180;
+
+    const p2 =
+        lat2 * Math.PI / 180;
+
+    const dp =
+        (lat2-lat1) *
+        Math.PI / 180;
+
+    const dl =
+        (lon2-lon1) *
+        Math.PI / 180;
+
+    const a =
+        Math.sin(dp/2)**2 +
+        Math.cos(p1) *
+        Math.cos(p2) *
+        Math.sin(dl/2)**2;
+
+    const ground =
+        2 *
+        R *
+        Math.asin(
+            Math.sqrt(a)
+        );
+
+    return Math.sqrt(
+        ground**2 +
+        (alt2-alt1)**2
+    );
+
+}
+
+
+/*
+===========================================================
+ CURRENT SATELLITE POSITION
+===========================================================
+*/
+
+function getSatellitePosition(
+    satelliteRecord,
+    time
+){
+
+    const result =
+        satellite.propagate(
+            satelliteRecord,
+            time
+        );
+
+    if(
+        !result ||
+        !result.position
+    ){
+
+        return null;
+
+    }
+
+
+    const gmst =
+        satellite.gstime(time);
+
+
+    const geo =
+        satellite.eciToGeodetic(
+            result.position,
+            gmst
+        );
+
+
+    return {
+
+        latitude:
+            satellite.degreesLat(
+                geo.latitude
+            ),
+
+        longitude:
+            satellite.degreesLong(
+                geo.longitude
+            ),
+
+        altitude:
+            geo.height
+
+    };
+
+}
+
+
+/*
+===========================================================
+ LOOK ANGLES
+===========================================================
+*/
+
+function getLookAngles(
+    satelliteRecord,
+    time
+){
+
+    if(!userLocation){
+        return null;
+    }
+
+
+    const result =
+        satellite.propagate(
+            satelliteRecord,
+            time
+        );
+
+
+    if(
+        !result ||
+        !result.position
+    ){
+        return null;
+    }
+
+
+    const gmst =
+        satellite.gstime(time);
+
+
+    const observerGd = {
+
+        latitude:
+            userLocation.latitude *
+            Math.PI / 180,
+
+        longitude:
+            userLocation.longitude *
+            Math.PI / 180,
+
+        height:
+            (userLocation.altitude || 0) /
+            1000
+
+    };
+
+
+    const positionEcf =
+        satellite.eciToEcf(
+            result.position,
+            gmst
+        );
+
+
+    const look =
+        satellite.ecfToLookAngles(
+            observerGd,
+            positionEcf
+        );
+
+
+    return {
+
+        azimuth:
+            satellite.radiansToDegrees(
+                look.azimuth
+            ),
+
+        elevation:
+            satellite.radiansToDegrees(
+                look.elevation
+            )
+
+    };
+
+}
+
+
+/*
+===========================================================
+ DRAW ORBIT
+===========================================================
+*/
+
+function drawOrbit(){
+
+    if(!satrec){
+        return;
+    }
+
+
+    const points = [];
+
+
+    for(
+        let minutes = -45;
+        minutes <= 45;
+        minutes += 2
+    ){
+
+        const time =
+            new Date(
+                Date.now() +
+                minutes * 60000
+            );
+
+
+        const position =
+            getSatellitePosition(
+                satrec,
+                time
+            );
+
+
+        if(position){
+
+            points.push([
+                position.latitude,
+                position.longitude
+            ]);
+
+        }
+
+    }
+
+
+    if(orbitLine){
+
+        map.removeLayer(
+            orbitLine
+        );
+
+    }
+
+
+    orbitLine =
+        L.polyline(
+            points,
+            {
+                color:"#19dfff",
+                weight:2,
+                opacity:.65,
+                dashArray:"6 8"
+            }
+        )
+        .addTo(map);
+
+}
+
+
+/*
+===========================================================
+ DISPLAY SATELLITE
+===========================================================
+*/
+
+function displaySatellite(){
+
+    if(!selectedSatellite){
+        return;
+    }
+
+
+    const s =
+        selectedSatellite;
+
+
+    $("satelliteName")
+        .textContent =
+        s.displayName;
+
+
+    $("satelliteAlias")
+        .textContent =
+        s.radio
+            ? s.radio.data.aliases.join(" • ")
+            : "Amateur satellite";
+
+
+    const status =
+        s.radio
+            ? s.radio.data.status
+            : "Orbital data available";
+
+
+    $("satelliteStatus")
+        .textContent =
+        status;
+
+
+    $("radioCategory")
+        .textContent =
+        s.radio
+            ? s.radio.data.country +
+              " • " +
+              s.radio.data.category.toUpperCase()
+            : "Amateur satellite";
+
+
+    $("mode")
+        .textContent =
+        s.radio
+            ? s.radio.data.mode
+            : "Radio information not configured";
+
+
+    $("uplink")
+        .textContent =
+        s.radio
+            ? s.radio.data.uplink
+            : "Check current satellite information";
+
+
+    $("downlink")
+        .textContent =
+        s.radio
+            ? s.radio.data.downlink
+            : "Check current satellite information";
+
+
+    $("beacon")
+        .textContent =
+        s.radio
+            ? s.radio.data.beacon
+            : "Check current satellite information";
+
+}
+
+
+/*
+===========================================================
+ UPDATE LIVE POSITION
+===========================================================
+*/
+
+function updateLivePosition(){
+
+    if(
+        !satrec ||
+        !selectedSatellite
+    ){
+
+        return;
+
+    }
+
+
+    const now =
+        new Date();
+
+
+    const position =
+        getSatellitePosition(
+            satrec,
+            now
+        );
+
+
+    if(!position){
+        return;
+    }
+
+
+    $("latitude")
+        .textContent =
+        position.latitude.toFixed(2) +
+        "°";
+
+
+    $("longitude")
+        .textContent =
+        position.longitude.toFixed(2) +
+        "°";
+
+
+    $("altitude")
+        .textContent =
+        position.altitude.toFixed(0) +
+        " km";
+
+
+    if(userLocation){
+
+        const look =
+            getLookAngles(
+                satrec,
+                now
+            );
+
+
+        if(look){
+
+            $("azimuth")
+                .textContent =
+                Math.round(
+                    look.azimuth
+                ) +
+                "°";
+
+
+            $("elevation")
+                .textContent =
+                Math.round(
+                    look.elevation
+                ) +
+                "°";
+
+
+            const distance =
+                distanceKm(
+                    userLocation.latitude,
+                    userLocation.longitude,
+                    position.latitude,
+                    position.longitude,
+                    (userLocation.altitude || 0)/1000,
+                    position.altitude
+                );
+
+
+            $("distance")
+                .textContent =
+                Math.round(distance) +
+                " km";
+
+        }
+
+    }
+    else{
+
+        $("azimuth")
+            .textContent =
+            "—";
+
+        $("elevation")
+            .textContent =
+            "—";
+
+        $("distance")
+            .textContent =
+            "—";
+
+    }
+
+
+    /*
+    Satellite marker
+    */
+
+    if(!satelliteMarker){
+
+        satelliteMarker =
+            L.circleMarker(
+                [
+                    position.latitude,
+                    position.longitude
+                ],
+                {
+                    radius:9,
+                    color:"#19dfff",
+                    fillColor:"#19dfff",
+                    fillOpacity:.9,
+                    weight:3
+                }
+            )
+            .addTo(map);
+
+    }
+    else{
+
+        satelliteMarker
+            .setLatLng([
+                position.latitude,
+                position.longitude
+            ]);
+
+    }
+
+
+    satelliteMarker
+        .bindPopup(
+            "<strong>" +
+            sSafe(
+                selectedSatellite.displayName
+            ) +
+            "</strong><br>" +
+            position.latitude.toFixed(2) +
+            "°, " +
+            position.longitude.toFixed(2) +
+            "°<br>" +
+            position.altitude.toFixed(0) +
+            " km"
+        );
+
+
+    if(
+        userLocation &&
+        stationMarker
+    ){
+
+        stationMarker
+            .setLatLng([
+                userLocation.latitude,
+                userLocation.longitude
+            ]);
+
+    }
+
+
+    $("mapTime")
+        .textContent =
+        "Updated " +
+        now.toLocaleTimeString();
+
+}
+
+
+/*
+===========================================================
+ SIMPLE HTML ESCAPE
+===========================================================
+*/
+
+function sSafe(text){
+
+    return String(text || "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;");
+
+}
+
+
+/*
+===========================================================
+ SATELLITE CARDS
+===========================================================
+*/
+
+function renderSatelliteCards(){
+
+    const grid =
+        $("satelliteGrid");
+
+
+    const filtered =
+        satellites.filter(
+            s => {
+
+                if(
+                    currentFilter ===
+                    "all"
+                ){
+                    return true;
+                }
+
+
+                if(
+                    currentFilter ===
+                    "russian"
+                ){
+
+                    return s.radio &&
+                           s.radio.data.tags.includes(
+                               "russian"
+                           );
+
+                }
+
+
+                return s.radio &&
+                       s.radio.data.tags.includes(
+                           currentFilter
+                       );
+
+            }
+        );
+
+
+    $("satelliteCount")
+        .textContent =
+        filtered.length +
+        " shown";
+
+
+    if(!filtered.length){
+
+        grid.innerHTML =
+            "<div class='empty'>" +
+            "No satellites match this filter." +
+            "</div>";
+
+        return;
+
+    }
+
+
+    grid.innerHTML = "";
+
+
+    filtered.forEach(
+        s => {
+
+            const card =
+                document.createElement(
+                    "div"
+                );
+
+
+            card.className =
+                "sat-card";
+
+
+            if(
+                selectedSatellite &&
+                s.id ===
+                selectedSatellite.id
+            ){
+
+                card.classList.add(
+                    "active"
+                );
+
+            }
+
+
+            const category =
+                s.radio
+                    ? s.radio.data.category
+                    : "";
+
+
+            let badges = "";
+
+
+            if(category){
+
+                badges +=
+                    "<span class='badge " +
+                    category +
+                    "'>" +
+                    category.toUpperCase() +
+                    "</span>";
+
+            }
+
+
+            if(
+                s.radio &&
+                s.radio.data.tags.includes(
+                    "russian"
+                )
+            ){
+
+                badges +=
+                    "<span class='badge'>" +
+                    "🇷🇺 RS" +
+                    "</span>";
+
+            }
+
+
+            card.innerHTML =
+
+                "<h3>🛰️ " +
+                sSafe(
+                    s.displayName
+                ) +
+                "</h3>" +
+
+                "<div class='sat-sub'>" +
+                sSafe(
+                    s.radio
+                        ? s.radio.data.aliases.join(
+                            " • "
+                        )
+                        : "Amateur satellite"
+                ) +
+                "</div>" +
+
+                "<div class='badges'>" +
+                badges +
+                "</div>";
+
+
+            card.addEventListener(
+                "click",
+                function(){
+
+                    selectSatellite(
+                        s.id
+                    );
+
+                }
+            );
+
+
+            grid.appendChild(card);
+
+        }
+    );
+
+}
+
+
+/*
+===========================================================
+ SELECT SATELLITE
+===========================================================
+*/
+
+function selectSatellite(id){
+
+    const found =
+        satellites.find(
+            s => s.id === id
+        );
+
+
+    if(!found){
+        return;
+    }
+
+
+    selectedSatellite =
+        found;
+
+
+    satrec =
+        found.satrec;
+
+
+    $("satelliteSelect")
+        .value =
+        id;
+
+
+    displaySatellite();
+
+    renderSatelliteCards();
+
+    drawOrbit();
+
+    updateLivePosition();
+
+
+    if(!userLocation){
+
+        map.setView(
+            [22.5,78.9],
+            4
+        );
+
+    }
+
+}
+
+
+/*
+===========================================================
+ LOCATION
+===========================================================
+*/
+
+function requestLocation(){
+
+    if(
+        !navigator.geolocation
+    ){
+
+        setStatus(
+            "Your browser does not support location access."
+        );
+
+        return;
+
+    }
+
+
+    setStatus(
+        "Requesting your location…"
+    );
+
+
+    navigator.geolocation.getCurrentPosition(
+
+        function(position){
+
+            userLocation = {
+
+                latitude:
+                    position.coords.latitude,
+
+                longitude:
+                    position.coords.longitude,
+
+                altitude:
+                    position.coords.altitude ||
+                    0
+
+            };
+
+
+            if(stationMarker){
+
+                map.removeLayer(
+                    stationMarker
+                );
+
+            }
+
+
+            stationMarker =
+                L.circleMarker(
+                    [
+                        userLocation.latitude,
+                        userLocation.longitude
+                    ],
+                    {
+                        radius:7,
+                        color:"#ffd166",
+                        fillColor:"#ffd166",
+                        fillOpacity:.95,
+                        weight:3
+                    }
+                )
+                .addTo(map);
+
+
+            stationMarker.bindPopup(
+                "<strong>📍 Your station</strong>"
+            );
+
+
+            map.setView(
+                [
+                    userLocation.latitude,
+                    userLocation.longitude
+                ],
+                6
+            );
+
+
+            updateLivePosition();
+
+
+            setStatus(
+                "Location ready. " +
+                "Azimuth, elevation and distance are now calculated from your station."
+            );
+
+        },
+
+        function(error){
+
+            let message =
+                "Location permission was not granted.";
+
+
+            if(
+                error.code ===
+                1
+            ){
+
+                message =
+                    "Location permission was denied. Enable it in your browser settings if you want local satellite pointing.";
+
+            }
+            else if(
+                error.code ===
+                2
+            ){
+
+                message =
+                    "Your location could not be determined.";
+
+            }
+            else if(
+                error.code ===
+                3
+            ){
+
+                message =
+                    "Location request timed out. Please try again.";
+
+            }
+
+
+            setStatus(
+                message
+            );
+
+        },
+
+        {
+
+            enableHighAccuracy:true,
+
+            timeout:10000,
+
+            maximumAge:300000
+
+        }
+
+    );
+
+}
+
+
+/*
+===========================================================
+ LOAD CelesTrak AMATEUR RADIO DATA
+===========================================================
+*/
+
+async function loadSatelliteData(){
+
+    setStatus(
+        "Downloading current amateur-satellite orbital data…"
+    );
+
+
+    /*
+        CelesTrak updates GP data periodically.
+
+        We cache the complete Amateur Radio dataset for
+        two hours so that the website does not repeatedly
+        download the same data.
+    */
+
+    const cacheKey =
+        "hamcorner_amateur_gp_v1";
+
+
+    const maxAge =
+        2 * 60 * 60 * 1000;
+
+
+    let data = null;
+
+
+    try{
+
+        const cached =
+            localStorage.getItem(
+                cacheKey
+            );
+
+
+        if(cached){
+
+            const parsed =
+                JSON.parse(
+                    cached
+                );
+
+
+            if(
+                Date.now() -
+                parsed.timestamp <
+                maxAge
+            ){
+
+                data =
+                    parsed.data;
+
+            }
+
+        }
+
+    }
+    catch(error){
+
+        console.warn(
+            "Local cache unavailable",
+            error
+        );
+
+    }
+
+
+    try{
+
+        if(!data){
+
+            const url =
+                "https://celestrak.org/NORAD/elements/gp.php" +
+                "?GROUP=amateur" +
+                "&FORMAT=JSON";
+
+
+            const response =
+                await fetch(
+                    url,
+                    {
+                        cache:"no-store"
+                    }
+                );
+
+
+            if(!response.ok){
+
+                throw new Error(
+                    "CelesTrak HTTP " +
+                    response.status
+                );
+
+            }
+
+
+            data =
+                await response.json();
+
+
+            try{
+
+                localStorage.setItem(
+                    cacheKey,
+                    JSON.stringify({
+                        timestamp:Date.now(),
+                        data:data
+                    })
+                );
+
+            }
+            catch(error){
+
+                console.warn(
+                    "Could not cache GP data",
+                    error
+                );
+
+            }
+
+        }
+
+
+        buildSatelliteList(
+            data
+        );
+
+
+    }
+    catch(error){
+
+        console.error(
+            error
+        );
+
+
+        setStatus(
+            "Could not load current satellite data. " +
+            "Please try Refresh Satellite Data again."
+        );
+
+    }
+
+}
+
+
+/*
+===========================================================
+ BUILD SATELLITE LIST
+
+ We only show satellites that are in the CelesTrak Amateur
+ Radio group AND match our useful HAM Corner radio list.
+
+ This prevents unrelated space objects appearing.
+===========================================================
+*/
+
+function buildSatelliteList(data){
+
+    const rows =
+        Array.isArray(data)
+            ? data
+            : [];
+
+
+    satellites = [];
+
+
+    rows.forEach(
+        row => {
+
+            const objectName =
+                row.OBJECT_NAME ||
+                row.OBJECT ||
+                row.NAME ||
+                "";
+
+
+            const radio =
+                findRadioData(
+                    objectName
+                );
+
+
+            if(!radio){
+
+                return;
+
+            }
+
+
+            /*
+                satellite.js needs a TLE-compatible
+                representation.
+
+                Modern CelesTrak GP JSON includes
+                the orbital elements, but satellite.js
+                has excellent support for standard TLE.
+
+                We therefore request the individual
+                satellite's current TLE only when the
+                user selects it.
+            */
+
+
+            satellites.push({
+
+                id:
+                    String(
+                        row.NORAD_CAT_ID ||
+                        row.NORAD_CAT_ID
+                    ),
+
+                displayName:
+                    objectName,
+
+                radio:radio,
+
+                raw:row,
+
+                satrec:null
+
+            });
+
+        }
+    );
+
+
+    /*
+        Remove duplicate satellite entries.
+    */
+
+    const unique =
+        new Map();
+
+
+    satellites.forEach(
+        s => {
+
+            if(
+                !unique.has(
+                    s.id
+                )
+            ){
+
+                unique.set(
+                    s.id,
+                    s
+                );
+
+            }
+
+        }
+    );
+
+
+    satellites =
+        Array.from(
+            unique.values()
+        );
+
+
+    /*
+        TEVEL2 satellites are all grouped together.
+        Sort useful satellites first.
+    */
+
+    const priority = {
+
+        "ISS":1,
+        "SO-50":2,
+        "RS-44":3,
+        "AO-73":4,
+        "AO-7":5,
+        "AO-91":6,
+        "IO-86":7,
+        "AO-123":8,
+        "CAS-3H":9,
+        "PO-101":10,
+        "RS95S":11,
+        "SONATE-2":12,
+        "FO-29":13,
+        "JO-97":14,
+        "MO-122":15
+
+    };
+
+
+    satellites.sort(
+        (a,b) => {
+
+            const pa =
+                priority[
+                    a.radio.key
+                ] || 50;
+
+
+            const pb =
+                priority[
+                    b.radio.key
+                ] || 50;
+
+
+            if(
+                pa !== pb
+            ){
+
+                return pa-pb;
+
+            }
+
+
+            return a.displayName
+                .localeCompare(
+                    b.displayName
+                );
+
+        }
+    );
+
+
+    /*
+        Build selector.
+    */
+
+    const select =
+        $("satelliteSelect");
+
+
+    select.innerHTML =
+        "<option value=''>" +
+        "Select a satellite" +
+        "</option>";
+
+
+    satellites.forEach(
+        s => {
+
+            const option =
+                document.createElement(
+                    "option"
+                );
+
+
+            option.value =
+                s.id;
+
+
+            option.textContent =
+                s.displayName;
+
+
+            select.appendChild(
+                option
+            );
+
+        }
+    );
+
+
+    renderSatelliteCards();
+
+
+    setStatus(
+        satellites.length +
+        " amateur satellites loaded. Select one to track."
+    );
+
+
+    /*
+        Automatically select the first useful satellite,
+        normally ISS if it exists.
+    */
+
+    const first =
+        satellites.find(
+            s =>
+                s.radio.key ===
+                "ISS"
+        ) ||
+        satellites[0];
+
+
+    if(first){
+
+        loadSelectedTle(
+            first.id
+        );
+
+    }
+
+}
+
+
+/*
+===========================================================
+ LOAD CURRENT TLE FOR SELECTED SATELLITE
+
+ Only selected satellites download individual orbital
+ elements. This keeps traffic low.
+===========================================================
+*/
+
+async function loadSelectedTle(id){
+
+    const found =
+        satellites.find(
+            s => s.id === id
+        );
+
+
+    if(!found){
+
+        return;
+
+    }
+
+
+    setStatus(
+        "Loading current orbit for " +
+        found.displayName +
+        "…"
+    );
+
+
+    try{
+
+        const url =
+            "https://celestrak.org/NORAD/elements/gp.php" +
+            "?CATNR=" +
+            encodeURIComponent(id) +
+            "&FORMAT=TLE";
+
+
+        const response =
+            await fetch(
+                url,
+                {
+                    cache:"no-store"
+                }
+            );
+
+
+        if(!response.ok){
+
+            throw new Error(
+                "TLE HTTP " +
+                response.status
+            );
+
+        }
+
+
+        const text =
+            await response.text();
+
+
+        const lines =
+            text
+                .trim()
+                .split(/\r?\n/)
+                .filter(Boolean);
+
+
+        if(
+            lines.length <
+            3
+        ){
+
+            throw new Error(
+                "Invalid TLE"
+            );
+
+        }
+
+
+        found.satrec =
+            satellite.twoline2satrec(
+                lines[1].trim(),
+                lines[2].trim()
+            );
+
+
+        selectedSatellite =
+            found;
+
+
+        satrec =
+            found.satrec;
+
+
+        $("satelliteSelect")
+            .value =
+            found.id;
+
+
+        displaySatellite();
+
+        renderSatelliteCards();
+
+        drawOrbit();
+
+        updateLivePosition();
+
+
+        setStatus(
+            userLocation
+                ? "Tracking " +
+                  found.displayName +
+                  " from your location."
+                : "Tracking " +
+                  found.displayName +
+                  ". Tap Use My Location for local pointing data."
+        );
+
+    }
+    catch(error){
+
+        console.error(
+            error
+        );
+
+
+        setStatus(
+            "Could not load the current orbit for " +
+            found.displayName +
+            ". Please try Refresh Satellite Data."
+        );
+
+    }
+
+}
+
+
+/*
+===========================================================
+ FILTER BUTTONS
+===========================================================
+*/
+
+document
+    .querySelectorAll(
+        ".filter-btn"
+    )
+    .forEach(
+        button => {
+
+            button.addEventListener(
+                "click",
+                function(){
+
+                    document
+                        .querySelectorAll(
+                            ".filter-btn"
+                        )
+                        .forEach(
+                            b =>
+                                b.classList.remove(
+                                    "active"
+                                )
+                        );
+
+
+                    this.classList.add(
+                        "active"
+                    );
+
+
+                    currentFilter =
+                        this.dataset.filter;
+
+
+                    renderSatelliteCards();
+
+                }
+            );
+
+        }
+    );
+
+
+/*
+===========================================================
+ SELECT CONTROL
+===========================================================
+*/
+
+$("satelliteSelect")
+    .addEventListener(
+        "change",
+        function(){
+
+            if(!this.value){
+                return;
+            }
+
+
+            loadSelectedTle(
+                this.value
+            );
+
+        }
+    );
+
+
+/*
+===========================================================
+ LOCATION BUTTON
+===========================================================
+*/
+
+$("locationButton")
+    .addEventListener(
+        "click",
+        requestLocation
+    );
+
+
+/*
+===========================================================
+ REFRESH BUTTON
+
+ Clears only the local cache for the orbital dataset and
+ downloads a fresh copy.
+===========================================================
+*/
+
+$("refreshButton")
+    .addEventListener(
+        "click",
+        async function(){
+
+            try{
+
+                localStorage.removeItem(
+                    "hamcorner_amateur_gp_v1"
+                );
+
+            }
+            catch(error){
+
+                console.warn(error);
+
+            }
+
+
+            await loadSatelliteData();
+
+        }
+    );
+
+
+/*
+===========================================================
+ INITIAL LOAD
+===========================================================
+*/
+
+loadSatelliteData();
+
+
+/*
+===========================================================
+ LOCAL POSITION UPDATE
+
+ No repeated CelesTrak requests.
+
+ Only satellite position is recalculated locally.
+===========================================================
+*/
+
+updateTimer =
+    setInterval(
+        function(){
+
+            if(
+                selectedSatellite &&
+                selectedSatellite.satrec
+            ){
+
+                updateLivePosition();
+
+            }
+
+        },
+        2000
+    );
+
+
+})();
+
+</script>
+
+</body>
+</html>
