@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 
 <meta name="viewport"
@@ -8,7 +10,12 @@
 
 <title>QSL Card Generator | HAM Corner by VU33CM</title>
 
+
 <style>
+
+/* =========================================================
+   GENERAL
+   ========================================================= */
 
 * {
     box-sizing: border-box;
@@ -20,154 +27,304 @@ html {
 
 body {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
     background:
-        radial-gradient(circle at top, #10264a 0%, #050b18 55%, #02050d 100%);
+        radial-gradient(
+            circle at top,
+            #10264a 0%,
+            #050b18 55%,
+            #02050d 100%
+        );
+
     color: #ffffff;
 }
 
-/* ================= HEADER ================= */
+
+/* =========================================================
+   HEADER
+   ========================================================= */
 
 header {
+
     width: 100%;
-    background: rgba(3, 10, 24, 0.96);
-    border-bottom: 1px solid rgba(0, 200, 255, 0.25);
+
+    background:
+        rgba(3, 10, 24, 0.96);
+
+    border-bottom:
+        1px solid rgba(0, 200, 255, 0.25);
+
     position: sticky;
+
     top: 0;
+
     z-index: 1000;
+
     backdrop-filter: blur(12px);
 }
 
+
 .navbar {
+
     max-width: 1250px;
+
     margin: auto;
+
     min-height: 76px;
-    padding: 10px 20px;
+
+    padding:
+        10px 20px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
+
     gap: 25px;
 }
 
+
+/* =========================================================
+   BRAND
+   ========================================================= */
+
 .brand {
+
     display: flex;
+
     align-items: center;
+
     gap: 12px;
+
     text-decoration: none;
+
     color: white;
+
     min-width: 210px;
 }
 
+
 .logo-icon {
+
     width: 52px;
+
     height: 52px;
+
     border-radius: 50%;
+
     overflow: hidden;
+
     flex-shrink: 0;
-    border: 2px solid #00c8ff;
-    box-shadow: 0 0 15px rgba(0, 200, 255, 0.35);
+
+    border:
+        2px solid #00c8ff;
+
+    box-shadow:
+        0 0 15px rgba(0, 200, 255, 0.35);
 }
 
+
 .logo-icon img {
+
     width: 100%;
+
     height: 100%;
+
     object-fit: contain;
 }
 
+
 .brand-text strong {
+
     display: block;
+
     font-size: 19px;
+
     letter-spacing: 1px;
 }
 
+
 .brand-text span {
+
     display: block;
+
     color: #76dfff;
+
     font-size: 11px;
+
     margin-top: 3px;
+
     letter-spacing: 1.5px;
 }
 
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
 .nav-links {
+
     display: flex;
+
     align-items: center;
+
     justify-content: flex-end;
+
     gap: 6px;
+
     flex-wrap: wrap;
 }
 
+
 .nav-links a {
+
     color: #d8eaff;
+
     text-decoration: none;
-    padding: 9px 12px;
+
+    padding:
+        9px 12px;
+
     border-radius: 8px;
+
     font-size: 14px;
-    transition: 0.25s ease;
+
+    transition:
+        0.25s ease;
 }
 
+
 .nav-links a:hover {
-    background: rgba(0, 200, 255, 0.12);
+
+    background:
+        rgba(0, 200, 255, 0.12);
+
     color: #ffffff;
 }
 
+
 .nav-links .active {
-    background: linear-gradient(135deg, #00aeea, #0066ff);
+
+    background:
+        linear-gradient(
+            135deg,
+            #00aeea,
+            #0066ff
+        );
+
     color: white;
-    box-shadow: 0 0 16px rgba(0, 174, 234, 0.3);
+
+    box-shadow:
+        0 0 16px rgba(
+            0,
+            174,
+            234,
+            0.3
+        );
 }
 
-/* ================= MAIN ================= */
+
+/* =========================================================
+   MAIN
+   ========================================================= */
 
 .main {
+
     max-width: 1450px;
+
     margin: auto;
-    padding: 55px 20px 80px;
+
+    padding:
+        55px 20px 80px;
 }
 
+
+/* =========================================================
+   PAGE HEADING
+   ========================================================= */
+
 .page-heading {
+
     text-align: center;
+
     margin-bottom: 42px;
 }
 
+
 .page-heading h1 {
+
     margin: 0;
 
-    font-size: clamp(34px, 5vw, 62px);
+    font-size:
+        clamp(
+            34px,
+            5vw,
+            62px
+        );
+
     line-height: 1.05;
 
-    background: linear-gradient(
-        90deg,
-        #ffffff,
-        #73dcff,
-        #00a9ff
-    );
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #73dcff,
+            #00a9ff
+        );
 
     -webkit-background-clip: text;
+
     -webkit-text-fill-color: transparent;
+
     background-clip: text;
 }
 
+
 .page-heading p {
+
     max-width: 700px;
-    margin: 18px auto 0;
+
+    margin:
+        18px auto 0;
+
     color: #a9c4dc;
+
     font-size: 16px;
+
     line-height: 1.7;
 }
 
-/* ================= GENERATOR ================= */
+
+/* =========================================================
+   GENERATOR
+   ========================================================= */
 
 .generator {
+
     display: grid;
-    grid-template-columns: minmax(300px, 430px) minmax(500px, 1fr);
+
+    grid-template-columns:
+        minmax(300px, 430px)
+        minmax(500px, 1fr);
+
     gap: 28px;
+
     align-items: start;
 }
 
-/* ================= FORM PANEL ================= */
+
+/* =========================================================
+   FORM PANEL
+   ========================================================= */
 
 .panel {
+
     background:
         linear-gradient(
             145deg,
@@ -175,122 +332,218 @@ header {
             rgba(4, 12, 27, 0.96)
         );
 
-    border: 1px solid rgba(0, 200, 255, 0.2);
+    border:
+        1px solid rgba(
+            0,
+            200,
+            255,
+            0.2
+        );
+
     border-radius: 18px;
 
     padding: 25px;
 
     box-shadow:
-        0 20px 60px rgba(0, 0, 0, 0.35),
-        inset 0 1px rgba(255, 255, 255, 0.03);
+        0 20px 60px rgba(
+            0,
+            0,
+            0,
+            0.35
+        ),
+        inset 0 1px rgba(
+            255,
+            255,
+            255,
+            0.03
+        );
 }
 
+
 .panel-title {
+
     display: flex;
+
     align-items: center;
+
     gap: 10px;
 
     color: #6bdcff;
 
     font-size: 22px;
+
     font-weight: 700;
 
     margin-bottom: 22px;
 }
 
+
 .panel-title span {
+
     font-size: 24px;
 }
 
-/* ================= FORM ================= */
+
+/* =========================================================
+   FORM
+   ========================================================= */
 
 .form-group {
+
     margin-bottom: 15px;
 }
 
+
 .form-group label {
+
     display: block;
+
     margin-bottom: 7px;
 
     color: #b8d4e9;
 
     font-size: 12px;
+
     font-weight: 700;
 
     letter-spacing: 0.8px;
+
     text-transform: uppercase;
 }
+
 
 input,
 select,
 textarea {
+
     width: 100%;
 
-    border: 1px solid rgba(102, 188, 230, 0.25);
+    border:
+        1px solid rgba(
+            102,
+            188,
+            230,
+            0.25
+        );
+
     border-radius: 8px;
 
-    background: rgba(0, 10, 25, 0.75);
+    background:
+        rgba(
+            0,
+            10,
+            25,
+            0.75
+        );
+
     color: #ffffff;
 
-    padding: 11px 12px;
+    padding:
+        11px 12px;
 
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
     font-size: 14px;
 
     outline: none;
 
-    transition: 0.2s ease;
+    transition:
+        0.2s ease;
 }
+
 
 input:focus,
 select:focus,
 textarea:focus {
+
     border-color: #00c8ff;
 
     box-shadow:
-        0 0 0 2px rgba(0, 200, 255, 0.08),
-        0 0 15px rgba(0, 200, 255, 0.12);
+        0 0 0 2px
+        rgba(
+            0,
+            200,
+            255,
+            0.08
+        ),
+
+        0 0 15px
+        rgba(
+            0,
+            200,
+            255,
+            0.12
+        );
 }
 
+
 select {
+
     cursor: pointer;
 }
 
+
 textarea {
+
     min-height: 95px;
+
     resize: vertical;
 }
 
+
 input::placeholder,
 textarea::placeholder {
+
     color: #66829a;
 }
 
-/* Two columns */
+
+/* =========================================================
+   TWO COLUMN FORM ROW
+   ========================================================= */
 
 .form-row {
+
     display: grid;
-    grid-template-columns: 1fr 1fr;
+
+    grid-template-columns:
+        1fr 1fr;
+
     gap: 12px;
 }
 
-/* ================= BUTTONS ================= */
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
 
 .buttons {
+
     display: grid;
-    grid-template-columns: 1fr 1fr;
+
+    grid-template-columns:
+        1fr 1fr;
+
     gap: 10px;
 
     margin-top: 22px;
 }
 
+
 .btn {
+
     border: none;
+
     border-radius: 9px;
 
-    padding: 13px 15px;
+    padding:
+        13px 15px;
 
     font-size: 14px;
+
     font-weight: 700;
 
     cursor: pointer;
@@ -301,11 +554,16 @@ textarea::placeholder {
         opacity 0.2s ease;
 }
 
+
 .btn:hover {
-    transform: translateY(-2px);
+
+    transform:
+        translateY(-2px);
 }
 
+
 .btn-primary {
+
     color: white;
 
     background:
@@ -316,24 +574,51 @@ textarea::placeholder {
         );
 
     box-shadow:
-        0 8px 25px rgba(0, 140, 255, 0.25);
+        0 8px 25px
+        rgba(
+            0,
+            140,
+            255,
+            0.25
+        );
 }
+
 
 .btn-secondary {
+
     color: #d8eaff;
 
-    background: rgba(255, 255, 255, 0.07);
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.07
+        );
 
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.12
+        );
 }
 
+
 .required {
+
     color: #00c8ff;
 }
 
-/* ================= PREVIEW PANEL ================= */
+
+/* =========================================================
+   PREVIEW PANEL
+   ========================================================= */
 
 .preview-panel {
+
     background:
         linear-gradient(
             145deg,
@@ -341,44 +626,73 @@ textarea::placeholder {
             rgba(4, 12, 27, 0.96)
         );
 
-    border: 1px solid rgba(0, 200, 255, 0.2);
+    border:
+        1px solid rgba(
+            0,
+            200,
+            255,
+            0.2
+        );
+
     border-radius: 18px;
 
     padding: 25px;
 
     box-shadow:
-        0 20px 60px rgba(0, 0, 0, 0.35);
+        0 20px 60px
+        rgba(
+            0,
+            0,
+            0,
+            0.35
+        );
 }
 
+
 .preview-header {
+
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
     margin-bottom: 18px;
 }
 
+
 .preview-title {
+
     color: #ffffff;
+
     font-size: 21px;
+
     font-weight: 700;
 }
 
+
 .live {
+
     display: flex;
+
     align-items: center;
+
     gap: 7px;
 
     color: #79ffad;
 
     font-size: 11px;
+
     font-weight: 700;
 
     letter-spacing: 1px;
 }
 
+
 .live-dot {
+
     width: 8px;
+
     height: 8px;
 
     border-radius: 50%;
@@ -386,38 +700,70 @@ textarea::placeholder {
     background: #39ff88;
 
     box-shadow:
-        0 0 10px rgba(57, 255, 136, 0.8);
+        0 0 10px
+        rgba(
+            57,
+            255,
+            136,
+            0.8
+        );
 }
 
-/* ================= CANVAS ================= */
+
+/* =========================================================
+   CANVAS
+   ========================================================= */
 
 .canvas-wrapper {
+
     width: 100%;
 
     background:
         radial-gradient(
             circle,
-            rgba(0, 200, 255, 0.08),
-            rgba(0, 0, 0, 0.2)
+            rgba(
+                0,
+                200,
+                255,
+                0.08
+            ),
+            rgba(
+                0,
+                0,
+                0,
+                0.2
+            )
         );
 
     border-radius: 12px;
 
     padding: 12px;
 
-    border: 1px solid rgba(0, 200, 255, 0.12);
+    border:
+        1px solid
+        rgba(
+            0,
+            200,
+            255,
+            0.12
+        );
 
     display: flex;
+
     justify-content: center;
+
     align-items: center;
 
     overflow: hidden;
 }
 
+
 #qslCanvas {
+
     display: block;
 
     width: 100%;
+
     height: auto;
 
     max-width: 100%;
@@ -425,30 +771,59 @@ textarea::placeholder {
     border-radius: 5px;
 
     box-shadow:
-        0 10px 35px rgba(0, 0, 0, 0.45);
+        0 10px 35px
+        rgba(
+            0,
+            0,
+            0,
+            0.45
+        );
 }
 
-/* ================= INFO ================= */
+
+/* =========================================================
+   PREVIEW INFO
+   ========================================================= */
 
 .preview-info {
+
     margin-top: 16px;
 
     color: #7897b2;
 
     font-size: 12px;
+
     line-height: 1.6;
 
     text-align: center;
 }
 
-/* ================= FOOTER ================= */
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
 
 footer {
-    border-top: 1px solid rgba(0, 200, 255, 0.15);
 
-    background: rgba(1, 5, 14, 0.95);
+    border-top:
+        1px solid
+        rgba(
+            0,
+            200,
+            255,
+            0.15
+        );
 
-    padding: 28px 20px;
+    background:
+        rgba(
+            1,
+            5,
+            14,
+            0.95
+        );
+
+    padding:
+        28px 20px;
 
     text-align: center;
 
@@ -457,77 +832,115 @@ footer {
     font-size: 13px;
 }
 
+
 footer a {
+
     color: #6bdcff;
+
     text-decoration: none;
 }
 
+
 footer a:hover {
+
     text-decoration: underline;
 }
 
-/* ================= MOBILE ================= */
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
 
 @media (max-width: 1050px) {
 
     .navbar {
+
         flex-direction: column;
+
         padding-bottom: 15px;
     }
 
+
     .brand {
+
         justify-content: center;
     }
+
 
     .nav-links {
+
         justify-content: center;
     }
 
+
     .generator {
+
         grid-template-columns: 1fr;
     }
 
 }
 
+
 @media (max-width: 650px) {
 
     .main {
-        padding: 35px 12px 60px;
+
+        padding:
+            35px 12px 60px;
     }
+
 
     .panel,
     .preview-panel {
+
         padding: 17px;
+
         border-radius: 14px;
     }
 
+
     .form-row {
+
         grid-template-columns: 1fr;
+
         gap: 0;
     }
 
+
     .buttons {
+
         grid-template-columns: 1fr;
     }
 
+
     .nav-links a {
+
         font-size: 12px;
-        padding: 7px 8px;
+
+        padding:
+            7px 8px;
     }
 
+
     .page-heading h1 {
+
         font-size: 36px;
     }
 
 }
 
-/* ================= PRINT ================= */
+
+/* =========================================================
+   PRINT
+   ========================================================= */
 
 @media print {
 
     body {
+
         background: white;
     }
+
 
     header,
     .page-heading,
@@ -535,127 +948,212 @@ footer a:hover {
     .preview-header,
     .preview-info,
     footer {
+
         display: none !important;
     }
 
+
     .main {
+
         padding: 0;
     }
 
+
     .generator {
+
         display: block;
     }
 
+
     .preview-panel {
+
         border: none;
+
         box-shadow: none;
+
         padding: 0;
     }
+
 
     .canvas-wrapper {
+
         border: none;
+
         padding: 0;
     }
 
+
     #qslCanvas {
+
         width: 100%;
     }
 
 }
 
 </style>
+
 </head>
+
 
 <body>
 
-<!-- ================= HEADER ================= -->
+
+<!-- =========================================================
+     HEADER
+     ========================================================= -->
 
 <header>
 
 <div class="navbar">
 
-<a href="index.html" class="brand">
+
+<a href="index.html"
+   class="brand">
+
 
     <div class="logo-icon">
+
         <img
             src="logo.png"
             alt="HAM Corner VU33CM Logo">
+
     </div>
 
+
     <div class="brand-text">
-        <strong>HAM CORNER</strong>
-        <span>AMATEUR RADIO</span>
+
+        <strong>
+            HAM CORNER
+        </strong>
+
+        <span>
+            AMATEUR RADIO
+        </span>
+
     </div>
+
 
 </a>
 
 
 <nav class="nav-links">
 
-    <a href="index.html">Home</a>
 
-    <a href="study.html">Study</a>
-
-    <a href="activities.html">Activities</a>
-
-    <a href="repeaters.html">Repeaters</a>
-
-    <a href="nets.html">Nets</a>
-
-    <a href="resources.html">Resources</a>
-
-    <a href="qsl.html" class="active">
-        📻 QSL Card
+    <a href="index.html">
+        Home
     </a>
 
+
+    <a href="study.html">
+        Study
+    </a>
+
+
+    <a href="activities.html">
+        Activities
+    </a>
+
+
+    <a href="repeaters.html">
+        Repeaters
+    </a>
+
+
+    <a href="nets.html">
+        Nets
+    </a>
+
+
+    <a href="resources.html">
+        Resources
+    </a>
+
+
+    <a href="qsl.html"
+       class="active">
+
+        📻 QSL Card
+
+    </a>
+
+
 </nav>
+
 
 </div>
 
 </header>
 
 
-<!-- ================= MAIN ================= -->
+
+<!-- =========================================================
+     MAIN
+     ========================================================= -->
 
 <main class="main">
 
 
 <div class="page-heading">
 
-    <h1>QSL CARD GENERATOR</h1>
+
+    <h1>
+        QSL CARD GENERATOR
+    </h1>
+
 
     <p>
         Create your personalised amateur radio QSL card
         and download it as a JPG.
     </p>
 
+
 </div>
+
 
 
 <div class="generator">
 
 
-<!-- ================= FORM ================= -->
+
+<!-- =========================================================
+     LEFT FORM
+     ========================================================= -->
 
 <section class="panel">
 
+
 <div class="panel-title">
-    <span>📻</span>
+
+    <span>
+        📻
+    </span>
+
     QSO Details
+
 </div>
 
 
-<form id="qslForm" autocomplete="off">
+
+<form id="qslForm"
+      autocomplete="off">
+
 
 
 <!-- CALLSIGN -->
 
 <div class="form-group">
 
+
 <label for="callsign">
+
     Your Callsign
-    <span class="required">*</span>
+
+    <span class="required">
+        *
+    </span>
+
 </label>
+
 
 <input
     type="text"
@@ -666,16 +1164,22 @@ footer a:hover {
     autocapitalize="characters"
     spellcheck="false">
 
+
 </div>
+
 
 
 <!-- TO RADIO -->
 
 <div class="form-group">
 
+
 <label for="toRadio">
+
     To Radio / Other Station
+
 </label>
+
 
 <input
     type="text"
@@ -686,18 +1190,25 @@ footer a:hover {
     autocapitalize="characters"
     spellcheck="false">
 
+
 </div>
+
 
 
 <!-- DATE / TIME -->
 
 <div class="form-row">
 
+
 <div class="form-group">
 
+
 <label for="date">
+
     Date (UTC)
+
 </label>
+
 
 <input
     type="date"
@@ -705,14 +1216,20 @@ footer a:hover {
     name="date"
     autocomplete="off">
 
+
 </div>
+
 
 
 <div class="form-group">
 
+
 <label for="time">
+
     Time (UTC)
+
 </label>
+
 
 <input
     type="time"
@@ -720,50 +1237,131 @@ footer a:hover {
     name="time"
     autocomplete="off">
 
-</div>
 
 </div>
+
+
+</div>
+
 
 
 <!-- BAND / FREQUENCY -->
 
 <div class="form-row">
 
+
 <div class="form-group">
 
+
 <label for="band">
+
     Band
+
 </label>
 
-<select id="band" name="band" autocomplete="off">
 
-    <option value="">Select Band</option>
-    <option value="160m">160m</option>
-    <option value="80m">80m</option>
-    <option value="60m">60m</option>
-    <option value="40m">40m</option>
-    <option value="30m">30m</option>
-    <option value="20m">20m</option>
-    <option value="17m">17m</option>
-    <option value="15m">15m</option>
-    <option value="12m">12m</option>
-    <option value="10m">10m</option>
-    <option value="6m">6m</option>
-    <option value="4m">4m</option>
-    <option value="2m">2m</option>
-    <option value="70cm">70cm</option>
-    <option value="23cm">23cm</option>
+<select
+    id="band"
+    name="band"
+    autocomplete="off">
+
+
+    <option value="">
+        Select Band
+    </option>
+
+
+    <option value="160m">
+        160m
+    </option>
+
+
+    <option value="80m">
+        80m
+    </option>
+
+
+    <option value="60m">
+        60m
+    </option>
+
+
+    <option value="40m">
+        40m
+    </option>
+
+
+    <option value="30m">
+        30m
+    </option>
+
+
+    <option value="20m">
+        20m
+    </option>
+
+
+    <option value="17m">
+        17m
+    </option>
+
+
+    <option value="15m">
+        15m
+    </option>
+
+
+    <option value="12m">
+        12m
+    </option>
+
+
+    <option value="10m">
+        10m
+    </option>
+
+
+    <option value="6m">
+        6m
+    </option>
+
+
+    <option value="4m">
+        4m
+    </option>
+
+
+    <option value="2m">
+        2m
+    </option>
+
+
+    <option value="70cm">
+        70cm
+    </option>
+
+
+    <option value="23cm">
+        23cm
+    </option>
+
 
 </select>
+
 
 </div>
 
 
+
 <div class="form-group">
 
+
 <label for="frequency">
+
     Frequency (MHz)
+
 </label>
+
 
 <input
     type="text"
@@ -773,53 +1371,138 @@ footer a:hover {
     autocomplete="off"
     inputmode="decimal">
 
-</div>
 
 </div>
+
+
+</div>
+
 
 
 <!-- MODE -->
 
 <div class="form-group">
 
+
 <label for="mode">
+
     Mode
+
 </label>
 
-<select id="mode" name="mode" autocomplete="off">
 
-    <option value="">Select Mode</option>
-    <option value="SSB">SSB</option>
-    <option value="CW">CW</option>
-    <option value="AM">AM</option>
-    <option value="FM">FM</option>
-    <option value="FT8">FT8</option>
-    <option value="FT4">FT4</option>
-    <option value="JS8">JS8</option>
-    <option value="RTTY">RTTY</option>
-    <option value="PSK31">PSK31</option>
-    <option value="SSTV">SSTV</option>
-    <option value="DV">DV</option>
-    <option value="DMR">DMR</option>
-    <option value="C4FM">C4FM</option>
-    <option value="D-STAR">D-STAR</option>
-    <option value="APRS">APRS</option>
-    <option value="OTHER">Other</option>
+<select
+    id="mode"
+    name="mode"
+    autocomplete="off">
+
+
+    <option value="">
+        Select Mode
+    </option>
+
+
+    <option value="SSB">
+        SSB
+    </option>
+
+
+    <option value="CW">
+        CW
+    </option>
+
+
+    <option value="AM">
+        AM
+    </option>
+
+
+    <option value="FM">
+        FM
+    </option>
+
+
+    <option value="FT8">
+        FT8
+    </option>
+
+
+    <option value="FT4">
+        FT4
+    </option>
+
+
+    <option value="JS8">
+        JS8
+    </option>
+
+
+    <option value="RTTY">
+        RTTY
+    </option>
+
+
+    <option value="PSK31">
+        PSK31
+    </option>
+
+
+    <option value="SSTV">
+        SSTV
+    </option>
+
+
+    <option value="DV">
+        DV
+    </option>
+
+
+    <option value="DMR">
+        DMR
+    </option>
+
+
+    <option value="C4FM">
+        C4FM
+    </option>
+
+
+    <option value="D-STAR">
+        D-STAR
+    </option>
+
+
+    <option value="APRS">
+        APRS
+    </option>
+
+
+    <option value="OTHER">
+        Other
+    </option>
+
 
 </select>
 
+
 </div>
+
 
 
 <!-- RST -->
 
 <div class="form-row">
 
+
 <div class="form-group">
 
+
 <label for="rstSent">
+
     RST Sent
+
 </label>
+
 
 <input
     type="text"
@@ -828,14 +1511,20 @@ footer a:hover {
     placeholder="e.g. 59"
     autocomplete="off">
 
+
 </div>
+
 
 
 <div class="form-group">
 
+
 <label for="rstReceived">
+
     RST Received
+
 </label>
+
 
 <input
     type="text"
@@ -844,18 +1533,25 @@ footer a:hover {
     placeholder="e.g. 59"
     autocomplete="off">
 
-</div>
 
 </div>
+
+
+</div>
+
 
 
 <!-- POWER -->
 
 <div class="form-group">
 
+
 <label for="power">
+
     Power (W)
+
 </label>
+
 
 <input
     type="text"
@@ -865,16 +1561,22 @@ footer a:hover {
     autocomplete="off"
     inputmode="decimal">
 
+
 </div>
+
 
 
 <!-- ANTENNA -->
 
 <div class="form-group">
 
+
 <label for="antenna">
+
     Antenna
+
 </label>
+
 
 <input
     type="text"
@@ -883,16 +1585,22 @@ footer a:hover {
     placeholder="e.g. Dipole, Yagi, Vertical"
     autocomplete="off">
 
+
 </div>
+
 
 
 <!-- PROPAGATION -->
 
 <div class="form-group">
 
+
 <label for="propagation">
+
     Propagation
+
 </label>
+
 
 <input
     type="text"
@@ -901,16 +1609,22 @@ footer a:hover {
     placeholder="e.g. Good, Poor, Sporadic-E"
     autocomplete="off">
 
+
 </div>
+
 
 
 <!-- QSL VIA -->
 
 <div class="form-group">
 
+
 <label for="qslVia">
+
     QSL Via
+
 </label>
+
 
 <input
     type="text"
@@ -919,16 +1633,22 @@ footer a:hover {
     placeholder="e.g. Direct, Bureau, eQSL, LoTW"
     autocomplete="off">
 
+
 </div>
+
 
 
 <!-- REMARKS -->
 
 <div class="form-group">
 
+
 <label for="remarks">
+
     Remarks
+
 </label>
+
 
 <textarea
     id="remarks"
@@ -936,12 +1656,15 @@ footer a:hover {
     placeholder="Thanks for the QSO! 73"
     autocomplete="off"></textarea>
 
+
 </div>
+
 
 
 <!-- BUTTONS -->
 
 <div class="buttons">
+
 
 <button
     type="button"
@@ -962,24 +1685,33 @@ footer a:hover {
 
 </button>
 
+
 </div>
 
 
 </form>
 
+
 </section>
 
 
-<!-- ================= PREVIEW ================= -->
+
+<!-- =========================================================
+     RIGHT PREVIEW
+     ========================================================= -->
 
 <section class="preview-panel">
 
 
 <div class="preview-header">
 
+
     <div class="preview-title">
+
         QSL Card Preview
+
     </div>
+
 
     <div class="live">
 
@@ -989,10 +1721,13 @@ footer a:hover {
 
     </div>
 
+
 </div>
 
 
+
 <div class="canvas-wrapper">
+
 
     <canvas
         id="qslCanvas"
@@ -1000,7 +1735,9 @@ footer a:hover {
         height="1024">
     </canvas>
 
+
 </div>
+
 
 
 <div class="preview-info">
@@ -1014,25 +1751,41 @@ footer a:hover {
 
 </section>
 
+
 </div>
+
 
 </main>
 
 
-<!-- ================= FOOTER ================= -->
+
+<!-- =========================================================
+     FOOTER
+     ========================================================= -->
 
 <footer>
 
-    <div>
-        © <span id="year"></span>
-        HAM Corner by VU33CM
-    </div>
 
-    <div style="margin-top:8px;">
-        Amateur Radio • People • Technology • Community • Service
-    </div>
+<div>
+
+    ©
+    <span id="year"></span>
+
+    HAM Corner by VU33CM
+
+</div>
+
+
+<div style="margin-top:8px;">
+
+    Amateur Radio • People • Technology •
+    Community • Service
+
+</div>
+
 
 </footer>
+
 
 
 <script>
@@ -1042,136 +1795,228 @@ footer a:hover {
    ========================================================= */
 
 
-/* ================= ELEMENTS ================= */
-
-const canvas = document.getElementById("qslCanvas");
-
-const ctx = canvas.getContext("2d");
-
-const TEMPLATE = "qsl-template.png";
-
-
-/* ================= TEMPLATE IMAGE ================= */
-
-const templateImage = new Image();
-
-templateImage.src = TEMPLATE;
-
-
 /* =========================================================
-   CLEAR ALL FORM DATA
+   GOOGLE APPS SCRIPT WEB APP
    =========================================================
 
    IMPORTANT:
-   This function intentionally clears EVERY field.
 
-   It is called on:
-   - normal page loading
-   - browser refresh
-   - browser back/forward cache restoration
+   This URL receives ONLY QSO DATA.
 
-   This prevents previous QSL entries from appearing again.
+   The JPG image is NEVER sent to Google Sheets.
+   ========================================================= */
+
+const GOOGLE_SHEET_URL =
+    "https://script.google.com/macros/s/AKfycbw56Rq3iQ6dC5tcjWfNzArz8hSeD2hKD2hux5kD_OFbxyWXswRSbmEEhU43ooaiplh0/exec";
+
+
+/* =========================================================
+   TEMPLATE
+   ========================================================= */
+
+const TEMPLATE =
+    "qsl-template.png";
+
+
+/* =========================================================
+   CANVAS
+   ========================================================= */
+
+const canvas =
+    document.getElementById(
+        "qslCanvas"
+    );
+
+
+const ctx =
+    canvas.getContext("2d");
+
+
+/* =========================================================
+   TEMPLATE IMAGE
+   ========================================================= */
+
+const templateImage =
+    new Image();
+
+
+templateImage.src =
+    TEMPLATE;
+
+
+/* =========================================================
+   CLEAR ALL QSL FORM FIELDS
+   =========================================================
+
+   This runs whenever the page is loaded or restored.
+
+   It prevents browsers from restoring previous entries.
    ========================================================= */
 
 function clearQSLFields() {
 
+
     const fields = [
 
         "callsign",
+
         "toRadio",
+
         "date",
+
         "time",
+
         "frequency",
+
         "rstSent",
+
         "rstReceived",
+
         "power",
+
         "antenna",
+
         "propagation",
+
         "qslVia",
+
         "remarks"
 
     ];
 
 
-    fields.forEach(function(id) {
+    fields.forEach(
+        function(id) {
 
-        const element = document.getElementById(id);
 
-        if (element) {
-            element.value = "";
+            const element =
+                document.getElementById(id);
+
+
+            if (element) {
+
+                element.value = "";
+
+            }
+
+
         }
+    );
 
-    });
 
+    /* Reset BAND */
 
-    /* Reset dropdown menus */
+    const band =
+        document.getElementById(
+            "band"
+        );
 
-    const band = document.getElementById("band");
 
     if (band) {
+
         band.selectedIndex = 0;
+
     }
 
 
-    const mode = document.getElementById("mode");
+    /* Reset MODE */
+
+    const mode =
+        document.getElementById(
+            "mode"
+        );
+
 
     if (mode) {
+
         mode.selectedIndex = 0;
+
     }
 
 }
 
 
 /* =========================================================
-   FORCE CLEAR WHEN PAGE IS OPENED
+   PAGE SHOW
+   =========================================================
+
+   pageshow also fires when Safari/Chrome restores a page
+   from browser back-forward cache.
    ========================================================= */
 
-window.addEventListener("pageshow", function() {
+window.addEventListener(
+    "pageshow",
+    function() {
 
-    clearQSLFields();
 
-    /*
-       Draw the clean template again after clearing.
-    */
+        clearQSLFields();
 
-    if (templateImage.complete) {
-        drawQSL();
+
+        if (
+            templateImage.complete
+        ) {
+
+            drawQSL();
+
+        }
+
+
     }
-
-});
-
-
-window.addEventListener("load", function() {
-
-    clearQSLFields();
-
-    drawQSL();
-
-});
+);
 
 
 /* =========================================================
-   ALSO CLEAR WHEN DOM IS READY
+   PAGE LOAD
    ========================================================= */
 
-document.addEventListener("DOMContentLoaded", function() {
+window.addEventListener(
+    "load",
+    function() {
 
-    clearQSLFields();
 
-});
+        clearQSLFields();
+
+
+        drawQSL();
+
+
+    }
+);
 
 
 /* =========================================================
-   GET FIELD VALUE
+   DOM READY
+   ========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+
+        clearQSLFields();
+
+
+    }
+);
+
+
+/* =========================================================
+   GET VALUE
    ========================================================= */
 
 function value(id) {
 
-    const element = document.getElementById(id);
+
+    const element =
+        document.getElementById(id);
+
 
     if (!element) {
+
         return "";
+
     }
+
 
     return element.value.trim();
 
@@ -1184,32 +2029,65 @@ function value(id) {
 
 function formatDate() {
 
-    const date = value("date");
+
+    const date =
+        value("date");
+
 
     if (!date) {
+
         return "";
+
     }
 
-    const parts = date.split("-");
 
-    if (parts.length !== 3) {
+    const parts =
+        date.split("-");
+
+
+    if (
+        parts.length !== 3
+    ) {
+
         return date;
+
     }
 
-    const year = parts[0];
 
-    const month = getMonthName(
-        parseInt(parts[1], 10)
+    const year =
+        parts[0];
+
+
+    const month =
+        getMonthName(
+            parseInt(
+                parts[1],
+                10
+            )
+        );
+
+
+    const day =
+        parts[2];
+
+
+    return (
+        day +
+        " " +
+        month +
+        " " +
+        year
     );
-
-    const day = parts[2];
-
-    return day + " " + month + " " + year;
 
 }
 
 
+/* =========================================================
+   MONTH NAME
+   ========================================================= */
+
 function getMonthName(month) {
+
 
     const months = [
 
@@ -1228,7 +2106,11 @@ function getMonthName(month) {
 
     ];
 
-    return months[month - 1] || "";
+
+    return (
+        months[month - 1] ||
+        ""
+    );
 
 }
 
@@ -1239,11 +2121,17 @@ function getMonthName(month) {
 
 function formatTime() {
 
-    const time = value("time");
+
+    const time =
+        value("time");
+
 
     if (!time) {
+
         return "";
+
     }
+
 
     return time;
 
@@ -1251,10 +2139,7 @@ function formatTime() {
 
 
 /* =========================================================
-   FONT FITTING
-   =========================================================
-
-   Reduces font size when long text is entered.
+   FIT FONT
    ========================================================= */
 
 function fitFont(
@@ -1264,21 +2149,32 @@ function fitFont(
     minSize
 ) {
 
-    let size = startingSize;
+
+    let size =
+        startingSize;
+
 
     while (
+
         size > minSize &&
-        ctx.measureText(text).width > maxWidth
+
+        ctx.measureText(text)
+            .width > maxWidth
+
     ) {
 
+
         size -= 1;
+
 
         ctx.font =
             "700 " +
             size +
             "px Arial";
 
+
     }
+
 
     return size;
 
@@ -1297,12 +2193,16 @@ function drawText(
     startingSize
 ) {
 
+
     if (!text) {
+
         return;
+
     }
 
 
-    let fontSize = startingSize;
+    let fontSize =
+        startingSize;
 
 
     ctx.font =
@@ -1311,12 +2211,13 @@ function drawText(
         "px Arial";
 
 
-    fontSize = fitFont(
-        text,
-        maxWidth,
-        startingSize,
-        12
-    );
+    fontSize =
+        fitFont(
+            text,
+            maxWidth,
+            startingSize,
+            12
+        );
 
 
     ctx.font =
@@ -1325,11 +2226,16 @@ function drawText(
         "px Arial";
 
 
-    ctx.fillStyle = "#101b2b";
+    ctx.fillStyle =
+        "#101b2b";
 
-    ctx.textAlign = "center";
 
-    ctx.textBaseline = "middle";
+    ctx.textAlign =
+        "center";
+
+
+    ctx.textBaseline =
+        "middle";
 
 
     ctx.fillText(
@@ -1348,16 +2254,21 @@ function drawText(
 
 function drawCallsign() {
 
+
     const callsign =
-        value("callsign").toUpperCase();
+        value("callsign")
+        .toUpperCase();
 
 
     if (!callsign) {
+
         return;
+
     }
 
 
-    let fontSize = 72;
+    let fontSize =
+        72;
 
 
     ctx.font =
@@ -1366,12 +2277,13 @@ function drawCallsign() {
         "px Arial";
 
 
-    fontSize = fitFont(
-        callsign,
-        650,
-        72,
-        30
-    );
+    fontSize =
+        fitFont(
+            callsign,
+            650,
+            72,
+            30
+        );
 
 
     ctx.font =
@@ -1380,16 +2292,21 @@ function drawCallsign() {
         "px Arial";
 
 
-    ctx.fillStyle = "#101b2b";
+    ctx.fillStyle =
+        "#101b2b";
 
-    ctx.textAlign = "center";
 
-    ctx.textBaseline = "middle";
+    ctx.textAlign =
+        "center";
+
+
+    ctx.textBaseline =
+        "middle";
 
 
     /*
-       Callsign field center
-       based on 1536 × 1024 template.
+       Callsign box center:
+       approximately 770 × 278
     */
 
     ctx.fillText(
@@ -1408,88 +2325,132 @@ function drawCallsign() {
 
 function drawRemarks() {
 
-    const remarks = value("remarks");
+
+    const remarks =
+        value("remarks");
+
 
     if (!remarks) {
+
         return;
+
     }
 
 
-    const maxWidth = 1410;
+    const maxWidth =
+        1410;
 
-    const startX = 50;
 
-    const startY = 720;
+    const startX =
+        50;
 
-    const fontSize = 24;
+
+    const startY =
+        720;
+
+
+    const fontSize =
+        24;
+
 
     ctx.font =
         "600 " +
         fontSize +
         "px Arial";
 
-    ctx.fillStyle = "#101b2b";
 
-    ctx.textAlign = "left";
-
-    ctx.textBaseline = "middle";
+    ctx.fillStyle =
+        "#101b2b";
 
 
-    /*
-       Simple word wrapping.
-    */
+    ctx.textAlign =
+        "left";
+
+
+    ctx.textBaseline =
+        "middle";
+
 
     const words =
         remarks.split(/\s+/);
 
-    let line = "";
 
-    let y = startY;
-
-
-    words.forEach(function(word) {
-
-        const testLine =
-            line +
-            (line ? " " : "") +
-            word;
+    let line =
+        "";
 
 
-        const width =
-            ctx.measureText(testLine).width;
+    let y =
+        startY;
 
 
-        if (
-            width > maxWidth &&
-            line
-        ) {
+    words.forEach(
+        function(word) {
 
-            ctx.fillText(
-                line,
-                startX,
-                y
-            );
 
-            line = word;
+            const testLine =
+                line +
+                (
+                    line
+                        ? " "
+                        : ""
+                ) +
+                word;
 
-            y += 30;
 
-        } else {
+            const width =
+                ctx.measureText(
+                    testLine
+                ).width;
 
-            line = testLine;
+
+            if (
+
+                width > maxWidth &&
+
+                line
+
+            ) {
+
+
+                ctx.fillText(
+                    line,
+                    startX,
+                    y
+                );
+
+
+                line =
+                    word;
+
+
+                y += 30;
+
+
+            }
+
+            else {
+
+
+                line =
+                    testLine;
+
+
+            }
+
 
         }
-
-    });
+    );
 
 
     if (line) {
+
 
         ctx.fillText(
             line,
             startX,
             y
         );
+
 
     }
 
@@ -1502,25 +2463,27 @@ function drawRemarks() {
 
 function drawQSL() {
 
-    /*
-       If template is not loaded yet,
-       wait for it.
-    */
 
-    if (!templateImage.complete) {
+    if (
+        !templateImage.complete
+    ) {
+
         return;
+
     }
 
 
     if (
         templateImage.naturalWidth === 0
     ) {
+
         return;
+
     }
 
 
     /* -----------------------------------------
-       ALWAYS START WITH CLEAN TEMPLATE
+       CLEAN CANVAS
        ----------------------------------------- */
 
     ctx.clearRect(
@@ -1530,6 +2493,10 @@ function drawQSL() {
         canvas.height
     );
 
+
+    /* -----------------------------------------
+       DRAW ORIGINAL TEMPLATE
+       ----------------------------------------- */
 
     ctx.drawImage(
         templateImage,
@@ -1547,21 +2514,20 @@ function drawQSL() {
     drawCallsign();
 
 
-    /* -----------------------------------------
+    /* =====================================================
        FIRST ROW
-       -----------------------------------------
+       =====================================================
 
-       Template coordinates:
+       TO RADIO       150
+       DATE            395
+       TIME            639
+       BAND            886
+       FREQUENCY      1139
+       MODE           1388
 
-       TO RADIO       x 150
-       DATE           x 395
-       TIME           x 639
-       BAND           x 886
-       FREQUENCY      x 1139
-       MODE           x 1388
+       Y ≈ 510
+       ===================================================== */
 
-       Value baseline / center ≈ y 510
-       ----------------------------------------- */
 
     drawText(
         value("toRadio").toUpperCase(),
@@ -1617,19 +2583,20 @@ function drawQSL() {
     );
 
 
-    /* -----------------------------------------
+    /* =====================================================
        SECOND ROW
-       -----------------------------------------
+       =====================================================
 
-       RST SENT        x 144
-       RST RECEIVED    x 382
-       POWER           x 625
-       ANTENNA         x 876
-       PROPAGATION     x 1138
-       QSL VIA         x 1389
+       RST SENT        144
+       RST RECEIVED    382
+       POWER           625
+       ANTENNA         876
+       PROPAGATION    1138
+       QSL VIA        1389
 
-       Value center ≈ y 630
-       ----------------------------------------- */
+       Y ≈ 630
+       ===================================================== */
+
 
     drawText(
         value("rstSent"),
@@ -1695,131 +2662,313 @@ function drawQSL() {
 
 
 /* =========================================================
-   TEMPLATE LOAD
+   TEMPLATE LOADED
    ========================================================= */
 
-templateImage.onload = function() {
+templateImage.onload =
+    function() {
 
-    /*
-       Important:
-       The fields have already been cleared.
-    */
+        drawQSL();
 
-    drawQSL();
-
-};
+    };
 
 
 /* =========================================================
    TEMPLATE ERROR
    ========================================================= */
 
-templateImage.onerror = function() {
+templateImage.onerror =
+    function() {
 
-    console.error(
-        "Could not load qsl-template.png"
-    );
+        console.error(
+            "Could not load qsl-template.png"
+        );
 
-};
+    };
 
 
 /* =========================================================
    LIVE PREVIEW
    ========================================================= */
 
-const allFields = document.querySelectorAll(
-    "#qslForm input, #qslForm select, #qslForm textarea"
+const allFields =
+    document.querySelectorAll(
+        "#qslForm input, " +
+        "#qslForm select, " +
+        "#qslForm textarea"
+    );
+
+
+allFields.forEach(
+    function(field) {
+
+
+        field.addEventListener(
+            "input",
+            drawQSL
+        );
+
+
+        field.addEventListener(
+            "change",
+            drawQSL
+        );
+
+
+    }
 );
 
 
-allFields.forEach(function(field) {
-
-    field.addEventListener(
-        "input",
-        drawQSL
-    );
-
-
-    field.addEventListener(
-        "change",
-        drawQSL
-    );
-
-});
-
-
 /* =========================================================
-   DOWNLOAD JPG
+   DOWNLOAD JPG + SAVE QSO
    ========================================================= */
 
 document
-    .getElementById("downloadButton")
-    .addEventListener("click", function() {
+    .getElementById(
+        "downloadButton"
+    )
+    .addEventListener(
+        "click",
+        async function() {
 
 
-        const callsign =
-            value("callsign")
-            .toUpperCase()
-            .replace(
-                /[^A-Z0-9]/g,
-                ""
+            /* =============================================
+               CHECK CALLSIGN
+               ============================================= */
+
+            const callsign =
+                value("callsign")
+                .toUpperCase()
+                .replace(
+                    /[^A-Z0-9]/g,
+                    ""
+                );
+
+
+            if (!callsign) {
+
+
+                alert(
+                    "Please enter your callsign before downloading the QSL card."
+                );
+
+
+                document
+                    .getElementById(
+                        "callsign"
+                    )
+                    .focus();
+
+
+                return;
+
+            }
+
+
+            /* =============================================
+               REDRAW
+               ============================================= */
+
+            drawQSL();
+
+
+            /* =============================================
+               COLLECT QSO DATA
+               ============================================= */
+
+            const qsoData = {
+
+
+                callsign:
+                    value(
+                        "callsign"
+                    ).toUpperCase(),
+
+
+                toRadio:
+                    value(
+                        "toRadio"
+                    ),
+
+
+                date:
+                    value(
+                        "date"
+                    ),
+
+
+                time:
+                    value(
+                        "time"
+                    ),
+
+
+                band:
+                    value(
+                        "band"
+                    ),
+
+
+                frequency:
+                    value(
+                        "frequency"
+                    ),
+
+
+                mode:
+                    value(
+                        "mode"
+                    ),
+
+
+                rstSent:
+                    value(
+                        "rstSent"
+                    ),
+
+
+                rstReceived:
+                    value(
+                        "rstReceived"
+                    ),
+
+
+                power:
+                    value(
+                        "power"
+                    ),
+
+
+                antenna:
+                    value(
+                        "antenna"
+                    ),
+
+
+                propagation:
+                    value(
+                        "propagation"
+                    ),
+
+
+                qslVia:
+                    value(
+                        "qslVia"
+                    ),
+
+
+                remarks:
+                    value(
+                        "remarks"
+                    )
+
+            };
+
+
+            /* =============================================
+               SEND DATA TO GOOGLE SHEET
+               =============================================
+
+               IMPORTANT:
+
+               Only qsoData is sent.
+
+               The canvas/JPG is NOT sent.
+               ============================================= */
+
+
+            try {
+
+
+                await fetch(
+                    GOOGLE_SHEET_URL,
+                    {
+
+                        method: "POST",
+
+                        mode: "no-cors",
+
+                        headers: {
+
+                            "Content-Type":
+                                "text/plain;charset=utf-8"
+
+                        },
+
+                        body:
+                            JSON.stringify(
+                                qsoData
+                            )
+
+                    }
+                );
+
+
+                console.log(
+                    "QSO data sent to Google Sheet."
+                );
+
+
+            }
+
+            catch (error) {
+
+
+                console.error(
+                    "Google Sheet error:",
+                    error
+                );
+
+
+            }
+
+
+            /* =============================================
+               CREATE JPG
+               ============================================= */
+
+            const jpg =
+                canvas.toDataURL(
+                    "image/jpeg",
+                    0.95
+                );
+
+
+            /* =============================================
+               CREATE DOWNLOAD LINK
+               ============================================= */
+
+            const link =
+                document.createElement(
+                    "a"
+                );
+
+
+            link.download =
+                "QSL-" +
+                callsign +
+                ".jpg";
+
+
+            link.href =
+                jpg;
+
+
+            document.body.appendChild(
+                link
             );
 
 
-        if (!callsign) {
+            link.click();
 
-            alert(
-                "Please enter your callsign before downloading the QSL card."
+
+            document.body.removeChild(
+                link
             );
 
-            document
-                .getElementById("callsign")
-                .focus();
-
-            return;
 
         }
-
-
-        /*
-           Make sure the latest information
-           is drawn before downloading.
-        */
-
-        drawQSL();
-
-
-        /*
-           JPG quality = 0.95
-        */
-
-        const jpg =
-            canvas.toDataURL(
-                "image/jpeg",
-                0.95
-            );
-
-
-        const link =
-            document.createElement("a");
-
-
-        link.download =
-            "QSL-" +
-            callsign +
-            ".jpg";
-
-
-        link.href = jpg;
-
-
-        document.body.appendChild(link);
-
-        link.click();
-
-        document.body.removeChild(link);
-
-    });
+    );
 
 
 /* =========================================================
@@ -1827,38 +2976,37 @@ document
    ========================================================= */
 
 document
-    .getElementById("clearButton")
-    .addEventListener("click", function() {
+    .getElementById(
+        "clearButton"
+    )
+    .addEventListener(
+        "click",
+        function() {
 
-        clearQSLFields();
 
-        drawQSL();
+            clearQSLFields();
 
-    });
+
+            drawQSL();
+
+
+        }
+    );
 
 
 /* =========================================================
-   YEAR
+   FOOTER YEAR
    ========================================================= */
 
-document.getElementById("year").textContent =
+document.getElementById(
+    "year"
+).textContent =
     new Date().getFullYear();
 
 
-/* =========================================================
-   EXTRA BROWSER PROTECTION
-   =========================================================
-
-   Some browsers can restore form values from their
-   history / back-forward cache.
-
-   pageshow above handles this situation.
-
-   We intentionally DO NOT use localStorage.clear()
-   because that could erase unrelated website data.
-   ========================================================= */
-
 </script>
 
+
 </body>
+
 </html>
