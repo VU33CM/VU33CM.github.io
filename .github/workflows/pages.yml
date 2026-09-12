@@ -16,6 +16,10 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
 
       - name: Checkout repository
@@ -24,14 +28,13 @@ jobs:
       - name: Add Analytics to HTML pages
         run: |
           for file in *.html; do
-
             if ! grep -q 'js/analytics.js' "$file"; then
-
               sed -i 's#</body>#<script src="js/analytics.js"></script>\n</body>#' "$file"
-
             fi
-
           done
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
 
       - name: Upload website
         uses: actions/upload-pages-artifact@v3
@@ -39,4 +42,5 @@ jobs:
           path: .
 
       - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v4
