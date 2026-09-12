@@ -25,16 +25,26 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Add Analytics to HTML pages
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Add Analytics to all HTML pages
         run: |
+          echo "Adding analytics.js..."
+
           for file in *.html; do
-            if ! grep -q 'js/analytics.js' "$file"; then
+            echo "Checking $file"
+
+            if ! grep -q "js/analytics.js" "$file"; then
               sed -i 's#</body>#<script src="js/analytics.js"></script>\n</body>#' "$file"
+              echo "Analytics added to $file"
+            else
+              echo "Analytics already exists in $file"
             fi
           done
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
+          echo "===== Analytics check ====="
+          grep -n "analytics.js" *.html || true
 
       - name: Upload website
         uses: actions/upload-pages-artifact@v3
