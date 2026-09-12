@@ -1,138 +1,3577 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HAM Corner by VU33CM – Indian Amateur Radio</title>
-  <link rel="stylesheet" href="css/style.css">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Get Your Amateur Radio License in India | HAM Corner by VU33CM</title>
+
+<meta name="description"
+      content="Complete guide to getting an Amateur Station Operator Certificate (ASOC) in India. Learn why amateur radio is regulated, Restricted and General grades, examination structure, syllabus, electronics qualification exemption, application process, fees and validity.">
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+
+/* =========================================================
+   LICENSING PAGE
+   ========================================================= */
+
+:root {
+    --lic-bg: #07111f;
+    --lic-bg2: #0a1828;
+    --lic-card: rgba(15, 31, 49, 0.92);
+    --lic-card2: rgba(11, 25, 41, 0.96);
+    --lic-border: rgba(25, 223, 255, 0.16);
+    --lic-cyan: #19dfff;
+    --lic-blue: #2388ff;
+    --lic-green: #48e6a4;
+    --lic-yellow: #ffd166;
+    --lic-red: #ff6b7a;
+    --lic-text: #eef7ff;
+    --lic-muted: #a8bfd3;
+    --lic-white: #ffffff;
+}
+
+
+/* =========================================================
+   BASE
+   ========================================================= */
+
+body {
+    background:
+        radial-gradient(
+            circle at 15% 5%,
+            rgba(25,223,255,.08),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 15%,
+            rgba(35,136,255,.08),
+            transparent 28%
+        ),
+        var(--lic-bg);
+    color: var(--lic-text);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+}
+
+.licensing-page {
+    overflow:hidden;
+}
+
+.lic-container {
+    width:min(1180px,92%);
+    margin:0 auto;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.lic-hero {
+    position:relative;
+    padding:92px 0 78px;
+    overflow:hidden;
+    border-bottom:1px solid rgba(25,223,255,.10);
+}
+
+.lic-hero::before {
+    content:"";
+    position:absolute;
+    width:520px;
+    height:520px;
+    border-radius:50%;
+    background:rgba(25,223,255,.055);
+    filter:blur(10px);
+    top:-260px;
+    right:-120px;
+}
+
+.lic-hero-grid {
+    display:grid;
+    grid-template-columns:1.15fr .85fr;
+    gap:55px;
+    align-items:center;
+    position:relative;
+    z-index:1;
+}
+
+.lic-badge {
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:9px 15px;
+    border:1px solid rgba(25,223,255,.22);
+    background:rgba(25,223,255,.06);
+    border-radius:999px;
+    color:var(--lic-cyan);
+    font-size:13px;
+    font-weight:800;
+    letter-spacing:.5px;
+    margin-bottom:22px;
+}
+
+.lic-hero h1 {
+    margin:0 0 22px;
+    font-size:clamp(42px,5vw,66px);
+    line-height:1.02;
+    letter-spacing:-2px;
+    font-weight:900;
+}
+
+.lic-hero h1 span {
+    color:var(--lic-cyan);
+}
+
+.lic-hero p {
+    max-width:760px;
+    color:var(--lic-muted);
+    font-size:19px;
+    line-height:1.75;
+    margin:0 0 28px;
+}
+
+.lic-hero-buttons {
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.lic-button {
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:13px 20px;
+    border-radius:12px;
+    text-decoration:none;
+    font-weight:800;
+    transition:.25s ease;
+}
+
+.lic-button.primary {
+    color:#03121e;
+    background:linear-gradient(135deg,var(--lic-cyan),#65eaff);
+}
+
+.lic-button.secondary {
+    color:var(--lic-white);
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.12);
+}
+
+.lic-button:hover {
+    transform:translateY(-2px);
+}
+
+.lic-hero-card {
+    padding:30px;
+    border-radius:24px;
+    border:1px solid var(--lic-border);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(25,223,255,.10),
+            rgba(7,18,31,.96)
+        );
+    box-shadow:0 25px 70px rgba(0,0,0,.28);
+}
+
+.lic-hero-card .big-icon {
+    font-size:54px;
+    margin-bottom:15px;
+}
+
+.lic-hero-card h3 {
+    margin:0 0 12px;
+    font-size:25px;
+}
+
+.lic-hero-card p {
+    font-size:16px;
+    line-height:1.7;
+    margin:0;
+}
+
+
+/* =========================================================
+   SECTION
+   ========================================================= */
+
+.lic-section {
+    padding:78px 0;
+}
+
+.lic-section.alt {
+    background:rgba(255,255,255,.018);
+    border-top:1px solid rgba(255,255,255,.035);
+    border-bottom:1px solid rgba(255,255,255,.035);
+}
+
+.lic-section-head {
+    max-width:850px;
+    margin:0 auto 38px;
+    text-align:center;
+}
+
+.lic-label {
+    display:inline-block;
+    color:var(--lic-cyan);
+    font-size:12px;
+    font-weight:900;
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+    margin-bottom:12px;
+}
+
+.lic-section-head h2 {
+    margin:0 0 14px;
+    font-size:clamp(31px,4vw,45px);
+    line-height:1.1;
+    letter-spacing:-1px;
+    font-weight:900;
+}
+
+.lic-section-head p {
+    margin:0;
+    color:var(--lic-muted);
+    font-size:17px;
+    line-height:1.75;
+}
+
+
+/* =========================================================
+   WHY LICENSE
+   ========================================================= */
+
+.why-license {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:22px;
+}
+
+.why-card {
+    padding:30px;
+    border:1px solid var(--lic-border);
+    border-radius:20px;
+    background:var(--lic-card);
+}
+
+.why-card.highlight {
+    border-color:rgba(25,223,255,.32);
+    background:
+        linear-gradient(
+            135deg,
+            rgba(25,223,255,.10),
+            rgba(9,25,42,.96)
+        );
+}
+
+.why-icon {
+    font-size:36px;
+    margin-bottom:14px;
+}
+
+.why-card h3 {
+    margin:0 0 12px;
+    font-size:24px;
+}
+
+.why-card p {
+    margin:0;
+    color:var(--lic-muted);
+    line-height:1.75;
+}
+
+.why-card ul {
+    margin:17px 0 0;
+    padding-left:20px;
+    color:var(--lic-muted);
+    line-height:1.8;
+}
+
+.why-card li {
+    margin-bottom:5px;
+}
+
+
+/* =========================================================
+   RESPONSIBILITY BANNER
+   ========================================================= */
+
+.responsibility-banner {
+    margin-top:28px;
+    padding:30px;
+    border-radius:20px;
+    border:1px solid rgba(72,230,164,.22);
+    background:
+        linear-gradient(
+            135deg,
+            rgba(72,230,164,.08),
+            rgba(8,25,39,.97)
+        );
+}
+
+.responsibility-banner h3 {
+    margin:0 0 12px;
+    color:var(--lic-green);
+    font-size:24px;
+}
+
+.responsibility-banner p {
+    margin:0;
+    color:var(--lic-muted);
+    font-size:16px;
+    line-height:1.75;
+}
+
+
+/* =========================================================
+   TWO LICENSES
+   ========================================================= */
+
+.license-grid {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+}
+
+.license-card {
+    position:relative;
+    padding:34px;
+    border-radius:24px;
+    border:1px solid var(--lic-border);
+    background:var(--lic-card);
+    overflow:hidden;
+}
+
+.license-card::after {
+    content:"";
+    position:absolute;
+    width:160px;
+    height:160px;
+    border-radius:50%;
+    right:-75px;
+    top:-75px;
+    background:rgba(25,223,255,.07);
+}
+
+.license-card.general {
+    border-color:rgba(35,136,255,.30);
+}
+
+.license-card.restricted {
+    border-color:rgba(25,223,255,.30);
+}
+
+.license-grade {
+    font-size:12px;
+    font-weight:900;
+    letter-spacing:1.4px;
+    color:var(--lic-cyan);
+    text-transform:uppercase;
+}
+
+.license-card h3 {
+    font-size:30px;
+    margin:8px 0 13px;
+    font-weight:900;
+}
+
+.license-card .callsign {
+    display:inline-block;
+    padding:7px 13px;
+    border-radius:9px;
+    background:rgba(255,255,255,.06);
+    color:var(--lic-white);
+    font-weight:900;
+    margin-bottom:17px;
+}
+
+.license-card p {
+    color:var(--lic-muted);
+    line-height:1.7;
+}
+
+.license-card ul {
+    padding-left:20px;
+    color:var(--lic-muted);
+    line-height:1.8;
+}
+
+
+/* =========================================================
+   EXAM STRUCTURE
+   ========================================================= */
+
+.exam-flow {
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.exam-card {
+    padding:28px;
+    border-radius:20px;
+    border:1px solid var(--lic-border);
+    background:var(--lic-card);
+    position:relative;
+}
+
+.exam-card .number {
+    width:48px;
+    height:48px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:14px;
+    background:rgba(25,223,255,.10);
+    border:1px solid rgba(25,223,255,.20);
+    color:var(--lic-cyan);
+    font-weight:900;
+    font-size:18px;
+    margin-bottom:18px;
+}
+
+.exam-card h3 {
+    margin:0 0 12px;
+    font-size:22px;
+}
+
+.exam-card p {
+    margin:0;
+    color:var(--lic-muted);
+    line-height:1.7;
+}
+
+.exam-card .exam-tag {
+    display:inline-block;
+    margin-top:18px;
+    padding:6px 10px;
+    border-radius:7px;
+    background:rgba(255,255,255,.05);
+    color:#cfe3f1;
+    font-size:11px;
+    font-weight:800;
+    text-transform:uppercase;
+}
+
+
+/* =========================================================
+   EXEMPTION
+   ========================================================= */
+
+.exemption-box {
+    display:grid;
+    grid-template-columns:1fr 250px;
+    gap:35px;
+    align-items:center;
+    padding:38px;
+    border-radius:25px;
+    border:1px solid rgba(72,230,164,.28);
+    background:
+        linear-gradient(
+            135deg,
+            rgba(72,230,164,.10),
+            rgba(7,24,39,.98)
+        );
+    box-shadow:0 20px 60px rgba(0,0,0,.20);
+}
+
+.exemption-box h3 {
+    color:var(--lic-green);
+    margin:0 0 15px;
+    font-size:30px;
+}
+
+.exemption-box p {
+    margin:0 0 15px;
+    color:var(--lic-muted);
+    line-height:1.8;
+}
+
+.exemption-box p:last-child {
+    margin-bottom:0;
+}
+
+.exemption-badge {
+    min-height:190px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    border-radius:22px;
+    border:1px solid rgba(72,230,164,.24);
+    background:rgba(72,230,164,.06);
+}
+
+.exemption-badge .letter {
+    font-size:64px;
+    font-weight:950;
+    line-height:1;
+    color:var(--lic-green);
+}
+
+.exemption-badge strong {
+    margin-top:10px;
+    font-size:16px;
+}
+
+.exemption-badge small {
+    margin-top:5px;
+    color:var(--lic-muted);
+}
+
+
+/* =========================================================
+   QUALIFICATION BOX
+   ========================================================= */
+
+.qualification-note {
+    margin-top:20px;
+    padding:22px 25px;
+    border-radius:16px;
+    border:1px solid rgba(255,209,102,.20);
+    background:rgba(255,209,102,.055);
+    color:#d9e5ee;
+    line-height:1.75;
+}
+
+.qualification-note strong {
+    color:var(--lic-yellow);
+}
+
+
+/* =========================================================
+   SYLLABUS
+   ========================================================= */
+
+.syllabus-grid {
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.syllabus-card {
+    padding:26px;
+    border-radius:19px;
+    border:1px solid var(--lic-border);
+    background:var(--lic-card);
+}
+
+.syllabus-card h3 {
+    margin:0 0 16px;
+    font-size:20px;
+    line-height:1.3;
+}
+
+.syllabus-card ul {
+    margin:0;
+    padding-left:19px;
+    color:var(--lic-muted);
+    line-height:1.75;
+}
+
+.syllabus-card li {
+    margin-bottom:5px;
+}
+
+
+/* =========================================================
+   EXAM MARKS TABLE
+   ========================================================= */
+
+.table-wrap {
+    overflow-x:auto;
+    border-radius:18px;
+    border:1px solid var(--lic-border);
+}
+
+.exam-table {
+    width:100%;
+    border-collapse:collapse;
+    min-width:700px;
+    background:var(--lic-card);
+}
+
+.exam-table th {
+    padding:17px 18px;
+    text-align:left;
+    background:rgba(25,223,255,.08);
+    color:var(--lic-cyan);
+    font-size:14px;
+}
+
+.exam-table td {
+    padding:17px 18px;
+    border-top:1px solid rgba(255,255,255,.06);
+    color:var(--lic-muted);
+    line-height:1.5;
+}
+
+.exam-table td:first-child {
+    color:var(--lic-white);
+    font-weight:800;
+}
+
+.exam-table strong {
+    color:var(--lic-white);
+}
+
+.table-note {
+    margin-top:17px;
+    padding:18px 20px;
+    border-left:3px solid var(--lic-yellow);
+    background:rgba(255,209,102,.045);
+    color:var(--lic-muted);
+    line-height:1.7;
+    border-radius:0 12px 12px 0;
+}
+
+
+/* =========================================================
+   RESPONSIBILITY / POWER / EMISSION
+   ========================================================= */
+
+.power-grid {
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.power-card {
+    padding:28px;
+    border-radius:20px;
+    background:var(--lic-card);
+    border:1px solid var(--lic-border);
+}
+
+.power-card .icon {
+    font-size:34px;
+    margin-bottom:12px;
+}
+
+.power-card h3 {
+    margin:0 0 11px;
+    font-size:21px;
+}
+
+.power-card p {
+    margin:0;
+    color:var(--lic-muted);
+    line-height:1.72;
+}
+
+.power-card strong {
+    color:var(--lic-white);
+}
+
+
+/* =========================================================
+   RULES
+   ========================================================= */
+
+.rules-grid {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.rule-card {
+    padding:28px;
+    border-radius:20px;
+    border:1px solid var(--lic-border);
+    background:var(--lic-card);
+}
+
+.rule-card h3 {
+    margin:0 0 15px;
+    font-size:22px;
+}
+
+.rule-card ul {
+    margin:0;
+    padding-left:20px;
+    color:var(--lic-muted);
+    line-height:1.8;
+}
+
+.rule-card.dont {
+    border-color:rgba(255,107,122,.20);
+}
+
+.rule-card.dont h3 {
+    color:var(--lic-red);
+}
+
+.rule-card.do {
+    border-color:rgba(72,230,164,.20);
+}
+
+.rule-card.do h3 {
+    color:var(--lic-green);
+}
+
+
+/* =========================================================
+   APPLICATION STEPS
+   ========================================================= */
+
+.steps {
+    display:grid;
+    gap:16px;
+}
+
+.step {
+    display:grid;
+    grid-template-columns:65px 1fr;
+    gap:20px;
+    align-items:start;
+    padding:25px;
+    border-radius:19px;
+    border:1px solid var(--lic-border);
+    background:var(--lic-card);
+}
+
+.step-number {
+    width:50px;
+    height:50px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:15px;
+    background:linear-gradient(135deg,var(--lic-cyan),var(--lic-blue));
+    color:#03121e;
+    font-size:19px;
+    font-weight:950;
+}
+
+.step h3 {
+    margin:0 0 7px;
+    font-size:21px;
+}
+
+.step p {
+    margin:0;
+    color:var(--lic-muted);
+    line-height:1.7;
+}
+
+.step a {
+    color:var(--lic-cyan);
+    font-weight:700;
+}
+
+
+/* =========================================================
+   FEES
+   ========================================================= */
+
+.fee-grid {
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:16px;
+}
+
+.fee-card {
+    padding:24px;
+    border-radius:18px;
+    background:var(--lic-card);
+    border:1px solid var(--lic-border);
+    text-align:center;
+}
+
+.fee-card .fee {
+    color:var(--lic-cyan);
+    font-size:27px;
+    font-weight:900;
+    margin-bottom:7px;
+}
+
+.fee-card strong {
+    display:block;
+    margin-bottom:7px;
+    font-size:15px;
+}
+
+.fee-card small {
+    color:var(--lic-muted);
+    line-height:1.5;
+}
+
+
+/* =========================================================
+   VALIDITY
+   ========================================================= */
+
+.validity {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:22px;
+}
+
+.validity-card {
+    padding:32px;
+    border-radius:21px;
+    border:1px solid var(--lic-border);
+    background:var(--lic-card);
+}
+
+.validity-card .big {
+    color:var(--lic-cyan);
+    font-size:45px;
+    line-height:1;
+    font-weight:950;
+    margin-bottom:12px;
+}
+
+.validity-card h3 {
+    margin:0 0 10px;
+    font-size:22px;
+}
+
+.validity-card p {
+    margin:0;
+    color:var(--lic-muted);
+    line-height:1.7;
+}
+
+
+/* =========================================================
+   COURSE IDENTIFIERS
+   ========================================================= */
+
+.identifier-grid {
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.identifier {
+    padding:25px;
+    border-radius:18px;
+    background:var(--lic-card);
+    border:1px solid var(--lic-border);
+}
+
+.identifier .code {
+    display:inline-block;
+    padding:7px 11px;
+    border-radius:8px;
+    background:rgba(25,223,255,.08);
+    color:var(--lic-cyan);
+    font-weight:900;
+    font-size:13px;
+    margin-bottom:12px;
+}
+
+.identifier h3 {
+    margin:0 0 8px;
+    font-size:20px;
+}
+
+.identifier p {
+    margin:0;
+    color:var(--lic-muted);
+    line-height:1.65;
+}
+
+
+/* =========================================================
+   OFFICIAL LINKS
+   ========================================================= */
+
+.official-box {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.official-link {
+    display:block;
+    padding:25px;
+    border-radius:18px;
+    text-decoration:none;
+    color:var(--lic-white);
+    background:var(--lic-card);
+    border:1px solid var(--lic-border);
+    transition:.25s ease;
+}
+
+.official-link:hover {
+    transform:translateY(-3px);
+    border-color:rgba(25,223,255,.35);
+}
+
+.official-link span {
+    display:block;
+    color:var(--lic-cyan);
+    font-size:12px;
+    font-weight:900;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    margin-bottom:8px;
+}
+
+.official-link strong {
+    font-size:19px;
+}
+
+.official-link small {
+    display:block;
+    margin-top:7px;
+    color:var(--lic-muted);
+    line-height:1.5;
+}
+
+
+/* =========================================================
+   FINAL CTA
+   ========================================================= */
+
+.lic-final {
+    padding:90px 0;
+    text-align:center;
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(25,223,255,.11),
+            transparent 55%
+        );
+}
+
+.lic-final h2 {
+    margin:0 0 15px;
+    font-size:clamp(34px,4vw,50px);
+    font-weight:950;
+    letter-spacing:-1px;
+}
+
+.lic-final p {
+    max-width:700px;
+    margin:0 auto 27px;
+    color:var(--lic-muted);
+    line-height:1.75;
+    font-size:17px;
+}
+
+
+/* =========================================================
+   SOURCE NOTE
+   ========================================================= */
+
+.source-note {
+    margin-top:25px;
+    color:#7891a6;
+    font-size:13px;
+    line-height:1.7;
+}
+
+.source-note strong {
+    color:#a9bfd0;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media(max-width:900px) {
+
+    .lic-hero {
+        padding:65px 0 55px;
+    }
+
+    .lic-hero-grid,
+    .why-license,
+    .license-grid,
+    .exemption-box,
+    .rules-grid,
+    .validity,
+    .official-box {
+        grid-template-columns:1fr;
+    }
+
+    .exam-flow {
+        grid-template-columns:1fr;
+    }
+
+    .syllabus-grid {
+        grid-template-columns:1fr 1fr;
+    }
+
+    .power-grid {
+        grid-template-columns:1fr 1fr;
+    }
+
+    .fee-grid {
+        grid-template-columns:1fr 1fr;
+    }
+
+    .identifier-grid {
+        grid-template-columns:1fr 1fr;
+    }
+
+    .exemption-badge {
+        min-height:150px;
+    }
+
+}
+
+@media(max-width:600px) {
+
+    .lic-section {
+        padding:58px 0;
+    }
+
+    .lic-hero h1 {
+        font-size:39px;
+        letter-spacing:-1.3px;
+    }
+
+    .lic-hero p {
+        font-size:16px;
+    }
+
+    .lic-section-head h2 {
+        font-size:30px;
+    }
+
+    .lic-section-head p {
+        font-size:15px;
+    }
+
+    .syllabus-grid,
+    .power-grid,
+    .fee-grid,
+    .identifier-grid {
+        grid-template-columns:1fr;
+    }
+
+    .license-card,
+    .why-card,
+    .exam-card,
+    .syllabus-card,
+    .power-card,
+    .rule-card,
+    .validity-card {
+        padding:23px;
+    }
+
+    .exemption-box {
+        padding:25px;
+    }
+
+    .exemption-box h3 {
+        font-size:25px;
+    }
+
+    .step {
+        grid-template-columns:1fr;
+        gap:12px;
+    }
+
+    .lic-hero-buttons {
+        flex-direction:column;
+    }
+
+    .lic-button {
+        width:100%;
+    }
+
+}
+
+</style>
+
 </head>
-<body>
-  <header>
-    <div class="nav-container">
-      <a href="index.html" class="logo">
-        <div class="logo-icon">HC</div>
-        <div class="logo-text">
-          <h1>HAM Corner</h1>
-          <span>by VU33CM • Indian Amateur Radio</span>
-        </div>
-      </a>
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="licensing.html" class="active">Get Licensed</a></li>
-          <li><a href="study.html">Study Material</a></li>
-          <li><a href="activities.html">Activities & Modes</a></li>
-          <li><a href="repeaters.html">Repeaters</a></li>
-          <li><a href="nets.html">Nets</a></li>
-          <li><a href="clubs.html">Clubs</a></li>
-          <li><a href="resources.html">Resources</a></li>
-          <li><a href="about.html">About</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
 
-  <main>
-    <h1 class="section-title">How to Get Your Amateur Radio License in India</h1>
-    <p class="section-subtitle">Complete step-by-step guide for ASOC Restricted (VU3) and General (VU2) grades under the Telecommunications (Amateur Services) Rules, 2024.</p>
 
-    <div class="content-block">
-      <h2>Eligibility</h2>
-      <ul>
-        <li>Indian citizen</li>
-        <li>Minimum 12 years of age</li>
-        <li>No criminal record</li>
-      </ul>
-    </div>
+<body class="licensing-page">
 
-    <div class="content-block">
-      <h2>License Grades</h2>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Grade</th>
-              <th>Callsign</th>
-              <th>Exam</th>
-              <th>Power Privileges</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Restricted</td>
-              <td>VU3</td>
-              <td>Written only</td>
-              <td>Lower power (typically 10–50 W)</td>
-            </tr>
-            <tr>
-              <td>General</td>
-              <td>VU2</td>
-              <td>Written + Morse Code (8 wpm)</td>
-              <td>Higher power (up to 400 W on HF)</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
 
-    <div class="content-block">
-      <h2>Step-by-Step Process</h2>
-      <div class="steps">
-        <div class="step">
-          <h3>Register on Saral Sanchar</h3>
-          <p>Go to <strong>saralsanchar.gov.in</strong> → Registration → Select “Individual (WPC Exams/Certificates)”. Use PAN (or parent’s PAN if minor), mobile & email. Verify OTPs and note your login credentials.</p>
-        </div>
-        <div class="step">
-          <h3>Apply for the ASOC Examination</h3>
-          <p>Login → WPC Apply Now → Apply for Certificates → Amateur – Apply Now. Fill details, upload photo, signature, DOB proof and address proof. Select exam centre and grade. Pay exam fee via Bharatkosh (₹100 per grade).</p>
-        </div>
-        <div class="step">
-          <h3>Appear for the Examination</h3>
-          <p><strong>Restricted:</strong> Written test (Basic Electronics + Radio Regulations) – 1 hour.<br>
-          <strong>General:</strong> Written test (2 hours) + Morse Code sending & receiving at 8 words per minute.<br>
-          Minimum passing mark: 40% overall.</p>
-        </div>
-        <div class="step">
-          <h3>Apply for the License</h3>
-          <p>After passing, apply within 2 years. Login again → Apply for Amateur License. Fill station & equipment details, upload required documents and pay license fee (₹1,000 for 20 years or ₹2,000 for lifetime up to age 80).</p>
-        </div>
-        <div class="step">
-          <h3>Receive Your Digital ASOC</h3>
-          <p>After scrutiny, WPC issues the digital certificate with your callsign (you can suggest 3 preferences). Download it from the portal. You are now a licensed Radio Amateur!</p>
-        </div>
-      </div>
+<!-- =========================================================
+     HEADER
+     ========================================================= -->
+
+<header>
+
+    <div class="container navbar">
+
+        <a href="index.html" class="logo">
+
+            <div class="logo-icon">
+                <img
+                    src="logo.png"
+                    alt="HAM Corner VU33CM Logo"
+                    style="width:100%;height:100%;object-fit:contain;border-radius:inherit;">
+            </div>
+
+            <div class="logo-text">
+
+                <h1>HAM Corner</h1>
+
+                <span>
+                    by VU33CM • Indian Amateur Radio
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <nav>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="licensing.html" class="active">
+                Get Licensed
+            </a>
+
+            <a href="study.html">
+                Study
+            </a>
+
+            <a href="activities.html">
+                Activities
+            </a>
+
+            <a href="repeaters.html">
+                Repeaters
+            </a>
+
+            <a href="nets.html">
+                Nets
+            </a>
+
+            <a href="clubs.html">
+                Clubs
+            </a>
+
+            <a href="resources.html">
+                Resources
+            </a>
+
+            <a href="quiz.html" class="quiz-link">
+                🎓 ASOC Quiz
+            </a>
+
+            <a href="qsl.html" class="qsl-link">
+                📻 QSL Card
+            </a>
+
+        </nav>
+
     </div>
 
-    <div class="content-block">
-      <h2>Current Fees</h2>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr><th>Item</th><th>Fee</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Exam (Restricted or General)</td><td>₹100</td></tr>
-            <tr><td>Exam (Both grades)</td><td>₹200</td></tr>
-            <tr><td>License – 20 years</td><td>₹1,000</td></tr>
-            <tr><td>License – Lifetime (upto 80 yrs)</td><td>₹2,000</td></tr>
-            <tr><td>Permanent Change of Address</td><td>₹1,000</td></tr>
-            <tr><td>Special Event Callsign</td><td>₹200</td></tr>
-          </tbody>
-        </table>
-      </div>
+</header>
+
+
+
+<!-- =========================================================
+     HERO
+     ========================================================= -->
+
+<main>
+
+<section class="lic-hero">
+
+    <div class="lic-container lic-hero-grid">
+
+        <div>
+
+            <div class="lic-badge">
+                🇮🇳 INDIAN AMATEUR RADIO • ASOC
+            </div>
+
+            <h1>
+                Your first step into
+                <span>HAM Radio.</span>
+            </h1>
+
+            <p>
+                Getting an amateur-radio certificate in India is not
+                something to be afraid of. The purpose of the examination
+                is simple: make sure every operator understands radio,
+                follows the rules and uses the radio spectrum responsibly.
+            </p>
+
+            <div class="lic-hero-buttons">
+
+                <a href="#why-license"
+                   class="lic-button primary">
+                    Why do I need a licence?
+                </a>
+
+                <a href="#exam"
+                   class="lic-button secondary">
+                    See the exam structure
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="lic-hero-card">
+
+            <div class="big-icon">
+                📻
+            </div>
+
+            <h3>
+                Is the licence difficult to get?
+            </h3>
+
+            <p>
+                <strong>For most beginners, no.</strong>
+                The examination has a defined syllabus and a clear
+                structure. You learn the fundamentals of radio,
+                understand the regulations, pass the examination,
+                obtain your ASOC and then begin operating within the
+                privileges and conditions applicable to your certificate.
+            </p>
+
+        </div>
+
     </div>
 
-    <div class="content-block">
-      <h2>Official Portal</h2>
-      <p>All applications are accepted only through the official portal:</p>
-      <p><a href="https://saralsanchar.gov.in" target="_blank" rel="noopener" target="_blank" rel="noopener" style="color:var(--accent);font-weight:600;">https://saralsanchar.gov.in</a></p>
-      <p>Payment is done via <a href="https://bharatkosh.gov.in" target="_blank" rel="noopener" target="_blank" rel="noopener" style="color:var(--accent);">Bharatkosh</a>.</p>
-    </div>
-  </main>
+</section>
 
-  <footer>
-    <p class="callsign">HAM Corner by VU33CM</p>
-    <p>by VU33CM • Indian Amateur Radio • Always verify latest rules on official WPC / Saral Sanchar portals.</p>
-  </footer>
+
+
+<!-- =========================================================
+     WHY LICENSE
+     ========================================================= -->
+
+<section class="lic-section" id="why-license">
+
+    <div class="lic-container">
+
+        <div class="lic-section-head">
+
+            <div class="lic-label">
+                Start with the most important question
+            </div>
+
+            <h2>
+                Why is amateur radio regulated?
+            </h2>
+
+            <p>
+                Because radio waves are a shared resource. Your transmitter
+                does not know where your signal should stop. A poorly
+                configured or incorrectly operated transmitter can interfere
+                with other radio services, so amateur operators are expected
+                to understand both the technology and the rules.
+            </p>
+
+        </div>
+
+
+        <div class="why-license">
+
+            <div class="why-card highlight">
+
+                <div class="why-icon">
+                    📡
+                </div>
+
+                <h3>
+                    Radio spectrum is shared
+                </h3>
+
+                <p>
+                    Different services use different frequencies, bandwidths,
+                    emission types and operating conditions. Amateur radio
+                    operates within internationally coordinated and nationally
+                    authorised spectrum arrangements.
+                </p>
+
+                <ul>
+
+                    <li>
+                        Frequency allocations matter
+                    </li>
+
+                    <li>
+                        Emission types matter
+                    </li>
+
+                    <li>
+                        Power limits matter
+                    </li>
+
+                    <li>
+                        Bandwidth and interference matter
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="why-card">
+
+                <div class="why-icon">
+                    🧠
+                </div>
+
+                <h3>
+                    The licence proves responsibility
+                </h3>
+
+                <p>
+                    An amateur operator is not simply someone who owns a
+                    radio. The certificate confirms that the operator has
+                    demonstrated the required knowledge and can operate
+                    within the applicable regulations.
+                </p>
+
+                <ul>
+
+                    <li>
+                        Understand your station
+                    </li>
+
+                    <li>
+                        Identify your transmissions
+                    </li>
+
+                    <li>
+                        Use authorised frequencies and modes
+                    </li>
+
+                    <li>
+                        Avoid harmful interference
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <div class="responsibility-banner">
+
+            <h3>
+                The HAM operator's responsibility
+            </h3>
+
+            <p>
+                The spirit of amateur radio is
+                <strong>self-training, intercommunication and technical
+                investigation</strong>. The station exists for authorised
+                amateur communication and experimentation, not for commercial
+                broadcasting or ordinary business communication.
+                fileciteturn26file4L416-L429
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     TWO ASOC CATEGORIES
+     ========================================================= -->
+
+<section class="lic-section alt">
+
+    <div class="lic-container">
+
+        <div class="lic-section-head">
+
+            <div class="lic-label">
+                India has two ASOC categories
+            </div>
+
+            <h2>
+                Restricted or General — which one is for you?
+            </h2>
+
+            <p>
+                The Telecommunications (Amateur Services) Rules, 2024
+                recognise two categories of Amateur Station Operator
+                Certificate: General and Restricted.
+            </p>
+
+        </div>
+
+
+        <div class="license-grid">
+
+
+            <div class="license-card restricted">
+
+                <div class="license-grade">
+                    Amateur Station Operator Certificate
+                </div>
+
+                <h3>
+                    ASOC (Restricted)
+                </h3>
+
+                <div class="callsign">
+                    Restricted Grade
+                </div>
+
+                <p>
+                    A route into amateur radio for operators who want to
+                    obtain the required technical and regulatory knowledge
+                    and operate under the privileges applicable to the
+                    Restricted certificate.
+                </p>
+
+                <ul>
+
+                    <li>
+                        Part I written examination
+                    </li>
+
+                    <li>
+                        Section A — Radio Theory & Practice
+                    </li>
+
+                    <li>
+                        Section B — Radio Regulations
+                    </li>
+
+                    <li>
+                        No General-grade Morse requirement
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="license-card general">
+
+                <div class="license-grade">
+                    Amateur Station Operator Certificate
+                </div>
+
+                <h3>
+                    ASOC (General)
+                </h3>
+
+                <div class="callsign">
+                    General Grade
+                </div>
+
+                <p>
+                    The General category adds the Morse-code requirement
+                    and follows the higher examination standard described
+                    in the ASOC study material.
+                </p>
+
+                <ul>
+
+                    <li>
+                        Part I written examination
+                    </li>
+
+                    <li>
+                        Section A — Radio Theory & Practice
+                    </li>
+
+                    <li>
+                        Section B — Radio Regulations
+                    </li>
+
+                    <li>
+                        Part II — Morse at 8 WPM
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     EXAM STRUCTURE
+     ========================================================= -->
+
+<section class="lic-section" id="exam">
+
+    <div class="lic-container">
+
+        <div class="lic-section-head">
+
+            <div class="lic-label">
+                ASOC examination structure
+            </div>
+
+            <h2>
+                It is actually a very clear examination.
+            </h2>
+
+            <p>
+                Don't look at the entire syllabus as one giant subject.
+                Break it into the official parts and sections.
+            </p>
+
+        </div>
+
+
+        <div class="exam-flow">
+
+
+            <div class="exam-card">
+
+                <div class="number">
+                    I
+                </div>
+
+                <h3>
+                    Part I
+                    <br>
+                    Written Test
+                </h3>
+
+                <p>
+                    The written examination contains two sections:
+                    Radio Theory and Practice, and Radio Regulations.
+                </p>
+
+                <span class="exam-tag">
+                    Restricted + General
+                </span>
+
+            </div>
+
+
+            <div class="exam-card">
+
+                <div class="number">
+                    A
+                </div>
+
+                <h3>
+                    Section A
+                    <br>
+                    Radio Theory & Practice
+                </h3>
+
+                <p>
+                    Electronics, electricity, radio receivers,
+                    transmitters, propagation, antennas and frequency
+                    measurement.
+                </p>
+
+                <span class="exam-tag">
+                    Section A exemption possible
+                </span>
+
+            </div>
+
+
+            <div class="exam-card">
+
+                <div class="number">
+                    B
+                </div>
+
+                <h3>
+                    Section B
+                    <br>
+                    Radio Regulations
+                </h3>
+
+                <p>
+                    National and international radio regulations
+                    applicable to amateur-station operation.
+                </p>
+
+                <span class="exam-tag">
+                    Regulations are essential
+                </span>
+
+            </div>
+
+
+            <div class="exam-card">
+
+                <div class="number">
+                    II
+                </div>
+
+                <h3>
+                    Part II
+                    <br>
+                    Morse Code
+                </h3>
+
+                <p>
+                    Morse sending and receiving at the prescribed
+                    8 words-per-minute speed for the General certificate.
+                </p>
+
+                <span class="exam-tag">
+                    General only
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     ELECTRONICS EXEMPTION
+     ========================================================= -->
+
+<section class="lic-section alt">
+
+    <div class="lic-container">
+
+        <div class="lic-section-head">
+
+            <div class="lic-label">
+                ⭐ Important for Electronics / Telecommunications students
+            </div>
+
+            <h2>
+                Already studied electronics?
+                You may be exempt from Section A.
+            </h2>
+
+            <p>
+                This is one of the most important things to check before
+                preparing for the ASOC examination.
+            </p>
+
+        </div>
+
+
+        <div class="exemption-box">
+
+            <div>
+
+                <h3>
+                    🎓 Part I — Section A Exemption
+                </h3>
+
+                <p>
+                    The ASOC study material states that applicants holding
+                    an eligible <strong>Engineering or Science degree</strong>
+                    or an <strong>Engineering Diploma</strong> who have
+                    studied <strong>Electronics or Telecommunications</strong>
+                    are exempted from appearing in
+                    <strong>Section A of Part I</strong>.
+                </p>
+
+                <p>
+                    In simple words: if your academic qualification already
+                    covers the prescribed electronics or telecommunications
+                    background, you may not have to write the Radio Theory
+                    & Practice section.
+                </p>
+
+                <p>
+                    <strong>
+                        The exemption is specifically for Part I —
+                        Section A. It is not an exemption from the entire
+                        ASOC examination.
+                    </strong>
+                </p>
+
+            </div>
+
+
+            <div class="exemption-badge">
+
+                <div class="letter">
+                    A
+                </div>
+
+                <strong>
+                    Section A
+                    <br>
+                    EXEMPTION
+                </strong>
+
+                <small>
+                    Radio Theory & Practice
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="qualification-note">
+
+            <strong>
+                Who should check this?
+            </strong>
+
+            Candidates with qualifications such as
+            <strong>B.E./B.Tech, M.E./M.Tech, relevant Science degrees,
+            Engineering Diploma and higher qualifications in relevant
+            Electronics/Telecommunications fields</strong> should check
+            the qualification documents and current WPC/DoT requirements
+            before claiming the exemption.
+
+            The study material specifically states the Engineering/Science
+            degree or Engineering Diploma + Electronics/Telecommunications
+            criterion. fileciteturn26file0L30-L40
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     WHAT REMAINS AFTER EXEMPTION
+     ========================================================= -->
+
+<section class="lic-section">
+
+    <div class="lic-container">
+
+        <div class="lic-section-head">
+
+            <div class="lic-label">
+                Important clarification
+            </div>
+
+            <h2>
+                Section A exemption does not mean "no exam".
+            </h2>
+
+            <p>
+                Even if your technical background qualifies you for the
+                Section A exemption, the regulatory and operating knowledge
+                remains important.
+            </p>
+
+        </div>
+
+
+        <div class="why-license">
+
+            <div class="why-card highlight">
+
+                <div class="why-icon">
+                    🎓
+                </div>
+
+                <h3>
+                    What your qualification can cover
+                </h3>
+
+                <p>
+                    The prescribed exemption applies to
+                    <strong>Part I — Section A: Radio Theory & Practice</strong>.
+                </p>
+
+                <ul>
+
+                    <li>
+                        Elementary electricity
+                    </li>
+
+                    <li>
+                        Electronics
+                    </li>
+
+                    <li>
+                        Receivers
+                    </li>
+
+                    <li>
+                        Transmitters
+                    </li>
+
+                    <li>
+                        Radio propagation
+                    </li>
+
+                    <li>
+                        Antennas
+                    </li>
+
+                    <li>
+                        Frequency measurement
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="why-card">
+
+                <div class="why-icon">
+                    📜
+                </div>
+
+                <h3>
+                    What you still need to understand
+                </h3>
+
+                <p>
+                    Your electronics qualification does not automatically
+                    make you familiar with the amateur-radio regulatory
+                    framework.
+                </p>
+
+                <ul>
+
+                    <li>
+                        Amateur-radio regulations
+                    </li>
+
+                    <li>
+                        Frequency allocations
+                    </li>
+
+                    <li>
+                        Emission designations
+                    </li>
+
+                    <li>
+                        Station identification
+                    </li>
+
+                    <li>
+                        Operating procedure
+                    </li>
+
+                    <li>
+                        Radio regulations
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     SYLLABUS
+     ========================================================= -->
+
+<section class="lic-section alt">
+
+    <div class="lic-container">
+
+        <div class="lic-section-head">
+
+            <div class="lic-label">
+                What should I study?
+            </div>
+
+            <h2>
+                The ASOC syllabus — without the confusion.
+            </h2>
+
+            <p>
+                You do not need to memorize this entire list at once.
+                Use it as a preparation map.
+            </p>
+
+        </div>
+
+
+        <div class="syllabus-grid">
+
+
+            <div class="syllabus-card">
+
+                <h3>
+                    ⚡ Section A — Electricity
+                </h3>
+
+                <ul>
+
+                    <li>
+                        Elementary electricity
+                    </li>
+
+                    <li>
+                        Passive components
+                    </li>
+
+                    <li>
+                        Resistors
+                    </li>
+
+                    <li>
+                        Inductors
+                    </li>
+
+                    <li>
+                        Transformers
+                    </li>
+
+                    <li>
+                        Capacitors
+                    </li>
+
+                    <li>
+                        Ohm's law
+                    </li>
+
+                    <li>
+                        Kirchhoff's laws
+                    </li>
+
+                    <li>
+                        Power and energy
+                    </li>
+
+                    <li>
+                        Magnetism
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="syllabus-card">
+
+                <h3>
+                    🔌 Section A — AC & Circuits
+                </h3>
+
+                <ul>
+
+                    <li>
+                        Sinusoidal AC
+                    </li>
+
+                    <li>
+                        Peak and RMS values
+                    </li>
+
+                    <li>
+                        Phase
+                    </li>
+
+                    <li>
+                        Reactance
+                    </li>
+
+                    <li>
+                        Impedance
+                    </li>
+
+                    <li>
+                        Power factor
+                    </li>
+
+                    <li>
+                        Series and parallel circuits
+                    </li>
+
+                    <li>
+                        Resonance
+                    </li>
+
+                    <li>
+                        Rectifiers
+                    </li>
+
+                    <li>
+                        Voltage regulation
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="syllabus-card">
+
+                <h3>
+                    💻 Section A — Semiconductor Devices
+                </h3>
+
+                <ul>
+
+                    <li>
+                        Diodes
+                    </li>
+
+                    <li>
+                        Transistors
+                    </li>
+
+                    <li>
+                        Amplifiers
+                    </li>
+
+                    <li>
+                        Oscillators
+                    </li>
+
+                    <li>
+                        Detectors
+                    </li>
+
+                    <li>
+                        Frequency changers
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="syllabus-card">
+
+                <h3>
+                    📻 Section A — Receivers
+                </h3>
+
+                <ul>
+
+                    <li>
+                        TRF receivers
+                    </li>
+
+                    <li>
+                        Superheterodyne receivers
+                    </li>
+
+                    <li>
+                        CW reception
+                    </li>
+
+                    <li>
+                        Sensitivity
+                    </li>
+
+                    <li>
+                        Selectivity
+                    </li>
+
+                    <li>
+                        Fidelity
+                    </li>
+
+                    <li>
+                        Adjacent-channel interference
+                    </li>
+
+                    <li>
+                        Image interference
+                    </li>
+
+                    <li>
+                        AVC
+                    </li>
+
+                    <li>
+                        Squelch
+                    </li>
+
+                    <li>
+                        Signal-to-noise ratio
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="syllabus-card">
+
+                <h3>
+                    📡 Section A — Transmitters
+                </h3>
+
+                <ul>
+
+                    <li>
+                        Low-power transmitters
+                    </li>
+
+                    <li>
+                        Crystal oscillators
+                    </li>
+
+                    <li>
+                        Oscillator stability
+                    </li>
+
+                    <li>
+                        Semiconductor-based transmitters
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="syllabus-card">
+
+                <h3>
+                    🌐 Section A — Propagation
+                </h3>
+
+                <ul>
+
+                    <li>
+                        Electromagnetic spectrum
+                    </li>
+
+                    <li>
+                        Wavelength
+                    </li>
+
+                    <li>
+                        Frequency
+                    </li>
+
+                    <li>
+                        Frequency bands
+                    </li>
+
+                    <li>
+                        Ground waves
+                    </li>
+
+                    <li>
+                        Sky waves
+                    </li>
+
+                    <li>
+                        Space waves
+                    </li>
+
+                    <li>
+                        Skip distance
+                    </li>
+
+                    <li>
+                        Skip zone
+                    </li>
+
+                    <li>
+                        Fading
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="syllabus-card">
+
+                <h3>
+                    📶 Section A — Antennas
+                </h3>
+
+                <ul>
+
+                    <li>
+                        Common transmitting antennas
+                    </li>
+
+                    <li>
+                        Common receiving antennas
+                    </li>
+
+                    <li>
+                        Basic antenna principles
+                    </li>
+
+                    <li>
+                        Frequency measurement
+                    </li>
+
+                    <li>
+                        Simple frequency meters
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="syllabus-card">
+
+                <h3>
+                    📜 Section B — Regulations
+                </h3>
+
+                <ul>
+
+                    <li>
+                        National radio regulations
+                    </li>
+
+                    <li>
+                        International ITU Radio Regulations
+                    </li>
+
+                    <li>
+                        Amateur-service regulations
+                    </li>
+
+                    <li>
+                        Authorised frequencies
+                    </li>
+
+                    <li>
+                        Station operation
+                    </li>
+
+                    <li>
+                        Station identification
+                    </li>
+
+                    <li>
+                        Permitted communications
+                    </li>
+
+                    <li>
+                        Prohibited communications
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="syllabus-card">
+
+                <h3>
+                    🔤 Section B — Operating Knowledge
+                </h3>
+
+                <ul>
+
+                    <li>
+                        Callsigns
+                    </li>
+
+                    <li>
+                        Q-codes
+                    </li>
+
+                    <li>
+                        Common radio abbreviations
+                    </li>
+
+                    <li>
+                        International phonetic alphabet
+                    </li>
+
+                    <li>
+                        Frequency and wavelength terminology
+                    </li>
+
+                    <li>
+                        Operating procedure
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="syllabus-card">
+
+                <h3>
+                    🚨 Section B — Safety & Responsibility
+                </h3>
+
+                <ul>
+
+                    <li>
+                        Interference prevention
+                    </li>
+
+                    <li>
+                        Station identification
+                    </li>
+
+                    <li>
+                        Distress and urgency procedures
+                    </li>
+
+                    <li>
+                        Emergency communication principles
+                    </li>
+
+                    <li>
+                        Restrictions on messages
+                    </li>
+
+                    <li>
+                        Secrecy of correspondence
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="syllabus-card">
+
+                <h3>
+                    🔑 Part II — Morse
+                </h3>
+
+                <ul>
+
+                    <li>
+                        General certificate only
+                    </li>
+
+                    <li>
+                        Morse sending
+                    </li>
+
+                    <li>
+                        Morse reception
+                    </li>
+
+                    <li>
+                        8 words per minute
+                    </li>
+
+                    <li>
+                        Prescribed test passage
+                    </li>
+
+                    <li>
+                        Accurate character reception
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="syllabus-card">
+
+                <h3>
+                    📚 Practical preparation
+                </h3>
+
+                <ul>
+
+                    <li>
+                        Understand concepts
+                    </li>
+
+                    <li>
+                        Learn radio terminology
+                    </li>
+
+                    <li>
+                        Practice objective questions
+                    </li>
+
+                    <li>
+                        Learn regulations carefully
+                    </li>
+
+                    <li>
+                        Practise Morse if targeting General
+                    </li>
+
+                    <li>
+                        Use HAM Corner's ASOC Quiz
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     EXAMINATION MARKS
+     ========================================================= -->
+
+<section class="lic-section">
+
+    <div class="lic-container">
+
+        <div class="lic-section-head">
+
+            <div class="lic-label">
+                Examination pattern
+            </div>
+
+            <h2>
+                How are the marks calculated?
+            </h2>
+
+            <p>
+                The following examination pattern is reproduced from
+                the ASOC study material used for Restricted and General
+                preparation.
+            </p>
+
+        </div>
+
+
+        <div class="table-wrap">
+
+            <table class="exam-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Item
+                        </th>
+
+                        <th>
+                            Restricted
+                        </th>
+
+                        <th>
+                            General
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>
+                            Part I
+                        </td>
+
+                        <td>
+                            Written examination
+                        </td>
+
+                        <td>
+                            Written examination
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            Duration
+                        </td>
+
+                        <td>
+                            <strong>1 hour</strong>
+                        </td>
+
+                        <td>
+                            <strong>2 hours</strong>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            Maximum marks
+                        </td>
+
+                        <td>
+                            <strong>100</strong>
+                        </td>
+
+                        <td>
+                            <strong>100</strong>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            Section A
+                        </td>
+
+                        <td>
+                            Radio Theory & Practice
+                        </td>
+
+                        <td>
+                            Radio Theory & Practice
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            Section B
+                        </td>
+
+                        <td>
+                            Radio Regulations
+                        </td>
+
+                        <td>
+                            Radio Regulations
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            Minimum in each section
+                        </td>
+
+                        <td>
+                            <strong>40%</strong>
+                        </td>
+
+                        <td>
+                            <strong>50%</strong>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            Aggregate pass mark
+                        </td>
+
+                        <td>
+                            <strong>50%</strong>
+                        </td>
+
+                        <td>
+                            <strong>60%</strong>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            Part II
+                        </td>
+
+                        <td>
+                            Not applicable
+                        </td>
+
+                        <td>
+                            <strong>Morse — 8 WPM</strong>
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <div class="table-note">
+
+            <strong>
+                Important:
+            </strong>
+
+            These detailed examination figures come from the ASOC study
+            manual. Always check the examination notification/instructions
+            applicable to your application before appearing for the exam,
+            because administrative procedures can change.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     POWER AND EMISSION
+     ========================================================= -->
+
+<section class="lic-section alt">
+
+    <div class="lic-container">
+
+        <div class="lic-section-head">
+
+            <div class="lic-label">
+                Why the technical rules matter
+            </div>
+
+            <h2>
+                Frequency, emission and power are not optional details.
+            </h2>
+
+            <p>
+                A licence does not mean you can transmit anything,
+                anywhere, at any power. Amateur operation is subject to
+                the privileges and conditions applicable to the certificate,
+                station and frequency allocation.
+            </p>
+
+        </div>
+
+
+        <div class="power-grid">
+
+
+            <div class="power-card">
+
+                <div class="icon">
+                    📻
+                </div>
+
+                <h3>
+                    Frequency
+                </h3>
+
+                <p>
+                    Amateur operators use designated frequency allocations.
+                    The frequency determines where your signal sits in the
+                    radio spectrum and which amateur activity or band plan
+                    may be appropriate.
+                </p>
+
+            </div>
+
+
+            <div class="power-card">
+
+                <div class="icon">
+                    〰️
+                </div>
+
+                <h3>
+                    Emission
+                </h3>
+
+                <p>
+                    Voice, Morse, digital and other transmissions occupy
+                    bandwidth differently. The emission type describes the
+                    characteristics of the transmitted signal.
+                </p>
+
+            </div>
+
+
+            <div class="power-card">
+
+                <div class="icon">
+                    ⚡
+                </div>
+
+                <h3>
+                    Power
+                </h3>
+
+                <p>
+                    More transmitter power is not automatically better.
+                    Excessive power can increase interference and create
+                    unsafe or non-compliant operation. Always operate within
+                    the authorised limits and conditions.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     RESPONSIBILITIES
+     ========================================================= -->
+
+<section class="lic-section">
+
+    <div class="lic-container">
+
+        <div class="lic-section-head">
+
+            <div class="lic-label">
+                Responsible operation
+            </div>
+
+            <h2>
+                A good amateur is a responsible operator.
+            </h2>
+
+            <p>
+                The licence gives you access to a technical hobby,
+                not a free pass to use the spectrum without restrictions.
+            </p>
+
+        </div>
+
+
+        <div class="rules-grid">
+
+
+            <div class="rule-card do">
+
+                <h3>
+                    ✓ What a responsible amateur does
+                </h3>
+
+                <ul>
+
+                    <li>
+                        Uses the assigned callsign correctly
+                    </li>
+
+                    <li>
+                        Operates within authorised frequencies
+                    </li>
+
+                    <li>
+                        Uses appropriate emission and bandwidth
+                    </li>
+
+                    <li>
+                        Keeps transmissions technically clean
+                    </li>
+
+                    <li>
+                        Avoids harmful interference
+                    </li>
+
+                    <li>
+                        Maintains appropriate station records
+                    </li>
+
+                    <li>
+                        Helps during genuine emergencies when permitted
+                    </li>
+
+                    <li>
+                        Continues learning and experimenting responsibly
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="rule-card dont">
+
+                <h3>
+                    ✕ What amateur radio is not
+                </h3>
+
+                <ul>
+
+                    <li>
+                        A commercial broadcasting service
+                    </li>
+
+                    <li>
+                        A platform for business communications
+                    </li>
+
+                    <li>
+                        A replacement for licensed public telecom services
+                    </li>
+
+                    <li>
+                        A place for deliberately causing interference
+                    </li>
+
+                    <li>
+                        A way to transmit arbitrary content without rules
+                    </li>
+
+                    <li>
+                        A licence to ignore national or international
+                        radio regulations
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     APPLICATION PROCESS
+     ========================================================= -->
+
+<section class="lic-section alt" id="apply">
+
+    <div class="lic-container">
+
+        <div class="lic-section-head">
+
+            <div class="lic-label">
+                How to get licensed
+            </div>
+
+            <h2>
+                From beginner to licensed amateur.
+            </h2>
+
+            <p>
+                The basic journey is straightforward: understand the
+                eligibility, apply for the examination, prepare, pass,
+                then complete the certificate process.
+            </p>
+
+        </div>
+
+
+        <div class="steps">
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    1
+                </div>
+
+                <div>
+
+                    <h3>
+                        Check your eligibility
+                    </h3>
+
+                    <p>
+                        Indian citizens who are at least 12 years old can
+                        apply subject to the applicable rules and examination
+                        requirements. The current DoT ASOC page describes
+                        General and Restricted certificates and the 12-year
+                        minimum age.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    2
+                </div>
+
+                <div>
+
+                    <h3>
+                        Check whether you qualify for Section A exemption
+                    </h3>
+
+                    <p>
+                        If you have an eligible Engineering/Science degree
+                        or Engineering Diploma with Electronics or
+                        Telecommunications study, check the prescribed
+                        exemption from Part I, Section A before preparing
+                        for the examination.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    3
+                </div>
+
+                <div>
+
+                    <h3>
+                        Apply for the ASOC examination
+                    </h3>
+
+                    <p>
+                        Follow the current Department of Telecommunications
+                        application process and upload the documents requested
+                        by the portal. The DoT ASOC service page identifies
+                        the application process and required documentation.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    4
+                </div>
+
+                <div>
+
+                    <h3>
+                        Prepare for the correct grade
+                    </h3>
+
+                    <p>
+                        Restricted candidates prepare for the written
+                        examination. General candidates additionally need
+                        to prepare for the prescribed Morse requirement.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    5
+                </div>
+
+                <div>
+
+                    <h3>
+                        Appear for the examination
+                    </h3>
+
+                    <p>
+                        Complete the examination according to the instructions
+                        issued for your examination session. Carry the required
+                        documents and follow the examination-centre instructions.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    6
+                </div>
+
+                <div>
+
+                    <h3>
+                        Receive your ASOC
+                    </h3>
+
+                    <p>
+                        After the examination process and successful result,
+                        the certificate is issued through the applicable
+                        Department of Telecommunications/WPC process.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="qualification-note">
+
+            <strong>
+                Current portal warning:
+            </strong>
+
+            DoT's current eServices portal states that new applications
+            under the old Indian Telegraph Act framework are no longer
+            accepted through Saral Sanchar/NSWS and directs applicants to
+            the newer authorisation portal for applications under the
+            Telecommunications Act framework. Always follow the current
+            instructions shown on the official DoT portal when you apply.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     FEES
+     ========================================================= -->
+
+<section class="lic-section">
+
+    <div class="lic-container">
+
+        <div class="lic-section-head">
+
+            <div class="lic-label">
+                Fees
+            </div>
+
+            <h2>
+                Know the basic costs.
+            </h2>
+
+            <p>
+                The ASOC study material provides the following fee schedule.
+                The current DoT portal confirms ₹1,000 for 20-year validity
+                and ₹2,000 for lifetime validity for ASOC General and
+                Restricted.
+            </p>
+
+        </div>
+
+
+        <div class="fee-grid">
+
+
+            <div class="fee-card">
+
+                <div class="fee">
+                    ₹100
+                </div>
+
+                <strong>
+                    Examination
+                </strong>
+
+                <small>
+                    Per grade according to the study-manual fee schedule.
+                </small>
+
+            </div>
+
+
+            <div class="fee-card">
+
+                <div class="fee">
+                    ₹1,000
+                </div>
+
+                <strong>
+                    20-year ASOC
+                </strong>
+
+                <small>
+                    General or Restricted.
+                </small>
+
+            </div>
+
+
+            <div class="fee-card">
+
+                <div class="fee">
+                    ₹2,000
+                </div>
+
+                <strong>
+                    Lifetime ASOC
+                </strong>
+
+                <small>
+                    General or Restricted.
+                </small>
+
+            </div>
+
+
+            <div class="fee-card">
+
+                <div class="fee">
+                    ₹200
+                </div>
+
+                <strong>
+                    Permanent location change
+                </strong>
+
+                <small>
+                    Figure listed in the study-manual fee schedule.
+                </small>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="table-note">
+
+            <strong>
+                Fee note:
+            </strong>
+
+            The study manual lists examination fee as ₹100 per grade and
+            licence fee as ₹1,000 for 20 years or ₹2,000 for lifetime.
+            fileciteturn29file0L8-L14
+
+            The current DoT eServices page independently confirms the
+            ₹1,000 / ₹2,000 ASOC validity fees. citeturn0search0
+
+            Always verify the amount shown by the official portal at the
+            time of application.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     VALIDITY
+     ========================================================= -->
+
+<section class="lic-section alt">
+
+    <div class="lic-container">
+
+        <div class="lic-section-head">
+
+            <div class="lic-label">
+                Certificate validity
+            </div>
+
+            <h2>
+                Your ASOC can be long-term.
+            </h2>
+
+        </div>
+
+
+        <div class="validity">
+
+
+            <div class="validity-card">
+
+                <div class="big">
+                    20
+                </div>
+
+                <h3>
+                    Twenty-year validity
+                </h3>
+
+                <p>
+                    The current Department of Telecommunications service
+                    page lists ₹1,000 for a validity period of twenty years.
+                </p>
+
+            </div>
+
+
+            <div class="validity-card">
+
+                <div class="big">
+                    ∞
+                </div>
+
+                <h3>
+                    Lifetime validity
+                </h3>
+
+                <p>
+                    The current DoT service page lists ₹2,000 for lifetime
+                    validity. The exact administrative conditions should
+                    always be checked on the current official portal.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     COURSE / SYLLABUS IDENTIFIERS
+     ========================================================= -->
+
+<section class="lic-section">
+
+    <div class="lic-container">
+
+        <div class="lic-section-head">
+
+            <div class="lic-label">
+                Know the exact syllabus structure
+            </div>
+
+            <h2>
+                Remember these three identifiers.
+            </h2>
+
+            <p>
+                When you study ASOC material, these are the important
+                examination labels to remember.
+            </p>
+
+        </div>
+
+
+        <div class="identifier-grid">
+
+
+            <div class="identifier">
+
+                <div class="code">
+                    PART I
+                </div>
+
+                <h3>
+                    Written Test
+                </h3>
+
+                <p>
+                    The written examination containing Section A and
+                    Section B.
+                </p>
+
+            </div>
+
+
+            <div class="identifier">
+
+                <div class="code">
+                    PART I — A
+                </div>
+
+                <h3>
+                    Radio Theory & Practice
+                </h3>
+
+                <p>
+                    Electronics, radio theory, receivers, transmitters,
+                    propagation, antennas and frequency measurement.
+                </p>
+
+            </div>
+
+
+            <div class="identifier">
+
+                <div class="code">
+                    PART I — B
+                </div>
+
+                <h3>
+                    Radio Regulations
+                </h3>
+
+                <p>
+                    National and international regulations applicable
+                    to amateur-station operation.
+                </p>
+
+            </div>
+
+
+            <div class="identifier">
+
+                <div class="code">
+                    PART II
+                </div>
+
+                <h3>
+                    Morse Code
+                </h3>
+
+                <p>
+                    Sending and receiving at 8 WPM for the General
+                    certificate.
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="qualification-note">
+
+            <strong>
+                About a numeric "course code":
+            </strong>
+
+            The ASOC study material you provided identifies the examination
+            using <strong>Part I, Section A, Section B and Part II</strong>.
+            It does not provide a separate numeric academic course code.
+            HAM Corner therefore uses these official syllabus identifiers
+            rather than inventing a number.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     OFFICIAL PORTALS
+     ========================================================= -->
+
+<section class="lic-section alt">
+
+    <div class="lic-container">
+
+        <div class="lic-section-head">
+
+            <div class="lic-label">
+                Always verify before applying
+            </div>
+
+            <h2>
+                Use the official government information.
+            </h2>
+
+            <p>
+                HAM Corner is a learning resource. Rules, fees, application
+                procedures and portal instructions can change, so the
+                Department of Telecommunications should be your final authority.
+            </p>
+
+        </div>
+
+
+        <div class="official-box">
+
+
+            <a class="official-link"
+               href="https://www.eservices.dot.gov.in/amateur-station-operator-certificate-asoc"
+               target="_blank"
+               rel="noopener noreferrer">
+
+                <span>
+                    Official DoT service
+                </span>
+
+                <strong>
+                    Amateur Station Operator Certificate (ASOC)
+                </strong>
+
+                <small>
+                    Eligibility, categories, fees, validity and application
+                    information.
+                </small>
+
+            </a>
+
+
+            <a class="official-link"
+               href="https://eservices.dot.gov.in/authorisation-portal"
+               target="_blank"
+               rel="noopener noreferrer">
+
+                <span>
+                    Current DoT portal
+                </span>
+
+                <strong>
+                    Telecommunications Authorisation Portal
+                </strong>
+
+                <small>
+                    Check the current application route and instructions
+                    applicable under the Telecommunications Act framework.
+                </small>
+
+            </a>
+
+
+            <a class="official-link"
+               href="https://www.eservices.dot.gov.in/act-and-rules"
+               target="_blank"
+               rel="noopener noreferrer">
+
+                <span>
+                    Official rules
+                </span>
+
+                <strong>
+                    DoT Acts & Rules
+                </strong>
+
+                <small>
+                    Access the Telecommunications (Amateur Services)
+                    Rules, 2024 and other current government rules.
+                </small>
+
+            </a>
+
+
+            <a class="official-link"
+               href="https://www.saralsanchar.gov.in/"
+               target="_blank"
+               rel="noopener noreferrer">
+
+                <span>
+                    Legacy / reference portal
+                </span>
+
+                <strong>
+                    Saral Sanchar
+                </strong>
+
+                <small>
+                    The ASOC service information still references Saral
+                    Sanchar; check the current DoT notice before submitting
+                    a new application.
+                </small>
+
+            </a>
+
+
+        </div>
+
+
+        <div class="source-note">
+
+            <strong>
+                Information basis:
+            </strong>
+
+            Department of Telecommunications ASOC service information,
+            Telecommunications (Amateur Services) Rules, 2024, and the
+            ASOC study material used for Restricted/General examination
+            preparation.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     FINAL CTA
+     ========================================================= -->
+
+<section class="lic-final">
+
+    <div class="lic-container">
+
+        <h2>
+            Ready to become a Radio Amateur?
+        </h2>
+
+        <p>
+            You do not need to be an electronics expert to begin.
+            Learn the fundamentals, understand the regulations, prepare
+            for the examination and take your first step into a hobby
+            that combines communication, electronics, science,
+            experimentation and community.
+        </p>
+
+        <div class="lic-hero-buttons"
+             style="justify-content:center;">
+
+            <a href="study.html"
+               class="lic-button primary">
+                📚 Start Studying
+            </a>
+
+            <a href="quiz.html"
+               class="lic-button secondary">
+                🎓 Try the ASOC Quiz
+            </a>
+
+            <a href="activities.html"
+               class="lic-button secondary">
+                📡 Explore HAM Activities
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+
+<!-- =========================================================
+     FOOTER
+     ========================================================= -->
+
+<footer>
+
+    <div class="container">
+
+        <p class="callsign">
+            HAM Corner by VU33CM
+        </p>
+
+        <p>
+            Indian Amateur Radio • Learn • Experiment • Communicate • Serve
+        </p>
+
+        <p style="font-size:12px;margin-top:10px;opacity:.7;">
+            Always verify current examination, licensing, fee and
+            operating requirements with the Department of Telecommunications.
+        </p>
+
+    </div>
+
+</footer>
+
+
 </body>
 </html>
