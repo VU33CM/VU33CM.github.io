@@ -11,9 +11,7 @@ permissions:
   id-token: write
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
 
     environment:
@@ -21,7 +19,6 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -30,21 +27,34 @@ jobs:
 
       - name: Add Analytics to all HTML pages
         run: |
-          echo "Adding analytics.js..."
+          echo "Adding analytics.js to HTML pages..."
 
           for file in *.html; do
-            echo "Checking $file"
-
-            if ! grep -q "js/analytics.js" "$file"; then
+            if ! grep -q 'js/analytics.js' "$file"; then
               sed -i 's#</body>#<script src="js/analytics.js"></script>\n</body>#' "$file"
-              echo "Analytics added to $file"
+              echo "Added analytics to $file"
             else
-              echo "Analytics already exists in $file"
+              echo "Already present in $file"
             fi
           done
 
-          echo "===== Analytics check ====="
-          grep -n "analytics.js" *.html || true
+          echo ""
+          echo "===== VERIFYING HTML FILES ====="
+
+          for file in *.html; do
+            if grep -q 'js/analytics.js' "$file"; then
+              echo "OK: $file"
+            else
+              echo "ERROR: $file"
+              exit 1
+            fi
+          done
+
+          echo ""
+          echo "===== VERIFYING ANALYTICS FILE ====="
+
+          test -f js/analytics.js
+          echo "OK: js/analytics.js exists"
 
       - name: Upload website
         uses: actions/upload-pages-artifact@v3
