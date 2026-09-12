@@ -1,143 +1,4795 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HAM Corner by VU33CM – Indian Amateur Radio</title>
-  <link rel="stylesheet" href="css/style.css">
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Ham Radio Activities & Modes | HAM Corner by VU33CM</title>
+
+<meta name="description"
+      content="Discover the amazing world of amateur radio activities: HF, VHF, UHF, Morse, FT8, FT4, DMR, APRS, SSTV, satellites, ISS, moonbounce, DXing, contests, POTA, SOTA, emergency communication and more.">
+
+<link rel="stylesheet"
+      href="css/style.css">
+
+
+<style>
+
+/* =========================================================
+   HAM CORNER — ACTIVITIES PAGE
+   ========================================================= */
+
+:root {
+
+    --activity-bg: #050b14;
+    --activity-bg2: #081525;
+    --activity-card: #0b1928;
+    --activity-card2: #102438;
+
+    --activity-cyan: #19dfff;
+    --activity-blue: #2388ff;
+
+    --activity-white: #f3fbff;
+    --activity-muted: #9bb1c5;
+
+    --activity-border: #1b405c;
+
+    --activity-green: #36e09b;
+    --activity-orange: #ffb84d;
+
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    margin: 0;
+
+    background:
+        radial-gradient(
+            circle at 10% 5%,
+            rgba(25,223,255,.08),
+            transparent 28%
+        ),
+
+        radial-gradient(
+            circle at 90% 20%,
+            rgba(35,136,255,.08),
+            transparent 30%
+        ),
+
+        var(--activity-bg);
+
+    color: var(--activity-white);
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    line-height: 1.7;
+
+}
+
+
+/* =========================================================
+   MAIN PAGE WRAPPER
+   ========================================================= */
+
+.activities-page {
+
+    width: 100%;
+
+    overflow: hidden;
+
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.activities-hero {
+
+    position: relative;
+
+    padding:
+        95px 20px
+        90px;
+
+    background:
+
+        linear-gradient(
+            180deg,
+            rgba(5,11,20,.35),
+            rgba(5,11,20,.96)
+        ),
+
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(25,223,255,.14),
+            transparent 45%
+        );
+
+    text-align: center;
+
+}
+
+
+.activities-hero-inner {
+
+    width:
+        min(1100px, 94%);
+
+    margin: auto;
+
+}
+
+
+.activities-kicker {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding:
+        8px 16px;
+
+    border:
+        1px solid
+        rgba(25,223,255,.35);
+
+    border-radius:
+        999px;
+
+    background:
+        rgba(25,223,255,.06);
+
+    color:
+        var(--activity-cyan);
+
+    font-size:
+        12px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        1.2px;
+
+    text-transform:
+        uppercase;
+
+}
+
+
+.activities-hero h1 {
+
+    margin:
+        22px 0 18px;
+
+    font-size:
+        clamp(42px, 6vw, 72px);
+
+    line-height:
+        1.02;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        -2px;
+
+}
+
+
+.activities-hero h1 span {
+
+    color:
+        var(--activity-cyan);
+
+}
+
+
+.activities-hero-lead {
+
+    max-width:
+        820px;
+
+    margin:
+        0 auto 25px;
+
+    color:
+        #d7e8f4;
+
+    font-size:
+        clamp(17px, 2vw, 21px);
+
+}
+
+
+.activities-hero-note {
+
+    max-width:
+        760px;
+
+    margin:
+        auto;
+
+    color:
+        var(--activity-muted);
+
+    font-size:
+        14px;
+
+}
+
+
+/* =========================================================
+   QUICK DISCOVERY BAR
+   ========================================================= */
+
+.discovery-bar {
+
+    width:
+        min(1100px, 94%);
+
+    margin:
+        -35px auto 60px;
+
+    position:
+        relative;
+
+    z-index:
+        5;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap:
+        1px;
+
+    background:
+        var(--activity-border);
+
+    border:
+        1px solid
+        var(--activity-border);
+
+    border-radius:
+        18px;
+
+    overflow:
+        hidden;
+
+    box-shadow:
+        0 25px 70px
+        rgba(0,0,0,.35);
+
+}
+
+
+.discovery-item {
+
+    padding:
+        24px 18px;
+
+    background:
+        rgba(11,25,40,.96);
+
+    text-align:
+        center;
+
+}
+
+
+.discovery-icon {
+
+    font-size:
+        28px;
+
+    margin-bottom:
+        7px;
+
+}
+
+
+.discovery-item strong {
+
+    display:
+        block;
+
+    font-size:
+        15px;
+
+}
+
+
+.discovery-item span {
+
+    display:
+        block;
+
+    margin-top:
+        4px;
+
+    color:
+        var(--activity-muted);
+
+    font-size:
+        12px;
+
+}
+
+
+/* =========================================================
+   INTRODUCTION
+   ========================================================= */
+
+.activity-section {
+
+    width:
+        min(1120px, 92%);
+
+    margin:
+        0 auto;
+
+    padding:
+        75px 0;
+
+}
+
+
+.activity-heading {
+
+    max-width:
+        850px;
+
+    margin:
+        0 auto 42px;
+
+    text-align:
+        center;
+
+}
+
+
+.activity-eyebrow {
+
+    color:
+        var(--activity-cyan);
+
+    font-size:
+        12px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        1.5px;
+
+    text-transform:
+        uppercase;
+
+}
+
+
+.activity-heading h2 {
+
+    margin:
+        10px 0 14px;
+
+    font-size:
+        clamp(32px, 4vw, 48px);
+
+    line-height:
+        1.1;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        -1px;
+
+}
+
+
+.activity-heading p {
+
+    margin:
+        auto;
+
+    color:
+        var(--activity-muted);
+
+    font-size:
+        16px;
+
+}
+
+
+/* =========================================================
+   LICENSE / ITU FEATURE
+   ========================================================= */
+
+.license-feature {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        1.1fr .9fr;
+
+    gap:
+        28px;
+
+    align-items:
+        stretch;
+
+}
+
+
+.license-panel {
+
+    padding:
+        38px;
+
+    border:
+        1px solid
+        rgba(25,223,255,.25);
+
+    border-radius:
+        22px;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            rgba(16,36,56,.98),
+            rgba(7,21,34,.98)
+        );
+
+    box-shadow:
+        0 20px 55px
+        rgba(0,0,0,.25);
+
+}
+
+
+.license-panel h3 {
+
+    margin:
+        0 0 15px;
+
+    font-size:
+        30px;
+
+    line-height:
+        1.2;
+
+}
+
+
+.license-panel h3 span {
+
+    color:
+        var(--activity-cyan);
+
+}
+
+
+.license-panel p {
+
+    color:
+        #c7d9e7;
+
+}
+
+
+.license-points {
+
+    display:
+        grid;
+
+    gap:
+        12px;
+
+    margin-top:
+        24px;
+
+}
+
+
+.license-point {
+
+    display:
+        flex;
+
+    gap:
+        12px;
+
+    align-items:
+        flex-start;
+
+}
+
+
+.license-point-icon {
+
+    flex:
+        0 0 34px;
+
+    width:
+        34px;
+
+    height:
+        34px;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    border-radius:
+        10px;
+
+    background:
+        rgba(25,223,255,.1);
+
+    color:
+        var(--activity-cyan);
+
+}
+
+
+.license-point strong {
+
+    display:
+        block;
+
+    margin-bottom:
+        2px;
+
+}
+
+
+.license-point span {
+
+    color:
+        var(--activity-muted);
+
+    font-size:
+        13px;
+
+}
+
+
+.license-visual {
+
+    min-height:
+        100%;
+
+    border-radius:
+        22px;
+
+    padding:
+        35px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    justify-content:
+        center;
+
+    background:
+
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(25,223,255,.18),
+            transparent 38%
+        ),
+
+        #071522;
+
+    border:
+        1px solid
+        var(--activity-border);
+
+    text-align:
+        center;
+
+}
+
+
+.license-orbit {
+
+    font-size:
+        70px;
+
+    margin-bottom:
+        12px;
+
+}
+
+
+.license-visual h3 {
+
+    margin:
+        0 0 8px;
+
+    font-size:
+        27px;
+
+}
+
+
+.license-visual p {
+
+    margin:
+        0;
+
+    color:
+        var(--activity-muted);
+
+    font-size:
+        14px;
+
+}
+
+
+/* =========================================================
+   CATEGORY INTRO
+   ========================================================= */
+
+.category-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap:
+        16px;
+
+}
+
+
+.category-card {
+
+    padding:
+        25px 20px;
+
+    border:
+        1px solid
+        var(--activity-border);
+
+    border-radius:
+        17px;
+
+    background:
+        var(--activity-card);
+
+    transition:
+        transform .25s ease,
+        border-color .25s ease,
+        background .25s ease;
+
+}
+
+
+.category-card:hover {
+
+    transform:
+        translateY(-5px);
+
+    border-color:
+        rgba(25,223,255,.5);
+
+    background:
+        var(--activity-card2);
+
+}
+
+
+.category-card .category-icon {
+
+    font-size:
+        31px;
+
+    margin-bottom:
+        12px;
+
+}
+
+
+.category-card h3 {
+
+    margin:
+        0 0 8px;
+
+    font-size:
+        20px;
+
+}
+
+
+.category-card p {
+
+    margin:
+        0;
+
+    color:
+        var(--activity-muted);
+
+    font-size:
+        13px;
+
+}
+
+
+/* =========================================================
+   ACTIVITY FEATURE CARDS
+   ========================================================= */
+
+.activity-card {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        .9fr 1.1fr;
+
+    gap:
+        35px;
+
+    margin:
+        35px 0;
+
+    padding:
+        22px;
+
+    border:
+        1px solid
+        var(--activity-border);
+
+    border-radius:
+        24px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(11,25,40,.98),
+            rgba(7,18,30,.98)
+        );
+
+    overflow:
+        hidden;
+
+    box-shadow:
+        0 15px 45px
+        rgba(0,0,0,.18);
+
+}
+
+
+.activity-card.reverse {
+
+    grid-template-columns:
+        1.1fr .9fr;
+
+}
+
+
+.activity-card.reverse .activity-image {
+
+    order:
+        2;
+
+}
+
+
+.activity-image {
+
+    min-height:
+        320px;
+
+    overflow:
+        hidden;
+
+    border-radius:
+        17px;
+
+    background:
+        #071522;
+
+}
+
+
+.activity-image img {
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    min-height:
+        320px;
+
+    display:
+        block;
+
+    object-fit:
+        cover;
+
+    transition:
+        transform .5s ease;
+
+}
+
+
+.activity-card:hover
+.activity-image img {
+
+    transform:
+        scale(1.035);
+
+}
+
+
+.activity-content {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    justify-content:
+        center;
+
+    padding:
+        20px;
+
+}
+
+
+.activity-number {
+
+    display:
+        inline-flex;
+
+    width:
+        fit-content;
+
+    padding:
+        5px 10px;
+
+    border-radius:
+        999px;
+
+    background:
+        rgba(25,223,255,.08);
+
+    color:
+        var(--activity-cyan);
+
+    font-size:
+        11px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        1px;
+
+}
+
+
+.activity-content h3 {
+
+    margin:
+        12px 0 10px;
+
+    font-size:
+        clamp(26px, 3vw, 35px);
+
+    line-height:
+        1.12;
+
+    font-weight:
+        900;
+
+}
+
+
+.activity-content h3 span {
+
+    color:
+        var(--activity-cyan);
+
+}
+
+
+.activity-content p {
+
+    margin:
+        0 0 15px;
+
+    color:
+        #c5d7e5;
+
+    font-size:
+        15px;
+
+}
+
+
+.activity-content ul {
+
+    margin:
+        8px 0 0;
+
+    padding-left:
+        20px;
+
+}
+
+
+.activity-content li {
+
+    margin:
+        6px 0;
+
+    color:
+        #b9cedd;
+
+    font-size:
+        14px;
+
+}
+
+
+.activity-content li strong {
+
+    color:
+        #edf8ff;
+
+}
+
+
+.activity-tag-row {
+
+    display:
+        flex;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        7px;
+
+    margin-top:
+        18px;
+
+}
+
+
+.activity-tag {
+
+    padding:
+        5px 10px;
+
+    border:
+        1px solid
+        var(--activity-border);
+
+    border-radius:
+        999px;
+
+    color:
+        #a9c2d3;
+
+    font-size:
+        11px;
+
+}
+
+
+/* =========================================================
+   DIGITAL MODE GRID
+   ========================================================= */
+
+.mode-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap:
+        18px;
+
+}
+
+
+.mode-card {
+
+    padding:
+        24px;
+
+    border:
+        1px solid
+        var(--activity-border);
+
+    border-radius:
+        18px;
+
+    background:
+        var(--activity-card);
+
+    transition:
+        transform .25s ease,
+        border-color .25s ease;
+
+}
+
+
+.mode-card:hover {
+
+    transform:
+        translateY(-4px);
+
+    border-color:
+        rgba(25,223,255,.5);
+
+}
+
+
+.mode-icon {
+
+    width:
+        52px;
+
+    height:
+        52px;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    margin-bottom:
+        14px;
+
+    border-radius:
+        14px;
+
+    background:
+        rgba(25,223,255,.08);
+
+    font-size:
+        27px;
+
+}
+
+
+.mode-card h3 {
+
+    margin:
+        0 0 8px;
+
+    font-size:
+        21px;
+
+}
+
+
+.mode-card p {
+
+    margin:
+        0;
+
+    color:
+        var(--activity-muted);
+
+    font-size:
+        13px;
+
+}
+
+
+.mode-card .mode-detail {
+
+    margin-top:
+        14px;
+
+    padding-top:
+        13px;
+
+    border-top:
+        1px solid
+        rgba(27,64,92,.6);
+
+    color:
+        #b9cfdf;
+
+    font-size:
+        12px;
+
+}
+
+
+/* =========================================================
+   SPACE SECTION
+   ========================================================= */
+
+.space-feature {
+
+    position:
+        relative;
+
+    border:
+        1px solid
+        rgba(25,223,255,.25);
+
+    border-radius:
+        25px;
+
+    overflow:
+        hidden;
+
+    background:
+        #050b14;
+
+}
+
+
+.space-feature-image {
+
+    height:
+        390px;
+
+    position:
+        relative;
+
+}
+
+
+.space-feature-image img {
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    object-fit:
+        cover;
+
+    display:
+        block;
+
+}
+
+
+.space-feature-overlay {
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(5,11,20,.95),
+            rgba(5,11,20,.55),
+            rgba(5,11,20,.15)
+        );
+
+}
+
+
+.space-feature-content {
+
+    position:
+        absolute;
+
+    left:
+        0;
+
+    top:
+        0;
+
+    width:
+        min(610px, 80%);
+
+    height:
+        100%;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    justify-content:
+        center;
+
+    padding:
+        45px;
+
+}
+
+
+.space-feature-content h3 {
+
+    margin:
+        10px 0 12px;
+
+    font-size:
+        clamp(30px, 4vw, 46px);
+
+    line-height:
+        1.08;
+
+}
+
+
+.space-feature-content p {
+
+    color:
+        #c6d8e5;
+
+    font-size:
+        15px;
+
+}
+
+
+/* =========================================================
+   PROPAGATION / EME
+   ========================================================= */
+
+.science-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap:
+        20px;
+
+}
+
+
+.science-card {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        42% 58%;
+
+    border:
+        1px solid
+        var(--activity-border);
+
+    border-radius:
+        20px;
+
+    overflow:
+        hidden;
+
+    background:
+        var(--activity-card);
+
+}
+
+
+.science-card img {
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    min-height:
+        250px;
+
+    object-fit:
+        cover;
+
+}
+
+
+.science-content {
+
+    padding:
+        25px;
+
+}
+
+
+.science-content h3 {
+
+    margin:
+        0 0 10px;
+
+    font-size:
+        23px;
+
+}
+
+
+.science-content p {
+
+    color:
+        var(--activity-muted);
+
+    font-size:
+        13px;
+
+}
+
+
+.science-content ul {
+
+    padding-left:
+        18px;
+
+    color:
+        #b9cedd;
+
+    font-size:
+        13px;
+
+}
+
+
+/* =========================================================
+   ACTIVITY MATRIX
+   ========================================================= */
+
+.matrix {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap:
+        15px;
+
+}
+
+
+.matrix-item {
+
+    padding:
+        21px;
+
+    border-radius:
+        16px;
+
+    border:
+        1px solid
+        var(--activity-border);
+
+    background:
+        #071522;
+
+}
+
+
+.matrix-item strong {
+
+    display:
+        block;
+
+    margin-bottom:
+        5px;
+
+    font-size:
+        17px;
+
+}
+
+
+.matrix-item p {
+
+    margin:
+        0;
+
+    color:
+        var(--activity-muted);
+
+    font-size:
+        12px;
+
+}
+
+
+/* =========================================================
+   BEGINNER PATH
+   ========================================================= */
+
+.beginner-path {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(5, 1fr);
+
+    gap:
+        12px;
+
+}
+
+
+.step {
+
+    position:
+        relative;
+
+    padding:
+        25px 18px;
+
+    border:
+        1px solid
+        var(--activity-border);
+
+    border-radius:
+        17px;
+
+    background:
+        var(--activity-card);
+
+    text-align:
+        center;
+
+}
+
+
+.step-number {
+
+    width:
+        38px;
+
+    height:
+        38px;
+
+    margin:
+        0 auto 12px;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    border-radius:
+        50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--activity-cyan),
+            var(--activity-blue)
+        );
+
+    color:
+        #00111c;
+
+    font-weight:
+        900;
+
+}
+
+
+.step h3 {
+
+    margin:
+        0 0 7px;
+
+    font-size:
+        17px;
+
+}
+
+
+.step p {
+
+    margin:
+        0;
+
+    color:
+        var(--activity-muted);
+
+    font-size:
+        12px;
+
+}
+
+
+/* =========================================================
+   FINAL CTA
+   ========================================================= */
+
+.activities-cta {
+
+    margin:
+        45px auto 85px;
+
+    width:
+        min(1000px, 92%);
+
+    padding:
+        55px 30px;
+
+    text-align:
+        center;
+
+    border:
+        1px solid
+        rgba(25,223,255,.3);
+
+    border-radius:
+        25px;
+
+    background:
+
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(25,223,255,.13),
+            transparent 55%
+        ),
+
+        #071522;
+
+}
+
+
+.activities-cta h2 {
+
+    margin:
+        0 0 12px;
+
+    font-size:
+        clamp(30px, 4vw, 44px);
+
+    line-height:
+        1.1;
+
+}
+
+
+.activities-cta p {
+
+    max-width:
+        700px;
+
+    margin:
+        0 auto 25px;
+
+    color:
+        var(--activity-muted);
+
+}
+
+
+.activities-buttons {
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        12px;
+
+}
+
+
+.activities-button {
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    padding:
+        12px 20px;
+
+    border-radius:
+        10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--activity-cyan),
+            var(--activity-blue)
+        );
+
+    color:
+        #00111c;
+
+    font-weight:
+        900;
+
+    text-decoration:
+        none;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+
+}
+
+
+.activities-button:hover {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 10px 25px
+        rgba(25,223,255,.18);
+
+}
+
+
+.activities-button.secondary {
+
+    background:
+        #102438;
+
+    color:
+        #d9ecf8;
+
+    border:
+        1px solid
+        var(--activity-border);
+
+}
+
+
+/* =========================================================
+   IMAGE CREDIT
+   ========================================================= */
+
+.image-credit {
+
+    width:
+        min(1050px, 92%);
+
+    margin:
+        0 auto 60px;
+
+    padding:
+        20px;
+
+    border:
+        1px solid
+        var(--activity-border);
+
+    border-radius:
+        15px;
+
+    background:
+        #071522;
+
+    color:
+        #8298aa;
+
+    font-size:
+        11px;
+
+    line-height:
+        1.6;
+
+}
+
+
+.image-credit strong {
+
+    color:
+        #b8cedd;
+
+}
+
+
+.image-credit a {
+
+    color:
+        var(--activity-cyan);
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media(max-width:950px) {
+
+    .discovery-bar {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .license-feature {
+        grid-template-columns:
+            1fr;
+    }
+
+    .category-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .activity-card,
+    .activity-card.reverse {
+        grid-template-columns:
+            1fr;
+    }
+
+    .activity-card.reverse .activity-image {
+        order:
+            0;
+    }
+
+    .mode-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .science-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+    .matrix {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .beginner-path {
+        grid-template-columns:
+            repeat(3, 1fr);
+    }
+
+}
+
+
+@media(max-width:650px) {
+
+    .activities-hero {
+        padding:
+            65px 15px 70px;
+    }
+
+    .activities-hero h1 {
+        font-size:
+            40px;
+
+        letter-spacing:
+            -1.2px;
+    }
+
+    .activities-hero-lead {
+        font-size:
+            16px;
+    }
+
+    .discovery-bar {
+        width:
+            92%;
+
+        grid-template-columns:
+            1fr 1fr;
+
+        margin-top:
+            -25px;
+    }
+
+    .discovery-item {
+        padding:
+            20px 12px;
+    }
+
+    .activity-section {
+        padding:
+            55px 0;
+    }
+
+    .license-panel {
+        padding:
+            25px;
+    }
+
+    .license-panel h3 {
+        font-size:
+            25px;
+    }
+
+    .category-grid,
+    .mode-grid,
+    .matrix {
+        grid-template-columns:
+            1fr;
+    }
+
+    .activity-card {
+        margin:
+            25px 0;
+
+        padding:
+            12px;
+    }
+
+    .activity-image,
+    .activity-image img {
+        min-height:
+            230px;
+    }
+
+    .activity-content {
+        padding:
+            15px 10px 20px;
+    }
+
+    .activity-content h3 {
+        font-size:
+            27px;
+    }
+
+    .space-feature-image {
+        height:
+            430px;
+    }
+
+    .space-feature-overlay {
+        background:
+            linear-gradient(
+                180deg,
+                rgba(5,11,20,.2),
+                rgba(5,11,20,.95)
+            );
+    }
+
+    .space-feature-content {
+        width:
+            100%;
+
+        justify-content:
+            flex-end;
+
+        padding:
+            25px;
+    }
+
+    .science-card {
+        grid-template-columns:
+            1fr;
+    }
+
+    .science-card img {
+        min-height:
+            220px;
+    }
+
+    .beginner-path {
+        grid-template-columns:
+            1fr;
+    }
+
+    .activities-cta {
+        margin-bottom:
+            50px;
+    }
+
+}
+
+</style>
+
 </head>
+
+
 <body>
-  <header>
-    <div class="nav-container">
-      <a href="index.html" class="logo">
-        <div class="logo-icon">HC</div>
-        <div class="logo-text">
-          <h1>HAM Corner</h1>
-          <span>by VU33CM • Indian Amateur Radio</span>
+
+
+<main class="activities-page">
+
+
+<!-- =======================================================
+     HERO
+     ======================================================= -->
+
+<section class="activities-hero">
+
+    <div class="activities-hero-inner">
+
+        <div class="activities-kicker">
+            📻 THE WORLD OF AMATEUR RADIO
         </div>
-      </a>
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="licensing.html">Get Licensed</a></li>
-          <li><a href="study.html">Study Material</a></li>
-          <li><a href="activities.html" class="active">Activities & Modes</a></li>
-          <li><a href="repeaters.html">Repeaters</a></li>
-          <li><a href="nets.html">Nets</a></li>
-          <li><a href="clubs.html">Clubs</a></li>
-          <li><a href="resources.html">Resources</a></li>
-          <li><a href="about.html">About</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
 
-  <main>
-    <h1 class="section-title">Ham Radio Activities & Modes</h1>
-    <p class="section-subtitle">Explore the many ways Indian hams communicate and enjoy the hobby.</p>
+        <h1>
+            Amateur Radio is
+            <span>far more</span>
+            than talking.
+        </h1>
 
-    <div class="content-block">
-      <h2>HF – High Frequency (3–30 MHz)</h2>
-      <p>Long-distance communication across India and the world. Popular bands: 80m, 40m, 20m, 15m and 10m.</p>
-      <ul>
-        <li><strong>SSB Voice</strong> – Traditional voice contacts</li>
-        <li><strong>CW (Morse Code)</strong> – Excellent for weak signals and DX</li>
-        <li><strong>Digital modes</strong> – FT8, JT65, PSK31, RTTY</li>
-      </ul>
-      <p>Best for DXing, contests and making friends worldwide.</p>
+        <p class="activities-hero-lead">
+
+            One radio hobby can take you from a simple
+            handheld conversation to worldwide DX,
+            digital signals, satellites, the International
+            Space Station and even bouncing signals off
+            the Moon.
+
+        </p>
+
+        <p class="activities-hero-note">
+
+            Learn what radio amateurs actually do,
+            how the different modes work, and discover
+            the activity that could become your next
+            obsession.
+
+        </p>
+
     </div>
 
-    <div class="content-block">
-      <h2>VHF / UHF</h2>
-      <p>Local and regional communication. Main bands in India: <strong>2 metres (144–146 MHz)</strong> and <strong>70 cm (430–440 MHz)</strong>.</p>
-      <ul>
-        <li>FM voice (simplex and via repeaters)</li>
-        <li>Digital voice: DMR, C4FM, D-STAR</li>
-        <li>APRS for position tracking and messaging</li>
-        <li>Packet radio</li>
-      </ul>
-      <p>Ideal for local nets, mobile operation and emergency communication.</p>
+</section>
+
+
+
+<!-- =======================================================
+     DISCOVERY BAR
+     ======================================================= -->
+
+<div class="discovery-bar">
+
+    <div class="discovery-item">
+
+        <div class="discovery-icon">
+            🌍
+        </div>
+
+        <strong>
+            Talk Around the World
+        </strong>
+
+        <span>
+            HF • DX • SSB • CW
+        </span>
+
     </div>
 
-    <div class="content-block">
-      <h2>FT8 – Popular Digital Mode</h2>
-      <p>Extremely popular weak-signal digital mode. Works even with low power and simple antennas.</p>
-      <ul>
-        <li>Uses free WSJT-X software</li>
-        <li>Very active on 20m, 40m and 15m</li>
-        <li>Great for beginners to make worldwide contacts</li>
-        <li>Short, structured transmissions – perfect for poor conditions</li>
-      </ul>
+
+    <div class="discovery-item">
+
+        <div class="discovery-icon">
+            💻
+        </div>
+
+        <strong>
+            Experiment With Digital
+        </strong>
+
+        <span>
+            FT8 • FT4 • DMR • APRS
+        </span>
+
     </div>
 
-    <div class="content-block">
-      <h2>DMR – Digital Mobile Radio</h2>
-      <p>Digital voice mode mainly used on VHF/UHF.</p>
-      <ul>
-        <li>Clear audio and efficient spectrum use</li>
-        <li>Talk groups for national and international contacts</li>
-        <li>Requires a DMR radio and free DMR ID (from radioid.net)</li>
-        <li>Many Indian cities have DMR repeaters or personal hotspots</li>
-      </ul>
+
+    <div class="discovery-item">
+
+        <div class="discovery-icon">
+            🛰️
+        </div>
+
+        <strong>
+            Reach Into Space
+        </strong>
+
+        <span>
+            Satellites • ISS • SSTV
+        </span>
+
     </div>
 
-    <div class="content-block">
-      <h2>EchoLink</h2>
-      <p>Connects your radio or computer to the internet so you can talk to other hams worldwide.</p>
-      <ul>
-        <li>Useful when you have limited antenna space or are travelling</li>
-        <li>Many Indian repeaters and individual stations are linked</li>
-        <li>Works with smartphone apps, computer or radio nodes</li>
-      </ul>
+
+    <div class="discovery-item">
+
+        <div class="discovery-icon">
+            🌙
+        </div>
+
+        <strong>
+            Use the Moon
+        </strong>
+
+        <span>
+            EME • Moonbounce
+        </span>
+
     </div>
 
-    <div class="content-block">
-      <h2>Importance of Repeaters</h2>
-      <p>Repeaters are the backbone of local VHF/UHF activity in India.</p>
-      <ul>
-        <li>Extend the range of handheld and mobile radios from a few km to 50–100+ km</li>
-        <li>Enable group nets and emergency communication in cities and hills</li>
-        <li>Many are linked via EchoLink or AllStar for wider reach</li>
-        <li>Most Indian VHF repeaters use –600 kHz shift</li>
-      </ul>
-      <p><a href="repeaters.html" style="color:var(--accent);font-weight:600;">View major Indian repeaters →</a></p>
+</div>
+
+
+
+<!-- =======================================================
+     WHAT IS AMATEUR RADIO?
+     ======================================================= -->
+
+<section class="activity-section">
+
+    <div class="activity-heading">
+
+        <div class="activity-eyebrow">
+            FIRST — UNDERSTAND THE HOBBY
+        </div>
+
+        <h2>
+            A licensed gateway into
+            the world of radio
+        </h2>
+
+        <p>
+
+            Amateur radio combines communication,
+            electronics, science, engineering,
+            experimentation, competition, outdoor
+            activity, community service and pure
+            curiosity.
+
+        </p>
+
     </div>
 
-    <div class="content-block">
-      <h2>QSL Cards</h2>
-      <p>A QSL card is a confirmation of a radio contact (QSO). It is part of the rich culture of amateur radio.</p>
-      <h3>Why QSL cards matter</h3>
-      <ul>
-        <li>Confirm that a contact really took place</li>
-        <li>Required for many awards (DXCC, WAS, IOTA, etc.)</li>
-        <li>Serve as personal souvenirs and collectibles</li>
-        <li>Build friendships between operators</li>
-      </ul>
-      <h3>Modern QSLing methods</h3>
-      <ul>
-        <li>Physical paper cards (via bureau or direct mail)</li>
-        <li>Electronic: eQSL.cc and Logbook of The World (LoTW)</li>
-        <li>QRZ.com and Club Log also support confirmations</li>
-      </ul>
-      <p>Many Indian hams still enjoy receiving a nice paper QSL card with your callsign and a photo of your station or local area.</p>
+
+    <div class="license-feature">
+
+
+        <div class="license-panel">
+
+            <h3>
+                Why does it need a
+                <span>license?</span>
+            </h3>
+
+            <p>
+
+                Amateur radio is not simply a set of
+                walkie-talkies. Licensed operators are
+                given access to designated portions of
+                the radio spectrum so they can communicate,
+                experiment and learn without causing
+                harmful interference to other radio services.
+
+            </p>
+
+            <p>
+
+                Internationally, the amateur and
+                amateur-satellite services are recognized
+                in the ITU Radio Regulations. In India,
+                amateur operators must obtain the required
+                authorization and meet the applicable
+                examination and regulatory requirements.
+
+            </p>
+
+
+            <div class="license-points">
+
+                <div class="license-point">
+
+                    <div class="license-point-icon">
+                        📜
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            It is a regulated radio service
+                        </strong>
+
+                        <span>
+                            You operate within assigned
+                            frequencies, power limits and
+                            operating rules.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="license-point">
+
+                    <div class="license-point-icon">
+                        🧠
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            You learn before you transmit
+                        </strong>
+
+                        <span>
+                            Radio theory, operating practice
+                            and regulations are part of the
+                            journey.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="license-point">
+
+                    <div class="license-point-icon">
+                        🔬
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Experimentation is encouraged
+                        </strong>
+
+                        <span>
+                            Antennas, propagation, digital
+                            communication and radio technology
+                            are all part of the hobby.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="license-point">
+
+                    <div class="license-point-icon">
+                        🚨
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            It can serve the community
+                        </strong>
+
+                        <span>
+                            Amateur radio can provide useful
+                            communication support during
+                            emergencies and disasters.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="license-visual">
+
+            <div class="license-orbit">
+                📡
+            </div>
+
+            <h3>
+                From electronics
+                to outer space
+            </h3>
+
+            <p>
+
+                The same hobby can introduce you to
+                RF engineering, antennas, software,
+                networking, satellites, propagation
+                and radio science.
+
+            </p>
+
+        </div>
+
     </div>
 
-    <div class="content-block">
-      <h2>Other Popular Activities</h2>
-      <ul>
-        <li><strong>Contests</strong> – Compete to make maximum contacts in a limited time</li>
-        <li><strong>POTA / SOTA</strong> – Parks on the Air & Summits on the Air</li>
-        <li><strong>Satellite Communication</strong> – Talk through amateur satellites and the ISS</li>
-        <li><strong>Fox Hunting / ARDF</strong> – Radio direction finding (fun outdoor activity)</li>
-        <li><strong>Emergency Communication (EmComm)</strong> – Support during disasters</li>
-        <li><strong>Homebrewing</strong> – Building your own radios, antennas and accessories</li>
-      </ul>
-    </div>
-  </main>
+</section>
 
-  <footer>
-    <p class="callsign">HAM Corner by VU33CM</p>
-    <p>by VU33CM • Indian Amateur Radio</p>
-  </footer>
+
+
+<!-- =======================================================
+     FOUR BIG WORLDS
+     ======================================================= -->
+
+<section class="activity-section">
+
+    <div class="activity-heading">
+
+        <div class="activity-eyebrow">
+            FOUR WAYS TO LOOK AT IT
+        </div>
+
+        <h2>
+            What kind of radio
+            interests you?
+        </h2>
+
+        <p>
+
+            You do not have to enjoy everything.
+            Amateur radio is large enough that you
+            can choose your own path.
+
+        </p>
+
+    </div>
+
+
+    <div class="category-grid">
+
+
+        <div class="category-card">
+
+            <div class="category-icon">
+                🎙️
+            </div>
+
+            <h3>
+                Voice & RF
+            </h3>
+
+            <p>
+
+                Speak through radio using HF,
+                VHF and UHF. Try local contacts,
+                repeaters or worldwide DX.
+
+            </p>
+
+        </div>
+
+
+        <div class="category-card">
+
+            <div class="category-icon">
+                💻
+            </div>
+
+            <h3>
+                Digital Radio
+            </h3>
+
+            <p>
+
+                Turn your computer and radio into
+                a digital communication system.
+
+            </p>
+
+        </div>
+
+
+        <div class="category-card">
+
+            <div class="category-icon">
+                🌐
+            </div>
+
+            <h3>
+                Hybrid Radio
+            </h3>
+
+            <p>
+
+                Combine radio and internet systems
+                with technologies such as EchoLink,
+                AllStar and IRLP.
+
+            </p>
+
+        </div>
+
+
+        <div class="category-card">
+
+            <div class="category-icon">
+                🛰️
+            </div>
+
+            <h3>
+                Space & Propagation
+            </h3>
+
+            <p>
+
+                Work satellites, the ISS, SSTV,
+                moonbounce and unusual propagation
+                paths.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     HF
+     ======================================================= -->
+
+<section class="activity-section">
+
+    <div class="activity-heading">
+
+        <div class="activity-eyebrow">
+            01 • RADIO / RF
+        </div>
+
+        <h2>
+            HF — Where the
+            <span>world opens up</span>
+        </h2>
+
+        <p>
+
+            High Frequency amateur radio is where many
+            operators discover the magic of hearing stations
+            hundreds or thousands of kilometres away.
+
+        </p>
+
+    </div>
+
+
+    <article class="activity-card">
+
+
+        <div class="activity-image">
+
+            <img
+                src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Hexbeam%20amateur%20radio%20antenna.jpg"
+                alt="Amateur radio HF antenna"
+                loading="lazy">
+
+        </div>
+
+
+        <div class="activity-content">
+
+            <span class="activity-number">
+                HF • 3–30 MHz
+            </span>
+
+            <h3>
+                Voice, Morse and
+                <span>worldwide DX</span>
+            </h3>
+
+            <p>
+
+                HF radio can use the ionosphere to carry
+                signals far beyond the horizon. Depending
+                on frequency, time of day, solar conditions
+                and the antenna, one station may communicate
+                with another across a city, a country or
+                another continent.
+
+            </p>
+
+            <ul>
+
+                <li>
+                    <strong>SSB voice</strong>
+                    — natural two-way conversations.
+                </li>
+
+                <li>
+                    <strong>CW / Morse</strong>
+                    — communication using dots and dashes.
+                </li>
+
+                <li>
+                    <strong>Digital modes</strong>
+                    — computers decode extremely weak
+                    signals.
+                </li>
+
+                <li>
+                    <strong>DXing</strong>
+                    — searching for distant and rare stations.
+                </li>
+
+                <li>
+                    <strong>Contesting</strong>
+                    — making many contacts against the clock.
+                </li>
+
+            </ul>
+
+
+            <div class="activity-tag-row">
+
+                <span class="activity-tag">
+                    80 m
+                </span>
+
+                <span class="activity-tag">
+                    40 m
+                </span>
+
+                <span class="activity-tag">
+                    20 m
+                </span>
+
+                <span class="activity-tag">
+                    15 m
+                </span>
+
+                <span class="activity-tag">
+                    10 m
+                </span>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</section>
+
+
+
+<!-- =======================================================
+     VHF / UHF
+     ======================================================= -->
+
+<section class="activity-section">
+
+    <div class="activity-heading">
+
+        <div class="activity-eyebrow">
+            02 • LOCAL RADIO
+        </div>
+
+        <h2>
+            VHF & UHF —
+            <span>your local radio world</span>
+        </h2>
+
+        <p>
+
+            These bands are where handheld radios,
+            mobile stations, repeaters, satellites,
+            APRS and many local activities come alive.
+
+        </p>
+
+    </div>
+
+
+    <article class="activity-card reverse">
+
+
+        <div class="activity-image">
+
+            <img
+                src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Example%20of%20a%20collinear%20antenna.jpg"
+                alt="VHF UHF amateur radio antenna"
+                loading="lazy">
+
+        </div>
+
+
+        <div class="activity-content">
+
+            <span class="activity-number">
+                VHF • UHF
+            </span>
+
+            <h3>
+                The bands that
+                <span>connect your area</span>
+            </h3>
+
+            <p>
+
+                VHF and UHF are ideal for local and
+                regional communication. A small handheld
+                radio can become much more useful when
+                connected to a good antenna or a repeater.
+
+            </p>
+
+            <ul>
+
+                <li>
+                    FM simplex conversations
+                </li>
+
+                <li>
+                    Local amateur-radio nets
+                </li>
+
+                <li>
+                    VHF/UHF repeaters
+                </li>
+
+                <li>
+                    Mobile and portable operation
+                </li>
+
+                <li>
+                    APRS and packet radio
+                </li>
+
+                <li>
+                    Digital voice systems
+                </li>
+
+                <li>
+                    Amateur satellite operation
+                </li>
+
+            </ul>
+
+        </div>
+
+    </article>
+
+</section>
+
+
+
+<!-- =======================================================
+     MORSE
+     ======================================================= -->
+
+<section class="activity-section">
+
+    <div class="activity-heading">
+
+        <div class="activity-eyebrow">
+            03 • THE ORIGINAL DIGITAL MODE
+        </div>
+
+        <h2>
+            Morse Code —
+            <span>radio reduced to rhythm</span>
+        </h2>
+
+        <p>
+
+            Before computers could decode radio signals,
+            operators used a simple key to turn a transmitter
+            on and off. The pattern became letters.
+
+        </p>
+
+    </div>
+
+
+    <article class="activity-card">
+
+
+        <div class="activity-image">
+
+            <img
+                src="https://commons.wikimedia.org/wiki/Special:Redirect/file/J38TelegraphKey.jpg"
+                alt="J-38 Morse telegraph key"
+                loading="lazy">
+
+        </div>
+
+
+        <div class="activity-content">
+
+            <span class="activity-number">
+                CW • CONTINUOUS WAVE
+            </span>
+
+            <h3>
+                Dots. Dashes.
+                <span>And a human skill.</span>
+            </h3>
+
+            <p>
+
+                Morse remains popular because it can work
+                with very simple equipment and very weak
+                signals. A skilled operator can pull useful
+                information out of conditions where voice
+                communication may be difficult.
+
+            </p>
+
+            <ul>
+
+                <li>
+                    Excellent for weak-signal work
+                </li>
+
+                <li>
+                    Small and simple equipment
+                </li>
+
+                <li>
+                    Popular in DX and contests
+                </li>
+
+                <li>
+                    A satisfying skill to learn
+                </li>
+
+            </ul>
+
+        </div>
+
+    </article>
+
+</section>
+
+
+
+<!-- =======================================================
+     DIGITAL
+     ======================================================= -->
+
+<section class="activity-section">
+
+    <div class="activity-heading">
+
+        <div class="activity-eyebrow">
+            04 • DIGITAL RADIO
+        </div>
+
+        <h2>
+            When the computer
+            <span>joins the radio</span>
+        </h2>
+
+        <p>
+
+            Modern amateur radio can combine an RF
+            transceiver with a computer, sound interface
+            and software. The result is a huge collection
+            of digital modes.
+
+        </p>
+
+    </div>
+
+
+    <div class="mode-grid">
+
+
+        <div class="mode-card">
+
+            <div class="mode-icon">
+                📶
+            </div>
+
+            <h3>
+                FT8
+            </h3>
+
+            <p>
+
+                One of the most popular weak-signal
+                digital modes. Computers exchange
+                structured messages using very small
+                slices of radio spectrum.
+
+            </p>
+
+            <div class="mode-detail">
+
+                Famous for making contacts when signals
+                are too weak for comfortable voice work.
+
+            </div>
+
+        </div>
+
+
+        <div class="mode-card">
+
+            <div class="mode-icon">
+                ⚡
+            </div>
+
+            <h3>
+                FT4
+            </h3>
+
+            <p>
+
+                A fast digital mode related to FT8,
+                especially useful when operators want
+                quicker exchanges.
+
+            </p>
+
+            <div class="mode-detail">
+
+                Popular for digital contesting and
+                weak-signal communication.
+
+            </div>
+
+        </div>
+
+
+        <div class="mode-card">
+
+            <div class="mode-icon">
+                📡
+            </div>
+
+            <h3>
+                RTTY / PSK31
+            </h3>
+
+            <p>
+
+                Earlier generations of computer-based
+                amateur data communication remain
+                interesting for learning how radio
+                carries text.
+
+            </p>
+
+            <div class="mode-detail">
+
+                Great examples of turning an audio
+                channel into a data channel.
+
+            </div>
+
+        </div>
+
+
+        <div class="mode-card">
+
+            <div class="mode-icon">
+                🌐
+            </div>
+
+            <h3>
+                WSPR
+            </h3>
+
+            <p>
+
+                Designed for very weak signals and
+                propagation experiments.
+
+            </p>
+
+            <div class="mode-detail">
+
+                More about discovering how far your
+                signal can travel than having a conversation.
+
+            </div>
+
+        </div>
+
+
+        <div class="mode-card">
+
+            <div class="mode-icon">
+                📨
+            </div>
+
+            <h3>
+                Packet Radio
+            </h3>
+
+            <p>
+
+                Digital information sent as packets
+                over radio links.
+
+            </p>
+
+            <div class="mode-detail">
+
+                An important bridge between amateur
+                radio and networking.
+
+            </div>
+
+        </div>
+
+
+        <div class="mode-card">
+
+            <div class="mode-icon">
+                🖼️
+            </div>
+
+            <h3>
+                SSTV
+            </h3>
+
+            <p>
+
+                Slow Scan Television sends pictures
+                over radio, turning a voice channel
+                into an image link.
+
+            </p>
+
+            <div class="mode-detail">
+
+                Especially exciting when receiving
+                pictures from space.
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     FT8 VISUAL
+     ======================================================= -->
+
+<section class="activity-section">
+
+    <article class="activity-card reverse">
+
+
+        <div class="activity-image">
+
+            <img
+                src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Waterfall-diagram-ft87%20WSJT-X%20Denis%20apel.jpg"
+                alt="FT8 waterfall display from WSJT-X"
+                loading="lazy">
+
+        </div>
+
+
+        <div class="activity-content">
+
+            <span class="activity-number">
+                FT8 / DIGITAL SIGNALS
+            </span>
+
+            <h3>
+                You can actually
+                <span>see radio</span>
+            </h3>
+
+            <p>
+
+                Software such as WSJT-X displays
+                radio activity as a waterfall.
+                Instead of listening to every signal,
+                the computer can detect structured
+                digital transmissions and help decode them.
+
+            </p>
+
+            <p>
+
+                This is one of the moments where amateur
+                radio starts feeling less like a traditional
+                radio hobby and more like a combination of
+                RF engineering, software and signal processing.
+
+            </p>
+
+        </div>
+
+    </article>
+
+</section>
+
+
+
+<!-- =======================================================
+     DIGITAL VOICE
+     ======================================================= -->
+
+<section class="activity-section">
+
+    <div class="activity-heading">
+
+        <div class="activity-eyebrow">
+            05 • DIGITAL VOICE
+        </div>
+
+        <h2>
+            DMR, D-STAR &
+            <span>C4FM</span>
+        </h2>
+
+        <p>
+
+            Digital voice brings another dimension to
+            VHF and UHF amateur radio. Instead of sending
+            analogue audio directly, the radio converts
+            speech into digital information.
+
+        </p>
+
+    </div>
+
+
+    <div class="mode-grid">
+
+
+        <div class="mode-card">
+
+            <div class="mode-icon">
+                📻
+            </div>
+
+            <h3>
+                DMR
+            </h3>
+
+            <p>
+
+                Digital Mobile Radio. It uses digital
+                voice and organized talk groups to
+                connect operators locally and across
+                linked systems.
+
+            </p>
+
+            <div class="mode-detail">
+
+                Often associated with repeaters,
+                hotspots and talk groups.
+
+            </div>
+
+        </div>
+
+
+        <div class="mode-card">
+
+            <div class="mode-icon">
+                🔵
+            </div>
+
+            <h3>
+                D-STAR
+            </h3>
+
+            <p>
+
+                A digital amateur-radio system designed
+                specifically for digital voice and data.
+
+            </p>
+
+            <div class="mode-detail">
+
+                Used with compatible radios,
+                repeaters and gateways.
+
+            </div>
+
+        </div>
+
+
+        <div class="mode-card">
+
+            <div class="mode-icon">
+                🔷
+            </div>
+
+            <h3>
+                C4FM / System Fusion
+            </h3>
+
+            <p>
+
+                A digital voice system used widely
+                with compatible VHF/UHF amateur radios.
+
+            </p>
+
+            <div class="mode-detail">
+
+                Can combine digital and conventional
+                FM operation depending on the system.
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     APRS
+     ======================================================= -->
+
+<section class="activity-section">
+
+    <div class="activity-heading">
+
+        <div class="activity-eyebrow">
+            06 • RADIO + DATA + LOCATION
+        </div>
+
+        <h2>
+            APRS —
+            <span>radio that knows where it is</span>
+        </h2>
+
+        <p>
+
+            APRS allows amateur stations to exchange
+            position information, short messages and
+            other useful telemetry through packet-radio
+            networks.
+
+        </p>
+
+    </div>
+
+
+    <article class="activity-card">
+
+
+        <div class="activity-image">
+
+            <img
+                src="https://commons.wikimedia.org/wiki/Special:Redirect/file/APRS%20Romania.png"
+                alt="APRS amateur radio map"
+                loading="lazy">
+
+        </div>
+
+
+        <div class="activity-content">
+
+            <span class="activity-number">
+                APRS • PACKET RADIO
+            </span>
+
+            <h3>
+                Turn radio into a
+                <span>small data network</span>
+            </h3>
+
+            <p>
+
+                APRS can transmit location and short
+                information using radio. Digipeaters
+                can repeat packets, while gateways can
+                connect parts of the system.
+
+            </p>
+
+            <ul>
+
+                <li>
+                    Position reporting
+                </li>
+
+                <li>
+                    Short messages
+                </li>
+
+                <li>
+                    Weather information
+                </li>
+
+                <li>
+                    Tracking mobile or portable stations
+                </li>
+
+                <li>
+                    Amateur-radio experimentation
+                </li>
+
+            </ul>
+
+        </div>
+
+    </article>
+
+</section>
+
+
+
+<!-- =======================================================
+     HYBRID / INTERNET
+     ======================================================= -->
+
+<section class="activity-section">
+
+    <div class="activity-heading">
+
+        <div class="activity-eyebrow">
+            07 • HYBRID RADIO
+        </div>
+
+        <h2>
+            When radio
+            <span>meets the internet</span>
+        </h2>
+
+        <p>
+
+            Some amateur-radio systems use the internet
+            as part of the connection. The RF link is
+            still important, but the internet can connect
+            distant radio systems.
+
+        </p>
+
+    </div>
+
+
+    <article class="activity-card reverse">
+
+
+        <div class="activity-image">
+
+            <img
+                src="https://commons.wikimedia.org/wiki/Special:Redirect/file/K2GXT%2070cm%20repeater%20APRS%20IRLP.JPG"
+                alt="Amateur radio repeater and APRS equipment"
+                loading="lazy">
+
+        </div>
+
+
+        <div class="activity-content">
+
+            <span class="activity-number">
+                ECHOLINK • ALLSTAR • IRLP
+            </span>
+
+            <h3>
+                A radio conversation can
+                <span>cross the internet</span>
+            </h3>
+
+            <p>
+
+                Systems such as EchoLink, AllStar and IRLP
+                can link amateur-radio stations and repeaters
+                through internet-connected nodes.
+
+            </p>
+
+            <p>
+
+                For a newcomer, the important idea is simple:
+                the radio remains part of the experience,
+                while the internet provides a bridge between
+                distant radio systems.
+
+            </p>
+
+            <div class="activity-tag-row">
+
+                <span class="activity-tag">
+                    EchoLink
+                </span>
+
+                <span class="activity-tag">
+                    AllStar
+                </span>
+
+                <span class="activity-tag">
+                    IRLP
+                </span>
+
+                <span class="activity-tag">
+                    Gateways
+                </span>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</section>
+
+
+
+<!-- =======================================================
+     SPACE
+     ======================================================= -->
+
+<section class="activity-section">
+
+    <div class="activity-heading">
+
+        <div class="activity-eyebrow">
+            08 • SPACE RADIO
+        </div>
+
+        <h2>
+            Yes —
+            <span>you can talk through space</span>
+        </h2>
+
+        <p>
+
+            Amateur radio has been used with satellites
+            for decades, and amateur-radio equipment has
+            been carried aboard crewed spacecraft including
+            the International Space Station.
+
+        </p>
+
+    </div>
+
+
+    <div class="space-feature">
+
+
+        <div class="space-feature-image">
+
+            <img
+                src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Amateur%20Radio%20on%20the%20International%20Space%20Station%20%28ARISS%29%20contact%20with%20Institut%20Florimont%20from%20the%20ITU%20amateur%20radio%20station%204U1ITU%20%2815080426877%29.jpg"
+                alt="ARISS amateur radio contact"
+                loading="lazy">
+
+            <div class="space-feature-overlay"></div>
+
+        </div>
+
+
+        <div class="space-feature-content">
+
+            <span class="activity-number">
+                ARISS • AMATEUR SATELLITES
+            </span>
+
+            <h3>
+                The sky is not the
+                <span>limit.</span>
+            </h3>
+
+            <p>
+
+                Amateur operators can communicate through
+                satellites, track spacecraft, make contacts
+                during satellite passes and participate in
+                educational contacts through programmes
+                such as ARISS.
+
+            </p>
+
+            <p>
+
+                The International Space Station has hosted
+                amateur-radio operations and educational
+                contacts, bringing amateur radio directly
+                into the world of human spaceflight.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     SATELLITE ACTIVITIES
+     ======================================================= -->
+
+<section class="activity-section">
+
+    <div class="mode-grid">
+
+
+        <div class="mode-card">
+
+            <div class="mode-icon">
+                🛰️
+            </div>
+
+            <h3>
+                Satellite Contacts
+            </h3>
+
+            <p>
+
+                Track an amateur satellite, predict its
+                pass and try to make a contact while it
+                crosses your sky.
+
+            </p>
+
+            <div class="mode-detail">
+
+                Often requires careful timing,
+                antenna positioning and frequency control.
+
+            </div>
+
+        </div>
+
+
+        <div class="mode-card">
+
+            <div class="mode-icon">
+                👨‍🚀
+            </div>
+
+            <h3>
+                ISS / ARISS
+            </h3>
+
+            <p>
+
+                Amateur radio aboard the ISS can support
+                contacts with radio amateurs and educational
+                programmes.
+
+            </p>
+
+            <div class="mode-detail">
+
+                One of the most inspiring examples of
+                amateur radio meeting space exploration.
+
+            </div>
+
+        </div>
+
+
+        <div class="mode-card">
+
+            <div class="mode-icon">
+                📺
+            </div>
+
+            <h3>
+                Space SSTV
+            </h3>
+
+            <p>
+
+                Some amateur-space activities transmit
+                images using SSTV. Receiving one can feel
+                like catching a photograph from orbit.
+
+            </p>
+
+            <div class="mode-detail">
+
+                A simple receiver and suitable antenna
+                can make space reception possible.
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     SSTV
+     ======================================================= -->
+
+<section class="activity-section">
+
+    <div class="activity-heading">
+
+        <div class="activity-eyebrow">
+            09 • RADIO IMAGES
+        </div>
+
+        <h2>
+            SSTV —
+            <span>sending pictures by radio</span>
+        </h2>
+
+        <p>
+
+            Slow Scan Television sends an image gradually
+            through a radio channel. Instead of a voice
+            conversation, the receiver reconstructs a picture.
+
+        </p>
+
+    </div>
+
+
+    <article class="activity-card">
+
+
+        <div class="activity-image">
+
+            <img
+                src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Slow-scan%20television%20QSO.jpg"
+                alt="Slow scan television amateur radio"
+                loading="lazy">
+
+        </div>
+
+
+        <div class="activity-content">
+
+            <span class="activity-number">
+                SSTV
+            </span>
+
+            <h3>
+                A radio can carry
+                <span>an image</span>
+            </h3>
+
+            <p>
+
+                SSTV is one of the easiest ways to understand
+                that amateur radio is much more than speech.
+                The radio sends tones and software turns
+                those tones back into an image.
+
+            </p>
+
+            <ul>
+
+                <li>
+                    Station-to-station image exchange
+                </li>
+
+                <li>
+                    Space and ISS image reception
+                </li>
+
+                <li>
+                    Digital and analogue SSTV systems
+                </li>
+
+                <li>
+                    Excellent introduction to radio + computer
+                    signal processing
+                </li>
+
+            </ul>
+
+        </div>
+
+    </article>
+
+</section>
+
+
+
+<!-- =======================================================
+     MOONBOUNCE / EME
+     ======================================================= -->
+
+<section class="activity-section">
+
+    <div class="activity-heading">
+
+        <div class="activity-eyebrow">
+            10 • RADIO SCIENCE
+        </div>
+
+        <h2>
+            Moonbounce —
+            <span>use the Moon as a reflector</span>
+        </h2>
+
+        <p>
+
+            Earth–Moon–Earth communication, usually called
+            EME or Moonbounce, is one of the most technically
+            fascinating activities in amateur radio.
+
+        </p>
+
+    </div>
+
+
+    <div class="science-grid">
+
+
+        <div class="science-card">
+
+            <img
+                src="https://commons.wikimedia.org/wiki/Special:Redirect/file/I2FZX%20UHF%20EME%20Antenna.png"
+                alt="UHF EME Moonbounce antenna"
+                loading="lazy">
+
+            <div class="science-content">
+
+                <h3>
+                    Earth → Moon → Earth
+                </h3>
+
+                <p>
+
+                    A powerful directional antenna sends
+                    radio energy toward the Moon. A tiny
+                    portion of the energy is reflected back
+                    toward Earth and can be detected by
+                    another station.
+
+                </p>
+
+                <ul>
+
+                    <li>
+                        Highly directional antennas
+                    </li>
+
+                    <li>
+                        Very weak received signals
+                    </li>
+
+                    <li>
+                        Precise operating techniques
+                    </li>
+
+                    <li>
+                        A real radio-science experiment
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <div class="science-card">
+
+            <img
+                src="https://commons.wikimedia.org/wiki/Special:Redirect/file/EA6VQ%20EME.jpg"
+                alt="144 MHz Moonbounce antenna array"
+                loading="lazy">
+
+            <div class="science-content">
+
+                <h3>
+                    Why it is difficult
+                </h3>
+
+                <p>
+
+                    The Moon is far away, the reflected signal
+                    is extremely weak and the path changes as
+                    the Moon moves.
+
+                </p>
+
+                <ul>
+
+                    <li>
+                        Antenna gain matters
+                    </li>
+
+                    <li>
+                        Receiver sensitivity matters
+                    </li>
+
+                    <li>
+                        Timing and Doppler matter
+                    </li>
+
+                    <li>
+                        Software can help decode weak signals
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     PROPAGATION
+     ======================================================= -->
+
+<section class="activity-section">
+
+    <div class="activity-heading">
+
+        <div class="activity-eyebrow">
+            11 • RADIO PROPAGATION
+        </div>
+
+        <h2>
+            Sometimes the atmosphere
+            <span>becomes part of the station</span>
+        </h2>
+
+        <p>
+
+            Radio signals do not always travel in a simple
+            straight line. Amateur operators experiment with
+            unusual propagation paths and learn how the
+            atmosphere, ionosphere and weather influence radio.
+
+        </p>
+
+    </div>
+
+
+    <div class="matrix">
+
+
+        <div class="matrix-item">
+
+            <strong>
+                ☀️ Ionospheric Propagation
+            </strong>
+
+            <p>
+
+                HF signals can be affected dramatically
+                by solar and ionospheric conditions.
+
+            </p>
+
+        </div>
+
+
+        <div class="matrix-item">
+
+            <strong>
+                🌠 Meteor Scatter
+            </strong>
+
+            <p>
+
+                Short-lived ionized trails from meteors
+                can reflect radio signals.
+
+            </p>
+
+        </div>
+
+
+        <div class="matrix-item">
+
+            <strong>
+                🌤️ Tropospheric Propagation
+            </strong>
+
+            <p>
+
+                Atmospheric conditions can extend VHF
+                and UHF communication beyond normal
+                expectations.
+
+            </p>
+
+        </div>
+
+
+        <div class="matrix-item">
+
+            <strong>
+                🌧️ Rain Scatter
+            </strong>
+
+            <p>
+
+                At microwave frequencies, precipitation
+                can become part of interesting propagation
+                experiments.
+
+            </p>
+
+        </div>
+
+
+        <div class="matrix-item">
+
+            <strong>
+                📡 Weak Signal
+            </strong>
+
+            <p>
+
+                Special digital techniques can recover
+                information from remarkably weak signals.
+
+            </p>
+
+        </div>
+
+
+        <div class="matrix-item">
+
+            <strong>
+                🌍 DX Propagation
+            </strong>
+
+            <p>
+
+                Discover why the same frequency can behave
+                completely differently at different times.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     OUTDOOR
+     ======================================================= -->
+
+<section class="activity-section">
+
+    <div class="activity-heading">
+
+        <div class="activity-eyebrow">
+            12 • TAKE RADIO OUTSIDE
+        </div>
+
+        <h2>
+            Amateur radio is also
+            <span>an outdoor hobby</span>
+        </h2>
+
+        <p>
+
+            You don't need a permanent shack. Some of
+            the most enjoyable activities involve taking
+            a lightweight station into parks, hills,
+            beaches and remote locations.
+
+        </p>
+
+    </div>
+
+
+    <div class="mode-grid">
+
+
+        <div class="mode-card">
+
+            <div class="mode-icon">
+                🌳
+            </div>
+
+            <h3>
+                POTA
+            </h3>
+
+            <p>
+
+                Parks on the Air combines portable
+                amateur radio with operating from
+                parks and protected areas.
+
+            </p>
+
+            <div class="mode-detail">
+
+                Radio + outdoors + contacts + exploration.
+
+            </div>
+
+        </div>
+
+
+        <div class="mode-card">
+
+            <div class="mode-icon">
+                ⛰️
+            </div>
+
+            <h3>
+                SOTA
+            </h3>
+
+            <p>
+
+                Summits on the Air combines hiking,
+                climbing and portable amateur radio.
+
+            </p>
+
+            <div class="mode-detail">
+
+                Reach the summit, deploy the antenna,
+                make contacts and enjoy the view.
+
+            </div>
+
+        </div>
+
+
+        <div class="mode-card">
+
+            <div class="mode-icon">
+                🚐
+            </div>
+
+            <h3>
+                Mobile & Portable
+            </h3>
+
+            <p>
+
+                Operate from a vehicle, campsite,
+                beach, hilltop or temporary station.
+
+            </p>
+
+            <div class="mode-detail">
+
+                A battery, radio and suitable antenna
+                can be enough to get on the air.
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     CONTESTING / DX
+     ======================================================= -->
+
+<section class="activity-section">
+
+    <div class="activity-heading">
+
+        <div class="activity-eyebrow">
+            13 • RADIO SPORT
+        </div>
+
+        <h2>
+            Some people chase
+            <span>countries. Others chase records.</span>
+        </h2>
+
+        <p>
+
+            Amateur radio can become competitive if you
+            want it to. Contesting, DX awards and special
+            events turn ordinary contacts into challenges.
+
+        </p>
+
+    </div>
+
+
+    <div class="mode-grid">
+
+
+        <div class="mode-card">
+
+            <div class="mode-icon">
+                🏆
+            </div>
+
+            <h3>
+                Contests
+            </h3>
+
+            <p>
+
+                Make as many valid contacts as possible
+                within a defined period.
+
+            </p>
+
+            <div class="mode-detail">
+
+                Speed, accuracy, station setup and
+                operating technique all matter.
+
+            </div>
+
+        </div>
+
+
+        <div class="mode-card">
+
+            <div class="mode-icon">
+                🌍
+            </div>
+
+            <h3>
+                DXing
+            </h3>
+
+            <p>
+
+                Search for distant stations, rare
+                countries and special event stations.
+
+            </p>
+
+            <div class="mode-detail">
+
+                Propagation and patience are often
+                as important as transmitter power.
+
+            </div>
+
+        </div>
+
+
+        <div class="mode-card">
+
+            <div class="mode-icon">
+                💌
+            </div>
+
+            <h3>
+                QSL Cards
+            </h3>
+
+            <p>
+
+                Confirm contacts and exchange cards
+                or electronic confirmations.
+
+            </p>
+
+            <div class="mode-detail">
+
+                The contact becomes a memory you can keep.
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     ARDF
+     ======================================================= -->
+
+<section class="activity-section">
+
+    <div class="activity-heading">
+
+        <div class="activity-eyebrow">
+            14 • RADIO HUNTING
+        </div>
+
+        <h2>
+            Find the hidden
+            <span>transmitter</span>
+        </h2>
+
+        <p>
+
+            ARDF — Amateur Radio Direction Finding —
+            turns radio into an outdoor search game.
+
+        </p>
+
+    </div>
+
+
+    <div class="license-feature">
+
+
+        <div class="license-panel">
+
+            <h3>
+                🦊 Fox Hunting
+            </h3>
+
+            <p>
+
+                A hidden low-power transmitter, often called
+                a “fox”, is placed somewhere in an area.
+                Participants use directional antennas and
+                signal-strength clues to locate it.
+
+            </p>
+
+            <div class="license-points">
+
+                <div class="license-point">
+
+                    <div class="license-point-icon">
+                        📡
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Direction finding
+                        </strong>
+
+                        <span>
+                            Learn where a signal is coming from.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="license-point">
+
+                    <div class="license-point-icon">
+                        🧭
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Navigation
+                        </strong>
+
+                        <span>
+                            Combine radio information with
+                            movement and terrain.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="license-point">
+
+                    <div class="license-point-icon">
+                        🏃
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Outdoor activity
+                        </strong>
+
+                        <span>
+                            A radio activity that gets you
+                            away from the desk.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="license-visual">
+
+            <div class="license-orbit">
+                🦊
+            </div>
+
+            <h3>
+                Radio becomes
+                a treasure hunt.
+            </h3>
+
+            <p>
+
+                It is one of the clearest examples
+                of how amateur radio can combine
+                technology, sport and fun.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     EMERGENCY COMMUNICATION
+     ======================================================= -->
+
+<section class="activity-section">
+
+    <div class="activity-heading">
+
+        <div class="activity-eyebrow">
+            15 • PUBLIC SERVICE
+        </div>
+
+        <h2>
+            When normal communication
+            <span>isn't available</span>
+        </h2>
+
+        <p>
+
+            Amateur radio can provide independent
+            communication capability when conventional
+            infrastructure is damaged, overloaded or
+            unavailable.
+
+        </p>
+
+    </div>
+
+
+    <div class="mode-grid">
+
+
+        <div class="mode-card">
+
+            <div class="mode-icon">
+                🚨
+            </div>
+
+            <h3>
+                Emergency Nets
+            </h3>
+
+            <p>
+
+                Operators can organize structured
+                communication during emergencies
+                and disasters.
+
+            </p>
+
+        </div>
+
+
+        <div class="mode-card">
+
+            <div class="mode-icon">
+                🔋
+            </div>
+
+            <h3>
+                Independent Power
+            </h3>
+
+            <p>
+
+                Battery, solar and portable stations
+                can continue operating without normal
+                mains infrastructure.
+
+            </p>
+
+        </div>
+
+
+        <div class="mode-card">
+
+            <div class="mode-icon">
+                📡
+            </div>
+
+            <h3>
+                Portable Networks
+            </h3>
+
+            <p>
+
+                VHF, UHF, HF and digital systems can
+                create temporary communication links.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     HOME BREW
+     ======================================================= -->
+
+<section class="activity-section">
+
+    <div class="activity-heading">
+
+        <div class="activity-eyebrow">
+            16 • BUILD IT YOURSELF
+        </div>
+
+        <h2>
+            You can even
+            <span>build the station</span>
+        </h2>
+
+        <p>
+
+            Amateur radio has a long tradition of
+            experimentation. You can design antennas,
+            build accessories, learn electronics and
+            modify your station.
+
+        </p>
+
+    </div>
+
+
+    <div class="matrix">
+
+
+        <div class="matrix-item">
+
+            <strong>
+                🔧 Homebrewing
+            </strong>
+
+            <p>
+
+                Build equipment, interfaces and accessories
+                instead of buying everything ready-made.
+
+            </p>
+
+        </div>
+
+
+        <div class="matrix-item">
+
+            <strong>
+                📐 Antenna Design
+            </strong>
+
+            <p>
+
+                Experiment with dipoles, verticals,
+                Yagis, loops, beams and other antennas.
+
+            </p>
+
+        </div>
+
+
+        <div class="matrix-item">
+
+            <strong>
+                ⚡ RF Experimentation
+            </strong>
+
+            <p>
+
+                Learn what impedance, resonance,
+                SWR and matching actually mean.
+
+            </p>
+
+        </div>
+
+
+        <div class="matrix-item">
+
+            <strong>
+                💻 Software
+            </strong>
+
+            <p>
+
+                Use computers for decoding, logging,
+                satellite tracking and digital modes.
+
+            </p>
+
+        </div>
+
+
+        <div class="matrix-item">
+
+            <strong>
+                🧪 Measurement
+            </strong>
+
+            <p>
+
+                Learn to use meters, analysers,
+                oscilloscopes and test equipment.
+
+            </p>
+
+        </div>
+
+
+        <div class="matrix-item">
+
+            <strong>
+                🛰️ Tracking
+            </strong>
+
+            <p>
+
+                Track satellites and study how
+                antennas and propagation affect signals.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     COMPLETE ACTIVITY MAP
+     ======================================================= -->
+
+<section class="activity-section">
+
+    <div class="activity-heading">
+
+        <div class="activity-eyebrow">
+            THE BIG PICTURE
+        </div>
+
+        <h2>
+            The amateur-radio
+            <span>activity map</span>
+        </h2>
+
+        <p>
+
+            And this is still only the beginning.
+
+        </p>
+
+    </div>
+
+
+    <div class="matrix">
+
+
+        <div class="matrix-item">
+            <strong>🎙️ SSB Voice</strong>
+            <p>Traditional analogue voice communication.</p>
+        </div>
+
+
+        <div class="matrix-item">
+            <strong>📻 FM</strong>
+            <p>Popular for VHF/UHF local operation.</p>
+        </div>
+
+
+        <div class="matrix-item">
+            <strong>🔤 Morse / CW</strong>
+            <p>Classic low-bandwidth communication.</p>
+        </div>
+
+
+        <div class="matrix-item">
+            <strong>📶 FT8 / FT4</strong>
+            <p>Modern weak-signal digital modes.</p>
+        </div>
+
+
+        <div class="matrix-item">
+            <strong>💻 RTTY / PSK31</strong>
+            <p>Computer-generated radio data.</p>
+        </div>
+
+
+        <div class="matrix-item">
+            <strong>🌐 DMR</strong>
+            <p>Digital voice with talk groups and networks.</p>
+        </div>
+
+
+        <div class="matrix-item">
+            <strong>🔵 D-STAR</strong>
+            <p>Digital amateur voice and data.</p>
+        </div>
+
+
+        <div class="matrix-item">
+            <strong>🔷 C4FM</strong>
+            <p>Digital voice and hybrid FM systems.</p>
+        </div>
+
+
+        <div class="matrix-item">
+            <strong>📍 APRS</strong>
+            <p>Position, messaging and packet radio.</p>
+        </div>
+
+
+        <div class="matrix-item">
+            <strong>🖼️ SSTV</strong>
+            <p>Pictures transmitted through radio.</p>
+        </div>
+
+
+        <div class="matrix-item">
+            <strong>🛰️ Satellites</strong>
+            <p>Make contacts through amateur spacecraft.</p>
+        </div>
+
+
+        <div class="matrix-item">
+            <strong>👨‍🚀 ISS / ARISS</strong>
+            <p>Amateur radio involving the International Space Station.</p>
+        </div>
+
+
+        <div class="matrix-item">
+            <strong>🌙 EME</strong>
+            <p>Moonbounce communication.</p>
+        </div>
+
+
+        <div class="matrix-item">
+            <strong>🌠 Meteor Scatter</strong>
+            <p>Use ionized meteor trails for propagation.</p>
+        </div>
+
+
+        <div class="matrix-item">
+            <strong>🌳 POTA</strong>
+            <p>Parks on the Air portable operation.</p>
+        </div>
+
+
+        <div class="matrix-item">
+            <strong>⛰️ SOTA</strong>
+            <p>Summits on the Air portable operation.</p>
+        </div>
+
+
+        <div class="matrix-item">
+            <strong>🏆 Contesting</strong>
+            <p>Competitive high-volume radio operation.</p>
+        </div>
+
+
+        <div class="matrix-item">
+            <strong>🌍 DXing</strong>
+            <p>Searching for distant and rare stations.</p>
+        </div>
+
+
+        <div class="matrix-item">
+            <strong>🦊 ARDF</strong>
+            <p>Radio direction finding and fox hunting.</p>
+        </div>
+
+
+        <div class="matrix-item">
+            <strong>🚨 EmComm</strong>
+            <p>Emergency and public-service communication.</p>
+        </div>
+
+
+        <div class="matrix-item">
+            <strong>🔧 Homebrew</strong>
+            <p>Build and experiment with radio equipment.</p>
+        </div>
+
+
+        <div class="matrix-item">
+            <strong>📡 Antennas</strong>
+            <p>Design, build and test antennas.</p>
+        </div>
+
+
+        <div class="matrix-item">
+            <strong>🔬 Propagation</strong>
+            <p>Study how radio travels through the environment.</p>
+        </div>
+
+
+        <div class="matrix-item">
+            <strong>💌 QSL</strong>
+            <p>Confirm and remember your radio contacts.</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     BEGINNER PATH
+     ======================================================= -->
+
+<section class="activity-section">
+
+    <div class="activity-heading">
+
+        <div class="activity-eyebrow">
+            NEW TO HAM RADIO?
+        </div>
+
+        <h2>
+            You don't have to
+            learn everything at once.
+        </h2>
+
+        <p>
+
+            Start with one simple activity and let
+            curiosity take you further.
+
+        </p>
+
+    </div>
+
+
+    <div class="beginner-path">
+
+
+        <div class="step">
+
+            <div class="step-number">
+                1
+            </div>
+
+            <h3>
+                Learn
+            </h3>
+
+            <p>
+                Understand radio basics and prepare
+                for the Indian amateur-radio examination.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                2
+            </div>
+
+            <h3>
+                Listen
+            </h3>
+
+            <p>
+                Start receiving signals and learn
+                what different modes sound like.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                3
+            </div>
+
+            <h3>
+                Get Licensed
+            </h3>
+
+            <p>
+                Obtain the required authorization
+                before transmitting.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                4
+            </div>
+
+            <h3>
+                Make a QSO
+            </h3>
+
+            <p>
+                Have your first real amateur-radio
+                contact.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                5
+            </div>
+
+            <h3>
+                Explore
+            </h3>
+
+            <p>
+                Choose DX, digital, satellites,
+                antennas, contests or something else.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     FINAL CTA
+     ======================================================= -->
+
+<section class="activities-cta">
+
+    <h2>
+        Which part of amateur radio
+        will become <span style="color:#19dfff;">
+        your thing?</span>
+    </h2>
+
+    <p>
+
+        There is no single way to be a radio amateur.
+        You can be a DXer, an electronics experimenter,
+        a satellite operator, a contest operator,
+        a digital-mode enthusiast, an outdoor operator,
+        a Morse enthusiast — or all of them.
+
+    </p>
+
+
+    <div class="activities-buttons">
+
+        <a
+            href="licensing.html"
+            class="activities-button">
+
+            📜 Learn About Licensing
+
+        </a>
+
+
+        <a
+            href="study.html"
+            class="activities-button secondary">
+
+            📚 Start Learning
+
+        </a>
+
+
+        <a
+            href="qsl.html"
+            class="activities-button secondary">
+
+            📻 Create a QSL Card
+
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     IMAGE CREDITS
+     ======================================================= -->
+
+<div class="image-credit">
+
+    <strong>
+        Image & media credits:
+    </strong>
+
+    Visuals on this page use media from Wikimedia Commons
+    under the licenses specified on their individual file
+    pages. Selected sources include the Hexbeam amateur-radio
+    antenna, VHF/UHF antenna, J38 telegraph key, FT8
+    waterfall, APRS equipment/map, amateur-radio repeater
+    equipment, ARISS/ISS material and EME antenna imagery.
+
+    Please retain this credit section if you continue using
+    the external images.
+
+</div>
+
+
+</main>
+
+
 </body>
+
 </html>
