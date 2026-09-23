@@ -7,7 +7,6 @@
 <meta name="description" content="HAM Corner by VU33CM — discover amateur radio through a guided journey from voice and radio waves to antennas, propagation, satellites, digital modes and your first QSO.">
 <title>HAM Corner by VU33CM | What is HAM Radio?</title>
 <link rel="icon" href="logo.png" type="image/png">
-
 <style>
 :root{
   --bg:#06111f;
@@ -19,11 +18,8 @@
   --line:rgba(93,211,255,.18);
   --max:1180px;
 }
-
 *{box-sizing:border-box}
-
 html{scroll-behavior:smooth}
-
 body{
   margin:0;
   color:var(--white);
@@ -37,19 +33,15 @@ body{
   -webkit-font-smoothing:antialiased;
   overflow-x:hidden;
 }
-
 a{color:inherit}
 img{max-width:100%;display:block}
-
 .container{
   width:min(var(--max),calc(100% - 40px));
   margin:auto;
 }
-
 /* =========================
    HEADER
 ========================= */
-
 .site-header{
   position:fixed;
   top:0;
@@ -60,21 +52,18 @@ img{max-width:100%;display:block}
   backdrop-filter:blur(18px);
   border-bottom:1px solid rgba(255,255,255,.07);
 }
-
 .nav{
   min-height:76px;
   display:flex;
   align-items:center;
   gap:24px;
 }
-
 .brand{
   display:flex;
   align-items:center;
   gap:12px;
   text-decoration:none;
 }
-
 .brand-logo{
   width:48px;
   height:48px;
@@ -82,30 +71,25 @@ img{max-width:100%;display:block}
   overflow:hidden;
   box-shadow:0 0 25px rgba(25,223,255,.2);
 }
-
 .brand-logo img{
   width:100%;
   height:100%;
   object-fit:contain;
 }
-
 .brand strong{
   font-size:17px;
 }
-
 .brand small{
   display:block;
   color:#8da8bc;
   font-size:10px;
   letter-spacing:1.3px;
 }
-
 .nav-links{
   margin-left:auto;
   display:flex;
   gap:5px;
 }
-
 .nav-links a{
   text-decoration:none;
   color:#c7d8e4;
@@ -114,12 +98,10 @@ img{max-width:100%;display:block}
   border-radius:9px;
   transition:.25s;
 }
-
 .nav-links a:hover{
   background:rgba(25,223,255,.09);
   color:var(--cyan);
 }
-
 .menu{
   display:none;
   margin-left:auto;
@@ -130,11 +112,9 @@ img{max-width:100%;display:block}
   padding:9px 12px;
   font-size:18px;
 }
-
 /* =========================
    HERO
 ========================= */
-
 .hero{
   min-height:100vh;
   display:grid;
@@ -142,7 +122,6 @@ img{max-width:100%;display:block}
   padding:130px 0 70px;
   position:relative;
 }
-
 .hero:before{
   content:"";
   position:absolute;
@@ -155,14 +134,12 @@ img{max-width:100%;display:block}
       var(--bg) 95%
     );
 }
-
 .hero-grid{
   display:grid;
   grid-template-columns:1.05fr .95fr;
   gap:60px;
   align-items:center;
 }
-
 .eyebrow{
   display:inline-flex;
   padding:7px 12px;
@@ -175,7 +152,6 @@ img{max-width:100%;display:block}
   letter-spacing:.9px;
   text-transform:uppercase;
 }
-
 .hero h1{
   font-size:clamp(48px,7vw,86px);
   line-height:.98;
@@ -183,24 +159,20 @@ img{max-width:100%;display:block}
   margin:22px 0;
   font-weight:950;
 }
-
 .hero h1 span{
   color:var(--cyan);
 }
-
 .hero p{
   font-size:clamp(18px,2vw,21px);
   color:var(--muted);
   max-width:680px;
 }
-
 .hero-actions{
   display:flex;
   flex-wrap:wrap;
   gap:12px;
   margin-top:30px;
 }
-
 .btn{
   display:inline-flex;
   align-items:center;
@@ -215,21 +187,17 @@ img{max-width:100%;display:block}
   border:1px solid var(--line);
   transition:.25s;
 }
-
 .btn.primary{
   background:linear-gradient(135deg,#19dfff,#2388ff);
   color:#03101b;
   border:0;
 }
-
 .btn.secondary{
   background:rgba(255,255,255,.04);
 }
-
 .btn:hover{
   transform:translateY(-2px);
 }
-
 .hero-art{
   position:relative;
   border-radius:28px;
@@ -237,13 +205,11 @@ img{max-width:100%;display:block}
   border:1px solid rgba(25,223,255,.18);
   box-shadow:0 30px 100px rgba(0,0,0,.4);
 }
-
 .hero-art img{
   width:100%;
   height:610px;
   object-fit:cover;
 }
-
 .hero-caption{
   position:absolute;
   bottom:22px;
@@ -252,11 +218,9 @@ img{max-width:100%;display:block}
   z-index:2;
   font-size:13px;
 }
-
 /* =========================
    STORY
 ========================= */
-
 .story-intro{
   min-height:80vh;
   display:grid;
@@ -264,7 +228,6 @@ img{max-width:100%;display:block}
   text-align:center;
   padding:100px 0;
 }
-
 .story-intro h2,
 .story-copy h2{
   font-size:clamp(38px,5vw,66px);
@@ -273,7 +236,6 @@ img{max-width:100%;display:block}
   margin:0 0 22px;
   font-weight:900;
 }
-
 .story-intro p,
 .story-copy p{
   color:var(--muted);
@@ -281,29 +243,24 @@ img{max-width:100%;display:block}
   max-width:760px;
   margin:0 auto;
 }
-
 .story-block{
   min-height:105vh;
   display:grid;
   align-items:center;
   padding:100px 0;
 }
-
 .story-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:70px;
   align-items:center;
 }
-
 .story-block:nth-child(even) .story-copy{
   order:2;
 }
-
 .story-block:nth-child(even) .story-visual{
   order:1;
 }
-
 .kicker{
   color:var(--cyan);
   font-size:12px;
@@ -312,13 +269,11 @@ img{max-width:100%;display:block}
   font-weight:900;
   margin-bottom:14px;
 }
-
 .story-copy p{
   max-width:570px;
   margin-left:0;
   margin-right:0;
 }
-
 .story-visual{
   min-height:480px;
   display:flex;
@@ -326,7 +281,6 @@ img{max-width:100%;display:block}
   justify-content:center;
   position:relative;
 }
-
 .photo{
   width:100%;
   max-height:620px;
@@ -335,7 +289,6 @@ img{max-width:100%;display:block}
   border:1px solid var(--line);
   box-shadow:0 35px 90px rgba(0,0,0,.38);
 }
-
 .glow{
   position:absolute;
   width:240px;
@@ -345,11 +298,9 @@ img{max-width:100%;display:block}
   filter:blur(70px);
   z-index:-1;
 }
-
 /* =========================
    SCROLL REVEAL
 ========================= */
-
 .reveal{
   opacity:0;
   transform:translateY(55px) scale(.985);
@@ -357,16 +308,13 @@ img{max-width:100%;display:block}
     opacity .9s cubic-bezier(.16,1,.3,1),
     transform 1s cubic-bezier(.16,1,.3,1);
 }
-
 .reveal.visible{
   opacity:1;
   transform:none;
 }
-
 /* =========================
    SIGNAL
 ========================= */
-
 .signal-box{
   width:100%;
   padding:28px;
@@ -380,7 +328,6 @@ img{max-width:100%;display:block}
   border:1px solid var(--line);
   box-shadow:0 30px 80px rgba(0,0,0,.3);
 }
-
 .big-word{
   font-size:clamp(80px,14vw,180px);
   line-height:.8;
@@ -390,13 +337,11 @@ img{max-width:100%;display:block}
   -webkit-text-stroke:1px rgba(25,223,255,.28);
   text-align:center;
 }
-
 .signal-line{
   height:90px;
   position:relative;
   overflow:hidden;
 }
-
 .signal-line:before{
   content:"";
   position:absolute;
@@ -414,19 +359,16 @@ img{max-width:100%;display:block}
   filter:drop-shadow(0 0 8px rgba(25,223,255,.8));
   animation:flow 2s linear infinite;
 }
-
 @keyframes flow{
   to{
     transform:translateX(52px);
   }
 }
-
 .signal-path{
   display:grid;
   grid-template-columns:repeat(5,1fr);
   gap:8px;
 }
-
 .signal-step{
   padding:13px 8px;
   text-align:center;
@@ -435,24 +377,20 @@ img{max-width:100%;display:block}
   font-size:12px;
   font-weight:800;
 }
-
 .signal-step b{
   display:block;
   color:var(--cyan);
   font-size:18px;
 }
-
 /* =========================
    FREQUENCY
 ========================= */
-
 .frequency{
   display:grid;
   gap:14px;
   width:100%;
   max-width:540px;
 }
-
 .freq-row{
   display:flex;
   justify-content:space-between;
@@ -462,27 +400,22 @@ img{max-width:100%;display:block}
   border-radius:15px;
   background:rgba(255,255,255,.035);
 }
-
 .freq-row strong{
   font-size:22px;
 }
-
 .freq-row span{
   color:var(--muted);
   font-size:13px;
 }
-
 /* =========================
    MODES
 ========================= */
-
 .modes{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:14px;
   margin-top:30px;
 }
-
 .mode{
   padding:20px;
   border-radius:17px;
@@ -490,25 +423,20 @@ img{max-width:100%;display:block}
   border:1px solid var(--line);
   transition:.3s;
 }
-
 .mode:hover{
   transform:translateY(-5px);
   border-color:rgba(25,223,255,.4);
 }
-
 .mode b{
   font-size:18px;
 }
-
 .mode p{
   font-size:14px;
   margin:7px 0 0;
 }
-
 /* =========================
    JOURNEY
 ========================= */
-
 .journey{
   padding:150px 0;
   background:
@@ -518,14 +446,12 @@ img{max-width:100%;display:block}
       transparent 35%
     );
 }
-
 .journey h2{
   text-align:center;
   font-size:clamp(42px,6vw,72px);
   line-height:1.03;
   letter-spacing:-2px;
 }
-
 .journey-sub{
   text-align:center;
   color:var(--muted);
@@ -533,14 +459,12 @@ img{max-width:100%;display:block}
   margin:20px auto 65px;
   font-size:18px;
 }
-
 .path{
   display:grid;
   grid-template-columns:repeat(6,1fr);
   gap:10px;
   position:relative;
 }
-
 .path:before{
   content:"";
   position:absolute;
@@ -551,13 +475,11 @@ img{max-width:100%;display:block}
   background:linear-gradient(90deg,var(--cyan),var(--blue));
   opacity:.45;
 }
-
 .path-item{
   position:relative;
   text-align:center;
   z-index:1;
 }
-
 .path-dot{
   width:70px;
   height:70px;
@@ -569,27 +491,22 @@ img{max-width:100%;display:block}
   border:1px solid rgba(25,223,255,.4);
   font-size:25px;
 }
-
 .path-item strong{
   display:block;
   margin-top:14px;
   font-size:14px;
 }
-
 .path-item span{
   display:block;
   color:#89a5b8;
   font-size:12px;
 }
-
 /* =========================
    EXPLORE
 ========================= */
-
 .explore{
   padding:100px 0;
 }
-
 .explore-panel{
   padding:55px;
   border-radius:30px;
@@ -601,25 +518,21 @@ img{max-width:100%;display:block}
     );
   border:1px solid var(--line);
 }
-
 .explore-panel h2{
   font-size:clamp(36px,5vw,58px);
   margin:0 0 15px;
   letter-spacing:-1.5px;
 }
-
 .explore-panel p{
   color:var(--muted);
   max-width:720px;
 }
-
 .link-grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
   gap:12px;
   margin-top:32px;
 }
-
 .link-card{
   text-decoration:none;
   padding:19px;
@@ -628,25 +541,20 @@ img{max-width:100%;display:block}
   background:rgba(255,255,255,.035);
   transition:.25s;
 }
-
 .link-card:hover{
   transform:translateY(-4px);
   border-color:rgba(25,223,255,.5);
 }
-
 .link-card strong{
   display:block;
 }
-
 .link-card span{
   font-size:12px;
   color:#8da9bb;
 }
-
 /* =========================
    FOOTER
 ========================= */
-
 .footer{
   padding:55px 0 35px;
   border-top:1px solid rgba(255,255,255,.07);
@@ -654,19 +562,15 @@ img{max-width:100%;display:block}
   text-align:center;
   font-size:13px;
 }
-
 .credits{
   margin-top:16px;
   font-size:11px;
   line-height:1.7;
 }
-
 /* =========================
    TABLET
 ========================= */
-
 @media(max-width:1000px){
-
   .nav-links{
     display:none;
     position:absolute;
@@ -679,146 +583,113 @@ img{max-width:100%;display:block}
     border-radius:14px;
     flex-wrap:wrap;
   }
-
   .nav-links.open{
     display:flex;
   }
-
   .nav-links a{
     flex:1 1 30%;
     text-align:center;
   }
-
   .menu{
     display:block;
   }
-
   .hero-grid,
   .story-grid{
     grid-template-columns:1fr;
     gap:40px;
   }
-
   .story-block:nth-child(even) .story-copy,
   .story-block:nth-child(even) .story-visual{
     order:initial;
   }
-
   .hero-art img{
     height:480px;
   }
-
   .story-block{
     min-height:auto;
   }
-
   .path{
     grid-template-columns:repeat(3,1fr);
   }
-
   .path:before{
     display:none;
   }
-
   .link-grid{
     grid-template-columns:repeat(2,1fr);
   }
 }
-
 /* =========================
    MOBILE
 ========================= */
-
 @media(max-width:600px){
-
   .container{
     width:min(100% - 26px,var(--max));
   }
-
   .nav{
     min-height:68px;
   }
-
   .brand-logo{
     width:42px;
     height:42px;
   }
-
   .hero{
     padding-top:105px;
   }
-
   .hero h1{
     font-size:46px;
     letter-spacing:-2px;
   }
-
   .hero p{
     font-size:17px;
   }
-
   .hero-art img{
     height:370px;
   }
-
   .story-intro{
     min-height:70vh;
   }
-
   .story-intro h2,
   .story-copy h2{
     font-size:39px;
     letter-spacing:-1.2px;
   }
-
   .story-copy p{
     font-size:16px;
   }
-
   .story-visual{
     min-height:340px;
   }
-
   .signal-path{
     grid-template-columns:1fr 1fr;
   }
-
   .modes,
   .link-grid{
     grid-template-columns:1fr;
   }
-
   .explore-panel{
     padding:30px 22px;
   }
-
   .path{
     grid-template-columns:1fr 1fr;
   }
-
   .path-dot{
     width:58px;
     height:58px;
   }
 }
-
 /* =========================
    REDUCED MOTION
 ========================= */
-
 @media(prefers-reduced-motion:reduce){
-
   html{
     scroll-behavior:auto;
   }
-
   *,
   *:before,
   *:after{
     animation:none!important;
     transition:none!important;
   }
-
   .reveal{
     opacity:1;
     transform:none;
@@ -826,34 +697,25 @@ img{max-width:100%;display:block}
 }
 </style>
 </head>
-
 <body>
-
 <header class="site-header">
   <div class="container nav">
-
     <a class="brand" href="index.html">
-
       <div class="brand-logo">
         <img src="logo.png" alt="HAM Corner VU33CM">
       </div>
-
       <div>
         <strong>HAM Corner</strong>
         <small>VU33CM • INDIAN AMATEUR RADIO</small>
       </div>
-
     </a>
-
     <button
       class="menu"
       id="menuButton"
       aria-label="Open navigation">
       ☰
     </button>
-
     <nav class="nav-links" id="navLinks">
-
       <a href="index.html">Home</a>
       <a href="study.html">Study</a>
       <a href="activities.html">Activities</a>
@@ -863,198 +725,146 @@ img{max-width:100%;display:block}
       <a href="resources.html">Resources</a>
       <a href="quiz.html">ASOC Quiz</a>
       <a href="qsl.html">QSL Card</a>
-
     </nav>
-
   </div>
 </header>
-
 <main>
-
 <!-- HERO -->
-
 <section class="hero" id="top">
-
   <div class="container hero-grid">
-
     <div class="reveal">
-
       <span class="eyebrow">
         🇮🇳 HAM Corner by VU33CM
       </span>
-
       <h1>
         What if your voice could
         <span>cross the world?</span>
       </h1>
-
       <p>
         Welcome to Amateur Radio — a world where a microphone,
         a radio and a piece of wire can become a doorway to people,
         places, satellites and signals far beyond your horizon.
       </p>
-
       <div class="hero-actions">
-
         <a class="btn primary" href="#story">
           Let's discover it →
         </a>
-
         <a class="btn secondary" href="activities.html">
           See what hams do
         </a>
-
       </div>
-
     </div>
-
     <div class="hero-art">
-
       <img
         src="Home.png"
         alt="Amateur radio station">
-
       <div class="hero-caption">
         One radio. One antenna. An entire world of possibilities.
       </div>
-
     </div>
-
   </div>
-
 </section>
 
+<!-- WHAT IS HAM RADIO -->
+<section class="story-intro" style="min-height:auto;padding:70px 0 40px;">
+  <div class="container reveal">
+    <div class="kicker">What is ham radio?</div>
+    <p style="max-width:820px;margin:0 auto;font-size:18px;color:var(--muted);">
+      Amateur radio — often called ham radio — is a licensed technical hobby and voluntary service.
+      Operators use assigned radio frequencies to communicate, experiment, learn electronics and help in emergencies, without any commercial purpose.
+      With a simple station you can talk locally, work distant stations across the world, use satellites, digital modes or Morse code, and join a global community of experimenters.
+      In India, transmitting requires an Amateur Station Operator’s Certificate (ASOC) issued by the WPC Wing of the Department of Telecommunications.
+      Curiosity is enough to start — a licence turns that curiosity into real on-air communication.
+    </p>
+  </div>
+</section>
 
 <!-- INTRO -->
-
 <section class="story-intro" id="story">
-
   <div class="container reveal">
-
     <div class="kicker">
       Start here
     </div>
-
     <h2>
       You don't need to know radio.<br>
       Just follow the signal.
     </h2>
-
     <p>
       Let's begin with something simple:
       you speak into a microphone.
       Somewhere between your voice and another person's ears,
       something remarkable happens.
     </p>
-
   </div>
-
 </section>
-
-
 <!-- VOICE -->
-
 <section class="story-block">
-
   <div class="container story-grid">
-
     <div class="story-copy reveal">
-
       <div class="kicker">
         It begins with information
       </div>
-
       <h2>
         Your voice becomes a signal.
       </h2>
-
       <p>
         A radio doesn't send your voice through the air exactly as you speak it.
         The transmitter processes that information and places it onto a
         radio-frequency signal.
         That signal is ready to travel.
       </p>
-
     </div>
-
     <div class="story-visual reveal">
-
       <div class="glow"></div>
-
       <div class="signal-box">
-
         <div class="big-word">
           RF
         </div>
-
         <div class="signal-line"></div>
-
         <div class="signal-path">
-
           <div class="signal-step">
             <b>01</b>
             Voice / Data
           </div>
-
           <div class="signal-step">
             <b>02</b>
             Transmitter
           </div>
-
           <div class="signal-step">
             <b>03</b>
             RF Signal
           </div>
-
           <div class="signal-step">
             <b>04</b>
             Antenna
           </div>
-
           <div class="signal-step">
             <b>05</b>
             Receiver
           </div>
-
         </div>
-
       </div>
-
     </div>
-
   </div>
-
 </section>
-
-
 <!-- RADIO -->
-
 <section class="story-block">
-
   <div class="container story-grid">
-
     <div class="story-visual reveal">
-
       <div class="glow"></div>
-
       <img
         class="photo"
         src="images/ham-shack.jpg"
         alt="Amateur radio station"
         loading="lazy">
-
     </div>
-
     <div class="story-copy reveal">
-
       <div class="kicker">
         The radio station
       </div>
-
       <h2>
         Then comes the invisible part.
       </h2>
-
       <p>
         The transmitter creates energy at a chosen radio frequency.
         The antenna couples that energy into the surrounding
@@ -1062,36 +872,24 @@ img{max-width:100%;display:block}
         You cannot see the wave — but you can measure it,
         receive it and use it to carry information.
       </p>
-
       <p>
         That is the heart of amateur radio:
         learning how to create, control, receive and experiment
         with radio signals.
       </p>
-
     </div>
-
   </div>
-
 </section>
-
-
 <!-- ANTENNA -->
-
 <section class="story-block">
-
   <div class="container story-grid">
-
     <div class="story-copy reveal">
-
       <div class="kicker">
         The antenna
       </div>
-
       <h2>
         The antenna is your doorway into the electromagnetic world.
       </h2>
-
       <p>
         Different frequencies behave differently,
         and different antennas are designed to work with them.
@@ -1099,76 +897,52 @@ img{max-width:100%;display:block}
         energy in your station into electromagnetic energy —
         and do the reverse when receiving.
       </p>
-
       <p>
         Suddenly, a piece of metal on a roof or mast is no longer
         just an antenna.
         It is part of the conversation.
       </p>
-
     </div>
-
     <div class="story-visual reveal">
-
       <div class="glow"></div>
-
       <img
         class="photo"
         src="images/antenna.jpg"
         alt="Amateur radio antenna"
         loading="lazy">
-
     </div>
-
   </div>
-
 </section>
-
-
 <!-- PROPAGATION -->
-
 <section class="story-block">
-
   <div class="container story-grid">
-
     <div class="story-visual reveal">
-
       <div class="frequency">
-
         <div class="freq-row">
           <strong>HF</strong>
           <span>Long-distance communication & DX</span>
         </div>
-
         <div class="freq-row">
           <strong>VHF / UHF</strong>
           <span>Local communication & repeaters</span>
         </div>
-
         <div class="freq-row">
           <strong>Satellites</strong>
           <span>Signals through orbit</span>
         </div>
-
         <div class="freq-row">
           <strong>EME</strong>
           <span>Earth–Moon–Earth communication</span>
         </div>
-
       </div>
-
     </div>
-
     <div class="story-copy reveal">
-
       <div class="kicker">
         The sky changes everything
       </div>
-
       <h2>
         And suddenly, distance is no longer simple.
       </h2>
-
       <p>
         A VHF signal might reach a nearby repeater.
         An HF signal can travel great distances under the right
@@ -1177,122 +951,83 @@ img{max-width:100%;display:block}
         And with Moonbounce, radio amateurs have even used
         the Moon as a reflector.
       </p>
-
       <p>
         The same hobby can take you from your neighbourhood
         to another continent — or beyond the atmosphere.
       </p>
-
     </div>
-
   </div>
-
 </section>
-
-
 <!-- MODES -->
-
 <section class="story-block">
-
   <div class="container story-grid">
-
     <div class="story-copy reveal">
-
       <div class="kicker">
         And talking is only the beginning
       </div>
-
       <h2>
         There is much more than a microphone.
       </h2>
-
       <p>
         Amateur radio is a playground for communication,
         electronics, software, antennas, propagation
         and experimentation.
       </p>
-
       <div class="modes">
-
         <div class="mode">
           <b>🎙 Voice</b>
           <p>Local and worldwide conversations.</p>
         </div>
-
         <div class="mode">
           <b>⌨ Digital</b>
           <p>Modes such as FT8 and FT4.</p>
         </div>
-
         <div class="mode">
           <b>·− Morse</b>
           <p>A language built from radio signals.</p>
         </div>
-
         <div class="mode">
           <b>🛰 Satellites</b>
           <p>Work stations passing overhead.</p>
         </div>
-
         <div class="mode">
           <b>📍 APRS</b>
           <p>Position, messages and data.</p>
         </div>
-
         <div class="mode">
           <b>📡 DX</b>
           <p>Reach distant stations and explore propagation.</p>
         </div>
-
       </div>
-
     </div>
-
     <div class="story-visual reveal">
-
       <div class="glow"></div>
-
       <img
         class="photo"
         src="images/operator.jpg"
         alt="Amateur radio operator at a station"
         loading="lazy">
-
     </div>
-
   </div>
-
 </section>
-
-
 <!-- PERSONAL JOURNEY -->
-
 <section class="story-block">
-
   <div class="container story-grid">
-
     <div class="story-visual reveal">
-
       <div class="glow"></div>
-
       <img
         class="photo"
         src="images/antenna-india.jpg"
         alt="Amateur radio antenna in India"
         loading="lazy">
-
     </div>
-
     <div class="story-copy reveal">
-
       <div class="kicker">
         And this is where it becomes yours
       </div>
-
       <h2>
         Build. Listen. Experiment. Contact the world.
       </h2>
-
       <p>
         You can study how radio works,
         build an antenna,
@@ -1306,40 +1041,28 @@ img{max-width:100%;display:block}
         or simply discover why a signal reached somewhere
         you never expected.
       </p>
-
       <p>
         There is no single way to enjoy amateur radio.
         The radio becomes whatever you are curious enough to explore.
       </p>
-
     </div>
-
   </div>
-
 </section>
-
-
 <!-- JOURNEY -->
-
 <section class="journey">
-
   <div class="container">
-
     <div class="reveal">
-
       <div
         class="kicker"
         style="text-align:center">
         Your journey
       </div>
-
       <h2>
         Curiosity can become a<br>
         <span style="color:var(--cyan)">
           radio adventure.
         </span>
       </h2>
-
       <p class="journey-sub">
         Start anywhere.
         Learn a little.
@@ -1348,176 +1071,124 @@ img{max-width:100%;display:block}
         Then, when you're ready,
         take the next step.
       </p>
-
     </div>
-
     <div class="path">
-
       <div class="path-item reveal">
         <div class="path-dot">💡</div>
         <strong>Curious</strong>
         <span>What is this?</span>
       </div>
-
       <div class="path-item reveal">
         <div class="path-dot">📖</div>
         <strong>Learn</strong>
         <span>Understand radio</span>
       </div>
-
       <div class="path-item reveal">
         <div class="path-dot">📝</div>
         <strong>Prepare</strong>
         <span>Study & practise</span>
       </div>
-
       <div class="path-item reveal">
         <div class="path-dot">📻</div>
         <strong>Operate</strong>
         <span>Make your first QSO</span>
       </div>
-
       <div class="path-item reveal">
         <div class="path-dot">💌</div>
         <strong>QSL</strong>
         <span>Confirm the contact</span>
       </div>
-
       <div class="path-item reveal">
         <div class="path-dot">🌍</div>
         <strong>Explore</strong>
         <span>Go wherever radio leads</span>
       </div>
-
     </div>
-
   </div>
-
 </section>
-
-
 <!-- SITE NAVIGATION -->
-
 <section class="explore">
-
   <div class="container">
-
     <div class="explore-panel reveal">
-
       <div class="kicker">
         Keep exploring
       </div>
-
       <h2>
         Now that you've seen the signal…
         where will you take it?
       </h2>
-
       <p>
         HAM Corner brings the practical side of the hobby together —
         study material, activities, repeaters, nets, satellites,
         clubs, resources, the ASOC quiz and QSL cards.
       </p>
-
       <div class="link-grid">
-
         <a class="link-card" href="study.html">
           <strong>📚 Study</strong>
           <span>Learn the fundamentals</span>
         </a>
-
         <a class="link-card" href="activities.html">
           <strong>📡 Activities</strong>
           <span>Discover what hams do</span>
         </a>
-
         <a class="link-card" href="repeaters.html">
           <strong>📻 Repeaters</strong>
           <span>Find repeater information</span>
         </a>
-
         <a class="link-card" href="nets.html">
           <strong>🎙 Nets</strong>
           <span>Find scheduled activity</span>
         </a>
-
         <a class="link-card" href="satellites.html">
           <strong>🛰 Satellites</strong>
           <span>Explore amateur satellites</span>
         </a>
-
         <a class="link-card" href="qsl.html">
           <strong>💌 QSL Card</strong>
           <span>Create your contact card</span>
         </a>
-
         <a class="link-card" href="quiz.html">
           <strong>📝 ASOC Quiz</strong>
           <span>Test what you've learned</span>
         </a>
-
         <a class="link-card" href="clubs.html">
           <strong>🤝 Clubs & Resources</strong>
           <span>Connect and continue</span>
         </a>
-
       </div>
-
     </div>
-
   </div>
-
 </section>
-
 </main>
-
-
 <!-- FOOTER -->
-
 <footer class="footer">
-
   <div class="container">
-
     <strong>
       HAM Corner by VU33CM
     </strong>
-
     <br>
-
     Indian Amateur Radio • People • Technology • Community • Service
-
     <div class="credits">
-
       Image files used by this page:
       <b>ham-shack.jpg</b>,
       <b>antenna.jpg</b>,
       <b>operator.jpg</b>,
       <b>antenna-india.jpg</b>.
-
     </div>
-
   </div>
-
 </footer>
-
-
 <script>
-
 /* Mobile navigation */
-
 const menuButton =
   document.getElementById("menuButton");
-
 const navLinks =
   document.getElementById("navLinks");
-
 menuButton.addEventListener(
   "click",
   () => {
     navLinks.classList.toggle("open");
   }
 );
-
 navLinks
   .querySelectorAll("a")
   .forEach(
@@ -1526,43 +1197,30 @@ navLinks
       () => navLinks.classList.remove("open")
     )
   );
-
-
 /* Scroll reveal */
-
 const observer =
   new IntersectionObserver(
     entries => {
-
       entries.forEach(
         entry => {
-
           if(entry.isIntersecting){
             entry.target.classList.add("visible");
           }
-
         }
       );
-
     },
     {
       threshold:.12,
       rootMargin:"0px 0px -7% 0px"
     }
   );
-
-
 document
   .querySelectorAll(".reveal")
   .forEach(
     element => observer.observe(element)
   );
-
 </script>
-
-
 <!-- Existing HAM Corner analytics -->
 <script src="js/analytics.js"></script>
-
 </body>
 </html>
